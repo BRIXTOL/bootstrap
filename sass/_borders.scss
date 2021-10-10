@@ -1,0 +1,70 @@
+$utilities: map-get-multiple($utilities, (
+  "border",
+  "border-top",
+  "border-end",
+  "border-bottom",
+  "border-start",
+  "border-color",
+  "border-width"
+));
+
+$utilities: map-merge($utilities, (
+  "border": (
+    property: border,
+    class: bd,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    )
+  ),
+  "border-top": (
+    property: border-top,
+    class: bd-top,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    )
+  ),
+  "border-end": (
+    property: border-right,
+    class: bd-right,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    )
+  ),
+  "border-bottom": (
+    property: border-bottom,
+    class: bd-bottom,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0,
+    )
+  ),
+  "border-start": (
+    property: border-left,
+    class: bd-left,
+    values: (
+      null: $border-width solid $border-color,
+      0: 0
+    )
+  ),
+  "border-color": (
+    property: border-color,
+    class: bd,
+    values: (
+      transparent: transparent,
+      white: $white,
+      black: $black
+    )
+  ),
+  "border-width": (
+    property: border-width,
+    class: bd,
+    values: $border-widths
+  )
+
+));
+
+@import "~bootstrap/scss/utilities/api";
+

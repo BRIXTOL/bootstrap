@@ -1,0 +1,16 @@
+$enable-important-utilities: true;
+
+$utilities: map-get-multiple($utilities, (
+  "background-color",
+));
+
+$utilities: map-merge($utilities, (
+  "background-color": (
+    property: background-color,
+    class: bg,
+    local-vars: ("bg-opacity": 1),
+    values: $background-colors
+  ),
+));
+
+@import "~bootstrap/scss/utilities/api";

@@ -1,0 +1,138 @@
+$enable-important-utilities: false;
+
+$utilities: map-get-multiple($utilities, (
+  "flex",
+  "flex-direction",
+  "flex-grow",
+  "flex-shrink",
+  "flex-wrap",
+  "gap",
+  "justify-content",
+  "align-items",
+  "align-content",
+  "align-self",
+  "order",
+));
+
+$utilities: map-merge($utilities, (
+
+  "flex": (
+    responsive: true,
+    property: flex,
+    values: (
+      fill: 1 1 auto
+    )
+  ),
+
+  "flex-direction": (
+    responsive: true,
+    property: flex-direction,
+    class: flex,
+    values: (
+      row: row,
+      col: column,
+      row-reverse: row-reverse,
+      col-reverse: column-reverse
+    )
+  ),
+
+  "flex-grow": (
+    responsive: true,
+    property: flex-grow,
+    class: flex,
+    values: (
+      grow-0: 0,
+      grow-1: 1,
+    )
+  ),
+
+  "flex-shrink": (
+    responsive: true,
+    property: flex-shrink,
+    class: flex,
+    values: (
+      shrink-0: 0,
+      shrink-1: 1,
+    )
+  ),
+
+  "gap": (
+    responsive: true,
+    property: gap,
+    class: gap,
+    values: $spacers
+  ),
+
+  "justify-content": (
+    responsive: true,
+    property: justify-content,
+    class: jc,
+    values: (
+      start: flex-start,
+      end: flex-end,
+      center: center,
+      between: space-between,
+      around: space-around,
+      even: space-evenly,
+    )
+  ),
+
+  "align-items": (
+    responsive: true,
+    property: align-items,
+    class: ai,
+    values: (
+      start: flex-start,
+      end: flex-end,
+      center: center,
+      base: baseline,
+      stretch: stretch,
+    )
+  ),
+
+  "align-content": (
+    responsive: true,
+    property: align-content,
+    class: ac,
+    values: (
+      start: flex-start,
+      end: flex-end,
+      center: center,
+      between: space-between,
+      around: space-around,
+      stretch: stretch,
+    )
+  ),
+
+  "align-self": (
+    responsive: true,
+    property: align-self,
+    class: as,
+    values: (
+      auto: auto,
+      start: flex-start,
+      end: flex-end,
+      center: center,
+      base: baseline,
+      stretch: stretch
+    )
+  ),
+
+  "order": (
+    responsive: true,
+    property: od,
+    values: (
+      first: -1,
+      0: 0,
+      1: 1,
+      2: 2,
+      3: 3,
+      4: 4,
+      5: 5,
+      last: 6
+    )
+  )
+
+));
+
+@import "~bootstrap/scss/utilities/api";

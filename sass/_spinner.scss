@@ -1,0 +1,20 @@
+@keyframes spin {
+  to { transform: rotate(360deg) #{"/* rtl:ignore */"}; }
+}
+
+.spinner {
+  display: inline-block;
+  width: $spinner-width;
+  height: $spinner-height;
+  vertical-align: $spinner-vertical-align;
+  border: $spinner-border-width solid currentColor;
+  border-right-color: $spinner-border-color;
+  border-radius: 50%;
+  animation: $spinner-animation-speed linear infinite spin;
+}
+
+.spinner-sm{
+  width: $spinner-width-sm;
+  height: $spinner-height-sm;
+  border-width: $spinner-border-width-sm;
+}

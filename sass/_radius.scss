@@ -1,0 +1,57 @@
+$enable-important-utilities: false;
+
+$utilities: map-get-multiple($utilities, (
+  "rounded",
+  "rounded-top",
+  "rounded-end",
+  "rounded-bottom",
+  "rounded-start",
+));
+
+$utilities: map-merge($utilities, (
+  "rounded": (
+    property: border-radius,
+    class: radius,
+    values: (
+      null: $border-radius,
+      0: 0,
+      1: $border-radius-sm,
+      2: $border-radius,
+      3: $border-radius-lg,
+      circle: 50%,
+      pill: $border-radius-pill
+    )
+  ),
+  "rounded-top": (
+    property: border-top-left-radius border-top-right-radius,
+    class: radius-top,
+    values: (
+      null: $border-radius
+    )
+  ),
+  "rounded-end": (
+    property: border-top-right-radius border-bottom-right-radius,
+    class: radius-right,
+    values: (
+      null: $border-radius
+    )
+  ),
+  "rounded-bottom": (
+    property: border-bottom-right-radius border-bottom-left-radius,
+    class: radius-bottom,
+    values: (
+      null: $border-radius
+    )
+  ),
+  "rounded-start": (
+    property: border-bottom-left-radius border-top-left-radius,
+    class: radius-left,
+    values: (
+      null: $border-radius
+    )
+  )
+)
+);
+
+@import "~bootstrap/scss/utilities/api";
+

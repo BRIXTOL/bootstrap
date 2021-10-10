@@ -1,0 +1,63 @@
+$enable-important-utilities: true;
+
+$utilities: map-get-multiple($utilities, (
+  "font-family",
+  "font-size",
+  "font-style",
+  "font-weight",
+  "color"
+));
+
+$utilities: map-merge($utilities, (
+
+  "font-family": (
+    property: font-family,
+    class: ff,
+    values: (
+      monospace: var(--#{$variable-prefix}font-monospace)
+    )
+  ),
+
+  "font-style": (
+    property: font-style,
+    values: (
+      normal,
+      italic
+    )
+  ),
+
+  "font-size": (
+    rfs: true,
+    property: font-size,
+    class: fs,
+    values: map-merge($font-sizes, (
+      xs: $font-size-xs,
+      sm: $font-size-sm,
+      md: $font-size-base,
+      lg: $font-size-lg
+    ))
+  ),
+
+  "color": (
+    property: color,
+    class: fc,
+    local-vars: ("text-opacity": 1),
+    values: $font-colors
+  ),
+
+  "font-weight": (
+    property: font-weight,
+    class: fw,
+    values: (
+      light: $font-weight-light,
+      lighter: $font-weight-lighter,
+      normal: $font-weight-normal,
+      bold: $font-weight-bold,
+      bolder: $font-weight-bolder
+    )
+  )
+
+));
+
+@import "~bootstrap/scss/utilities/api";
+

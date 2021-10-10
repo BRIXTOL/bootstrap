@@ -1,0 +1,4 @@
+**/*.liquid
+node_modules/
+scss/bootstrap/_borders.scss
+test/

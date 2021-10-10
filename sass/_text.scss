@@ -1,0 +1,73 @@
+$enable-important-utilities: true;
+
+$utilities: map-get-multiple($utilities, (
+  "text-align",
+  "text-decoration",
+  "text-transform",
+  "whitespace",
+  "wordwrap",
+  "line-height"
+));
+
+$utilities: map-merge($utilities, (
+
+  "text-align": (
+    responsive: true,
+    property: text-align,
+    class: text,
+    values: (
+      left: left,
+      right: right,
+      center: center,
+      justify: justify
+    )
+  ),
+  "text-decoration": (
+    property: text-decoration,
+    class: text,
+    values: (
+      none: none,
+      strike: line-through,
+      lined: underline
+    )
+  ),
+  "text-transform": (
+    property: text-transform,
+    class: text,
+    values: (
+      lowercase: lowercase,
+      uppercase: uppercase,
+      capitalize: capitalize
+    )
+  ),
+  "white-space": (
+    property: white-space,
+    class: text,
+    values: (
+      wrap: normal,
+      nowrap: nowrap
+    )
+  ),
+  "word-wrap": (
+    property: word-wrap word-break,
+    class: text,
+    rtl: false,
+    values: (
+      break: break-word
+    )
+  ),
+  "line-height": (
+    property: line-height,
+    class: lh,
+    values: (
+      1: 1,
+      2: $line-height-sm,
+      3: $line-height-base,
+      4: $line-height-lg,
+      5: $line-height-xl
+    )
+  ),
+));
+
+@import "~bootstrap/scss/utilities/api";
+

@@ -1,0 +1,47 @@
+{
+  "name": "@brixtol/bootstrap",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Stripped bootstrap grid and utilities",
+  "author": {
+    "name": "Νίκος Σαβίδης",
+    "email": "n@brixtol.com",
+    "url": "https://brixtoltextiles.com"
+  },
+  "keywords": [
+    "bootstrap",
+    "mcss",
+    "css",
+    "scss"
+  ],
+  "engines": {
+    "pnpm": ">=6",
+    "node": ">=14"
+  },
+  "files": [
+    "sass/**/*.scss"
+  ],
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c --environment prod"
+  },
+  "license": "MIT",
+  "prettier": "@brixtol/prettier-config",
+  "eslintConfig": {
+    "ignorePatterns": "package",
+    "extends": "@brixtol/eslint-config"
+  },
+  "devDependencies": {
+    "@brixtol/eslint-config": "workspace:^1.0.1",
+    "@brixtol/prettier-config": "workspace:^1.2.0",
+    "@brixtol/rollup-config": "workspace:^1.3.1",
+    "postcss": "^8.3.6",
+    "sass": "^1.41.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-scss": "^3.21.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.1"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "prettier.configPath": "node_modules/@brixtol/prettier-config/index.js",
+  "stylelint.packageManager": "pnpm",
+  "stylelint.enable": true,
+  "scss.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  }
+}

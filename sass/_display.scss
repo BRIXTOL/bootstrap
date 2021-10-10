@@ -1,0 +1,29 @@
+$enable-important-utilities: true;
+
+$utilities: map-get-multiple($utilities, (
+  "display",
+));
+
+$utilities: map-merge($utilities, (
+  "display": (
+    responsive: true,
+    print: true,
+    property: display,
+    class: d,
+    values: (
+      inline: inline,
+      inline-block: inline-block,
+      block: block,
+      grid: grid,
+      table: table,
+      table-row: table-row,
+      table-cell: table-cell,
+      flex: flex,
+      inline-flex: inline-flex,
+      none: none
+    )
+  )
+));
+
+@import "~bootstrap/scss/utilities/api";
+

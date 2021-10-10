@@ -1,0 +1,1032 @@
+/* -------------------------------------------- */
+/* MIXINS                                       */
+/* -------------------------------------------- */
+
+//
+// This mixin uses an `if()` technique to be compatible with Dart Sass
+// See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
+//
+@mixin form-validation-state-selector($state) {
+  @if ($state == "valid" or $state == "invalid") {
+    .was-validated #{if(&, "&", "")}:#{$state}
+    , #{if(&, "&", "")}.is-#{$state} { @content; }
+  } @else {
+    #{if(&, "&", "")}.is-#{$state} {
+      @content;
+    }
+  }
+}
+
+@mixin form-validation-state(
+  $state,
+  $color,
+  $icon,
+  $tooltip-color: color-contrast($color),
+  $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
+  $focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($color, $input-btn-focus-color-opacity)
+) {
+  .#{$state}-feedback {
+    display: none;
+    width: 100%;
+    margin-top: $form-feedback-margin-top;
+    color: $color;
+    font-style: $form-feedback-font-style;
+    @include font-size($form-feedback-font-size);
+  }
+
+
+  @include form-validation-state-selector($state) {
+    ~ .#{$state}-feedback {
+      display: block;
+    }
+  }
+
+  .form-control {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-image: escape-svg($icon);
+        background-repeat: no-repeat;
+        background-position: right $input-height-inner-quarter center;
+        background-size: $input-height-inner-half $input-height-inner-half;
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: $focus-box-shadow;
+      }
+    }
+  }
+
+  textarea.form-control {
+    @include form-validation-state-selector($state) {
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
+      }
+    }
+  }
+
+  .form-select {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      @if $enable-validation-icons {
+        &:not([multiple]):not([size]),
+        &:not([multiple])[size="1"] {
+          padding-right: $form-select-feedback-icon-padding-end;
+          background-image: escape-svg($form-select-indicator), escape-svg($icon);
+          background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+          background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+        }
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: $focus-box-shadow;
+      }
+    }
+  }
+
+  .form-check-input {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      &:checked {
+        background-color: $color;
+      }
+
+      &:focus {
+        box-shadow: $focus-box-shadow;
+      }
+
+      ~ .form-check-label {
+        color: $color;
+      }
+    }
+  }
+
+  .form-check-inline .form-check-input {
+    ~ .#{$state}-feedback {
+      margin-left: .5em;
+    }
+  }
+
+  .input-group .form-control,
+  .input-group .form-select {
+    @include form-validation-state-selector($state) {
+      @if $state == "valid" {
+        z-index: 1;
+      } @else if $state == "invalid" {
+        z-index: 2;
+      }
+
+      &:focus {
+        z-index: 3;
+      }
+    }
+  }
+}
+
+
+/* -------------------------------------------- */
+/* FORM LABEL                                   */
+/* -------------------------------------------- */
+
+//
+// Labels
+//
+.form-label {
+  margin-bottom: $form-label-margin-bottom;
+  color: $form-label-color;
+  font-weight: $form-label-font-weight;
+  font-style: $form-label-font-style;
+  @include font-size($form-label-font-size);
+}
+
+//
+// For use with horizontal and inline forms, when you need the label (or legend)
+// text to align with the form controls.
+//
+.col-form-label {
+  //
+  // Override the `<legend>` default
+  //
+  margin-bottom: 0;
+  padding-top: add($input-padding-y, $input-border-width);
+  padding-bottom: add($input-padding-y, $input-border-width);
+  color: $form-label-color;
+  font-weight: $form-label-font-weight;
+  font-style: $form-label-font-style;
+  line-height: $input-line-height;
+
+  //
+  // Override the `<legend>` default
+  //
+  @include font-size(inherit);
+}
+
+.col-form-label-lg {
+  padding-top: add($input-padding-y-lg, $input-border-width);
+  padding-bottom: add($input-padding-y-lg, $input-border-width);
+  @include font-size($input-font-size-lg);
+}
+
+.col-form-label-sm {
+  padding-top: add($input-padding-y-sm, $input-border-width);
+  padding-bottom: add($input-padding-y-sm, $input-border-width);
+  @include font-size($input-font-size-sm);
+}
+
+/* -------------------------------------------- */
+/* FORM TEXT                                    */
+/* -------------------------------------------- */
+
+.form-text {
+  margin-top: $form-text-margin-top;
+  color: $form-text-color;
+  font-weight: $form-text-font-weight;
+  font-style: $form-text-font-style;
+  @include font-size($form-text-font-size);
+}
+
+/* -------------------------------------------- */
+/* FORM CONTROL                                 */
+/* -------------------------------------------- */
+
+//
+// General form controls (plus a few specific high-level interventions)
+//
+.form-control {
+  display: block;
+  width: 100%;
+  padding: $input-padding-y $input-padding-x;
+  color: $input-color;
+  font-weight: $input-font-weight;
+  font-family: $input-font-family;
+  line-height: $input-line-height;
+  background-color: $input-bg;
+  background-clip: padding-box;
+  border: $input-border-width solid $input-border-color;
+  //
+  // Fix appearance for date inputs in Safari
+  //
+  appearance: none;
+
+  @include font-size($input-font-size);
+
+  //
+  // Note: This has no effect on <select>s in some browsers,
+  // due to the limited stylability of `<select>`s in CSS.
+  //
+  @include border-radius($input-border-radius, 0);
+  @include box-shadow($input-box-shadow);
+  @include transition($input-transition);
+
+  &[type="file"] {
+
+    //
+    // prevent pseudo element button overlap
+    //
+    overflow: hidden;
+
+    &:not(:disabled):not([readonly]) {
+      cursor: pointer;
+    }
+  }
+
+  //
+  // Customize the `:focus` state to imitate native WebKit styles.
+  //
+  &:focus {
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+    @if $enable-shadows {
+
+      @include box-shadow(
+        $input-box-shadow,
+        $input-focus-box-shadow
+      );
+
+    } @else {
+      //
+      // Avoid using mixin so we can pass custom focus shadow properly
+      //
+      box-shadow: $input-focus-box-shadow;
+    }
+  }
+
+  //
+  // Add some height to date inputs on iOS
+  // https://github.com/twbs/bootstrap/issues/23307
+  // TODO: we can remove this workaround once
+  // https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
+  //
+  &::-webkit-date-and-time-value {
+    //
+    // Multiply line-height by 1em if it has no unit
+    //
+    height: if(
+      unit($input-line-height) == "",
+      $input-line-height * 1em,
+      $input-line-height
+    );
+  }
+
+  //
+  // Placeholder
+  //
+  &::placeholder {
+    color: $input-placeholder-color;
+    //
+    // Override Firefox's unusual default opacity;
+    // see https://github.com/twbs/bootstrap/pull/11526.
+    //
+    opacity: 1;
+  }
+
+  //
+  // Disabled and read-only inputs
+  //
+  // HTML5 says that controls under a fieldset > legend:first-child won't be
+  // disabled if the fieldset is disabled. Due to implementation difficulty, we
+  // don't honor that edge case; we style them as disabled anyway.
+  //
+  &:disabled,
+  &[readonly] {
+    background-color: $input-disabled-bg;
+    border-color: $input-disabled-border-color;
+    //
+    // iOS fix for unreadable disabled content;
+    // see https://github.com/twbs/bootstrap/issues/11655.
+    //
+    opacity: 1;
+  }
+
+  //
+  // File input buttons theming
+  //
+  &::file-selector-button {
+    margin: (-$input-padding-y) (-$input-padding-x);
+    padding: $input-padding-y $input-padding-x;
+    color: $form-file-button-color;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-radius: 0;
+    pointer-events: none;
+    margin-inline-end: $input-padding-x;
+    border-inline-end-width: $input-border-width;
+    @include gradient-bg($form-file-button-bg);
+    @include transition($btn-transition);
+  }
+
+  &:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: $form-file-button-hover-bg;
+  }
+
+  &::-webkit-file-upload-button {
+    margin: (-$input-padding-y) (-$input-padding-x);
+    padding: $input-padding-y $input-padding-x;
+    color: $form-file-button-color;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-radius: 0;
+    pointer-events: none;
+    margin-inline-end: $input-padding-x;
+    border-inline-end-width: $input-border-width;
+    @include gradient-bg($form-file-button-bg);
+    @include transition($btn-transition);
+  }
+
+  &:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+    background-color: $form-file-button-hover-bg;
+  }
+}
+
+//
+// Form control sizing
+//
+// Build on `.form-control` with modifier classes to decrease or increase the
+// height and font-size of form controls.
+//
+// Repeated in `_input_group.scss` to avoid Sass extend issues.
+//
+.form-control-sm {
+  min-height: $input-height-sm;
+  padding: $input-padding-y-sm $input-padding-x-sm;
+  @include font-size($input-font-size-sm);
+  @include border-radius($input-border-radius-sm);
+
+  &::file-selector-button {
+    margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    margin-inline-end: $input-padding-x-sm;
+  }
+
+  &::-webkit-file-upload-button {
+    margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    margin-inline-end: $input-padding-x-sm;
+  }
+}
+
+.form-control-lg {
+  min-height: $input-height-lg;
+  padding: $input-padding-y-lg $input-padding-x-lg;
+  @include font-size($input-font-size-lg);
+  @include border-radius($input-border-radius-lg);
+
+  &::file-selector-button {
+    margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    margin-inline-end: $input-padding-x-lg;
+  }
+
+  &::-webkit-file-upload-button {
+    margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    margin-inline-end: $input-padding-x-lg;
+  }
+}
+
+//
+// Make sure textareas don't shrink too much when resized
+// https://github.com/twbs/bootstrap/pull/29124
+//
+textarea {
+  &.form-control {
+    min-height: $input-height;
+  }
+
+  &.form-control-sm {
+    min-height: $input-height-sm;
+  }
+
+  &.form-control-lg {
+    min-height: $input-height-lg;
+  }
+}
+
+.form-control-color {
+  width: $form-color-width;
+  //
+  // Override fixed browser height
+  //
+  height: auto;
+  padding: $input-padding-y;
+
+  &:not(:disabled):not([readonly]) {
+    cursor: pointer;
+  }
+
+  &::-webkit-color-swatch,
+  &::-moz-color-swatch {
+
+    height: if(
+      unit($input-line-height) == "",
+      $input-line-height * 1em,
+      $input-line-height
+    );
+
+    @include border-radius($input-border-radius);
+
+  }
+}
+
+/* -------------------------------------------- */
+/* FORM SELECT                                  */
+/* -------------------------------------------- */
+
+//
+// Select
+//
+// Replaces the browser default select with a custom one, mostly pulled from
+// https://primer.github.io/.
+//
+.form-select {
+  display: block;
+  width: 100%;
+  padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
+  color: $form-select-color;
+  font-weight: $form-select-font-weight;
+  font-family: $form-select-font-family;
+  line-height: $form-select-line-height;
+  background-color: $form-select-bg;
+  background-image: escape-svg($form-select-indicator);
+  background-repeat: no-repeat;
+  background-position: $form-select-bg-position;
+  background-size: $form-select-bg-size;
+  border: $form-select-border-width solid $form-select-border-color;
+  appearance: none;
+  //
+  // See https://github.com/twbs/bootstrap/issues/32636
+  //
+  -moz-padding-start: subtract($form-select-padding-x, 3px);
+
+  @include font-size($form-select-font-size);
+  @include border-radius($form-select-border-radius, 0);
+  @include box-shadow($form-select-box-shadow);
+  @include transition($form-select-transition);
+
+  &:focus {
+    border-color: $form-select-focus-border-color;
+    outline: 0;
+
+    @if $enable-shadows {
+      @include box-shadow(
+        $form-select-box-shadow,
+        $form-select-focus-box-shadow
+      );
+    } @else {
+      //
+      // Avoid using mixin so we can pass custom focus shadow properly
+      //
+      box-shadow: $form-select-focus-box-shadow;
+    }
+  }
+
+  &[multiple],
+  &[size]:not([size="1"]) {
+    padding-right: $form-select-padding-x;
+    background-image: none;
+  }
+
+  &:disabled {
+    color: $form-select-disabled-color;
+    background-color: $form-select-disabled-bg;
+    border-color: $form-select-disabled-border-color;
+  }
+
+  //
+  // Remove outline from select box in FF
+  //
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 $form-select-color;
+  }
+}
+
+.form-select-sm {
+  padding-top: $form-select-padding-y-sm;
+  padding-bottom: $form-select-padding-y-sm;
+  padding-left: $form-select-padding-x-sm;
+  @include font-size($form-select-font-size-sm);
+}
+
+.form-select-lg {
+  padding-top: $form-select-padding-y-lg;
+  padding-bottom: $form-select-padding-y-lg;
+  padding-left: $form-select-padding-x-lg;
+  @include font-size($form-select-font-size-lg);
+}
+
+
+/* -------------------------------------------- */
+/* FORM CHECK                                   */
+/* -------------------------------------------- */
+
+//
+// Check/radio
+//
+.form-check {
+  display: block;
+  min-height: $form-check-min-height;
+  margin-bottom: $form-check-margin-bottom;
+  padding-left: $form-check-padding-start;
+
+  .form-check-input {
+    float: left;
+    margin-left: $form-check-padding-start * -1;
+  }
+}
+
+.form-check-input {
+  width: $form-check-input-width;
+  height: $form-check-input-width;
+  //
+  // line-height minus check height
+  //
+  margin-top: ($line-height-base - $form-check-input-width) * .5;
+  vertical-align: top;
+  background-color: $form-check-input-bg;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: $form-check-input-border;
+  appearance: none;
+  //
+  // Keep themed appearance for print
+  //
+  color-adjust: exact;
+  @include transition($form-check-transition);
+
+  &[type="checkbox"] {
+    @include border-radius($form-check-input-border-radius);
+  }
+
+  &[type="radio"] {
+    border-radius: $form-check-radio-border-radius;
+  }
+
+  &:active {
+    filter: $form-check-input-active-filter;
+  }
+
+  &:focus {
+    border-color: $form-check-input-focus-border;
+    outline: 0;
+    box-shadow: $form-check-input-focus-box-shadow;
+  }
+
+  &:checked {
+    background-color: $form-check-input-checked-bg-color;
+    border-color: $form-check-input-checked-border-color;
+
+    &[type="checkbox"] {
+      @if $enable-gradients {
+        background-image: escape-svg($form-check-input-checked-bg-image), var(--#{$variable-prefix}gradient);
+      } @else {
+        background-image: escape-svg($form-check-input-checked-bg-image);
+      }
+    }
+
+    &[type="radio"] {
+      @if $enable-gradients {
+        background-image: escape-svg($form-check-radio-checked-bg-image), var(--#{$variable-prefix}gradient);
+      } @else {
+        background-image: escape-svg($form-check-radio-checked-bg-image);
+      }
+    }
+  }
+
+  &[type="checkbox"]:indeterminate {
+    background-color: $form-check-input-indeterminate-bg-color;
+    border-color: $form-check-input-indeterminate-border-color;
+
+    @if $enable-gradients {
+      background-image: escape-svg(
+        $form-check-input-indeterminate-bg-image
+      ), var(--#{$variable-prefix}gradient);
+    } @else {
+      background-image: escape-svg(
+        $form-check-input-indeterminate-bg-image
+      );
+    }
+  }
+
+  &:disabled {
+    opacity: $form-check-input-disabled-opacity;
+    filter: none;
+    pointer-events: none;
+  }
+
+  //
+  // Use disabled attribute in addition of :disabled pseudo-class
+  // See: https://github.com/twbs/bootstrap/issues/28247
+  //
+  &[disabled],
+  &:disabled {
+    ~ .form-check-label {
+      opacity: $form-check-label-disabled-opacity;
+    }
+  }
+}
+
+.form-check-label {
+  color: $form-check-label-color;
+  cursor: $form-check-label-cursor;
+}
+
+/* -------------------------------------------- */
+/* FORM SWITCH                                  */
+/* -------------------------------------------- */
+
+//
+// Switch
+//
+.form-switch {
+  padding-left: $form-switch-padding-start;
+
+  .form-check-input {
+    width: $form-switch-width;
+    margin-left: $form-switch-padding-start * -1;
+    background-image: escape-svg($form-switch-bg-image);
+    background-position: left center;
+    @include border-radius($form-switch-border-radius);
+    @include transition($form-switch-transition);
+
+    &:focus {
+      background-image: escape-svg($form-switch-focus-bg-image);
+    }
+
+    &:checked {
+      background-position: $form-switch-checked-bg-position;
+
+      @if $enable-gradients {
+        background-image: escape-svg(
+          $form-switch-checked-bg-image
+        ), var(--#{$variable-prefix}gradient);
+      } @else {
+        background-image: escape-svg(
+          $form-switch-checked-bg-image
+        );
+      }
+    }
+  }
+}
+
+.form-check-inline {
+  display: inline-block;
+  margin-right: $form-check-inline-margin-end;
+}
+
+.btn-check {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
+
+  &[disabled],
+  &:disabled {
+    + .btn {
+      opacity: $form-check-btn-check-disabled-opacity;
+      filter: none;
+      pointer-events: none;
+    }
+  }
+}
+
+
+/* -------------------------------------------- */
+/* FORM FLOATING                                */
+/* -------------------------------------------- */
+
+.form-floating {
+  position: relative;
+
+  > .form-control,
+  > .form-select {
+    height: $form-floating-height;
+    line-height: $form-floating-line-height;
+  }
+
+  > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    //
+    // allow textareas
+    //
+    height: 100%;
+    padding: $form-floating-padding-y $form-floating-padding-x;
+    //
+    // Required for aligning label's text with the
+    // input as it affects inner box model
+    //
+    border: $input-border-width solid transparent;
+    transform-origin: 0 0;
+    pointer-events: none;
+
+    @include transition($form-floating-transition);
+  }
+
+  > .form-control {
+    padding: $form-floating-padding-y $form-floating-padding-x;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
+    }
+
+    //
+    // Duplicated because `:-webkit-autofill` invalidates
+    // other selectors when grouped
+    //
+    &:-webkit-autofill {
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
+    }
+  }
+
+  > .form-select {
+    padding-top: $form-floating-input-padding-t;
+    padding-bottom: $form-floating-input-padding-b;
+  }
+
+  > .form-control:focus,
+  > .form-control:not(:placeholder-shown),
+  > .form-select {
+    ~ label {
+      transform: $form-floating-label-transform;
+      opacity: $form-floating-label-opacity;
+    }
+  }
+
+  //
+  // Duplicated because `:-webkit-autofill` invalidates
+  // other selectors when grouped
+  //
+  > .form-control:-webkit-autofill {
+    ~ label {
+      transform: $form-floating-label-transform;
+      opacity: $form-floating-label-opacity;
+    }
+  }
+}
+
+/* -------------------------------------------- */
+/* FORM RANGE                                   */
+/* -------------------------------------------- */
+
+//
+// Range
+//
+// Style range inputs the same across browsers. Vendor-specific rules for pseudo
+// elements cannot be mixed. As such, there are no shared styles for focus or
+// active states on prefixed selectors.
+//
+.form-range {
+  width: 100%;
+  height: add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2);
+  padding: 0; // Need to reset padding
+  background-color: transparent;
+  appearance: none;
+
+  &:focus {
+    outline: 0;
+
+    //
+    // Pseudo-elements must be split across multiple rulesets to have an effect.
+    // No box-shadow() mixin for focus accessibility.
+    //
+    &::-webkit-slider-thumb {
+      box-shadow: $form-range-thumb-focus-box-shadow;
+    }
+
+    &::-moz-range-thumb {
+      box-shadow: $form-range-thumb-focus-box-shadow;
+    }
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+
+  &::-webkit-slider-thumb {
+    width: $form-range-thumb-width;
+    height: $form-range-thumb-height;
+    margin-top: ($form-range-track-height - $form-range-thumb-height) * .5; // Webkit specific
+    border: $form-range-thumb-border;
+    appearance: none;
+
+    @include border-radius($form-range-thumb-border-radius);
+    @include box-shadow($form-range-thumb-box-shadow);
+    @include transition($form-range-thumb-transition);
+
+    &:active {
+      @include gradient-bg($form-range-thumb-active-bg);
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: $form-range-track-width;
+    height: $form-range-track-height;
+    color: transparent; // Why?
+    background-color: $form-range-track-bg;
+    border-color: transparent;
+    cursor: $form-range-track-cursor;
+    @include border-radius($form-range-track-border-radius);
+    @include box-shadow($form-range-track-box-shadow);
+  }
+
+  &::-moz-range-thumb {
+    width: $form-range-thumb-width;
+    height: $form-range-thumb-height;
+    border: $form-range-thumb-border;
+    @include border-radius($form-range-thumb-border-radius);
+    @include box-shadow($form-range-thumb-box-shadow);
+    @include transition($form-range-thumb-transition);
+    appearance: none;
+
+    &:active {
+      @include gradient-bg($form-range-thumb-active-bg);
+    }
+  }
+
+  &::-moz-range-track {
+    width: $form-range-track-width;
+    height: $form-range-track-height;
+    color: transparent;
+    background-color: $form-range-track-bg;
+    border-color: transparent; // Firefox specific?
+    cursor: $form-range-track-cursor;
+    @include border-radius($form-range-track-border-radius);
+    @include box-shadow($form-range-track-box-shadow);
+  }
+
+  &:disabled {
+    pointer-events: none;
+
+    &::-webkit-slider-thumb {
+      background-color: $form-range-thumb-disabled-bg;
+    }
+
+    &::-moz-range-thumb {
+      background-color: $form-range-thumb-disabled-bg;
+    }
+  }
+}
+
+/* -------------------------------------------- */
+/* INPUT GROUPS                                 */
+/* -------------------------------------------- */
+//
+// Base styles
+//
+
+.input-group {
+  position: relative;
+  display: flex;
+  //
+  // For form validation feedback
+  //
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+
+  > .form-control,
+  > .form-select {
+    //
+    // For focus state's z-index
+    //
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0; // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
+  }
+
+  //
+  // Bring the "active" form control to the top of surrounding elements
+  //
+  > .form-control:focus,
+  > .form-select:focus {
+    z-index: 3;
+  }
+
+  //
+  // Ensure buttons are always above inputs for more visually
+  // pleasing borders. This isn't needed for `.input-group-text`
+  // since it shares the same border-color as our inputs.
+  //
+  .btn {
+    position: relative;
+    z-index: 2;
+
+    &:focus {
+      z-index: 3;
+    }
+  }
+}
+
+//
+// Textual addons
+//
+// Serves as a catch-all element for any text or radio/checkbox input you wish
+// to prepend or append to an input.
+//
+.input-group-text {
+  display: flex;
+  align-items: center;
+  padding: $input-group-addon-padding-y $input-group-addon-padding-x;
+  color: $input-group-addon-color;
+  font-weight: $input-group-addon-font-weight;
+  line-height: $input-line-height;
+  white-space: nowrap;
+  text-align: center;
+  background-color: $input-group-addon-bg;
+  border: $input-border-width solid $input-group-addon-border-color;
+  @include font-size($input-font-size); // Match inputs
+  @include border-radius($input-border-radius);
+}
+
+//
+// Sizing
+//
+// Remix the default form control sizing classes into new ones for easier
+// manipulation.
+//
+.input-group-lg > .form-control,
+.input-group-lg > .form-select,
+.input-group-lg > .input-group-text,
+.input-group-lg > .btn {
+  padding: $input-padding-y-lg $input-padding-x-lg;
+  @include font-size($input-font-size-lg);
+  @include border-radius($input-border-radius-lg);
+}
+
+.input-group-sm > .form-control,
+.input-group-sm > .form-select,
+.input-group-sm > .input-group-text,
+.input-group-sm > .btn {
+  padding: $input-padding-y-sm $input-padding-x-sm;
+  @include font-size($input-font-size-sm);
+  @include border-radius($input-border-radius-sm);
+}
+
+.input-group-lg > .form-select,
+.input-group-sm > .form-select {
+  padding-right: $form-select-padding-x + $form-select-indicator-padding;
+}
+
+//
+// Rounded corners
+//
+// These rulesets must come after the sizing ones to properly override sm and lg
+// border-radius values when extending. They're more specific than we'd like
+// with the `.input-group >` part, but without it, we cannot override the sizing.
+//
+.input-group {
+  &:not(.validated) {
+    > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
+    > .dropdown-toggle:nth-last-child(n + 3) {
+      @include border-end-radius(0);
+    }
+  }
+
+  &.validated {
+    > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu),
+    > .dropdown-toggle:nth-last-child(n + 4) {
+      @include border-end-radius(0);
+    }
+  }
+
+  $validation-messages: "";
+
+  @each $state in map-keys($form-validation-states) {
+    $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
+  }
+
+  > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
+    margin-left: -$input-border-width;
+    @include border-start-radius(0);
+  }
+}
+
+
+/* -------------------------------------------- */
+/* VALIDATION                                   */
+/* -------------------------------------------- */
+
+@each $state, $data in $form-validation-states {
+  @include form-validation-state($state, $data...);
+}
