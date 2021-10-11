@@ -22,10 +22,9 @@
   // Note: Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
   //
-  --#{$variable-prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
-  --#{$variable-prefix}font-monospace: #{inspect($font-family-monospace)};
-  --#{$variable-prefix}heading-font-family: #{inspect($font-family-heading)};
-  --#{$variable-prefix}body-font-family: #{inspect($font-family-body)};
+  --#{$variable-prefix}font-base: #{inspect($font-family-base)};
+  --#{$variable-prefix}font-heading: #{inspect($font-family-heading)};
+  --#{$variable-prefix}font-code: #{inspect($font-family-code)};
 
   // Root and body
   @if $font-size-root != null {

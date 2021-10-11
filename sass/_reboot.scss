@@ -46,7 +46,7 @@ body {
   margin: 0; // 1
   color: var(--#{$variable-prefix}body-color);
   font-weight: var(--#{$variable-prefix}body-font-weight);
-  font-family: var(--#{$variable-prefix}body-font-family);
+  font-family: $font-family-base-var;
   line-height: var(--#{$variable-prefix}body-line-height);
   text-align: var(--#{$variable-prefix}body-text-align);
   background-color: var(--#{$variable-prefix}body-bg); // 2
@@ -275,7 +275,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: $font-family-code;
+  font-family: $font-family-code-var;
   @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
   direction: ltr #{"/* rtl:ignore */"};
   unicode-bidi: bidi-override;
@@ -287,11 +287,16 @@ samp {
 
 pre {
   display: block;
-  margin-top: 0; // 1
+  margin-top: 1rem; // 1
   margin-bottom: 1rem; // 2
-  overflow: auto; // 3
-  @include font-size($code-font-size);
+  padding: .5rem;
   color: $pre-color;
+  white-space: normal;
+  background-color: $gray-200;
+  border-radius: $border-radius-sm;
+
+  @include font-size($font-size-sm);
+
 
   // Account for some code outputs that place code tags in pre tags
   code {
@@ -302,10 +307,9 @@ pre {
 }
 
 code {
-  @include font-size($code-font-size);
+  @include font-size($font-size-sm);
   color: $code-color;
   word-wrap: break-word;
-
   // Streamline the style when inside anchors to avoid broken underline and more
   a > & {
     color: inherit;

@@ -14,6 +14,7 @@
 }
 
 .spinner-sm{
+  @extend .spinner;
   width: $spinner-width-sm;
   height: $spinner-height-sm;
   border-width: $spinner-border-width-sm;

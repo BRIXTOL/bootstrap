@@ -3,6 +3,10 @@
   "stylelint.packageManager": "pnpm",
   "stylelint.enable": true,
   "scss.validate": false,
+  "[html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "sissel.shopify-liquid"
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true
   }

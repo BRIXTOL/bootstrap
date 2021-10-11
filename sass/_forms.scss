@@ -41,7 +41,7 @@
     }
   }
 
-  .form-control {
+  .form-input {
     @include form-validation-state-selector($state) {
       border-color: $color;
 
@@ -60,7 +60,7 @@
     }
   }
 
-  textarea.form-control {
+  textarea.form-input {
     @include form-validation-state-selector($state) {
       @if $enable-validation-icons {
         padding-right: $input-height-inner;
@@ -114,7 +114,7 @@
     }
   }
 
-  .input-group .form-control,
+  .input-group .form-input,
   .input-group .form-select {
     @include form-validation-state-selector($state) {
       @if $state == "valid" {
@@ -150,7 +150,7 @@
 // For use with horizontal and inline forms, when you need the label (or legend)
 // text to align with the form controls.
 //
-.col-form-label {
+.form-label-col {
   //
   // Override the `<legend>` default
   //
@@ -168,13 +168,13 @@
   @include font-size(inherit);
 }
 
-.col-form-label-lg {
+.form-label-col-lg {
   padding-top: add($input-padding-y-lg, $input-border-width);
   padding-bottom: add($input-padding-y-lg, $input-border-width);
   @include font-size($input-font-size-lg);
 }
 
-.col-form-label-sm {
+.form-label-col-sm {
   padding-top: add($input-padding-y-sm, $input-border-width);
   padding-bottom: add($input-padding-y-sm, $input-border-width);
   @include font-size($input-font-size-sm);
@@ -199,7 +199,7 @@
 //
 // General form controls (plus a few specific high-level interventions)
 //
-.form-control {
+.form-input {
   display: block;
   width: 100%;
   padding: $input-padding-y $input-padding-x;
@@ -352,12 +352,12 @@
 //
 // Form control sizing
 //
-// Build on `.form-control` with modifier classes to decrease or increase the
+// Build on `.form-input` with modifier classes to decrease or increase the
 // height and font-size of form controls.
 //
 // Repeated in `_input_group.scss` to avoid Sass extend issues.
 //
-.form-control-sm {
+.form-input-sm {
   min-height: $input-height-sm;
   padding: $input-padding-y-sm $input-padding-x-sm;
   @include font-size($input-font-size-sm);
@@ -376,7 +376,7 @@
   }
 }
 
-.form-control-lg {
+.form-input-lg {
   min-height: $input-height-lg;
   padding: $input-padding-y-lg $input-padding-x-lg;
   @include font-size($input-font-size-lg);
@@ -400,20 +400,20 @@
 // https://github.com/twbs/bootstrap/pull/29124
 //
 textarea {
-  &.form-control {
+  &.form-input {
     min-height: $input-height;
   }
 
-  &.form-control-sm {
+  &.form-input-sm {
     min-height: $input-height-sm;
   }
 
-  &.form-control-lg {
+  &.form-input-lg {
     min-height: $input-height-lg;
   }
 }
 
-.form-control-color {
+.form-input-color {
   width: $form-color-width;
   //
   // Override fixed browser height
@@ -709,7 +709,7 @@ textarea {
 .form-floating {
   position: relative;
 
-  > .form-control,
+  > .form-input,
   > .form-select {
     height: $form-floating-height;
     line-height: $form-floating-line-height;
@@ -735,7 +735,7 @@ textarea {
     @include transition($form-floating-transition);
   }
 
-  > .form-control {
+  > .form-input {
     padding: $form-floating-padding-y $form-floating-padding-x;
 
     &::placeholder {
@@ -763,8 +763,8 @@ textarea {
     padding-bottom: $form-floating-input-padding-b;
   }
 
-  > .form-control:focus,
-  > .form-control:not(:placeholder-shown),
+  > .form-input:focus,
+  > .form-input:not(:placeholder-shown),
   > .form-select {
     ~ label {
       transform: $form-floating-label-transform;
@@ -776,7 +776,7 @@ textarea {
   // Duplicated because `:-webkit-autofill` invalidates
   // other selectors when grouped
   //
-  > .form-control:-webkit-autofill {
+  > .form-input:-webkit-autofill {
     ~ label {
       transform: $form-floating-label-transform;
       opacity: $form-floating-label-opacity;
@@ -904,7 +904,7 @@ textarea {
   align-items: stretch;
   width: 100%;
 
-  > .form-control,
+  > .form-input,
   > .form-select {
     //
     // For focus state's z-index
@@ -918,7 +918,7 @@ textarea {
   //
   // Bring the "active" form control to the top of surrounding elements
   //
-  > .form-control:focus,
+  > .form-input:focus,
   > .form-select:focus {
     z-index: 3;
   }
@@ -965,7 +965,7 @@ textarea {
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 //
-.input-group-lg > .form-control,
+.input-group-lg > .form-input,
 .input-group-lg > .form-select,
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn {
@@ -974,7 +974,7 @@ textarea {
   @include border-radius($input-border-radius-lg);
 }
 
-.input-group-sm > .form-control,
+.input-group-sm > .form-input,
 .input-group-sm > .form-select,
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn {

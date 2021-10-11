@@ -23,7 +23,10 @@
   ],
   "scripts": {
     "dev": "rollup -c -w",
-    "build": "rollup -c --environment prod"
+    "build": "rollup -c --environment prod",
+    "serve": "netlify dev --port 65211",
+    "11ty:build": "pnpm eleventy",
+    "11ty": "pnpx eleventy --serve --watch"
   },
   "license": "MIT",
   "prettier": "@brixtol/prettier-config",
@@ -32,6 +35,7 @@
     "extends": "@brixtol/eslint-config"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
     "@brixtol/eslint-config": "workspace:^1.0.1",
     "@brixtol/prettier-config": "workspace:^1.2.0",
     "@brixtol/rollup-config": "workspace:^1.3.1",

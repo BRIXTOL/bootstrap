@@ -4,10 +4,10 @@ import sass from 'sass';
 export default rollup(
   {
     input: {
-      grid: 'index.scss'
+      bootstrap: 'index.scss'
     },
     output: {
-      dir: 'test'
+      dir: 'docs'
     },
     plugins: env.if('dev')(
       [
