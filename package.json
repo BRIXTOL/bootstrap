@@ -1,6 +1,6 @@
 {
   "name": "@brixtol/bootstrap",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": false,
   "description": "Stripped bootstrap grid and utilities",
   "author": {

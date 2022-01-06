@@ -1,6 +1,6 @@
 # @brixtol/bootstrap
 
-Customised and extended [Bootstrap v5](https://getbootstrap.com/) variation.
+Customized and extended [Bootstrap v5](https://getbootstrap.com/) variation.
 
 ### Why?
 
