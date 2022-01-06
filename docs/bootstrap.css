@@ -524,9 +524,9 @@ progress {
   --gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
-  margin-top: calc(var(--gutter-y) * -1);
-  margin-right: calc(var(--gutter-x) * -.5);
-  margin-left: calc(var(--gutter-x) * -.5); }
+  margin-top: calc(-1 * var(--gutter-y));
+  margin-right: calc(-.5 * var(--gutter-x));
+  margin-left: calc(-.5 * var(--gutter-x)); }
   .row > * {
     flex-shrink: 0;
     width: 100%;
