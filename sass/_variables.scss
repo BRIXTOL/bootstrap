@@ -88,6 +88,7 @@ $font-colors: (
 
   "black": $black,
   "white": $white,
+  "green": $green,
   "gray": $gray-500,
   "red": $red,
   "orange": $orange
@@ -401,7 +402,7 @@ $form-check-inline-margin-end:              1rem !default;
 $form-switch-color:               rgba(0, 0, 0, .25) !default;
 $form-switch-width:               2em !default;
 $form-switch-padding-start:       $form-switch-width + .5em !default;
-$form-switch-border-radius:       $form-switch-width !default;
+$form-switch-border-radius:       0 !default;
 $form-switch-transition:          background-position .15s ease-in-out !default;
 $form-switch-focus-color:         $input-focus-border-color !default;
 $form-switch-checked-color:       $component-active-color !default;

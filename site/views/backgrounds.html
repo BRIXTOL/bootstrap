@@ -1,45 +1,46 @@
-<!-- FONT STYLE -->
-<h6>
-  <strong>BACKGROUND COLORS</strong>
-</h6>
+<h3 class="mt-5 fw-bold d-flex ai-center jc-between">
+  BACKGROUND COLORS
+  <code>background-color</code>
+</h3>
+
 <hr>
-<div class="row ai-center mb-2">
-  <div class="col-3">
-    <pre class="m-1"><code>.bg-transparent</code></pre>
+
+<h5 class="my-4 fc-gray fw-bold">
+  CLASSES
+</h5>
+
+{% for item in classes.backgrounds %}
+  <div class="row ai-center mb-2">
+    <div class="col-3">
+      <pre class="m-1"><code>{{ item.class }}</code></pre>
+    </div>
+    <div class="col-2 p-2  {{ item.class | remove_first: '.' }} text-center">
+      {%- if item.class == '.bg-black' -%}
+        <span class="p-3 fc-white">{{ item.title }}</span>
+      {%- else -%}
+        <span class="p-3">{{ item.title }}</span>
+      {%- endif -%}
+
+    </div>
   </div>
-  <div class="col-2 p-2 bg-transparent text-center">
-    <span class="p-3">Transparent</span>
-  </div>
-</div>
-<div class="row ai-center mb-2">
-  <div class="col-3">
-    <pre class="m-1"><code>.bg-white</code></pre>
-  </div>
-  <div class="col-2 p-2 my-0 bg-white text-center">
-    <span class="p-3">White</span>
-  </div>
-</div>
-<div class="row ai-center mb-2">
-  <div class="col-3">
-    <pre class="m-1"><code>.bg-ivory</code></pre>
-  </div>
-  <div class="col-2 p-2 my-0 bg-ivory text-center">
-    <span class="p-3">Ivory</span>
-  </div>
-</div>
-<div class="row ai-center mb-2">
-  <div class="col-3">
-    <pre class="m-1"><code>.bg-gray</code></pre>
-  </div>
-  <div class="col-2 p-2 my-0 bg-gray text-center">
-    <span class="p-3">Gray</span>
-  </div>
-</div>
-<div class="row ai-center mb-5">
-  <div class="col-3">
-    <pre class="m-1"><code>.bg-black</code></pre>
-  </div>
-  <div class="col-2 p-2 my-0 bg-black text-center">
-    <span class=" fc-white">Black</span>
-  </div>
-</div>
+{% endfor %}
+
+<h5 class="my-4 fc-gray fw-bold">
+  SCSS VARIABLES
+</h5>
+
+{% highlight scss %}
+
+/* -------------------------------------------- */
+/* BACKGROUND COLORS                            */
+/* -------------------------------------------- */
+
+$background-colors: (
+  "transparent": transparent,
+  "white": $white,
+  "black": $black,
+  "ivory": $gray-100,
+  "gray": $gray-400
+) !default;
+
+{% endhighlight %}

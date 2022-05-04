@@ -1,52 +1,64 @@
-<h6>
-  <strong>FONT FAMILY</strong>
-</h6>
+<h3 class="mt-5 fw-bold d-flex ai-center jc-between">
+  FONT FAMILY
+  <code>font-family</code>
+</h3>
 <hr>
-<div class="row ai-center mb-2">
-  <div class="col-2">
-    <pre class="m-1">
-        <code>.ff-heading</code>
-        </pre>
-  </div>
-  <div class="col my-0 ff-heading">
-    <span>Headings</span>
-    <div class="d-block">
-      Applied to
-      <code>&lt;h1-h6&gt;</code>
-      tags
+
+{% for item in classes.font_family %}
+  <div class="row ai-center mb-2">
+    <div class="col-2">
+      <pre class="m-1"><code>{{ item.class }}</code></pre>
+    </div>
+    <div class="col-5 my-0 {{ item.class  | remove_first: '.' }}">
+      <span>{{ item.example }}</span>
+    </div>
+    <div class="col my-0 {{ item.class  | remove_first: '.' }} text-uppercase">
+      <span>{{ item.example }}</span>
     </div>
   </div>
-</div>
+{% endfor %}
 
-<div class="row ai-center mb-2">
-  <div class="col-2">
-    <pre class="m-1">
-      <code>.ff-body</code>
-    </pre>
-  </div>
-  <div class="col my-0 ff-body">
-    <span>Body Font</span>
-    <div class="d-block">
-      Applied to the
-      <code>&lt;body&gt;</code>
-      tag
-    </div>
-  </div>
-</div>
+<h5 class="my-3 fw-bold fc-gray">
+  HTML EXAMPLES
+</h5>
 
-<div class="row ai-center mb-5">
+{% highlight html %}
 
-  <div class="col-2">
-    <pre class="m-1">
-      <code>.ff-code</code>
-    </pre>
-  </div>
-  <div class="col my-0 ff-code">
-    <span>Code Font</span>
-    <div class="d-block">
-      Applied to the
-      <code>&lt;code&gt;</code>
-      tag
-    </div>
-  </div>
-</div>
+<!-- Renders all text in base font-->
+<p class="ff-base"></p>
+
+<!-- Renders all text in heading font -->
+<p class="ff-heading"></p>
+
+<!-- Renders all text in code font -->
+<p class="ff-code"></p>
+
+{% endhighlight %}
+
+<h5 class="my-3 fw-bold fc-gray">
+  SCSS VARIABLES
+</h5>
+
+{% highlight scss %}
+
+/* -------------------------------------------- */
+/* FONT FAMILY                                  */
+/* -------------------------------------------- */
+
+$font-family-base:            Helvetica, sans-serif;
+$font-family-heading:         Arial, sans-serif !default;
+$font-family-code:            SFMono-Regular, Menlo, Monaco, "Courier New", Courier, monospace;
+
+
+// HEADINGS FONT FAMILY REFERENCES HEADING
+//
+$headings-font-family:        $font-family-heading;
+
+// BUTTON FONT FAMILY REFERENCES HEADING
+//
+$btn-font-family:             $font-family-heading !default;
+
+// INPUT FONT FAMILY REFERENCES HEADING
+//
+$input-font-family:           $headings-font-family !default;
+{% endhighlight %}

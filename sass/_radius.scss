@@ -11,7 +11,7 @@ $utilities: map-get-multiple($utilities, (
 $utilities: map-merge($utilities, (
   "rounded": (
     property: border-radius,
-    class: radius,
+    class: rad,
     values: (
       null: $border-radius,
       0: 0,
@@ -24,28 +24,28 @@ $utilities: map-merge($utilities, (
   ),
   "rounded-top": (
     property: border-top-left-radius border-top-right-radius,
-    class: radius-top,
+    class: rad-top,
     values: (
       null: $border-radius
     )
   ),
   "rounded-end": (
     property: border-top-right-radius border-bottom-right-radius,
-    class: radius-right,
+    class: rad-right,
     values: (
       null: $border-radius
     )
   ),
   "rounded-bottom": (
     property: border-bottom-right-radius border-bottom-left-radius,
-    class: radius-bottom,
+    class: rad-bottom,
     values: (
       null: $border-radius
     )
   ),
   "rounded-start": (
     property: border-bottom-left-radius border-top-left-radius,
-    class: radius-left,
+    class: rad-left,
     values: (
       null: $border-radius
     )

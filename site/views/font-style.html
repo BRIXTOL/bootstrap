@@ -1,25 +1,35 @@
-<!-- FONT STYLE -->
-<h6>
-  <strong>FONT STYLE</strong>
-</h6>
+<h3 class="mt-5 fw-bold d-flex ai-center jc-between">
+  FONT STYLE
+  <code>font-style</code>
+</h3>
+
 <hr>
-<div class="row ai-center mb-2">
-  <div class="col-auto">
-    <pre class="m-1">
-      <code>.fst-normal</code>
-    </pre>
+
+<h5 class="my-3 fw-bold fc-gray">
+  CSS CLASSES
+</h5>
+
+{% for item in classes.font_style %}
+  <div class="row ai-center mb-2">
+    <div class="col-2">
+      <pre class="m-1"><code>{{ item.class }}</code></pre>
+    </div>
+    <div class="col my-0">
+      <span class="{{ item.class | remove_first: '.' }}">{{ item.title }}</span>
+    </div>
   </div>
-  <div class="col my-0">
-    <span class="fst-normal">Normal font style</span>
-  </div>
-</div>
-<div class="row ai-center mb-5">
-  <div class="col-auto">
-    <pre class="m-1">
-      <code>.fst-italic</code>
-    </pre>
-  </div>
-  <div class="col my-0">
-    <span class="fst-italic">Italic font style</span>
-  </div>
-</div>
+{% endfor %}
+
+<h5 class="my-3 fw-bold fc-gray">
+  HTML EXAMPLES
+</h5>
+
+{% highlight html %}
+
+<!-- Makes the text italic -->
+<p class="italic"></p>
+
+<!-- Removes the italic style -->
+<i class="normal"></i>
+
+{% endhighlight %}

@@ -4,7 +4,7 @@ Customized and extended [Bootstrap v5](https://getbootstrap.com/) variation.
 
 ### Why?
 
-We here at [Brixtol](https://github.com/brixtol) leverage the bootstrap grid system and its utiltities in various public facing web applications with custom naming convention for classes. We found it extrenous having to constantly overwrite defaults and wanted a single point of control which we can depend upon.
+We here at [Brixtol](https://github.com/brixtol) leverage the bootstrap grid system and its utilities in various public facing web applications with custom naming convention for classes. We found it extraneous having to constantly overwrite defaults and wanted a single point of control which we can depend upon.
 
 ## Install
 
@@ -621,7 +621,7 @@ Using Bootstrap [v5.1.1](https://getbootstrap.com/docs/5.0).
 - `.fc-orange`
 - `.fc-green`
 
-#### FONT STYLE<kbd>font-stylr</kbd>
+#### FONT STYLE<kbd>font-style</kbd>
 
 - `.italic`
 - `.strike`
@@ -636,17 +636,23 @@ Using Bootstrap [v5.1.1](https://getbootstrap.com/docs/5.0).
 
 #### TEXT TRANSFORM <kbd>text-transform</kbd>
 
-- `.text-lowercase`
-- `.text-uppercase`
-- `.text-capitalize`
-- `.text-none`
+- `.lower`
+- `.upper`
+- `.upcase`
+- `.uncase`
 
 #### TEXT ALIGN <kbd>text-align</kbd>
 
-- `.text-left`
-- `.text-center`
-- `.text-right`
-- `.text-justify`
+- `.tl-*`
+- `.tc-*`
+- `.tr-*`
+- `.tj-*`
+
+#### TEXT DECORATION <kbd>text-decoration</kbd>
+
+- `.underline`
+- `.strike`
+- `.undecorate`
 
 #### BORDER <kbd>border</kbd>
 
@@ -684,16 +690,16 @@ Using Bootstrap [v5.1.1](https://getbootstrap.com/docs/5.0).
 
 #### BORDER RADIUS <kbd>border-radius</kbd>
 
-- `.radius`
-- `.radius-1`
-- `.radius-2`
-- `.radius-3`
-- `.radius-pill`
-- `.radius-circle`
-- `.radius-top`
-- `.radius-right`
-- `.radius-bottom`
-- `.radius-left`
+- `.rad`
+- `.rad-1`
+- `.rad-2`
+- `.rad-3`
+- `.rad-pill`
+- `.rad-circle`
+- `.rad-top`
+- `.rad-right`
+- `.rad-bottom`
+- `.rad-left`
 
 #### SPINNER
 

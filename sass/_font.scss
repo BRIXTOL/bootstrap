@@ -22,10 +22,10 @@ $utilities: map-merge($utilities, (
 
   "font-style": (
     property: font-style,
-    class: fst,
+    class: null,
     values: (
-      normal,
-      italic
+      normal: normal,
+      italic: italic
     )
   ),
 

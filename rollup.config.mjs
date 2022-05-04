@@ -17,7 +17,7 @@ export default rollup(
             targets: [
               {
                 src: 'node_modules/bootstrap/scss/*',
-                dest: 'sass/bootstrap'
+                dest: 'test/bootstrap'
               }
             ]
           }

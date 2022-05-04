@@ -1,87 +1,66 @@
 {
-  "engine": "standard",
-  "validate": {
-    "tag": {
-      "newline": true,
-      "pair": true,
-      "placement": true,
-      "whitespace": true
+  "ignore": [
+    {
+      "type": "liquid",
+      "begin": "comment",
+      "end": "endcomment"
     },
-    "control": {
-      "condition": true,
-      "operator": true
+    {
+      "type": "liquid",
+      "begin": "highlight",
+      "end": "endhighlight"
     },
-    "filter": {
-      "existence": true,
-      "parameter": true
-    },
-    "iteration": {
-      "operator": true,
-      "iteree": true,
-      "paramter": true
-    },
-    "object": {
-      "name": true,
-      "property": true
+    {
+      "type": "liquid",
+      "begin": "capture",
+      "end": "endcapture"
     }
+  ],
+  "html": {
+    "correct": true,
+    "force_attribute": false,
+    "braces": false,
+    "preserve": 1,
+    "wrap": 85,
+    "preserve_text": true,
+    "content": true,
+    "space_close": true,
+    "tags": [
+      {
+        "tag": "source",
+        "rules": {
+          "force_attribute": true,
+          "space_close": true
+        }
+      }
+    ]
   },
-  "format": {
-    "html": {
-      "force_attribute": true,
-      "braces": false,
-      "preserve": 5,
-      "tag_newline": true,
-      "tag_whitespace": "always",
-      "tags": [
-        {
-          "name": "testersss"
-        }
-      ]
-    },
-    "javascript": {
-      "preserve": 1,
-      "method_chain": 0,
-      "quote_convert": "none",
-      "format_array": "indent",
-      "format_object": "indent",
-      "braces": false,
-      "no_semicolon": true,
-      "brace_block": true
-    },
-    "scss": {
-      "css_insert_lines": true,
-      "preserve": 2,
-      "braces": false,
-      "brace_block": true,
-      "tags": [
-        {
-          "kind": "html",
-          "name": "style",
-          "attr": "lang=\"scss\""
-        }
-      ]
-    },
-    "css": {
-      "css_insert_lines": true,
-      "preserve": 2,
-      "braces": false,
-      "brace_block": true
-    },
-    "json": {
-      "preserve": 1,
-      "braces": false,
-      "brace_style": "expand",
-      "brace_line": false,
-      "brace_block": true,
-      "no_semicolon": true,
-      "format_array": "indent",
-      "format_object": "indent",
-      "tags": [
-        {
-          "name": "captures",
-          "attr": "json_tes"
-        }
-      ]
-    }
+  "js": {
+    "preserve": 1,
+    "method_chain": 0,
+    "quote_convert": "none",
+    "format_array": "indent",
+    "format_object": "indent",
+    "braces": false,
+    "no_semicolon": false,
+    "brace_block": true
+  },
+  "scss": {
+    "css_insert_lines": true,
+    "preserve": 2,
+    "braces": false,
+    "brace_block": true
+  },
+  "css": {
+    "css_insert_lines": true,
+    "preserve": 2,
+    "braces": false,
+    "brace_block": true
+  },
+  "json": {
+    "preserve": 0,
+    "braces": true,
+    "brace_block": false,
+    "no_semicolon": true
   }
 }

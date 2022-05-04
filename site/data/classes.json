@@ -1,0 +1,366 @@
+{
+  "font_family": [
+    {
+      "example": "This is the headings type font!",
+      "class": ".ff-heading"
+    },
+    {
+      "example": "This is the body (base) type font!",
+      "class": ".ff-body"
+    },
+    {
+      "example": "This is the code (pre) type font!",
+      "class": ".ff-code"
+    }
+  ],
+  "font_sizes": [
+    {
+      "title": "X Large",
+      "class": ".fs-xl"
+    },
+    {
+      "title": "Large",
+      "class": ".fs-lg"
+    },
+    {
+      "title": "Medium (Base)",
+      "class": ".fs-md"
+    },
+    {
+      "title": "Small",
+      "class": ".fs-sm"
+    },
+    {
+      "title": "X Small",
+      "class": ".fs-xs"
+    }
+  ],
+  "font_style": [
+    {
+      "title": "Normal",
+      "class": ".normal"
+    },
+    {
+      "title": "Italic",
+      "class": ".italic"
+    }
+  ],
+  "font_weight": [
+    {
+      "title": "Lighter",
+      "class": ".fw-lighter"
+    },
+    {
+      "title": "Light",
+      "class": ".fw-light"
+    },
+    {
+      "title": "Normal",
+      "class": ".fw-normal"
+    },
+    {
+      "title": "Bold",
+      "class": ".fw-bold"
+    },
+    {
+      "title": "Bolder",
+      "class": ".fw-bolder"
+    }
+  ],
+  "font_colors": [
+    {
+      "title": "White",
+      "class": ".fc-white"
+    },
+    {
+      "title": "Black",
+      "class": ".fc-black"
+    },
+    {
+      "title": "Gray",
+      "class": ".fc-gray"
+    },
+    {
+      "title": "Red",
+      "class": ".fc-red"
+    },
+    {
+      "title": "Green",
+      "class": ".fc-green"
+    },
+    {
+      "title": "Orange",
+      "class": ".fc-orange"
+    }
+  ],
+  "text_align": [
+    {
+      "title": "Text Left",
+      "class": ".tl"
+    },
+    {
+      "title": "Text Center",
+      "class": ".tc"
+    },
+    {
+      "title": "Text Right",
+      "class": ".tr"
+    },
+    {
+      "title": " This sentence will justify when newlines appear!",
+      "class": ".tj"
+    }
+  ],
+  "text_transform": [
+    {
+      "title": "Uppercase",
+      "class": ".upper"
+    },
+    {
+      "title": "LOWERCASE",
+      "class": ".lower"
+    },
+    {
+      "title": "capitalize (all the first letters are uppercase)",
+      "class": ".upcase"
+    },
+    {
+      "title": "Transform None",
+      "class": ".uncase"
+    }
+  ],
+  "text_decoration": [
+    {
+      "title": "Underline",
+      "class": ".underline"
+    },
+    {
+      "title": "Strike Through",
+      "class": ".strike"
+    },
+    {
+      "title": "None",
+      "class": ".undecorate"
+    }
+  ],
+  "headings": [
+    {
+      "title": "h1 Heading 1",
+      "class": ".h1"
+    },
+    {
+      "title": "h2 Heading 2",
+      "class": ".h2"
+    },
+    {
+      "title": "h3 Heading 3",
+      "class": ".h3"
+    },
+    {
+      "title": "h4 Heading 4",
+      "class": ".h4"
+    },
+    {
+      "title": "h5 Heading 5",
+      "class": ".h5"
+    },
+    {
+      "title": "h6 Heading 6",
+      "class": ".h6"
+    }
+  ],
+  "backgrounds": [
+    {
+      "title": "Transparent",
+      "class": ".bg-transparent"
+    },
+    {
+      "title": "White",
+      "class": ".bg-white"
+    },
+    {
+      "title": "Ivory",
+      "class": ".bg-ivory"
+    },
+    {
+      "title": "Gray",
+      "class": ".bg-gray"
+    },
+    {
+      "title": "Black",
+      "class": ".bg-black"
+    }
+  ],
+  "borders": {
+    "border": [
+      {
+        "title": "Border",
+        "class": ".bd"
+      },
+      {
+        "title": "Border Left",
+        "class": ".bd-left"
+      },
+      {
+        "title": "Border Right",
+        "class": ".bd-right"
+      },
+      {
+        "title": "Border Top",
+        "class": ".bd-top"
+      },
+      {
+        "title": "Border Bottom",
+        "class": ".bd-bottom"
+      }
+    ],
+    "sizes": [
+      {
+        "title": "1px",
+        "class": ".bd-1"
+      },
+      {
+        "title": "2px",
+        "class": ".bd-2"
+      },
+      {
+        "title": "3px",
+        "class": ".bd-3"
+      },
+      {
+        "title": "4px",
+        "class": ".bd-4"
+      },
+      {
+        "title": "5px",
+        "class": ".bd-5"
+      }
+    ],
+    "colors": [
+      {
+        "title": "Default Gray",
+        "class": ".bd"
+      },
+      {
+        "title": "Border Black",
+        "class": ".bd-black"
+      },
+      {
+        "title": "Border White",
+        "class": ".bd-white"
+      },
+      {
+        "title": "Border Red",
+        "class": ".bd-red"
+      },
+      {
+        "title": "Border Green",
+        "class": ".bd-green"
+      }
+    ]
+  },
+  "border_radius": {
+    "radius": [
+      {
+        "title": "Radius (Default)",
+        "class": ".rad"
+      },
+      {
+        "title": "Rad x1",
+        "class": ".rad-1"
+      },
+      {
+        "title": "Rad x2",
+        "class": ".rad-2"
+      },
+      {
+        "title": "Rad x3",
+        "class": ".rad-3"
+      }
+    ],
+    "angles": [
+      {
+        "title": "Radius Top",
+        "class": ".rad-top"
+      },
+      {
+        "title": "Radius Right",
+        "class": ".rad-right"
+      },
+      {
+        "title": "Radius Bottom",
+        "class": ".rad-bottom"
+      },
+      {
+        "title": "Radius Left",
+        "class": ".rad-left"
+      }
+    ],
+    "circles": [
+      {
+        "title": "Radius Pill",
+        "class": ".rad-pill"
+      },
+      {
+        "title": "Circle",
+        "class": ".rad-circle"
+      }
+    ]
+  },
+  "buttons": {
+    "colors": [
+      {
+        "title": "Button (Base)",
+        "class": ".btn"
+      },
+      {
+        "title": "Button",
+        "class": ".btn-gray"
+      },
+      {
+        "title": "Button",
+        "class": ".btn-black"
+      },
+      {
+        "title": "Button",
+        "class": ".btn-red"
+      },
+      {
+        "title": "Button",
+        "class": ".btn-green"
+      }
+    ],
+    "outline": [
+      {
+        "title": "Button",
+        "class": ".btn-outline-gray"
+      },
+      {
+        "title": "Button",
+        "class": ".btn-outline-black"
+      },
+      {
+        "title": "Button",
+        "class": ".btn-outline-red"
+      },
+      {
+        "title": "Button",
+        "class": ".btn-outline-green"
+      }
+    ],
+    "sizes": [
+      {
+        "title": "Button",
+        "class": ".btn-sm"
+      },
+      {
+        "title": "Button",
+        "class": ".btn-md"
+      },
+      {
+        "title": "Button",
+        "class": ".btn-lg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+<h3 class="mt-5 fw-bold d-flex ai-center jc-between">
+  BORDER RADIUS
+  <code>border-radius</code>
+</h3>
+<hr>
+
+<h5 class="my-4 fc-gray fw-bold">
+  CLASSES
+</h5>
+
+<div class="row ai-center mb-5">
+
+  <div class="col-4">
+    {% for item in classes.border_radius.radius %}
+      <div class="row ai-center mb-2">
+        <div class="col-6">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col my-0">
+          <span class="bd bd-2 bd-black {{ item.class | remove_first: '.' }} p-2">{{ item.title }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-5">
+
+    {% for item in classes.border_radius.angles %}
+      <div class="row ai-center jc-center mb-2">
+        <div class="col-7">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col my-0">
+          <span class="bd bd-2 bd-black {{ item.class | remove_first: '.' }} p-2">{{ item.title }}</span>
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+
+  <div class="col-3">
+
+    {% for item in classes.border_radius.circles %}
+
+      {% if item.class == '.bd' %}
+        <div class="row ai-center mb-2">
+          <div class="col-4">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col my-0">
+            <span class="bd bd-2 bd-black {{ item.class | remove_first: '.' }} p-2">{{ item.title }}</span>
+          </div>
+        </div>
+      {% else %}
+        <div class="row ai-center mb-2">
+          <div class="col-auto">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col my-0">
+            <span class="bd bd-2 bd-black {{ item.class | remove_first: '.' }} p-2">{{ item.title }}</span>
+          </div>
+        </div>
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+</div>
+
+<h5 class="my-4 fw-bold fc-gray">
+  EXAMPLE
+</h5>
+
+{% highlight html %}
+
+<!-- Applied a default radius -->
+<div class="bd rad"></div>
+
+<!-- Applies a radius of 50% that is 3px thick -->
+<div class="bd-3 rad-circle"></div>
+
+{% endhighlight %}
+
+<h5 class="my-4 fw-bold fc-gray">
+  VARIABLES
+</h5>
+
+<p>The variables will be transformed by utitlities.</p>
+
+{% highlight scss %}
+
+/* -------------------------------------------- */
+/* BORDERS RADIUS                               */
+/* -------------------------------------------- */
+
+$border-radius:               .25rem !default;
+$border-radius-sm:            .2rem !default;
+$border-radius-lg:            .3rem !default;
+$border-radius-pill:          50rem !default;
+
+{% endhighlight %}

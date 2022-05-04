@@ -14,30 +14,31 @@ $utilities: map-merge($utilities, (
   "text-align": (
     responsive: true,
     property: text-align,
-    class: text,
+    class: t,
     values: (
-      left: left,
-      right: right,
-      center: center,
-      justify: justify
+      l: left,
+      r: right,
+      c: center,
+      j: justify
     )
   ),
   "text-decoration": (
     property: text-decoration,
-    class: text,
+    class: null,
     values: (
-      none: none,
+      undecorate: none,
       strike: line-through,
-      lined: underline
+      underline: underline
     )
   ),
   "text-transform": (
     property: text-transform,
-    class: text,
+    class: null,
     values: (
-      lowercase: lowercase,
-      uppercase: uppercase,
-      capitalize: capitalize
+      lower: lowercase,
+      upper: uppercase,
+      upcase: capitalize,
+      uncase: none
     )
   ),
   "white-space": (

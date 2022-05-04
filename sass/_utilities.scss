@@ -476,7 +476,7 @@ $utilities: map-merge($utilities, (
     ),
     "font-style": (
       property: font-style,
-      class: text,
+      class: null,
       values: (
         normal: normal,
         italic: italic
@@ -507,30 +507,31 @@ $utilities: map-merge($utilities, (
     "text-align": (
       responsive: true,
       property: text-align,
-      class: text,
+      class: t,
       values: (
-        left: left,
-        right: right,
-        center: center,
-        justify: justify
+        l: left,
+        r: right,
+        c: center,
+        j: justify
       )
     ),
     "text-decoration": (
       property: text-decoration,
-      class: text,
+      class: null,
       values: (
-        none: none,
         strike: line-through,
-        lined: underline
+        underline: underline,
+        undecorate: none
       )
     ),
     "text-transform": (
       property: text-transform,
-      class: text,
+      class: null,
       values: (
-        lowercase: lowercase,
-        uppercase: uppercase,
-        capitalize: capitalize
+        lower: lowercase,
+        upper: uppercase,
+        upcase: capitalize,
+        uncase: none
       )
     ),
     "white-space": (
@@ -585,7 +586,7 @@ $utilities: map-merge($utilities, (
     ),
     "rounded": (
       property: border-radius,
-      class: radius,
+      class: rad,
       values: (
         null: $border-radius,
         0: 0,
@@ -598,28 +599,28 @@ $utilities: map-merge($utilities, (
     ),
     "rounded-top": (
       property: border-top-left-radius border-top-right-radius,
-      class: radius-top,
+      class: rad-top,
       values: (
         null: $border-radius
       )
     ),
     "rounded-end": (
       property: border-top-right-radius border-bottom-right-radius,
-      class: radius-right,
+      class: rad-right,
       values: (
         null: $border-radius
       )
     ),
     "rounded-bottom": (
       property: border-bottom-right-radius border-bottom-left-radius,
-      class: radius-bottom,
+      class: rad-bottom,
       values: (
         null: $border-radius
       )
     ),
     "rounded-start": (
       property: border-bottom-left-radius border-top-left-radius,
-      class: radius-left,
+      class: rad-left,
       values: (
         null: $border-radius
       )

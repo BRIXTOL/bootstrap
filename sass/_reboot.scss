@@ -268,69 +268,6 @@ a:not([href]):not([class]) {
   }
 }
 
-
-// Code
-
-pre,
-code,
-kbd,
-samp {
-  font-family: $font-family-code-var;
-  @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
-  direction: ltr #{"/* rtl:ignore */"};
-  unicode-bidi: bidi-override;
-}
-
-// 1. Remove browser default top margin
-// 2. Reset browser default of `1em` to use `rem`s
-// 3. Don't allow content to break outside
-
-pre {
-  display: block;
-  margin-top: 1rem; // 1
-  margin-bottom: 1rem; // 2
-  padding: .5rem;
-  color: $pre-color;
-  white-space: normal;
-  background-color: $gray-200;
-  border-radius: $border-radius-sm;
-
-  @include font-size($font-size-sm);
-
-
-  // Account for some code outputs that place code tags in pre tags
-  code {
-    @include font-size(inherit);
-    color: inherit;
-    word-break: normal;
-  }
-}
-
-code {
-  @include font-size($font-size-sm);
-  color: $code-color;
-  word-wrap: break-word;
-  // Streamline the style when inside anchors to avoid broken underline and more
-  a > & {
-    color: inherit;
-  }
-}
-
-kbd {
-  padding: $kbd-padding-y $kbd-padding-x;
-  @include font-size($kbd-font-size);
-  color: $kbd-color;
-  background-color: $kbd-bg;
-  @include border-radius($border-radius-sm);
-
-  kbd {
-    padding: 0;
-    @include font-size(1em);
-    font-weight: $nested-kbd-font-weight;
-  }
-}
-
-
 // Figures
 //
 // Apply a consistent margin strategy (matches our type styles).

@@ -3,11 +3,12 @@
   "stylelint.packageManager": "pnpm",
   "stylelint.enable": true,
   "scss.validate": false,
+  "scss.scannerExclude": ["**/.git", "**/node_modules"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  },
   "[html]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "sissel.shopify-liquid"
-  },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.stylelint": true
   }
 }

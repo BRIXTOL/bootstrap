@@ -1,129 +1,120 @@
-<!-- BORDERS -->
-<h6>
-  <strong>BORDERS</strong>
-</h6>
+<h3 class="mt-5 fw-bold d-flex ai-center jc-between">
+  BORDERS
+  <code>border</code>
+</h3>
+
 <hr>
-<div class="row ai-center mb-5">
-  <div class="col">
-    <div class="row ai-center mb-2">
-      <div class="col-6">
-        <pre class="m-1">
-      <code>.bd</code>
-    </pre>
+
+<h5 class="my-4 fw-bold fc-gray">
+  CSS CLASSES
+</h5>
+
+<div class="row ai-center jc-between mb-5">
+
+  <div class="col-5">
+    {% for item in classes.borders.border %}
+      <div class="row ai-center mb-2">
+        <div class="col-6">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6 my-0">
+          <span class="{{ item.class | remove_first: '.' }} bd-black p-2">{{ item.title }}</span>
+        </div>
       </div>
-      <div class="col my-0">
-        <span class="bd bd-black p-2">Border</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-6">
-        <pre class="m-1">
-      <code>.bd-left</code>
-    </pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd-left bd-black p-2">Border left</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-6">
-        <pre class="m-1">
-      <code>.bd-right</code>
-    </pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd-right bd-black p-2">Border right</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-6">
-        <pre class="m-1">
-      <code>.bd-top</code>
-    </pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd-top bd-black p-2">Border top</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-6">
-        <pre class="m-1">
-      <code>.bd-bottom</code>
-    </pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd-bottom bd-black p-2">Border bottom</span>
-      </div>
-    </div>
+    {% endfor %}
   </div>
+
   <div class="col-3">
-    <div class="row ai-center jc-center mb-2">
-      <div class="col-auto">
-        <pre class="m-1"><code>.bd-1</code></pre>
+
+    {% for item in classes.borders.sizes %}
+      <div class="row ai-center jc-center mb-2">
+        <div class="col-auto">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col my-0">
+          <span class="bd bd-black {{ item.class | remove_first: '.' }} p-2">{{ item.title }}</span>
+        </div>
       </div>
-      <div class="col my-0">
-        <span class="bd bd-black bd-1 p-2">1px</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-auto">
-        <pre class="m-1"><code>.bd-2</code></pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd bd-black bd-2 p-2">2px</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-auto">
-        <pre class="m-1"><code>.bd-3</code></pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd bd-black bd-3 p-2">3px</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-auto">
-        <pre class="m-1"><code>.bd-4</code></pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd bd-black bd-4 p-2">4px</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-auto">
-        <pre class="m-1"><code>.bd-5</code></pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd bd-black bd-5 p-2">5px</span>
-      </div>
-    </div>
+    {% endfor %}
+
   </div>
+
   <div class="col">
-    <div class="row ai-center mb-2">
-      <div class="col-4">
-        <pre class="m-1"><code>.bd</code></pre>
+
+    {% for item in classes.borders.colors %}
+
+      <div class="row ai-center mb-2">
+        <div class="col">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col my-0">
+          <span class="bd {{ item.class | remove_first: '.' }} p-2">{{ item.title }}</span>
+        </div>
       </div>
-      <div class="col my-0">
-        <span class="bd p-2">Default Gray</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-auto">
-        <pre class="m-1"><code>.bd-black</code></pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd bd-black p-2">Border Black</span>
-      </div>
-    </div>
-    <div class="row ai-center mb-2">
-      <div class="col-auto">
-        <pre class="m-1"><code>.bd-white</code></pre>
-      </div>
-      <div class="col my-0">
-        <span class="bd-white p-2">Border white</span>
-      </div>
-    </div>
+
+    {% endfor %}
 
   </div>
-
 </div>
+
+<h5 class="my-3 fw-bold fc-gray">
+  HTML EXAMPLES
+</h5>
+
+{% highlight html %}
+
+<!-- Renders a border in gray -->
+<div class="bd"></div>
+
+<!-- Renders a border on the bottom in black -->
+<div class="bd-bottom bd-black"></div>
+
+<!-- Renders a 2px thick border on the top in green -->
+<div class="bd-2 bd-top bd-green"></div>
+
+<!-- Renders a 4px border on the right and left top in white -->
+<div class="bd-4 bd-left bd-right bd-white"></div>
+
+{% endhighlight %}
+
+<h5 class="my-3 fw-bold fc-gray">
+  SCSS VARIABLES
+</h5>
+
+{% highlight scss %}
+
+/* -------------------------------------------- */
+/* BORDERS WIDTHS                               */
+/* -------------------------------------------- */
+
+// BASE WIDTH VARIABLE
+//
+$border-width:                1px !default;
+
+// UTILITY GENERATOR
+//
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+) !default;
+
+/* -------------------------------------------- */
+/* BORDERS COLORS                               */
+/* -------------------------------------------- */
+
+// BASE COLOR VARIABLE
+//
+$border-color:                $gray-300 !default;
+
+// UTILITY GENERATOR
+//
+$button-colors: (
+  "black": $black,
+  "white": $white,
+  "gray": $gray-500,
+) !default;
+
+{% endhighlight %}

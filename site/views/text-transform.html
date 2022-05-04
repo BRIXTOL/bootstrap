@@ -1,7 +1,7 @@
 <!-- FONT SIZES -->
 <h3 class="mt-5 fw-bold d-flex ai-center jc-between">
-  TEXT DECORATION
-  <code>text-decoration</code>
+  TEXT TRANSFORM
+  <code>text-transform</code>
 </h3>
 
 <hr>
@@ -10,7 +10,7 @@
   CSS CLASSES
 </h5>
 
-{% for item in classes.text_decoration %}
+{% for item in classes.text_transform %}
   <div class="row ai-center mb-2">
     <div class="col-2">
       <pre class="m-1"><code>{{ item.class }}</code></pre>
@@ -27,13 +27,16 @@
 
 {% highlight html %}
 
-<!-- Renders the text with an underline -->
-<span class="underline"></span>
+<!-- Renders the text in UPPERCASE -->
+<span class="upper"></span>
 
-<!-- Renders the text with an line through the middle -->
-<span class="strike"></span>
+<!-- Renders the text in lowercase -->
+<span class="lower"></span>
 
-<!-- Removes the underline -->
-<a class="undecorate"></a>
+<!-- Makes the first letter Upcase -->
+<span class="upcase"></span>
+
+<!-- Removes any casing style -->
+<span class="uncase"></span>
 
 {% endhighlight %}

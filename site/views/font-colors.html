@@ -1,44 +1,48 @@
-<h6>
-  <strong>FONT COLOR</strong>
-</h6>
+<h3 class="mt-5 fw-bold d-flex ai-center jc-between">
+  FONT COLOR
+  <code>font-color</code>
+</h3>
+
 <hr>
-<div class="row ai-center mb-2">
-  <div class="col-2">
-    <pre class="m-1"><code>.fc-white</code></pre>
+
+<h5 class="my-4 fw-bold fc-gray">
+  CSS CLASSES
+</h5>
+
+{% for item in classes.font_colors %}
+  <div class="row ai-center mb-2">
+    <div class="col-2">
+      <pre class="m-1"><code>{{ item.class }}</code></pre>
+    </div>
+    <div class="col my-0">
+      {%- if item.class == '.fc-white' -%}
+        <span class="{{ item.class | remove_first: '.' }} bg-black p-2">{{ item.title }}</span>
+      {%- else -%}
+        <span class="{{ item.class | remove_first: '.' }} p-2">{{ item.title }}</span>
+      {%- endif -%}
+
+    </div>
   </div>
-  <div class="col-1 my-0 fc-white bg-gray p-1 text-center">
-    White
-  </div>
-</div>
-<div class="row ai-center mb-2">
-  <div class="col-2">
-    <pre class="m-1"><code>.fc-gray</code></pre>
-  </div>
-  <div class="col-3 my-0 fc-gray">
-    Gray
-  </div>
-</div>
-<div class="row ai-center mb-2">
-  <div class="col-2">
-    <pre class="m-1"><code>.fc-red</code></pre>
-  </div>
-  <div class="col-3 my-0 fc-red">
-    Red
-  </div>
-</div>
-<div class="row ai-center mb-2">
-  <div class="col-2">
-    <pre class="m-1"><code>.fc-orange</code></pre>
-  </div>
-  <div class="col-3 my-0 fc-orange">
-    Orange
-  </div>
-</div>
-<div class="row ai-center mb-5">
-  <div class="col-2">
-    <pre class="m-1"><code>.fc-black</code></pre>
-  </div>
-  <div class="col-3 my-0 fc-black">
-    Black
-  </div>
-</div>
+{% endfor %}
+
+<h5 class="my-3 fw-bold fc-gray">
+  SCSS VARIABLES
+</h5>
+
+{% highlight scss %}
+
+/* -------------------------------------------- */
+/* FONT COLORS                                  */
+/* -------------------------------------------- */
+
+$font-colors: (
+  "black": $black,
+  "white": $white,
+  "green": $green,
+  "gray": $gray-500,
+  "red": $red,
+  "orange": $orange
+) !default;
+
+
+{% endhighlight %}

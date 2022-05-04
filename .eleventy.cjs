@@ -1,7 +1,10 @@
-module.exports = function (eleventyConfig) {
+const highlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+
+module.exports = function (config) {
 
 
-  eleventyConfig.setBrowserSyncConfig({
+  config.addPlugin(highlight);
+  config.setBrowserSyncConfig({
     notify: true
   });
 
@@ -13,8 +16,8 @@ module.exports = function (eleventyConfig) {
       input: "site",
       output: "docs",
       includes: "views",
-      //  collections: "views",
       layouts: "",
+     // layouts: "",
       data: "data",
     },
   };

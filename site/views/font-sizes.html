@@ -1,64 +1,53 @@
-<!-- FONT SIZES -->
-<h6>
-  <strong>FONT SIZES</strong>
-</h6>
+<h3 class="mt-5 fw-bold d-flex ai-center jc-between">
+  FONT SIZE
+  <code>font-size</code>
+</h3>
+
 <hr>
-<div class="row ai-center mb-2">
 
-  <div class="col-auto">
-    <pre class="m-1">
-        <code>.fs-xl</code>
-      </pre>
-  </div>
-  <div class="col my-0">
+<h5 class="my-3 fw-bold fc-gray">
+  CSS CLASSES
+</h5>
 
-    <span class="fs-xl">X Large</span>
+{% for item in classes.font_sizes%}
+  <div class="row ai-center mb-2">
+    <div class="col-auto">
+      <pre class="m-1"><code>{{ item.class }}</code></pre>
+    </div>
+    <div class="col my-0">
+      <span class="{{ item.class | remove_first: '.' }}">{{ item.title }}</span>
+    </div>
+  </div>
+{% endfor %}
 
-  </div>
-</div>
-<div class="row ai-center mb-2">
-  <div class="col-auto">
-    <pre class="m-1">
-    <code>.fs-lg</code>
-  </pre>
-  </div>
-  <div class="col my-0">
+<h5 class="my-3 fw-bold fc-gray">
+  HTML EXAMPLES
+</h5>
 
-    <span class="fs-lg">Large</span>
+{% highlight html %}
 
-  </div>
-</div>
-<div class="row ai-center mb-2">
-  <div class="col-auto">
-    <pre class="m-1">
-    <code>.fs-md</code>
-  </pre>
-  </div>
-  <div class="col my-0">
+<!-- Renders all text is xs -->
+<p class="fs-xs"></p>
 
-    <span class="fs-md">Medium (Base)</span>
+<!-- Renders all text in xl -->
+<p class="fs-xl"></p>
 
-  </div>
-</div>
-<div class="row ai-center mb-2">
-  <div class="col-auto">
-    <pre class="m-1">
-    <code>.fs-sm</code>
-  </pre>
-  </div>
-  <div class="col my-0">
-    <span class="fs-sm">Small</span>
-  </div>
-</div>
-<div class="row ai-center mb-5">
-  <div class="col-auto">
-    <pre class="m-1">
-    <code>.fs-xs</code>
-  </pre>
-  </div>
-  <div class="col my-0">
+{% endhighlight %}
 
-    <span class="fs-xs">X Small</span>
+<h5 class="my-3 fw-bold fc-gray">
+  SCSS VARIABLES
+</h5>
 
-  </div>
-</div>
+{% highlight scss %}
+
+/* -------------------------------------------- */
+/* FONT SIZES                                   */
+/* -------------------------------------------- */
+
+$font-size-base:              1rem !default;
+$font-size-xs:                $font-size-base * .875 !default;
+$font-size-sm:                $font-size-base * .875 !default;
+$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-xl:                $font-size-base * 1.50 !default;
+
+{% endhighlight %}

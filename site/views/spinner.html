@@ -1,8 +1,14 @@
-<!-- FONT STYLE -->
-<h6>
-  <strong>SPINNER</strong>
-</h6>
+<h3 class="mt-5 fw-bold d-flex ai-center jc-between">
+  SPINNER
+  <code>.spinner</code>
+</h3>
+
 <hr>
+
+<h5 class="my-3 fw-bold fc-gray d-flex ai-center jc-between">
+  CSS CLASSES
+</h5>
+
 <div class="row ai-center mb-2">
   <div class="col-2">
     <pre class="m-1">
@@ -24,3 +30,40 @@
     <span class="spinner"></span>
   </div>
 </div>
+
+<h5 class="my-3 fw-bold fc-gray">
+  HTML EXAMPLES
+</h5>
+
+{% highlight html %}
+
+<!-- renders a small spinner animation -->
+<span class="spinner-sm"></span>
+
+<!-- renders a spinner animation -->
+<span class="spinner"></span>
+
+{% endhighlight %}
+
+<h5 class="my-3 fw-bold fc-gray">
+  SCSS VARIABLES
+</h5>
+
+<p>The size can be adjusted, like (for example) the spinner thickness.</p>
+
+{% highlight scss %}
+/* -------------------------------------------- */
+/* SPINNER                                      */
+/* -------------------------------------------- */
+
+$spinner-width:               2rem !default;
+$spinner-width-sm:            1rem !default;
+$spinner-height:              $spinner-width !default;
+$spinner-height-sm:           $spinner-width-sm !default;
+$spinner-vertical-align:      -.125em !default;
+$spinner-border-width:        .25em !default;
+$spinner-border-width-sm:     .2em !default;
+$spinner-border-color:        $gray-300;
+$spinner-animation-speed:     .75s !default;
+
+{% endhighlight %}
