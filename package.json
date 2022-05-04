@@ -23,7 +23,6 @@
     "sass/**/*.scss"
   ],
   "scripts": {
-    "deploy": "pnpm exec bin/docs.sh",
     "dev": "rm -rf docs && concurrently \"pnpm run 11ty:watch\" \"pnpm run sass:watch\"",
     "build": "rm -rf docs && pnpm run 11ty:build && pnpm run sass:build && postcss docs/bootstrap.css -r --no-map",
     "sass:build": "sass --load-path=node_modules/bootstrap/scss/ index.scss docs/bootstrap.css --no-source-map",
@@ -50,7 +49,6 @@
     "@brixtol/browserslist-config": "workspace:^1.1.0",
     "@brixtol/eslint-config": "workspace:^1.2.4",
     "@brixtol/prettier-config": "workspace:^1.2.0",
-    "@brixtol/rollup-config": "workspace:^1.5.5",
     "autoprefixer": "^10.4.7",
     "concurrently": "^7.1.0",
     "cssnano": "^5.1.7",
