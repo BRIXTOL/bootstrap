@@ -14,12 +14,12 @@ $utilities: map-merge($utilities, (
   "text-align": (
     responsive: true,
     property: text-align,
-    class: t,
+    class: null,
     values: (
-      l: left,
-      r: right,
-      c: center,
-      j: justify
+      tl: left,
+      tr: right,
+      tc: center,
+      tj: justify
     )
   ),
   "text-decoration": (
