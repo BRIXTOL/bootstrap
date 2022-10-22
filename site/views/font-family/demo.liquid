@@ -1,0 +1,17 @@
+{% for item in item.classes %}
+  <div class="row ai-center mb-2">
+    <div class="col-2">
+      <pre class="m-1"><code>{{ item.class }}</code></pre>
+    </div>
+    <div class="col-5 my-0 {{ item.class  | remove_first: '.' }}">
+      <span>
+        {{ item.example }}
+      </span>
+    </div>
+    <div class="col my-0 {{ item.class  | remove_first: '.' }} text-uppercase">
+      <span>
+        {{ item.example }}
+      </span>
+    </div>
+  </div>
+{% endfor %}

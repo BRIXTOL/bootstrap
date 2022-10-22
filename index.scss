@@ -2,15 +2,22 @@
 
 @import "sass/bootstrap/functions";
 @import "sass/bootstrap/variables";
+@import "sass/bootstrap/maps";
+@import "sass/bootstrap/mixins";
+@import "sass/bootstrap/utilities";
 
 /* CUSTOM ------------------------------------- */
 
 @import "sass/mixins";
+@import "sass/svg";
+@import "sass/variables";
 
 /* CUSTOM ------------------------------------- */
 
-@import "sass/variables";
 @import "sass/root";
+
+/* REBOOT ------------------------------------- */
+
 @import "sass/reboot";
 
 /* BOOTSTRAP ---------------------------------- */
@@ -22,6 +29,7 @@
 
 /* CUSTOM ------------------------------------- */
 
+@import "sass/headings";
 @import "sass/code";
 @import "sass/spacing";
 @import "sass/flex";
@@ -33,11 +41,23 @@
 @import "sass/borders";
 @import "sass/radius";
 @import "sass/buttons";
-@import "sass/forms";
 @import "sass/spinner";
-@import "sass/forms";
+@import "sass/tooltip";
 
+/* FORMS -------------------------------------- */
+
+@import "sass/forms/labels";
+@import "sass/forms/text";
+@import "sass/forms/input";
+@import "sass/forms/check";
+@import "sass/forms/color";
+@import "sass/forms/switch";
+@import "sass/forms/select";
+@import "sass/forms/range";
+@import "sass/forms/float";
+@import "sass/forms/group";
+@import "sass/forms/validation";
 
 /* BOOTSTRAP ---------------------------------- */
 
-@import "sass/bootstrap/utilities/api";
+

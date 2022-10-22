@@ -1,0 +1,41 @@
+<h5 class="fw-bold fc-gray d-flex ai-center jc-between py-3">
+  HTML EXAMPLES
+  <code class="lower">
+     {{ item.title | slug }}
+  </code>
+</h5>
+
+
+{% highlight html %}
+
+<!-- Renders a floating label -->
+<div class="fm-float mb-3">
+  <input class="fm-input" id="xx" placeholder="name@example.com" type="email">
+  <label for="xx">Text</label>
+</div>
+
+<!-- Renders a float label in textarea -->
+<div class="fm-float mb-3">
+  <textarea class="fm-input" id="xx" placeholder="Message" style="height: 100px"></textarea>
+  <label for="xx">Textarea</label>
+</div>
+
+<!-- Renders a large float label that is invalid -->
+<div class="fm-float fm-lg mb-3">
+  <input class="fm-input is-invalid" id="xx" placeholder="name@example.com" type="email">
+  <label for="xx">Text</label>
+</div>
+
+<!-- Renders a float label that is valid -->
+<div class="fm-float mb-3">
+  <input class="fm-input is-valid" id="xx" placeholder="name@example.com" type="email">
+  <label for="xx">Text</label>
+</div>
+
+<!-- Renders a float Select label -->
+<select class="fm-select" id="select">
+  <option value="1">One</option>
+  <option value="2">Two</option>
+</select>
+
+{% endhighlight %}

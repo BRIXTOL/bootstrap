@@ -7,7 +7,7 @@ $utilities: map-get-multiple($utilities, (
 $utilities: map-merge($utilities, (
   "display": (
     responsive: true,
-    print: true,
+    print: false,
     property: display,
     class: d,
     values: (
@@ -15,15 +15,15 @@ $utilities: map-merge($utilities, (
       inline-block: inline-block,
       block: block,
       grid: grid,
-      table: table,
-      table-row: table-row,
-      table-cell: table-cell,
       flex: flex,
       inline-flex: inline-flex,
-      none: none
+      none: none,
+      // table: table,
+      // table-row: table-row,
+      // table-cell: table-cell,
     )
   )
 ));
 
-@import "bootstrap/utilities/api";
 
+@import "bootstrap/utilities/api";

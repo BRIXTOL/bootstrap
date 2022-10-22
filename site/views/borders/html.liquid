@@ -1,0 +1,25 @@
+<h5 class="fw-bold fc-gray d-flex ai-center jc-between py-3">
+  HTML EXAMPLES
+  <code class="lower">
+    {{ item.title | slug }}
+  </code>
+</h5>
+
+{% highlight html %}
+
+<!-- Renders a border in gray -->
+<div class="bd"></div>
+
+<!-- Renders a border on the bottom in black -->
+<div class="bd-bottom bd-black"></div>
+
+<!-- Renders a .2rem thick border on the top in green -->
+<div class="bd-2 bd-top bd-green"></div>
+
+<!-- Renders a border on the right and left top in green -->
+<div class="bd-left bd-right bd-green"></div>
+
+<!-- Renders a border in gray in mobileand desktop but not tablet -->
+<div class="bd bd-sm-none bd-lg"></div>
+
+{% endhighlight %}

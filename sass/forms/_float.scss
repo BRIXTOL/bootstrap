@@ -1,0 +1,89 @@
+.fm-float {
+  position: relative;
+
+
+  &.fm-lg > .fm-input,
+  &.fm-lg > .fm-select {
+    height: $form-float-height;
+    line-height: $form-float-line-height;
+    font-size: $input-font-size;
+  }
+
+
+  > .fm-input,
+  > .fm-select {
+    height: calc($form-float-height - .8rem);
+    line-height: calc($form-float-line-height - .35);
+    font-size: $input-font-size-sm;
+  }
+
+
+  > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; // allow textareas
+    padding: calc($form-float-padding-x - .05rem);
+    font-size: $input-font-size-sm;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
+    transform-origin: 0 0;
+    @include transition($form-float-transition);
+  }
+
+
+  &.fm-lg > label {
+    padding: $form-float-padding-y $form-float-padding-x;
+    font-size: $input-font-size;
+  }
+
+  > .fm-input {
+    padding: $form-float-padding-y $form-float-padding-x;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding-top: $form-float-input-padding-t;
+      padding-bottom: $form-float-input-padding-b;
+    }
+    // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+    &:-webkit-autofill {
+      padding-top: $form-float-input-padding-t;
+      padding-bottom: $form-float-input-padding-b;
+    }
+  }
+
+  &.fm-lg > .fm-select {
+    padding-top: $form-float-input-padding-t;
+    padding-bottom: $form-float-input-padding-b;
+  }
+
+  > .fm-select {
+    padding-top: calc($form-float-input-padding-t - .2rem);
+    padding-bottom: calc($form-float-input-padding-b - .2rem);
+  }
+
+  > .fm-input:focus,
+  > .fm-input:not(:placeholder-shown),
+  > .fm-select {
+    ~ label {
+      opacity: $form-float-label-opacity;
+      transform: $form-float-label-transform;
+    }
+  }
+  // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+  > .fm-input:-webkit-autofill {
+    ~ label {
+      opacity: $form-float-label-opacity;
+      transform: $form-float-label-transform;
+    }
+  }
+}

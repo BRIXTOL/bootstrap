@@ -1,0 +1,22 @@
+.fm-color {
+  width: $form-color-width;
+  height: $input-height;
+  padding: $input-padding-y;
+
+  &:not(:disabled):not([readonly]) {
+    cursor: pointer;
+  }
+
+  &::-moz-color-swatch {
+    border: 0 !important; // stylelint-disable-line declaration-no-important
+    @include border-radius($input-border-radius);
+  }
+
+  &::-webkit-color-swatch {
+    @include border-radius($input-border-radius);
+  }
+
+  &.fm-sm { height: $input-height-sm; }
+  &.fm-lg { height: $input-height-lg; }
+
+}

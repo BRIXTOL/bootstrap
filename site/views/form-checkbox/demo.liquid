@@ -1,0 +1,115 @@
+<div class="row mb-5">
+  <div class="col-10">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row mb-4">
+
+  <div class="col-6">
+    <h6 class="mb-3 fw-bold">
+      Inputs
+    </h6>
+    <div class="row ai-center mb-2">
+      {% for item in item.classes.inputs %}
+        <div class="col-7 mb-3">
+          <pre class="m-0"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-5 mb-3">
+          <div class="{{ item.wrap | remove: '.' }}">
+            <input
+              class="{{ item.class | remove: '.' }}"
+              id="{{ item.title | slug }}"
+              type="checkbox"
+              {% if item.type == "checked" %}
+              checked
+              {% endif %}>
+
+            <label class="fm-check-label" for="{{ item.title | slug }}">
+              {{ item.title }}
+            </label>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <h6 class="mb-3 fw-bold">
+      Sizes
+    </h6>
+    <div class="row ai-center">
+      {% for item in item.classes.sizes %}
+        <div class="col-7 mb-3">
+          <pre class="m-0"><code>{{ item.wrap }}</code></pre>
+        </div>
+        <div class="col-5 mb-3">
+          <div class="{{ item.wrap | remove: '.' }}">
+            <input
+              class="{{ item.class | remove: '.' }}"
+              id="{{ item.title | slug }}"
+              type="checkbox"
+              {% if forloop.last %}
+              checked
+              {% endif %}>
+
+            <label class="fm-check-label" for="{{ item.title | slug }}">
+              {{ item.title }}
+            </label>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+  <div class="col-6">
+
+
+    <h6 class="mb-3 fw-bold">
+      States
+    </h6>
+    <div class="row ai-center mb-2">
+      {% for item in item.classes.states %}
+        <div class="col-6 mb-3">
+          <pre class="m-0"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6 mb-3">
+          <div class="{{ item.wrap | remove: '.' }}">
+            <input
+              class="fm-check-input"
+              id="{{ item.title | slug }}"
+              type="checkbox"
+              {{ item.class }}>
+
+            <label class="fm-check-label" for="{{ item.title | slug }}">
+              {{ item.title }}
+            </label>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <h6 class="mb-3 fw-bold">
+      Layouts
+    </h6>
+    <div class="row ai-center">
+      {% for item in item.classes.layouts %}
+        <div class="col-6">
+          <pre class="m-0"><code>{{ item.wrap }}</code></pre>
+        </div>
+        <div class="col-auto tl">
+          <div class="{{ item.wrap | remove: '.' }}">
+            <input
+              class="{{ item.class | remove: '.' }}"
+              id="{{ item.title | slug }}"
+              type="checkbox">
+
+            <label class="fm-check-label" for="{{ item.title | slug }}">
+              {{ item.title }}
+            </label>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>

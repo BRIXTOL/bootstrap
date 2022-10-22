@@ -1,366 +1,614 @@
 {
-  "font_family": [
-    {
-      "example": "This is the headings type font!",
-      "class": ".ff-heading"
-    },
-    {
-      "example": "This is the body (base) type font!",
-      "class": ".ff-body"
-    },
-    {
-      "example": "This is the code (pre) type font!",
-      "class": ".ff-code"
-    }
-  ],
-  "font_sizes": [
-    {
-      "title": "X Large",
-      "class": ".fs-xl"
-    },
-    {
-      "title": "Large",
-      "class": ".fs-lg"
-    },
-    {
-      "title": "Medium (Base)",
-      "class": ".fs-md"
-    },
-    {
-      "title": "Small",
-      "class": ".fs-sm"
-    },
-    {
-      "title": "X Small",
-      "class": ".fs-xs"
-    }
-  ],
-  "font_style": [
-    {
-      "title": "Normal",
-      "class": ".normal"
-    },
-    {
-      "title": "Italic",
-      "class": ".italic"
-    }
-  ],
-  "font_weight": [
-    {
-      "title": "Lighter",
-      "class": ".fw-lighter"
-    },
-    {
-      "title": "Light",
-      "class": ".fw-light"
-    },
-    {
-      "title": "Normal",
-      "class": ".fw-normal"
-    },
-    {
-      "title": "Bold",
-      "class": ".fw-bold"
-    },
-    {
-      "title": "Bolder",
-      "class": ".fw-bolder"
-    }
-  ],
-  "font_colors": [
-    {
-      "title": "White",
-      "class": ".fc-white"
-    },
-    {
-      "title": "Black",
-      "class": ".fc-black"
-    },
-    {
-      "title": "Gray",
-      "class": ".fc-gray"
-    },
-    {
-      "title": "Red",
-      "class": ".fc-red"
-    },
-    {
-      "title": "Green",
-      "class": ".fc-green"
-    },
-    {
-      "title": "Orange",
-      "class": ".fc-orange"
-    }
-  ],
-  "text_align": [
-    {
-      "title": "Text Left",
-      "class": ".tl"
-    },
-    {
-      "title": "Text Center",
-      "class": ".tc"
-    },
-    {
-      "title": "Text Right",
-      "class": ".tr"
-    },
-    {
-      "title": " This sentence will justify when newlines appear!",
-      "class": ".tj"
-    }
-  ],
-  "text_transform": [
-    {
-      "title": "Uppercase",
-      "class": ".upper"
-    },
-    {
-      "title": "LOWERCASE",
-      "class": ".lower"
-    },
-    {
-      "title": "capitalize (all the first letters are uppercase)",
-      "class": ".upcase"
-    },
-    {
-      "title": "Transform None",
-      "class": ".uncase"
-    }
-  ],
-  "text_decoration": [
-    {
-      "title": "Underline",
-      "class": ".underline"
-    },
-    {
-      "title": "Strike Through",
-      "class": ".strike"
-    },
-    {
-      "title": "None",
-      "class": ".undecorate"
-    }
-  ],
-  "headings": [
-    {
-      "title": "h1 Heading 1",
-      "class": ".h1"
-    },
-    {
-      "title": "h2 Heading 2",
-      "class": ".h2"
-    },
-    {
-      "title": "h3 Heading 3",
-      "class": ".h3"
-    },
-    {
-      "title": "h4 Heading 4",
-      "class": ".h4"
-    },
-    {
-      "title": "h5 Heading 5",
-      "class": ".h5"
-    },
-    {
-      "title": "h6 Heading 6",
-      "class": ".h6"
-    }
-  ],
-  "backgrounds": [
-    {
-      "title": "Transparent",
-      "class": ".bg-transparent"
-    },
-    {
-      "title": "White",
-      "class": ".bg-white"
-    },
-    {
-      "title": "Ivory",
-      "class": ".bg-ivory"
-    },
-    {
-      "title": "Gray",
-      "class": ".bg-gray"
-    },
-    {
-      "title": "Black",
-      "class": ".bg-black"
-    }
-  ],
-  "borders": {
-    "border": [
+  "font_family": {
+    "title": "Font Family",
+    "classes": [
       {
-        "title": "Border",
-        "class": ".bd"
+        "example": "This is the headings type font!",
+        "class": ".ff-heading"
       },
       {
-        "title": "Border Left",
-        "class": ".bd-left"
+        "example": "This is the body (base) type font!",
+        "class": ".ff-body"
       },
       {
-        "title": "Border Right",
-        "class": ".bd-right"
-      },
-      {
-        "title": "Border Top",
-        "class": ".bd-top"
-      },
-      {
-        "title": "Border Bottom",
-        "class": ".bd-bottom"
-      }
-    ],
-    "sizes": [
-      {
-        "title": "1px",
-        "class": ".bd-1"
-      },
-      {
-        "title": "2px",
-        "class": ".bd-2"
-      },
-      {
-        "title": "3px",
-        "class": ".bd-3"
-      },
-      {
-        "title": "4px",
-        "class": ".bd-4"
-      },
-      {
-        "title": "5px",
-        "class": ".bd-5"
-      }
-    ],
-    "colors": [
-      {
-        "title": "Default Gray",
-        "class": ".bd"
-      },
-      {
-        "title": "Border Black",
-        "class": ".bd-black"
-      },
-      {
-        "title": "Border White",
-        "class": ".bd-white"
-      },
-      {
-        "title": "Border Red",
-        "class": ".bd-red"
-      },
-      {
-        "title": "Border Green",
-        "class": ".bd-green"
+        "example": "This is the code (pre) type font!",
+        "class": ".ff-code"
       }
     ]
   },
-  "border_radius": {
-    "radius": [
+  "font_sizes": {
+    "title": "Font Sizes",
+    "classes": [
       {
-        "title": "Radius (Default)",
-        "class": ".rad"
+        "title": "X Small",
+        "class": ".fs-xs"
       },
       {
-        "title": "Rad x1",
-        "class": ".rad-1"
+        "title": "Small",
+        "class": ".fs-sm"
       },
       {
-        "title": "Rad x2",
-        "class": ".rad-2"
+        "title": "Medium (Base)",
+        "class": ".fs"
       },
       {
-        "title": "Rad x3",
-        "class": ".rad-3"
-      }
-    ],
-    "angles": [
-      {
-        "title": "Radius Top",
-        "class": ".rad-top"
+        "title": "Large",
+        "class": ".fs-lg"
       },
       {
-        "title": "Radius Right",
-        "class": ".rad-right"
-      },
-      {
-        "title": "Radius Bottom",
-        "class": ".rad-bottom"
-      },
-      {
-        "title": "Radius Left",
-        "class": ".rad-left"
-      }
-    ],
-    "circles": [
-      {
-        "title": "Radius Pill",
-        "class": ".rad-pill"
-      },
-      {
-        "title": "Circle",
-        "class": ".rad-circle"
+        "title": "X Large",
+        "class": ".fs-xl"
       }
     ]
+  },
+  "font_style": {
+    "title": "Font Style",
+    "classes": [
+      {
+        "title": "Normal",
+        "class": ".normal"
+      },
+      {
+        "title": "Italic",
+        "class": ".italic"
+      }
+    ]
+  },
+  "font_weight": {
+    "title": "Font Weight",
+    "classes": [
+      {
+        "title": "Lighter",
+        "class": ".fw-lighter"
+      },
+      {
+        "title": "Light",
+        "class": ".fw-light"
+      },
+      {
+        "title": "Normal",
+        "class": ".fw-normal"
+      },
+      {
+        "title": "Bold",
+        "class": ".fw-bold"
+      },
+      {
+        "title": "Bolder",
+        "class": ".fw-bolder"
+      }
+    ]
+  },
+  "font_colors": {
+    "title": "Font Colors",
+    "classes": [
+      {
+        "title": "White",
+        "class": ".fc-white"
+      },
+      {
+        "title": "Black",
+        "class": ".fc-black"
+      },
+      {
+        "title": "Gray",
+        "class": ".fc-gray"
+      },
+      {
+        "title": "Red",
+        "class": ".fc-red"
+      },
+      {
+        "title": "Green",
+        "class": ".fc-green"
+      },
+      {
+        "title": "Orange",
+        "class": ".fc-orange"
+      }
+    ]
+  },
+  "text_align": {
+    "title": "Text Align",
+    "classes": [
+      {
+        "title": "Text Left",
+        "class": ".tl"
+      },
+      {
+        "title": "Text Center",
+        "class": ".tc"
+      },
+      {
+        "title": "Text Right",
+        "class": ".tr"
+      },
+      {
+        "title": " This sentence will justify when newlines appear!",
+        "class": ".tj"
+      }
+    ]
+  },
+  "text_transform": {
+    "title": "Text Transform",
+    "classes": [
+      {
+        "title": "Uppercase",
+        "class": ".upper"
+      },
+      {
+        "title": "LOWERCASE",
+        "class": ".lower"
+      },
+      {
+        "title": "capitalize (all the first letters are uppercase)",
+        "class": ".upcase"
+      },
+      {
+        "title": "Transform None",
+        "class": ".uncase"
+      }
+    ]
+  },
+  "text_decoration": {
+    "title": "Text Decoration",
+    "classes": [
+      {
+        "title": "Underline",
+        "class": ".underline"
+      },
+      {
+        "title": "Strike Through",
+        "class": ".strike"
+      },
+      {
+        "title": "None",
+        "class": ".undecorate"
+      }
+    ]
+  },
+  "headings": {
+    "title": "Headings",
+    "classes": [
+      {
+        "title": "h1 Heading 1",
+        "class": ".h1"
+      },
+      {
+        "title": "h2 Heading 2",
+        "class": ".h2"
+      },
+      {
+        "title": "h3 Heading 3",
+        "class": ".h3"
+      },
+      {
+        "title": "h4 Heading 4",
+        "class": ".h4"
+      },
+      {
+        "title": "h5 Heading 5",
+        "class": ".h5"
+      },
+      {
+        "title": "h6 Heading 6",
+        "class": ".h6"
+      }
+    ]
+  },
+  "background_colors": {
+    "title": "Background Colors",
+    "classes": [
+      {
+        "title": "Transparent",
+        "class": ".bg-transparent"
+      },
+      {
+        "title": "White",
+        "class": ".bg-white"
+      },
+      {
+        "title": "Ivory",
+        "class": ".bg-ivory"
+      },
+      {
+        "title": "Gray",
+        "class": ".bg-gray"
+      },
+      {
+        "title": "Black",
+        "class": ".bg-black"
+      }
+    ]
+  },
+  "borders": {
+    "title": "Borders",
+    "classes": {
+      "border": [
+        {
+          "title": "Border",
+          "class": ".bd"
+        },
+        {
+          "title": "Border Left",
+          "class": ".bd-left"
+        },
+        {
+          "title": "Border Right",
+          "class": ".bd-right"
+        },
+        {
+          "title": "Border Top",
+          "class": ".bd-top"
+        },
+        {
+          "title": "Border Bottom",
+          "class": ".bd-bottom"
+        }
+      ],
+      "colors": [
+        {
+          "title": "Border White",
+          "class": ".bd-white"
+        },
+        {
+          "title": "Gray (default)",
+          "class": ".bd"
+        },
+        {
+          "title": "Border Black",
+          "class": ".bd-black"
+        },
+        {
+          "title": "Border Red",
+          "class": ".bd-red"
+        },
+        {
+          "title": "Border Green",
+          "class": ".bd-green"
+        }
+      ],
+      "sizes": [
+        {
+          "title": "None (responsive)",
+          "class": ".bd-none"
+        },
+        {
+          "title": "0.07rem",
+          "class": ".bd"
+        },
+        {
+          "title": "0.1rem",
+          "class": ".bd-1"
+        },
+        {
+          "title": ".2rem",
+          "class": ".bd-2"
+        }
+      ]
+    }
+  },
+  "radius": {
+    "title": "Radius",
+    "classes": {
+      "radius": [
+        {
+          "title": "Radius (default)",
+          "class": ".rd"
+        },
+        {
+          "title": "Radius x1",
+          "class": ".rd-1"
+        },
+        {
+          "title": "Radius x2",
+          "class": ".rd-2"
+        },
+        {
+          "title": "Radius x3",
+          "class": ".rd-3"
+        }
+      ],
+      "angles": [
+        {
+          "title": "Radius Top",
+          "class": ".rd-top"
+        },
+        {
+          "title": "Radius Right",
+          "class": ".rd-right"
+        },
+        {
+          "title": "Radius Bottom",
+          "class": ".rd-bottom"
+        },
+        {
+          "title": "Radius Left",
+          "class": ".rd-left"
+        }
+      ],
+      "circle": {
+        "title": "Circle",
+        "class": ".circle"
+      }
+    }
   },
   "buttons": {
-    "colors": [
+    "title": "Buttons",
+    "classes": {
+      "colors": [
+        {
+          "title": "Button (Base)",
+          "class": ".btn"
+        },
+        {
+          "title": "Button",
+          "class": ".btn-gray"
+        },
+        {
+          "title": "Button",
+          "class": ".btn-black"
+        },
+        {
+          "title": "Button",
+          "class": ".btn-red"
+        },
+        {
+          "title": "Button",
+          "class": ".btn-green"
+        }
+      ],
+      "outline": [
+        {
+          "title": "Button",
+          "class": ".btn-outline-gray"
+        },
+        {
+          "title": "Button",
+          "class": ".btn-outline-black"
+        },
+        {
+          "title": "Button",
+          "class": ".btn-outline-red"
+        },
+        {
+          "title": "Button",
+          "class": ".btn-outline-green"
+        }
+      ],
+      "sizes": [
+        {
+          "title": "Button",
+          "class": ".btn-sm"
+        },
+        {
+          "title": "Button",
+          "class": ".btn-md"
+        },
+        {
+          "title": "Button",
+          "class": ".btn-lg"
+        }
+      ]
+    }
+  },
+  "spinner": {
+    "title": "Spinners",
+    "classes": [
       {
-        "title": "Button (Base)",
-        "class": ".btn"
+        "title": "Spinner",
+        "class": ".spinner"
       },
       {
-        "title": "Button",
-        "class": ".btn-gray"
-      },
-      {
-        "title": "Button",
-        "class": ".btn-black"
-      },
-      {
-        "title": "Button",
-        "class": ".btn-red"
-      },
-      {
-        "title": "Button",
-        "class": ".btn-green"
-      }
-    ],
-    "outline": [
-      {
-        "title": "Button",
-        "class": ".btn-outline-gray"
-      },
-      {
-        "title": "Button",
-        "class": ".btn-outline-black"
-      },
-      {
-        "title": "Button",
-        "class": ".btn-outline-red"
-      },
-      {
-        "title": "Button",
-        "class": ".btn-outline-green"
-      }
-    ],
-    "sizes": [
-      {
-        "title": "Button",
-        "class": ".btn-sm"
-      },
-      {
-        "title": "Button",
-        "class": ".btn-md"
-      },
-      {
-        "title": "Button",
-        "class": ".btn-lg"
+        "title": "Spinner Small",
+        "class": ".spinner-sm"
       }
     ]
+  },
+  "tooltip": {
+    "title": "Tooltips",
+    "classes": {
+      "position": [
+        {
+          "title": "Tooltip position top",
+          "class": "data-tooltip=\"top\""
+        },
+        {
+          "title": "Tooltip position bottom",
+          "class": "data-tooltip=\"bottom\""
+        },
+        {
+          "title": "Tooltip position left",
+          "class": "data-tooltip=\"left\""
+        },
+        {
+          "title": "Tooltip position right",
+          "class": "data-tooltip=\"right\""
+        }
+      ],
+      "sizes": [
+        {
+          "title": "Tooltip Small",
+          "class": "data-tooltip-size=\"sm\""
+        },
+        {
+          "title": "Tooltip Medium",
+          "class": "data-tooltip-size=\"md\""
+        },
+        {
+          "title": "Tooltip Large",
+          "class": "data-tooltip-size=\"lg\""
+        }
+      ]
+    }
+  },
+  "form_input": {
+    "title": "Form Input",
+    "describe": "Form input fields account for any element using the <code>input</code> tag. The classes are mostly inherited from Bootstrap with refined naming conventions and SVG validation icon changes.",
+    "classes": {
+      "inputs": [
+        {
+          "title": "Input (base)",
+          "class": ".fm-input"
+        },
+        {
+          "title": "Valid",
+          "class": ".fm-input .is-valid"
+        },
+        {
+          "title": "Invalid",
+          "class": ".fm-input .is-invalid"
+        }
+      ],
+      "states": [
+        {
+          "title": "Readonly",
+          "class": "readonly"
+        },
+        {
+          "title": "Disabled",
+          "class": "disabled"
+        },
+        {
+          "title": "Disabled + Readonly",
+          "class": "disabled readonly"
+        }
+      ],
+      "sizes": [
+        {
+          "title": "Input Small",
+          "class": ".fm-input .fm-sm"
+        },
+        {
+          "title": "Input Large",
+          "class": ".fm-input .fm-lg"
+        }
+      ]
+    }
+  },
+  "form_checkbox": {
+    "title": "Form Checkmark",
+    "describe": "Checkmarks are similar to Bootstraps official logic. The fields require an <code>id</code> and <code>for</code> attributes to relate the <code>input</code> and <code>label</code> as they are identified as siblings. The items use the short-name <code>fm-</code> and need to nested in a <code>.fm-check</code> node.",
+    "classes": {
+      "inputs": [
+        {
+          "title": "Default",
+          "wrap": ".fm-check",
+          "class": ".fm-check-input"
+        },
+        {
+          "title": "Valid",
+          "wrap": ".fm-check",
+          "class": ".fm-check-input .is-valid"
+        },
+        {
+          "title": "Invalid",
+          "wrap": ".fm-check",
+          "class": ".fm-check-input .is-invalid"
+        }
+      ],
+      "states": [
+        {
+          "title": "Checked",
+          "wrap": ".fm-check",
+          "class": "checked"
+        },
+        {
+          "title": "Checked + Disabled",
+          "wrap": ".fm-check",
+          "class": "checked disabled"
+        },
+        {
+          "title": "Disabled",
+          "wrap": ".fm-check",
+          "class": "disabled"
+        }
+      ],
+      "sizes": [
+        {
+          "title": "Large",
+          "wrap": ".fm-check .fm-lg",
+          "class": ".fm-check-input"
+        },
+        {
+          "title": "Large Checked",
+          "wrap": ".fm-check .fm-lg",
+          "class": ".fm-check-input"
+        }
+      ],
+      "layouts": [
+        {
+          "title": "Reverse Label",
+          "wrap": ".fm-check reverse",
+          "class": ".fm-check-input"
+        }
+      ]
+    }
+  },
+  "form_switch": {
+    "title": "Form Switch",
+    "classes": {
+      "inputs": [
+        {
+          "title": "Switch (default)",
+          "class": ".fm-switch"
+        },
+        {
+          "title": "Switch Small",
+          "class": ".fm-switch .fm-sm"
+        },
+        {
+          "title": "Switch Large",
+          "class": ".fm-switch .fm-lg"
+        }
+      ],
+      "validate": [
+        {
+          "title": "Switch (default)",
+          "wrap": ".fm-switch",
+          "class": ".fm-check-input .is-valid"
+        },
+        {
+          "title": "Switch Small",
+          "wrap": ".fm-switch",
+          "class": ".fm-check-input .is-invalid"
+        }
+      ]
+    }
+  },
+  "form_float": {
+    "title": "Form Float",
+    "classes": {
+      "inputs": [
+        {
+          "title": "Input (default)",
+          "class": ".fm-float"
+        },
+        {
+          "title": "Input Large",
+          "class": ".fm-float .fm-lg"
+        }
+      ],
+      "select": [
+        {
+          "title": "Select (default)",
+          "class": ".fm-float"
+        },
+        {
+          "title": "Select Large",
+          "class": ".fm-float .fm-lg"
+        }
+      ],
+      "textarea": [
+        {
+          "title": "Textarea (default)",
+          "class": ".fm-float .fm-lg"
+        },
+        {
+          "title": "Textarea Large",
+          "class": ".fm-float .fm-lg"
+        }
+      ]
+    }
   }
 }

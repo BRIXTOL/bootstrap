@@ -1,7 +1,53 @@
 <h3 class="mt-5 fw-bold d-flex ai-center jc-between">
   FORMS
-  <code>form</code>
+  <code>fm</code>
 </h3>
+
+<hr>
+
+
+<h5 class="my-3 fw-bold fc-gray d-flex ai-center jc-between">
+  FORM FLOATING
+</h5>
+
+
+<div class="row ai-center mb-2">
+  <div class="col-3">
+    <pre class="m-1"><code>.fm-floating</code></pre>
+  </div>
+  <div class="col-4 m-1">
+    <div class="fm-floating">
+
+      <input
+       type="email"
+       class="fm-input"
+       id="some-id"
+       placeholder="name@example.com">
+
+      <label for="floatingInput">Email address</label>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+{% highlight html %}
+
+<div class="fm-floating">
+
+  <input
+   type="email"
+   class="fm-input"
+   id="some-id"
+   placeholder="name@example.com">
+
+  <label for="floatingInput">Email address</label>
+
+</div>
+
+{% endhighlight %}
 
 <hr>
 
@@ -11,10 +57,10 @@
 
 <div class="row mb-2">
   <div class="col-3">
-    <pre class="m-1"><code>.form-input</code></pre>
+    <pre class="m-1"><code>.fm-input</code></pre>
   </div>
   <div class="col-4 m-1">
-    <input type="text" class="form-input" id="some-id" placeholder="Some Text">
+    <input type="text" class="fm-input" id="some-id" placeholder="Some Text">
   </div>
 </div>
 
@@ -22,7 +68,7 @@
 
 <input
   type="text"
-  class="form-input"
+  class="fm-input"
   id="some-id"
   placeholder="Some Text">
 
@@ -35,16 +81,16 @@
 
 <div class="row mb-2">
   <div class="col-3">
-    <pre class="m-1"><code>.form-input</code></pre>
+    <pre class="m-1"><code>.fm-input</code></pre>
   </div>
   <div class="col-4 m-1">
-    <input class="form-input" type="file" id="formFile">
+    <input class="fm-input" type="file" id="formFile">
   </div>
 </div>
 
 {% highlight html %}
 
-<input class="form-input" type="file"  id="some-id">
+<input class="fm-input" type="file"  id="some-id">
 
 {% endhighlight %}
 
@@ -56,12 +102,12 @@
 
 <div class="row mb-2">
   <div class="col-3">
-    <pre class="m-1"><code>.form-color</code></pre>
+    <pre class="m-1"><code>.fm-color</code></pre>
   </div>
   <div class="col-1 m-2">
     <input
       type="color"
-      class="form-input form-color"
+      class="fm-input form-color"
       id="exampleColorInput"
       value="#563d7c"
       title="Choose your color">
@@ -73,7 +119,7 @@
 <!-- Notice how form-input is used together with form-color -->
 <input
   type="color"
-  class="form-input form-color"
+  class="fm-input form-color"
   id="exampleColorInput"
   value="#563d7c"
   title="Choose your color">
@@ -89,12 +135,12 @@
 
 <div class="row mb-2">
   <div class="col-3">
-    <pre class="m-1"><code>.form-switch</code></pre>
+    <pre class="m-1"><code>.fm-switch</code></pre>
   </div>
   <div class="col-1 m-2">
-    <div class="form-check form-switch">
+    <div class="fm-check fm-switch">
       <input
-        class="form-check-input"
+        class="fm-check-input"
         type="checkbox"
         role="switch"
         id="flexSwitchCheckDefault">
@@ -105,9 +151,9 @@
 {% highlight html %}
 
 <!-- The switch toggle requires parent element -->
-<div class="form-check form-switch">
+<div class="fm-check fm-switch">
   <input
-    class="form-check-input"
+    class="fm-check-input"
     type="checkbox"
     role="switch"
     id="flexSwitchCheckDefault">
@@ -123,12 +169,12 @@
 
 <div class="row mb-2">
   <div class="col-3">
-    <pre class="m-1"><code>.form-input-sm</code></pre>
+    <pre class="m-1"><code>.fm-input-sm</code></pre>
   </div>
   <div class="col-4 pt-2">
     <input
       type="email"
-      class="form-input form-input-sm"
+      class="fm-input form-input-sm"
       id="exampleFormControlInput1"
       placeholder="name@example.com">
   </div>
@@ -139,7 +185,7 @@
 <!-- Using type email and rendering a small input -->
 <input
   type="email"
-  class="form-input form-input-sm"
+  class="fm-input form-input-sm"
   id="exampleFormControlInput1"
   placeholder="name@example.com">
 
@@ -153,13 +199,13 @@
 
 <div class="row mb-2">
   <div class="col-3">
-    <pre class="m-1"><code>.form-input-sm</code></pre>
+    <pre class="m-1"><code>.input-gp</code></pre>
   </div>
   <div class="col-4 pt-2">
-    <div class="input-group mb-3">
+    <div class="input-gp mb-3">
       <input
         type="text"
-        class="form-input"
+        class="fm-input"
         placeholder=""
         aria-label="Example text with button addon"
         aria-describedby="button-addon1">
@@ -171,10 +217,10 @@
 {% highlight html %}
 
 <!-- Using type email and rendering a small input -->
-<div class="input-group mb-3">
+<div class="input-gp mb-3">
   <input
     type="text"
-    class="form-input"
+    class="fm-input"
     placeholder=""
     aria-label="Example text with button addon"
     aria-describedby="button-addon1">

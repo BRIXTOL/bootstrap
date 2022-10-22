@@ -9,45 +9,50 @@ $utilities: map-get-multiple($utilities, (
 ));
 
 $utilities: map-merge($utilities, (
+  "circle": (
+    property: border-radius,
+    class: circle,
+    values: (
+      null: 100%
+    )
+  ),
   "rounded": (
     property: border-radius,
-    class: rad,
+    class: rd,
     values: (
-      null: $border-radius,
       0: 0,
-      1: $border-radius-sm,
-      2: $border-radius,
-      3: $border-radius-lg,
-      circle: 50%,
-      pill: $border-radius-pill
+      null: var(--#{$prefix}border-radius),
+      1: var(--#{$prefix}border-radius-sm),
+      2: var(--#{$prefix}border-radius-lg),
+      3: var(--#{$prefix}border-radius-xl),
     )
   ),
   "rounded-top": (
     property: border-top-left-radius border-top-right-radius,
-    class: rad-top,
+    class: rd-top,
     values: (
-      null: $border-radius
+      null: var(--#{$prefix}border-radius)
     )
   ),
   "rounded-end": (
     property: border-top-right-radius border-bottom-right-radius,
-    class: rad-right,
+    class: rd-right,
     values: (
-      null: $border-radius
+      null: var(--#{$prefix}border-radius)
     )
   ),
   "rounded-bottom": (
     property: border-bottom-right-radius border-bottom-left-radius,
-    class: rad-bottom,
+    class: rd-bottom,
     values: (
-      null: $border-radius
+      null: var(--#{$prefix}border-radius)
     )
   ),
   "rounded-start": (
     property: border-bottom-left-radius border-top-left-radius,
-    class: rad-left,
+    class: rd-left,
     values: (
-      null: $border-radius
+      null: var(--#{$prefix}border-radius)
     )
   )
 )

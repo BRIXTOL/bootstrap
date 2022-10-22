@@ -5,40 +5,62 @@
   // Generate palettes for full colors, grays, and theme colors.
 
   @each $color, $value in $colors {
-    --#{$variable-prefix}#{$color}: #{$value};
+    --#{$prefix}#{$color}: #{$value};
   }
 
   @each $color, $value in $grays {
-    --#{$variable-prefix}gray-#{$color}: #{$value};
+    --#{$prefix}gray-#{$color}: #{$value};
   }
 
-  --#{$variable-prefix}white-rgb: #{to-rgb($white)};
-  --#{$variable-prefix}black-rgb: #{to-rgb($black)};
-  --#{$variable-prefix}body-color-rgb: #{to-rgb($body-color)};
-  --#{$variable-prefix}body-bg-rgb: #{to-rgb($body-bg)};
+  --#{$prefix}white-rgb: #{to-rgb($white)};
+  --#{$prefix}black-rgb: #{to-rgb($black)};
+  --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
+  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
   // Fonts
 
   // Note: Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
   //
-  --#{$variable-prefix}font-base: #{inspect($font-family-base)};
-  --#{$variable-prefix}font-heading: #{inspect($font-family-heading)};
-  --#{$variable-prefix}font-code: #{inspect($font-family-code)};
+  --#{$prefix}font-base: #{inspect($font-family-base)};
+  --#{$prefix}font-heading: #{inspect($font-family-heading)};
+  --#{$prefix}font-code: #{inspect($font-family-code)};
 
   // Root and body
   @if $font-size-root != null {
-    --#{$variable-prefix}root-font-size: #{$font-size-root};
+    --#{$prefix}root-font-size: #{$font-size-root};
   }
 
-  --#{$variable-prefix}body-font-size: #{$font-size-base};
-  --#{$variable-prefix}body-font-weight: #{$font-weight-base};
-  --#{$variable-prefix}body-line-height: #{$line-height-base};
-  --#{$variable-prefix}body-color: #{$body-color};
+  --#{$prefix}body-font-size: #{$font-size-base};
+  --#{$prefix}body-font-weight: #{$font-weight-base};
+  --#{$prefix}body-line-height: #{$line-height-base};
+  --#{$prefix}body-color: #{$body-color};
 
   @if $body-text-align != null {
-    --#{$variable-prefix}body-text-align: #{$body-text-align};
+    --#{$prefix}body-text-align: #{$body-text-align};
   }
 
-  --#{$variable-prefix}body-bg: #{$body-bg};
+  --#{$prefix}body-bg: #{$body-bg};
+  --#{$prefix}letter-spacing-base: #{$letter-spacing-base};
+  --#{$prefix}letter-spacing-heading: #{$letter-spacing-heading};
+
+   // scss-docs-start root-border-var
+  --#{$prefix}border: #{$border-width} #{$border-style} #{$border-color};
+  --#{$prefix}border-width: #{$border-width};
+  --#{$prefix}border-style: #{$border-style};
+  --#{$prefix}border-color: #{$border-color};
+  --#{$prefix}border-color-translucent: #{$border-color-translucent};
+
+  --#{$prefix}border-radius: #{$border-radius};
+  --#{$prefix}border-radius-sm: #{$border-radius-sm};
+  --#{$prefix}border-radius-lg: #{$border-radius-lg};
+  --#{$prefix}border-radius-xl: #{$border-radius-xl};
+  --#{$prefix}border-radius-pill: #{$border-radius-pill};
+  // scss-docs-end root-border-var
+
+  --#{$prefix}tooltip-border-radius: #{$tooltip-radius};
+  --#{$prefix}tooltip-color: #{$tooltip-bg};
+  --#{$prefix}tooltip-text-color: #{$tooltip-text-color};
+  --#{$prefix}tooltip-font-size: #{$tooltip-base-size};
+  --#{$prefix}tooltip-move: #{$tooltip-move};
 }

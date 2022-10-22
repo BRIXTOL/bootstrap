@@ -1,5 +1,7 @@
 @keyframes spin {
-  to { transform: rotate(360deg) #{"/* rtl:ignore */"}; }
+  to {
+    transform: rotate(360deg) #{"/* rtl:ignore */"};
+  }
 }
 
 .spinner {
@@ -13,7 +15,7 @@
   animation: $spinner-animation-speed linear infinite spin;
 }
 
-.spinner-sm{
+.spinner-sm {
   @extend .spinner;
   width: $spinner-width-sm;
   height: $spinner-height-sm;

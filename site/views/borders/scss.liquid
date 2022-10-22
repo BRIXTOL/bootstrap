@@ -1,0 +1,39 @@
+<h5 class="fw-bold fc-gray d-flex ai-center jc-between py-3">
+  SCSS EXAMPLES
+  <code class="lower">
+    {{ item.title | slug }}
+  </code>
+</h5>
+
+{% highlight scss %}
+
+/* -------------------------------------------- */
+/* BORDER COLORS                                */
+/* -------------------------------------------- */
+
+$border-color: $gray-300;
+$border-colors: (
+
+  black: $black,
+  white: $white,
+  red: $red,
+  gray: $gray-400,
+  green: $green
+
+);
+
+/* -------------------------------------------- */
+/* BORDERS                                      */
+/* -------------------------------------------- */
+
+$border-width:                .07rem;
+$border-style:                solid;
+$border-color-translucent:    rgba($black, .175);
+$border-widths: (
+
+  1: .1rem,
+  2: .2rem
+
+);
+
+{% endhighlight %}

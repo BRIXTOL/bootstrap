@@ -1,7 +1,6 @@
 $enable-important-utilities: true;
 
 $utilities: map-get-multiple($utilities, (
-  "text-align",
   "text-decoration",
   "text-transform",
   "whitespace",
@@ -10,25 +9,31 @@ $utilities: map-get-multiple($utilities, (
 ));
 
 $utilities: map-merge($utilities, (
-
-  "text-align": (
+  "text-left": (
     responsive: true,
     property: text-align,
-    class: null,
-    values: (
-      tl: left,
-      tr: right,
-      tc: center,
-      tj: justify
-    )
+    class: tl,
+    values: (null: left)
+  ),
+  "text-center": (
+    responsive: true,
+    property: text-align,
+    class: tc,
+    values: (null: center)
+  ),
+  "text-right": (
+    responsive: true,
+    property: text-align,
+    class: tr,
+    values: (null: right)
   ),
   "text-decoration": (
     property: text-decoration,
     class: null,
     values: (
-      undecorate: none,
       strike: line-through,
-      underline: underline
+      underline: underline,
+      undecorate: none
     )
   ),
   "text-transform": (

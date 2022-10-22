@@ -1,0 +1,60 @@
+<div class="row ai-start jc-between mb-5">
+
+  <div class="col">
+    {% for item in item.classes.colors %}
+      <div class="row ai-center mb-2">
+        <div class="col-6">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6 my-0">
+          {%- if item.class == ".btn" -%}
+            <button class="{{ item.class | remove_first: '.' }}" type="button">
+              {{ item.title }}
+            </button>
+          {%- else -%}
+            <button class="btn {{ item.class | remove_first: '.' }}" type="button">
+              {{ item.title }}
+            </button>
+          {%- endif -%}
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-4">
+
+    {% for item in item.classes.outline %}
+      <div class="row ai-center jc-center mb-2">
+        <div class="col-8">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col my-0">
+          <button class="btn {{ item.class | remove_first: '.' }}" type="button">
+            {{ item.title }}
+          </button>
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+
+  <div class="col">
+
+    {% for item in item.classes.sizes %}
+
+      <div class="row ai-center mb-2">
+        <div class="col">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col my-0">
+          <button class="btn btn-black {{ item.class | remove_first: '.' }}" type="button">
+            {{ item.title }}
+          </button>
+        </div>
+      </div>
+
+    {% endfor %}
+
+  </div>
+</div>

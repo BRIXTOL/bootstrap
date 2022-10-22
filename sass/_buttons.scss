@@ -131,6 +131,7 @@
   font-weight: $btn-font-weight;
   font-family: $btn-font-family;
   line-height: $btn-line-height;
+  letter-spacing: $letter-spacing-heading;
   white-space: $btn-white-space;
   text-align: center;
   text-decoration: if($link-decoration == none, null, none);
@@ -139,6 +140,11 @@
   border: $btn-border-width solid transparent;
   cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
+
+  @if $btn-text-uppercase {
+    text-transform: uppercase;
+  }
+
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
   @include transition($btn-transition);
 

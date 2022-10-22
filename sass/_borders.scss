@@ -1,3 +1,6 @@
+$enable-important-utilities: false;
+
+
 $utilities: map-get-multiple($utilities, (
   "border",
   "border-top",
@@ -9,63 +12,60 @@ $utilities: map-get-multiple($utilities, (
 ));
 
 $utilities: map-merge($utilities, (
-  "border": (
+  "border-none": (
+    responsive: true,
     property: border,
     class: bd,
     values: (
-      null: $border-width solid $border-color,
-      0: 0,
+      none: none !important
+    )
+  ),
+  "border": (
+    responsive: false,
+    property: border,
+    class: bd,
+    values: (
+      null: var(--#{$prefix}border),
     )
   ),
   "border-top": (
     property: border-top,
     class: bd-top,
     values: (
-      null: $border-width solid $border-color,
-      0: 0,
+      null: var(--#{$prefix}border),
     )
   ),
   "border-end": (
     property: border-right,
     class: bd-right,
     values: (
-      null: $border-width solid $border-color,
-      0: 0,
+      null: var(--#{$prefix}border),
     )
   ),
   "border-bottom": (
     property: border-bottom,
     class: bd-bottom,
     values: (
-      null: $border-width solid $border-color,
-      0: 0,
+      null: var(--#{$prefix}border),
     )
   ),
   "border-start": (
     property: border-left,
     class: bd-left,
     values: (
-      null: $border-width solid $border-color,
-      0: 0
-    )
-  ),
-  "border-color": (
-    property: border-color,
-    class: bd,
-    values: (
-      transparent: transparent,
-      white: $white,
-      black: $black,
-      red: $red,
-      green: $green,
+      null: var(--#{$prefix}border),
     )
   ),
   "border-width": (
     property: border-width,
     class: bd,
     values: $border-widths
-  )
-
+  ),
+  "border-color": (
+    property: border-color,
+    class: bd,
+    values: $border-colors
+  ),
 ));
 
 @import "bootstrap/utilities/api";

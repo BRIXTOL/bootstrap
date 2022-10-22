@@ -1,0 +1,69 @@
+<div class="row mb-5">
+  <div class="col-10">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row mb-2">
+
+  <div class="col-6">
+    <h6 class="mb-3 fw-bold">
+      Inputs
+    </h6>
+    <div class="row mb-2">
+      {% for item in item.classes.inputs %}
+        <div class="col-6 mb-3">
+          <pre class="m-0"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6">
+          <input
+            aria-label=".fm-input-lg example"
+            class="{{ item.class | remove: '.' }}"
+            placeholder="{{ item.title }}"
+            type="text">
+        </div>
+      {% endfor %}
+    </div>
+
+    <h6 class="mb-3 fw-bold">
+      Sizes
+    </h6>
+    <div class="row ai-center">
+      {% for item in item.classes.sizes %}
+        <div class="col-6 mb-3">
+          <pre class="m-0"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6 mb-3">
+          <input
+            aria-label=".fm-input-lg example"
+            class="{{ item.class | remove: '.' }}"
+            placeholder="{{ item.title }}"
+            type="text">
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+  <div class="col-6 pl-5">
+    <h6 class="mb-3 fw-bold">
+      States
+    </h6>
+    <div class="row mb-2">
+      {% for item in item.classes.states %}
+        <div class="col-6 mb-3">
+          <pre class="m-0"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6">
+          <input
+            class="fm-input"
+            placeholder="{{ item.title }}"
+            type="text"
+            {% if item.class == "readonly" %}value="{{ item.title }}"{% endif %}
+            {{ item.class }}>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>

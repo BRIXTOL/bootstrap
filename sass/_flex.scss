@@ -3,8 +3,8 @@ $enable-important-utilities: false;
 $utilities: map-get-multiple($utilities, (
   "flex",
   "flex-direction",
-  "flex-grow",
-  "flex-shrink",
+ // "flex-grow",
+ // "flex-shrink",
   "flex-wrap",
   "gap",
   "justify-content",
@@ -31,12 +31,12 @@ $utilities: map-merge($utilities, (
     values: (
       row: row,
       col: column,
-      row-reverse: row-reverse,
-      col-reverse: column-reverse
+      row-rev: row-reverse,
+      col-rev: column-reverse
     )
   ),
 
-  "flex-grow": (
+  /*"flex-grow": (
     responsive: true,
     property: flex-grow,
     class: flex,
@@ -54,7 +54,7 @@ $utilities: map-merge($utilities, (
       shrink-0: 0,
       shrink-1: 1,
     )
-  ),
+  ),*/
 
   "gap": (
     responsive: true,
