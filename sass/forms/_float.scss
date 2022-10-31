@@ -10,11 +10,20 @@
   }
 
 
+  > .btn-dropdown,
   > .fm-input,
   > .fm-select {
     height: calc($form-float-height - .8rem);
     line-height: calc($form-float-line-height - .35);
     font-size: $input-font-size-sm;
+  }
+
+  .fm-dropdown {
+    .fm-options > .fm-option > label {
+      height: calc($form-float-height - .8rem);
+      line-height: calc($form-float-line-height - .35);
+      font-size: $input-font-size-sm;
+    }
   }
 
 
