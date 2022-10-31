@@ -1,32 +1,47 @@
+$tooltip-arrow-directions: (
+  bottom: top,
+  top: bottom,
+  left: right,
+  right: left
+);
+
 @mixin arrow($direction) {
 
   @if not map-has-key($tooltip-arrow-directions, $direction) {
-    @error '[tooltip] The $direction parameter must be one of: `#{map-keys($tooltip-arrow-directions)}, `#{$direction}` was given.';
+    $keys: map-keys($tooltip-arrow-directions);
+    @error '[tooltip] The $direction parameter must be one of: `#{$keys}, `#{$direction}` was given.';
   }
 
   width: 0;
   height: 0;
-  border: $tooltip-arrow-size solid transparent;
-  border-#{map-get($tooltip-arrow-directions, $direction)}-color: var(--tooltip-color);
+
+  @if $tooltip-use-outline{
+    border: $tooltip-arrow-size solid transparent;
+    border-#{map-get($tooltip-arrow-directions, $direction)}-color: var(--tooltip-bg);
+  } @else {
+    border: $tooltip-arrow-size solid transparent;
+    border-#{map-get($tooltip-arrow-directions, $direction)}-color: var(--tooltip-bg);
+  }
+
 }
 
 @mixin base-effects() {
   opacity: 0;
   pointer-events: none;
-  transition: opacity .18s ease-out .18s, transform .18s ease-out .18s;
-}
-
-@mixin no-effects() {
-  transition: none;
+  @if $tooltip-animation {
+    transition: opacity .18s ease-out .18s, transform .18s ease-out .18s;
+  } @else {
+    transition: none;
+  }
 }
 
 @mixin normalized-text() {
   text-indent: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: normal;
   font-style: normal;
   text-shadow: none;
+  font-style: var(--tooltip-font-style);
+  font-family: var(--tooltip-font-family);
   font-size: var(--tooltip-font-size);
 }
 
@@ -46,38 +61,39 @@ button[aria-label] {
 [aria-label] {
   &[data-tooltip] {
     position: relative; // alt. absolute or fixed
-
-    // Fixing iOS Safari event issue.
-    // More info at: https://goo.gl/w8JF4W
-    cursor: pointer;
+    cursor: pointer; // Fixing iOS Safari event issue. More info at: https://goo.gl/w8JF4W
 
     &:after {
       @include base-effects();
       @include normalized-text();
 
-      background: var(--tooltip-color);
-      border-radius: 2px;
-      color: var(--tooltip-text-color);
+      @if $tooltip-use-outline{
+        background: var(--body-bg);
+        border: $tooltip-border-width solid var(--tooltip-bg);
+        color: var(--body-color);
+      } @else {
+        background: var(--tooltip-bg);
+        color: var(--tooltip-color);
+      }
+
       border-radius: var(--tooltip-border-radius);
       content: attr(aria-label);
-      padding: .1rem .5rem;
+      padding: $tooltip-padding-y $tooltip-padding-x;
       position: absolute;
       white-space: nowrap;
-      z-index: 10;
+      z-index: $zindex-tooltip;
     }
 
     &:before {
       @include arrow(bottom);
       @include base-effects();
-
       content: "";
       position: absolute;
       z-index: 10;
     }
 
     &:hover,
-    &[data-tooltip-visible],
-    &:not([data-tooltip-nofocus]):focus {
+    &[data-tooltip*=":show"] {
       &:before,
       &:after {
         opacity: 1;
@@ -85,32 +101,10 @@ button[aria-label] {
       }
     }
 
-    &[data-tooltip-break] {
-      &:after {
-        white-space: pre;
-      }
-
-      &[data-tooltip-size] {
-        &:after {
-          white-space: pre-line;
-          word-break: break-word;
-        }
-      }
-    }
-
-    &[data-tooltip-blunt] {
-      &:before,
-      &:after {
-        @include no-effects();
-      }
-    }
-
     &[data-tooltip="top"],
     &[data-tooltip="bottom"] {
-      &:hover, &[data-tooltip-visible] {
-        &:after {
-          transform: translate(-50%, 0);
-        }
+      &:hover {
+        &:after,
         &:before {
           transform: translate(-50%, 0);
         }
@@ -138,12 +132,9 @@ button[aria-label] {
 
     &[data-tooltip*="-left"],
     &[data-tooltip*="-right"] {
-      &:hover,
-      &[data-tooltip-visible] {
+      &:hover {
+        &:before,
         &:after {
-          transform: translate(0, 0);
-        }
-        &:before {
           transform: translate(0, 0);
         }
       }
@@ -154,7 +145,7 @@ button[aria-label] {
       &:after {
         bottom: 100%;
         transform-origin: top;
-        transform: translate(0, var(--tooltip-move));
+        transform: translate(0, 0);
       }
 
       &:after {
@@ -166,7 +157,7 @@ button[aria-label] {
       &:before,
       &:after {
         left: 50%;
-        transform: translate(-50%, var(--tooltip-move));
+        transform: translate(-50%, 0);
       }
     }
 
@@ -174,7 +165,7 @@ button[aria-label] {
       &:before,
       &:after {
         top: 100%;
-        transform: translate(0, calc(var(--tooltip-move) * -1));
+        transform: translate(0, calc(0 * -1));
       }
 
       &:after {
@@ -190,20 +181,15 @@ button[aria-label] {
       &:after,
       &:before {
         left: 50%;
-        transform: translate(-50%, calc(var(--tooltip-move) * -1));
+        transform: translate(-50%, calc(0 * -1));
       }
     }
 
     &[data-tooltip="left"],
     &[data-tooltip="right"] {
-      &:hover,
-      &[data-tooltip-visible] {
-
+      &:hover {
+        &:before,
         &:after {
-          transform: translate(0, -50%);
-        }
-
-        &:before {
           transform: translate(0, -50%);
         }
       }
@@ -214,11 +200,16 @@ button[aria-label] {
       &:before {
         right: 100%;
         top: 50%;
-        transform: translate(var(--tooltip-move), -50%);
+        transform: translate(0, -50%);
       }
 
-      &:after { margin-right: $tooltip-arrow-size + 5px; }
-      &:before { @include arrow(right); }
+      &:after {
+        margin-right: $tooltip-arrow-size + 5px;
+      }
+
+      &:before {
+        @include arrow(right);
+      }
     }
 
     &[data-tooltip="right"] {
@@ -226,41 +217,16 @@ button[aria-label] {
       &:before {
         left: 100%;
         top: 50%;
-        transform: translate(calc(var(--tooltip-move) * -1), -50%);
+        transform: translate(calc(0 * -1), -50%);
       }
 
-      &:after { margin-left: $tooltip-arrow-size + 5px; }
-      &:before { @include arrow(left); }
-    }
-
-    &[data-tooltip-size] {
-      &:after { white-space: normal; }
-    }
-
-    &[data-tooltip-size="sm"] {
-      &:after { width: 80px; }
-    }
-
-    &[data-tooltip-size="md"] {
-      &:after { width: 150px; }
-    }
-
-    &[data-tooltip-size="lg"] {
-      &:after { width: 260px; }
-    }
-
-    &[data-tooltip-size="xl"] {
       &:after {
-        width: 380px;
-
-        @media screen and (max-width: 768px) {
-          width: 90vw;
-        }
+        margin-left: $tooltip-arrow-size + 5px;
       }
-    }
 
-    &[data-tooltip-size="fit"] {
-      &:after { width: 100%; }
+      &:before {
+        @include arrow(left);
+      }
     }
   }
 }
