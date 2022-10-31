@@ -1,6 +1,17 @@
 ---
-title: BRIXTOL | STRAP
+title: BRIXTOL | BOOTSTRAP
+views:
+  - demo
+  - scss
+  - html
+refs:
+  - fonts
+  - text
+  - utilities
+  - forms
+  - components
 ---
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,261 +19,134 @@ title: BRIXTOL | STRAP
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>
-      BRIXTOL | STRAP
-    </title>
+
+    <title>{{ title }}</title>
+
     <link
       content="stylesheet"
       href="./bootstrap.css"
       rel="stylesheet">
-    <style>
+    <link
+      content="stylesheet"
+      href="./style.css"
+      rel="stylesheet">
 
-      .language-scss .token.property {
-        color: #8be9fd;
-      }
-
-      .language-scss .token.punctuation {
-        color: #ff79c6
-      }
-
-      .language-scss .token.string,
-      .style .token.string,
-      .token.entity,
-      .token.operator,
-      .token.url,
-      .token.variable {
-        color: #f8f8f2;
-      }
-
-      .language-scss .token.variable {
-        color: #fff;
-      }
-
-      .namespace {
-        opacity: .7;
-      }
-
-      .relapse {
-        border: none;
-        border-top: none;
-        display: block;
-        position: relative;
-        width: 100%;
-      }
-
-      .relapse-btn {
-        -moz-user-select: none;
-        -ms-user-select: none;
-        -webkit-user-select: none;
-        background-color: inherit;
-        border: none;
-        border-radius: 0;
-        border-top: 1px solid #e5e5e5;
-        color: inherit;
-        cursor: pointer;
-        display: inherit;
-        font-size: inherit;
-        margin: 0;
-        padding: 20px 0;
-        text-align: left;
-        user-select: none;
-        width: 100%;
-      }
-
-      .relapse-btn.focused {
-        background-color: inherit;
-        outline: none;
-      }
-
-      .relapse-btn.initial {
-        background-color: inherit;
-        color: inherit;
-      }
-
-      .relapse-btn.initial + .relapse-fold {
-        max-height: unset;
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .relapse-btn.opened {
-        background-color: inherit;
-        color: inherit;
-      }
-
-      .relapse-fold {
-        -webkit-transition: opacity 300ms linear, max-height 225ms ease-in-out;
-        margin: 0 !important;
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        padding: 0 !important;
-        transition: opacity 300ms linear, max-height 225ms ease-in-out;
-        will-change: opacity, max-height;
-      }
-
-      .relapse-fold >:first-child {
-        padding: 50px;
-      }
-
-      .relapse-fold.expanded {
-        max-height: auto;
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .token.atrule,
-      .token.attr-value,
-      .token.class-name,
-      .token.function {
-        color: #f1fa8c;
-      }
-
-      .token.attr-name,
-      .token.builtin,
-      .token.char,
-      .token.inserted,
-      .token.selector,
-      .token.string {
-        color: #50fa7b;
-      }
-
-      .token.bold,
-      .token.important {
-        font-weight: bold;
-      }
-
-      .token.boolean,
-      .token.number {
-        color: #bd93f9;
-      }
-
-      .token.cdata,
-      .token.comment,
-      .token.doctype,
-      .token.prolog {
-        color: #999999;
-      }
-
-      .token.constant,
-      .token.deleted,
-      .token.property,
-      .token.symbol,
-      .token.tag {
-        color: #ff79c6;
-      }
-
-      .token.entity {
-        cursor: help;
-      }
-
-      .token.important,
-      .token.regex {
-        color: #ffb86c;
-      }
-
-      .token.italic {
-        font-style: italic;
-      }
-
-      .token.keyword {
-        color: #8be9fd;
-      }
-
-      .token.punctuation {
-        color: #f8f8f2;
-        }:not(pre) > code[class*='language-'] {
-          border-radius: .3em;
-          padding: .1em;
-          white-space: normal;
-        }
-
-        @media(prefers-reduced-motion: reduce) {
-          .relapse-fold {
-            -webkit-transition: none;
-            transition: none;
-          }
-        }
-
-        code[class*='language-'],
-        pre[class*='language-'] {
-          -moz-hyphens: none;
-          -moz-tab-size: 4;
-          -ms-hyphens: none;
-          -o-tab-size: 4;
-          -webkit-hyphens: none;
-          background: none;
-          color: #f8f8f2;
-          font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-          hyphens: none;
-          line-height: 1.5;
-          tab-size: 4;
-          text-align: left;
-          text-shadow: 0 1px rgba(0, 0, 0, .3);
-          white-space: pre;
-          word-break: normal;
-          word-spacing: normal;
-          word-wrap: normal;
-        }
-
-        /* Code blocks */
-        pre[class*='language-'] {
-          border-radius: .3em;
-          margin: .5em 0 2em;
-          overflow: auto;
-          padding: 1.5em 1.2em;
-        }
-
-        pre[class*='language-'] {
-          background: #282a36;
-        }; /* Inline code */
-    </style>
     <script defer src="./bundle.global.js"></script>
 
   </head>
   <body>
-    <div class="container">
-      <div class="row g-0 jc-center">
+    <div class="container-fluid gx-0">
+      <div class="row gx-0 jc-center vh-100">
+        <div class="col-2 br bg-white">
+          <div
+            class="relapse lined"
+            data-relapse-multiple="false"
+            data-relapse-persist="true"
+            id="sidebar">
 
-        <div class="col-2 bd-right">
-          <div class="py-5" id="sidebar">
-            {% for item in classes %}
-              <a class="d-block mb-3 upcase" href="{{ item | first | slugify | prepend: '#' }}">
-                {{ item | first |replace: "_", " " }}
-              </a>
+            {% for data in refs %}
+
+              {% liquid
+                # GET THE DATA REFERENCES
+                case data
+                  when "fonts"
+                    assign list = fonts.data
+                  when "text"
+                    assign list = text.data
+                  when "utilities"
+                    assign list = utilities.data
+                  when "forms"
+                    assign list = forms.data
+                  when "components"
+                    assign list = components.data
+                endcase
+              %}
+
+              <button class="relapse-btn upper fs-sm py-3 pl-4 fw-bold" type="button">
+                {{ data }}
+              </button>
+
+              <div class="relapse-fold">
+                <div class="d-block p-3">
+                  {% for item in list %}
+                    <a
+                      class="d-block mb-1 upcase"
+                      href="{{ item.title | slugify | prepend: '#' }}"
+                      id="{{ item.title }}">
+                      {{ item.title }}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+
             {% endfor %}
+
           </div>
         </div>
 
-        <div class="col-10 bg-white pl-5 my-5">
+        <div class="col-10 mb-5 bg-white">
+          <div class="d-block py-3 px-5 bg-white" id="search">
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Search property or class name"
+              class="fm-input">
+          </div>
+          <div class="relapse lined px-5" id="content">
 
-          {% for item in classes %}
+            {% for data in refs %}
 
-            {% assign slug = item | first | slugify %}
-            {% assign name = item | first %}
-            {% assign prop = classes[name] %}
+              {% liquid
+                # GET THE DATA REFERENCES
+                case data
+                  when "fonts"
+                    assign list = fonts.data
+                  when "text"
+                    assign list = text.data
+                  when "utilities"
+                    assign list = utilities.data
+                  when "forms"
+                    assign list = forms.data
+                  when "components"
+                    continue
+                  #  assign list = components.data
+                endcase
+              %}
 
+              {% for item in list %}
+                {% assign slug = item.title | slug %}
 
-            <h3 class="fw-bold d-flex ai-center jc-between pt-3 pb-2" id="{{ slug }}">
-              {{ prop.title }}
-              <code class="lower">
-                {{ prop.title | handle }}
-              </code>
-            </h3>
+                {% for view in views %}
 
-            {% assign demo = item | first | slugify | append: "/demo.liquid" %}
-            {% render demo, item: prop %}
+                  {% if forloop.first %}
+                    <button type="button" class="relapse-btn d-flex ai-center mt-5 h3 fw-bold no-icon initial">
+                      <span class="mr-auto">{{ item.title }}</span>
+                      {% if item.responsive %}
+                        <code class="lower fc-green">responsive</code>
+                        <span class="fc-gray px-4 fs-sm">|</span>
+                      {% endif %}
+                      <code class="lower">{{ item.property }}</code>
+                    </button>
+                  {% else %}
+                    <button type="button" class="relapse-btn h6 fw-bold fc-gray py-3 {% if forloop.last %}initial bb-0{% endif %}">
+                      {{ item.title | append: " " | append: view }}
+                    </button>
+                  {% endif %}
 
+                  <div
+                    class="relapse-fold bg-white"
+                    id="{{ slug }}"
+                    style="margin-top: 100px;">
+                    <div class="container-fluid gx-0 {% if forloop.first %}py-4{% else %}py-1{% endif %}">
+                      {% assign template = slug | append: "/" | append: view %}
+                      {% render template, item: item %}
+                    </div>
+                  </div>
 
-            {% assign demo = item | first | slugify | append: "/html.liquid" %}
-            {% render demo, item: prop %}
-
-
-            {% assign demo = item | first | slugify | append: "/scss.liquid" %}
-            {% render demo, item: prop %}
-
-            <hr>
-          {% endfor %}
+                {% endfor %}
+              {% endfor %}
+            {% endfor %}
+          </div>
 
 
         </div>
