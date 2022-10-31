@@ -18,9 +18,9 @@ $utilities: map-merge($utilities, (
       flex: flex,
       inline-flex: inline-flex,
       none: none,
-      // table: table,
-      // table-row: table-row,
-      // table-cell: table-cell,
+      table: table,
+      table-row: table-row,
+      table-cell: table-cell,
     )
   )
 ));
