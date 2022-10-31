@@ -1,0 +1,115 @@
+/* DROPDOWN ----------------------------------- */
+
+@mixin dropdown-button($open-element: ul) {
+
+  &.opened {
+
+    > button {
+      background-image: url(icon-minus());
+      opacity: .5;
+    }
+
+    > button + #{$open-element} {
+      display: block;
+    }
+  }
+
+  > button + #{$open-element} {
+    display: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    overflow-y: scroll;
+    background-color: $body-bg;
+    border-left: $border-width solid $black;
+    border-right: $border-width solid $black;
+    border-bottom: $border-width solid $black;
+    width: 100%;
+    //max-height: 200px;
+  }
+}
+
+.fm-dropdown,
+.dropdown {
+  position: relative;
+  display: block;
+  width: 100%;
+  @include dropdown-button(ul);
+
+  > button {
+    width: 100%;
+    display: inline-block;
+    border: $border-width solid $black;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: right $input-height-inner-quarter center;
+    background-size: $input-height-inner-half $input-height-inner-half;
+    background-image: url(icon-plus());
+    text-align: left;
+    padding: $btn-padding-y $btn-padding-x;
+
+    &:hover {
+      color: $gray-700;
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    &:disabled {
+      opacity: $btn-disabled-opacity;
+      pointer-events: none;
+      @include box-shadow(none);
+    }
+  }
+
+  &.disabled > button {
+    opacity: $btn-disabled-opacity;
+    pointer-events: none;
+    @include box-shadow(none);
+  }
+
+  &.selected > button {
+    background-image: url(icon-check());
+
+    &:hover {
+      background-image: url(icon-plus());
+    }
+  }
+}
+
+.dropdown > button + ul > li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  border-bottom: $border-width solid $black;
+
+  &.disabled {
+    color: $gray-500;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  &.selected {
+    pointer-events: none;
+    background-color: $gray-100;
+  }
+
+  &:hover {
+    background-color: $gray-200;
+    cursor: pointer;
+  }
+
+  &::after {
+    content: attr(aria-label);
+    font-size: 0.645rem;
+  }
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+}
