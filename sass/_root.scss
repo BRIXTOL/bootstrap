@@ -44,13 +44,6 @@
   --#{$prefix}letter-spacing-base: #{$letter-spacing-base};
   --#{$prefix}letter-spacing-heading: #{$letter-spacing-heading};
 
-   // scss-docs-start root-border-var
-  --#{$prefix}border: #{$border-width} #{$border-style} #{$border-color};
-  --#{$prefix}border-width: #{$border-width};
-  --#{$prefix}border-style: #{$border-style};
-  --#{$prefix}border-color: #{$border-color};
-  --#{$prefix}border-color-translucent: #{$border-color-translucent};
-
   --#{$prefix}border-radius: #{$border-radius};
   --#{$prefix}border-radius-sm: #{$border-radius-sm};
   --#{$prefix}border-radius-lg: #{$border-radius-lg};
@@ -59,8 +52,10 @@
   // scss-docs-end root-border-var
 
   --#{$prefix}tooltip-border-radius: #{$tooltip-radius};
-  --#{$prefix}tooltip-color: #{$tooltip-bg};
-  --#{$prefix}tooltip-text-color: #{$tooltip-text-color};
-  --#{$prefix}tooltip-font-size: #{$tooltip-base-size};
-  --#{$prefix}tooltip-move: #{$tooltip-move};
+  --#{$prefix}tooltip-bg: #{$tooltip-bg};
+  --#{$prefix}tooltip-color: #{$tooltip-color};
+  --#{$prefix}tooltip-font-size: #{$tooltip-font-size};
+  --#{$prefix}tooltip-font-family: #{$tooltip-font-family};
+  --#{$prefix}tooltip-font-style: #{$tooltip-font-style};
+
 }
