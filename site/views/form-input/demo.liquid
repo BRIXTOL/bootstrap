@@ -1,5 +1,5 @@
 <div class="row mb-5">
-  <div class="col-10">
+  <div class="col-12">
     {{ item.describe }}
   </div>
 </div>
@@ -10,7 +10,7 @@
     <h6 class="mb-3 fw-bold">
       Inputs
     </h6>
-    <div class="row mb-2">
+    <div class="row mb-3">
       {% for item in item.classes.inputs %}
         <div class="col-6 mb-3">
           <pre class="m-0"><code>{{ item.class }}</code></pre>
@@ -43,9 +43,11 @@
       {% endfor %}
     </div>
 
+
   </div>
 
   <div class="col-6 pl-5">
+
     <h6 class="mb-3 fw-bold">
       States
     </h6>

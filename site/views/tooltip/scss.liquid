@@ -1,21 +1,30 @@
-<h5 class="fw-bold fc-gray d-flex ai-center jc-between py-3">
-  SCSS EXAMPLES
-  <code class="lower">
-    {{ item.title | slug }}
-  </code>
-</h5>
-
-<p>The variables will be transformed by utitlities.</p>
-
 {% highlight scss %}
 
-/* -------------------------------------------- */
-/* BORDERS RADIUS                               */
-/* -------------------------------------------- */
+// CONTROL TOOLTIP
+//
+// These variables control the tooltip styling applied
+//
+$tooltip-bg:                   $black;
+$tooltip-font-family:          $font-family-base;
+$tooltip-font-style:           normal;
+$tooltip-font-size:            $font-size-xs;
+$tooltip-font-color:           $white;
+$tooltip-padding-y:            .1rem;
+$tooltip-padding-x:            .5rem;
+$tooltip-arrow-size:           5px;
+$tooltip-radius:               0;
 
-$border-radius:               .25rem !default;
-$border-radius-sm:            .2rem !default;
-$border-radius-lg:            .3rem !default;
-$border-radius-pill:          50rem !default;
+// CONTROL ANIMATION
+//
+// Use this to disable the fade animation
+//
+$tooltip-animation:            true;
+
+// CONTROL OUTLINE
+//
+// Use this to enable outline styling
+//
+$tooltip-border-width:         .01rem;
+$tooltip-use-outline:          true;
 
 {% endhighlight %}

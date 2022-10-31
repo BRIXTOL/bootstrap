@@ -1,13 +1,14 @@
-<div class="row ac-center mb-2">
+<div class="row ac-center">
 
-  <div class="col-6">
-    {% for item in item.classes.inputs %}
-      <div class="row ac-center mb-2">
+  <div class="col-5">
+    <div class="row ac-center mb-2">
+      {% for item in item.classes.inputs %}
+
         <div class="col-5">
           <pre class="m-1"><code>{{ item.class }}</code></pre>
         </div>
 
-        <div class="col ai-center d-flex">
+        <div class="col-7 ai-center d-flex">
 
           <div class="fm-switch">
 
@@ -24,14 +25,14 @@
           </div>
 
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 
   <div class="col-6">
     {% for item in item.classes.validate %}
       <div class="row ac-center mb-2">
-        <div class="col-5">
+        <div class="col-6">
           <pre class="m-1"><code>{{ item.class }}</code></pre>
         </div>
 
