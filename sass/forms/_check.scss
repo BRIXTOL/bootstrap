@@ -81,18 +81,12 @@
     border-color: $form-check-input-checked-border-color;
 
     &[type="checkbox"] {
-      background-image: escape-svg(icon-cross($form-check-input-checked-color));
+      background-image: url(icon-cross($form-check-input-checked-color));
     }
 
     &[type="radio"] {
-      background-image: escape-svg(icon-square($form-check-input-checked-color));
+      background-image: url(icon-square($form-check-input-checked-color));
     }
-  }
-
-  &[type="checkbox"]:indeterminate {
-    background-color: $form-check-input-indeterminate-bg-color;
-    border-color: $form-check-input-indeterminate-border-color;
-    background-image: escape-svg(icon-minus($form-check-input-indeterminate-bg-image));
   }
 
   &:disabled {
