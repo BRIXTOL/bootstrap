@@ -1,4 +1,4 @@
-$enable-important-utilities: false;
+$enable-important-utilities: true;
 
 
 $utilities: map-get-multiple($utilities, (
@@ -12,59 +12,78 @@ $utilities: map-get-multiple($utilities, (
 ));
 
 $utilities: map-merge($utilities, (
-  "border-none": (
+  "border": (
     responsive: true,
     property: border,
-    class: bd,
+    class: border,
     values: (
-      none: none !important
+      null: $border-width $border-style $border-color,
+      0: none,
     )
   ),
-  "border": (
-    responsive: false,
-    property: border,
-    class: bd,
+  "border-x": (
+    responsive: true,
+    property: border-right border-left,
+    class: bx,
     values: (
-      null: var(--#{$prefix}border),
+      null: $border-width $border-style $border-color,
+      0: none,
+    )
+  ),
+  "border-y": (
+    responsive: true,
+    property: border-top border-bottom,
+    class: by,
+    values: (
+      null: $border-width $border-style $border-color,
+      0: none,
     )
   ),
   "border-top": (
+    responsive: true,
     property: border-top,
-    class: bd-top,
+    class: bt,
     values: (
-      null: var(--#{$prefix}border),
+      null: $border-width $border-style $border-color,
+      0: none,
     )
   ),
   "border-end": (
+    responsive: true,
     property: border-right,
-    class: bd-right,
+    class: br,
     values: (
-      null: var(--#{$prefix}border),
+      null: $border-width $border-style $border-color,
+      0: none,
     )
   ),
   "border-bottom": (
+    responsive: true,
     property: border-bottom,
-    class: bd-bottom,
+    class: bb,
     values: (
-      null: var(--#{$prefix}border),
+      null: $border-width $border-style $border-color,
+      0: none,
     )
   ),
   "border-start": (
+    responsive: true,
     property: border-left,
-    class: bd-left,
+    class: bl,
     values: (
-      null: var(--#{$prefix}border),
+      null: $border-width $border-style $border-color,
+      0: none,
     )
-  ),
-  "border-width": (
-    property: border-width,
-    class: bd,
-    values: $border-widths
   ),
   "border-color": (
     property: border-color,
-    class: bd,
+    class: bc,
     values: $border-colors
+  ),
+  "border-width": (
+    property: border-width,
+    class: bw,
+    values: $border-widths
   ),
 ));
 
