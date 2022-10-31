@@ -40,6 +40,9 @@
     --#{$prefix}body-text-align: #{$body-text-align};
   }
 
+  --#{$prefix}link-color: #{$link-color};
+  --#{$prefix}link-hover-color: #{$link-hover-color};
+
   --#{$prefix}body-bg: #{$body-bg};
   --#{$prefix}letter-spacing-base: #{$letter-spacing-base};
   --#{$prefix}letter-spacing-heading: #{$letter-spacing-heading};

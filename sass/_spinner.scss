@@ -22,12 +22,3 @@
   border-width: $spinner-border-width-sm;
 }
 
-.btn.is-loading::before {
-  content: "";
-  @extend .spinner;
-  width: 0.745rem;
-  height: 0.745rem;
-  border-width: 0.1rem;
-  display: inline-block;
-  margin-right: $input-height-inner / 2;
-}

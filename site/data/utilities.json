@@ -63,7 +63,7 @@
         "border": [
           {
             "title": "Border",
-            "class": ".b"
+            "class": ".bd"
           },
           {
             "title": "Border Left",
@@ -93,7 +93,7 @@
         "colors": [
           {
             "title": "Gray (default)",
-            "class": ".b"
+            "class": ".bd"
           },
           {
             "title": "Border White",
@@ -115,7 +115,7 @@
         "sizes": [
           {
             "title": "0.07rem",
-            "class": ".b"
+            "class": ".bd"
           },
           {
             "title": "0.1rem",
@@ -182,9 +182,23 @@
       "classes": {
         "colors": [
           {
-            "title": "Button (Base)",
-            "class": ".btn"
+            "title": "Button",
+            "class": ".bg-gray"
           },
+          {
+            "title": "Button",
+            "class": ".bg-black"
+          },
+          {
+            "title": "Button",
+            "class": ".bg-red"
+          },
+          {
+            "title": "Button",
+            "class": ".bg-green"
+          }
+        ],
+        "outline": [
           {
             "title": "Button",
             "class": ".btn-gray"
@@ -202,24 +216,6 @@
             "class": ".btn-green"
           }
         ],
-        "outline": [
-          {
-            "title": "Button",
-            "class": ".btn-outline-gray"
-          },
-          {
-            "title": "Button",
-            "class": ".btn-outline-black"
-          },
-          {
-            "title": "Button",
-            "class": ".btn-outline-red"
-          },
-          {
-            "title": "Button",
-            "class": ".btn-outline-green"
-          }
-        ],
         "sizes": [
           {
             "title": "Button",
@@ -233,26 +229,29 @@
             "title": "Button",
             "class": ".btn-lg"
           }
+        ],
+        "states": [
+          {
+            "title": "Loads",
+            "class": ".is-loading"
+          },
+          {
+            "title": "Disabled",
+            "class": ".disabled"
+          }
         ]
       }
     },
     {
       "title": "Links",
-      "classes": [
-        {
-          "title": "Transparent",
-          "class": ".bg-transparent"
-        }
-      ]
+      "property": "a",
+      "responsive": false,
+      "describe": "Basic level <code>href</code> logics. Most the Bootstrap helpers and utilities are stripped out. We only want the bare minimum here. The <code>list-list</code> is a re-write and only supports nested <code>href</code> nodes."
     },
     {
       "title": "Lists",
-      "classes": [
-        {
-          "title": "Transparent",
-          "class": ".bg-transparent"
-        }
-      ]
+      "property": "al, ol, ul",
+      "responsive": false
     },
     {
       "title": "Images",

@@ -2,9 +2,20 @@ $enable-important-utilities: true;
 
 $utilities: map-get-multiple($utilities, (
   "display",
+  "position"
 ));
 
 $utilities: map-merge($utilities, (
+  "position": (
+    responsive: false,
+    property: position,
+    class: null,
+    values: (
+      rel: relative,
+      abs: absolute,
+      fix: fixed
+    )
+  ),
   "display": (
     responsive: true,
     print: false,

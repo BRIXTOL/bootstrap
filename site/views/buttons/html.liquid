@@ -2,19 +2,23 @@ Buttons classes can also be applied to <code>href</code> elements.
 
 {% highlight html %}
 
+
 <!-- Renders a button without style, ie: blank button -->
-<button class="btn">Click</button>
+<button type="button" class="btn">Click</button>
 
 <!-- Renders a black button -->
-<button class="btn btn-black">Click</button>
+<button type="button" class="btn btn-black">Click</button>
 
 <!-- Renders an outlined button -->
-<button class="btn btn-outline-black">Click</button>
+<button type="button" class="btn btn-outline-black">Click</button>
 
 <!-- Renders an xl sized button with radius -->
-<button class="btn btn-xl rd">Click</button>
+<button type="button" class="btn btn-xl rd">Click</button>
 
 <!-- Renders a button to a <a href="*"> element -->
 <a class="btn btn-outline-black btn-sm">Click</a>
+
+<!-- Render the close button - uses <input> instead of <button> -->
+<input type="button" class="btn btn-close">
 
 {% endhighlight %}

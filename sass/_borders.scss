@@ -15,7 +15,7 @@ $utilities: map-merge($utilities, (
   "border": (
     responsive: true,
     property: border,
-    class: border,
+    class: bd,
     values: (
       null: $border-width $border-style $border-color,
       0: none,

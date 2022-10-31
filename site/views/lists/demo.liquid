@@ -1,1 +1,76 @@
+{%- liquid
+  assign list = "One,Two,Three,Four,Five,Six" | split: ","
+-%}
+<div class="row mb-5">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-auto pl-4 pr-5">
+    <h6 class="mb-3 fw-bold">
+      Default
+    </h6>
+    <pre class="tc mt-2"><code>ul > li</code></pre>
+    <ul>
+      {% for item in list %}
+        <li>{{ item }}</li>
+      {% endfor %}
+      <li>Seven</li>
+      <li>Eight</li>
+    </ul>
+  </div>
+  <div class="col-2 pr-5">
+    <h6 class="mb-3 fw-bold">
+      List Dash
+    </h6>
+    <pre class="tc mt-2"><code>.list-dash</code></pre>
+    <ul class="list-dash">
+      {% for item in list %}
+        <li>{{ item }}</li>
+      {% endfor %}
+      <li>Seven</li>
+      <li>Eight</li>
+    </ul>
+  </div>
+  <div class="col-2 pr-5">
+    <h6 class="mb-3 fw-bold">
+      List Lined
+    </h6>
+    <pre class="tc mt-2"><code>.list-lined</code></pre>
+    <ul class="list-lined">
+      {% for item in list %}
+        <li aria-label="label">
+          {{ item }}
+        </li>
+      {% endfor %}
+      <li aria-label="label">Seven</li>
+      <li aria-label="label">Eight</li>
+    </ul>
+  </div>
+
+  <div class="col pl-5">
+    <h6 class="mb-3 fw-bold">
+      List Inline
+    </h6>
+    <pre class="mt-2 w-25"><code>.list-inline</code></pre>
+    <ul class="list-inline mb-4">
+      {% for item in list %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    <h6 class="mb-3 fw-bold">
+      Pipe Inline
+    </h6>
+    <pre class="mt-2 w-25"><code>.list-pipe</code></pre>
+    <p class="mb-3 fs-xs">Inline pipes are
+      <strong>not</strong>
+      responsive and when overflow occurs the scrollbar will be hidden.</p>
+    <ul class="list-pipe">
+      {% for item in list %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

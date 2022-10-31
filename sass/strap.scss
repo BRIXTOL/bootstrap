@@ -184,6 +184,22 @@ $link-cover:                       after;
 $link-z-index:                     1;
 
 /* -------------------------------------------- */
+/* LINK LIST                                    */
+/* -------------------------------------------- */
+
+$link-list-radius:                  0;
+$link-list-padding-y:               .395rem;
+$link-list-padding-x:               .75rem;
+$link-list-color:                   $black;
+$link-list-hover-bg:                $gray-200;
+$link-list-hover-color:             $black;
+$link-list-disabled-color:          $gray-500;
+$link-list-active-bold:             true;
+$link-list-active-bg:               null;
+$link-list-active-color:            $black;
+
+
+/* -------------------------------------------- */
 /* BORDERS                                      */
 /* -------------------------------------------- */
 
@@ -219,9 +235,17 @@ $aspect-ratios: (
 /* PLACEHOLDERS                                 */
 /* -------------------------------------------- */
 
-$placeholder:                  null;
-$placeholder-bg:               $gray-400;
-$placeholder-bg-size:          10%;
+$placeholder:                       null;
+$placeholder-bg:                    $gray-400;
+$placeholder-bg-size:               10%;
+
+/* -------------------------------------------- */
+/* LISTS                                        */
+/* -------------------------------------------- */
+
+$list-pipe-spacing:                 20px;
+$list-inline-spacing:               20px;
+$list-dash-indent:                  12px;
 
 /* -------------------------------------------- */
 /* BUTTONS                                      */

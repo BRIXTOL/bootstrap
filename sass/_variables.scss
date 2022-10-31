@@ -87,11 +87,11 @@ $border-color: $gray-300;
 
 $border-colors: (
 
-  black: $black,
-  white: $white,
-  red: $red,
-  gray: $gray-400,
-  green: $green
+  "black": $black,
+  "white": $white,
+  "red": $red,
+  "gray": $gray-400,
+  "green": $green
 
 );
 
@@ -102,12 +102,12 @@ $border-colors: (
 
 $font-colors: (
 
-  black: $black,
-  white: $white,
-  green: $green,
-  gray: $gray-500,
-  red: $red,
-  orange: $orange
+  "black": $black,
+  "white": $white,
+  "green": $green,
+  "gray": $gray-500,
+  "red": $red,
+  "orange": $orange
 
 );
 
@@ -270,10 +270,10 @@ $line-height-xl:              2.4;
 /* -------------------------------------------- */
 
 $link-color:                       $black;
+$link-shade-percentage:            40%;
+$link-hover-color:                 tint-color($link-color, $link-shade-percentage);
 $link-decoration:                  none;
-$link-shade-percentage:            20%;
-$link-hover-decoration:            underline;
-
+$link-hover-decoration:            none;
 $link-cover:                       after;
 $link-z-index:                     1;
 
@@ -322,7 +322,6 @@ $hr-opacity:                  .25;
 /* CODE                                         */
 /* -------------------------------------------- */
 
-
 // Code
 
 $code-font-size:                    $small-font-size;
@@ -336,6 +335,30 @@ $kbd-bg:                            var(--#{$prefix}body-color);
 $nested-kbd-font-weight:            null; // Deprecated in v5.2.0, removing in v6
 
 $pre-color:                         null;
+
+/* -------------------------------------------- */
+/* LINKS LISTS                                  */
+/* -------------------------------------------- */
+
+$link-list-radius:          0;
+$link-list-padding-y:       .395rem;
+$link-list-padding-x:       .75rem;
+$link-list-color:           $black;
+$link-list-hover-bg:        $gray-200;
+$link-list-hover-color:     $black;
+$link-list-disabled-color:  $gray-500;
+$link-list-active-bold:     true;
+$link-list-active-bg:       null;
+$link-list-active-color:    $black;
+
+
+/* -------------------------------------------- */
+/* LISTS                                        */
+/* -------------------------------------------- */
+
+$list-pipe-spacing:        20px;
+$list-inline-spacing:      20px;
+$list-dash-indent:         12px;
 
 /* -------------------------------------------- */
 /* BUTTONS                                      */

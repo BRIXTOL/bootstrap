@@ -1,69 +1,81 @@
-/* MIXINS ------------------------------------- */
+.list-inline > li,
+.list-pipe > li {
 
-@function pipe-offset($size) {
+  &:first-child {
+    padding-left: 0;
+  }
 
-  @return #{decimal-ceil($size / 1.3, 0)}px;
-
+  &:last-of-type {
+    padding-right: 0;
+  }
 }
 
-@mixin pipe-list($height, $pipe-color: $gray-500) {
+.list-dash {
+  list-style-type: "–";
+  margin-left: .6em;
 
-	height: #{$height}px;
-	position: relative;
-	//overflow: hidden;
-	display: inline-flex;
-
-	> li {
-		padding: 0 pipe-offset($height);
-		height: #{$height}px;
-		position: relative;
-		align-self: center;
-
-		&:after {
-			content: " ";
-			top: $height * 1%;
-			height: 100% - decimal-ceil($height, 2);
-			position: absolute;
-			border-right: 1px solid $pipe-color;
-			right: 0;
-			margin-top: auto;
-			margin-bottom: auto;
-		}
-
-		&:first-child {
-			padding-left: 0;
-		}
-
-		&:last-child {
-			padding-right: 0;
-
-			&:after {
-				border-right: none;
-			}
-		}
-	}
+  > li {
+    text-indent: $list-dash-indent;
+  }
 }
 
-@mixin icon-list($icon-size, $icon-color: $black-500) {
-	.icon {
-		fill: $icon-color;
-		width: #{$icon-size}px;
-		height: #{$icon-size}px;
-	}
+.list-lined > li {
+  border-bottom: $border-width solid $border-color;
+  padding-left: 1px;
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: attr(aria-label);
+    font-size: $font-size-xs;
+    padding-right: 1px;
+    text-align: right;
+    width: 100%;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
-/* Dash Menu
- *
- * Inline list menu, with dash seperator, e.g:  one | two | three
- */
-.list {
-	position: relative;
 
-	&-pipe {
-		@include pipe-list(20);
-	}
+.list-inline  > li {
+  display: inline-flex;
+  padding: 0 $list-inline-spacing;
+}
 
-	&-icon {
-		@include icon-list(20);
-	}
+.list-pipe {
+  display: flex;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > li {
+    display: inline-flex;
+    float: left;
+    padding-left: $list-pipe-spacing;
+    line-height: initial;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      align-self: stretch;
+      justify-self: center;
+      width: $border-width;
+      margin-left: $list-pipe-spacing;
+      min-height: 1em;
+      background-color: currentcolor;
+      opacity: $hr-opacity;
+    }
+
+
+    &:last-of-type {
+      &::after {
+        width: 0;
+        margin-left: 0;
+      }
+    }
+  }
 }

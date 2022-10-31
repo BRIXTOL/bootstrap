@@ -175,6 +175,16 @@
     @include box-shadow(none);
   }
 
+  &.is-loading {
+    &::after {
+      content: "";
+      @extend .spinner;
+      width: 0.745rem;
+      height: 0.745rem;
+      border-width: 0.1rem;
+      margin-left: $input-padding-x - .5;
+    }
+  }
 }
 
 
@@ -184,16 +194,17 @@
 //
 
 @each $color, $value in $button-colors {
-  .btn-#{$color} {
+  .btn.bg-#{$color} {
     @include button-variant($value, $value);
   }
 }
 
 @each $color, $value in $button-colors {
-  .btn-outline-#{$color} {
+  .btn-#{$color} {
     @include button-outline-variant($value);
   }
 }
+
 
 
 //
@@ -244,3 +255,17 @@
   );
 }
 
+//
+// Button SVGs
+//
+
+.btn-close {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 2rem;
+  background-image: url(icon-cross($black, .9));
+
+  &:hover {
+    opacity: .5;
+  }
+}
