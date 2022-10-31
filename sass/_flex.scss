@@ -120,7 +120,8 @@ $utilities: map-merge($utilities, (
 
   "order": (
     responsive: true,
-    property: od,
+    property: order,
+    class: od,
     values: (
       first: -1,
       0: 0,
