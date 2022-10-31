@@ -1,0 +1,123 @@
+{
+  "data": [
+    {
+      "title": "Font Family",
+      "property": "font-family",
+      "responsive": false,
+      "classes": [
+        {
+          "example": "This is the headings type font!",
+          "class": ".ff-heading"
+        },
+        {
+          "example": "This is the body (base) type font!",
+          "class": ".ff-body"
+        },
+        {
+          "example": "This is the code (pre) type font!",
+          "class": ".ff-code"
+        }
+      ]
+    },
+    {
+      "title": "Font Sizes",
+      "property": "font-size",
+      "responsive": false,
+      "classes": [
+        {
+          "title": "X Small",
+          "class": ".fs-xs"
+        },
+        {
+          "title": "Small",
+          "class": ".fs-sm"
+        },
+        {
+          "title": "Medium (Base)",
+          "class": ".fs"
+        },
+        {
+          "title": "Large",
+          "class": ".fs-lg"
+        },
+        {
+          "title": "X Large",
+          "class": ".fs-xl"
+        }
+      ]
+    },
+    {
+      "title": "Font Style",
+      "property": "font-style",
+      "responsive": false,
+      "classes": [
+        {
+          "title": "Normal",
+          "class": ".normal"
+        },
+        {
+          "title": "Italic",
+          "class": ".italic"
+        }
+      ]
+    },
+    {
+      "title": "Font Weight",
+      "property": "font-weight",
+      "responsive": false,
+      "classes": [
+        {
+          "title": "Lighter",
+          "class": ".fw-lighter"
+        },
+        {
+          "title": "Light",
+          "class": ".fw-light"
+        },
+        {
+          "title": "Normal",
+          "class": ".fw-normal"
+        },
+        {
+          "title": "Bold",
+          "class": ".fw-bold"
+        },
+        {
+          "title": "Bolder",
+          "class": ".fw-bolder"
+        }
+      ]
+    },
+    {
+      "title": "Font Colors",
+      "property": "color",
+      "responsive": false,
+      "classes": [
+        {
+          "title": "White",
+          "class": ".fc-white"
+        },
+        {
+          "title": "Black",
+          "class": ".fc-black"
+        },
+        {
+          "title": "Gray",
+          "class": ".fc-gray"
+        },
+        {
+          "title": "Red",
+          "class": ".fc-red"
+        },
+        {
+          "title": "Green",
+          "class": ".fc-green"
+        },
+        {
+          "title": "Orange",
+          "class": ".fc-orange"
+        }
+      ]
+    }
+  ]
+}

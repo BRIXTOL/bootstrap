@@ -1,0 +1,325 @@
+{
+  "data": [
+    {
+      "title": "Aspect Ratio",
+      "property": "",
+      "responsive": false,
+      "classes": [
+        {
+          "title": "Transparent",
+          "class": ".bg-transparent"
+        },
+        {
+          "title": "White",
+          "class": ".bg-white"
+        },
+        {
+          "title": "Ivory",
+          "class": ".bg-ivory"
+        },
+        {
+          "title": "Gray",
+          "class": ".bg-gray"
+        },
+        {
+          "title": "Black",
+          "class": ".bg-black"
+        }
+      ]
+    },
+    {
+      "title": "Background Colors",
+      "property": "background-color",
+      "responsive": false,
+      "classes": [
+        {
+          "title": "Transparent",
+          "class": ".bg-transparent"
+        },
+        {
+          "title": "White",
+          "class": ".bg-white"
+        },
+        {
+          "title": "Ivory",
+          "class": ".bg-ivory"
+        },
+        {
+          "title": "Gray",
+          "class": ".bg-gray"
+        },
+        {
+          "title": "Black",
+          "class": ".bg-black"
+        }
+      ]
+    },
+    {
+      "title": "Borders",
+      "describe": "Border widths, sizes and colors employ custom naming conventions and are responsive. The single class name <code>.b</code> is used to apply a full border whereas suffixed directions of <code>t</code> (top), <code>b</code> (bottom), <code>l</code> (left) and <code>r</code> (right) are used to apply borders according to angle.",
+      "property": "border-* border",
+      "responsive": true,
+      "classes": {
+        "border": [
+          {
+            "title": "Border",
+            "class": ".b"
+          },
+          {
+            "title": "Border Left",
+            "class": ".bl"
+          },
+          {
+            "title": "Border Right",
+            "class": ".br"
+          },
+          {
+            "title": "Border Top",
+            "class": ".bt"
+          },
+          {
+            "title": "Border Bottom",
+            "class": ".bb"
+          },
+          {
+            "title": "Border Left + Right",
+            "class": ".bx"
+          },
+          {
+            "title": "Border Top + Bottom",
+            "class": ".by"
+          }
+        ],
+        "colors": [
+          {
+            "title": "Gray (default)",
+            "class": ".b"
+          },
+          {
+            "title": "Border White",
+            "class": ".bc-white"
+          },
+          {
+            "title": "Border Black",
+            "class": ".bc-black"
+          },
+          {
+            "title": "Border Red",
+            "class": ".bc-red"
+          },
+          {
+            "title": "Border Green",
+            "class": ".bc-green"
+          }
+        ],
+        "sizes": [
+          {
+            "title": "0.07rem",
+            "class": ".b"
+          },
+          {
+            "title": "0.1rem",
+            "class": ".bw-1"
+          },
+          {
+            "title": ".2rem",
+            "class": ".bw-2"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Radius",
+      "property": "border-radius",
+      "responsive": false,
+      "classes": {
+        "radius": [
+          {
+            "title": "Radius (default)",
+            "class": ".rd"
+          },
+          {
+            "title": "Radius x1",
+            "class": ".rd-1"
+          },
+          {
+            "title": "Radius x2",
+            "class": ".rd-2"
+          },
+          {
+            "title": "Radius x3",
+            "class": ".rd-3"
+          }
+        ],
+        "angles": [
+          {
+            "title": "Radius Top",
+            "class": ".rd-t"
+          },
+          {
+            "title": "Radius Right",
+            "class": ".rd-r"
+          },
+          {
+            "title": "Radius Bottom",
+            "class": ".rd-b"
+          },
+          {
+            "title": "Radius Left",
+            "class": ".rd-l"
+          }
+        ],
+        "circle": {
+          "title": "Circle",
+          "class": ".circle"
+        }
+      }
+    },
+    {
+      "title": "Buttons",
+      "property": "button",
+      "responsive": false,
+      "classes": {
+        "colors": [
+          {
+            "title": "Button (Base)",
+            "class": ".btn"
+          },
+          {
+            "title": "Button",
+            "class": ".btn-gray"
+          },
+          {
+            "title": "Button",
+            "class": ".btn-black"
+          },
+          {
+            "title": "Button",
+            "class": ".btn-red"
+          },
+          {
+            "title": "Button",
+            "class": ".btn-green"
+          }
+        ],
+        "outline": [
+          {
+            "title": "Button",
+            "class": ".btn-outline-gray"
+          },
+          {
+            "title": "Button",
+            "class": ".btn-outline-black"
+          },
+          {
+            "title": "Button",
+            "class": ".btn-outline-red"
+          },
+          {
+            "title": "Button",
+            "class": ".btn-outline-green"
+          }
+        ],
+        "sizes": [
+          {
+            "title": "Button",
+            "class": ".btn-sm"
+          },
+          {
+            "title": "Button",
+            "class": ".btn-md"
+          },
+          {
+            "title": "Button",
+            "class": ".btn-lg"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Links",
+      "classes": [
+        {
+          "title": "Transparent",
+          "class": ".bg-transparent"
+        }
+      ]
+    },
+    {
+      "title": "Lists",
+      "classes": [
+        {
+          "title": "Transparent",
+          "class": ".bg-transparent"
+        }
+      ]
+    },
+    {
+      "title": "Images",
+      "classes": [
+        {
+          "title": "Transparent",
+          "class": ".bg-transparent"
+        }
+      ]
+    },
+    {
+      "title": "Spinner",
+      "classes": [
+        {
+          "title": "Spinner",
+          "class": ".spinner"
+        },
+        {
+          "title": "Spinner Small",
+          "class": ".spinner-sm"
+        }
+      ]
+    },
+    {
+      "title": "Tooltip",
+      "describe": "Tooltips are a hardfork of Balloons but the resulting CSS has been stripped and removed of most features. Tooltips ase a combination of <code>aria-label</code> and <code>data-tooltip</code> attribute annotations. The logic is exteremly simply. The <code>$tooltip-use-outline</code> will invert the styling.",
+      "property": "data-tooltip",
+      "responsive": false,
+      "classes": {
+        "position": [
+          {
+            "title": "Tooltip Top",
+            "class": "data-tooltip=\"top\""
+          },
+          {
+            "title": "Tooltip Bottom",
+            "class": "data-tooltip=\"bottom\""
+          },
+
+          {
+            "title": "Tooltip position left",
+            "class": "data-tooltip=\"left\""
+          },
+          {
+            "title": "Tooltip position right",
+            "class": "data-tooltip=\"right\""
+          }
+        ],
+        "display": [
+          {
+            "title": "Tooltip Top Left",
+            "class": "data-tooltip=\"top-left\""
+          },
+          {
+            "title": "Tooltip Top Left",
+            "class": "data-tooltip=\"top-right\""
+          },
+          {
+            "title": "Tooltip Bottom Left",
+            "class": "data-tooltip=\"bottom-left\""
+          },
+          {
+            "title": "Tooltip Bottom Right",
+            "class": "data-tooltip=\"bottom-right\""
+          }
+        ]
+      }
+    }
+  ]
+}
