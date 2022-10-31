@@ -25,6 +25,7 @@ module.exports = eleventy(config =>{
   return {
     htmlTemplateEngine: 'liquid',
     passthroughFileCopy: true,
+    dataTemplateEngine: 'liquid',
     templateFormats: ['liquid', 'json', 'md', 'css', 'html', 'yml'],
     dir: {
       input: "site",
