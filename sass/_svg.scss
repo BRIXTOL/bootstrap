@@ -1,30 +1,36 @@
 // SVG Plus
 //
 @function icon-plus($color: $black, $width: 1.5) {
- @return url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='#{$color}' stroke-width='#{$width}'><line x1='12' y1='5' x2='12' y2='19'/><line x1='5' y1='12' x2='19' y2='12'/></svg>");
+ @return escape-svg("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='#{$color}' stroke-width='#{$width}'><path d='M12 5v14M5 12h14'/></svg>");
 }
 
 // SVG Minus
 //
 @function icon-minus($color: $black, $width: 1.5) {
-  @return url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='#{$color}' stroke-width='#{$width}'><line x1='5' y1='12' x2='19' y2='12'/></svg>");
+  @return escape-svg("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='#{$color}' stroke-width='#{$width}'><path d='M5 12h14'/></svg>");
 }
 
 // SVG Checkmark
 //
 @function icon-check($color: $black, $width: 1.5) {
-  @return url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='#{$color}' stroke-width='#{$width}'><polyline points='20 6 9 17 4 12'/></svg>");
+  @return escape-svg("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='#{$color}' stroke-width='#{$width}'><path d='M20 6 9 17l-5-5' /></svg>");
 }
+
 // SVG Cross
 //
 @function icon-cross($color: $black, $width: 1.5) {
-   @return url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='#{$color}' stroke-width='#{$width}'><line x1='18' y1='6' x2='6' y2='18'/><line x1='6' y1='6' x2='18' y2='18'/></svg>");
+   @return escape-svg("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='#{$color}' stroke-width='#{$width}'><path d='M18 6 6 18M6 6l12 12'/></svg>");
 }
 
 // SVG Square
 //
 @function icon-square($color: $black, $size: 14) {
-  @return url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='#{$color}'><rect x='0' y='0' width='#{$size}' height='#{$size}'/></svg>");
+  @return escape-svg("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='#{$color}'><path d='M0 0h24v24H0z'/></svg>");
 }
 
+// SVG Chevron Down
+//
+@function icon-down($color: $black, $width: 1.5) {
+  @return escape-svg("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='#{$color}' stroke-width='#{$width}'><path d='m6 9 6 6 6-6'/></svg>")
+}
 
