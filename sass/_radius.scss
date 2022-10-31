@@ -29,30 +29,34 @@ $utilities: map-merge($utilities, (
   ),
   "rounded-top": (
     property: border-top-left-radius border-top-right-radius,
-    class: rd-top,
+    class: rd-t,
     values: (
-      null: var(--#{$prefix}border-radius)
+      null: var(--#{$prefix}border-radius) !important,
+      0: 0 !important,
     )
   ),
   "rounded-end": (
     property: border-top-right-radius border-bottom-right-radius,
-    class: rd-right,
+    class: rd-r,
     values: (
-      null: var(--#{$prefix}border-radius)
+      null: var(--#{$prefix}border-radius) !important,
+      0: 0 !important,
     )
   ),
   "rounded-bottom": (
     property: border-bottom-right-radius border-bottom-left-radius,
-    class: rd-bottom,
+    class: rd-b,
     values: (
-      null: var(--#{$prefix}border-radius)
+      null: var(--#{$prefix}border-radius) !important,
+      0: 0 !important,
     )
   ),
   "rounded-start": (
     property: border-bottom-left-radius border-top-left-radius,
-    class: rd-left,
+    class: rd-l,
     values: (
-      null: var(--#{$prefix}border-radius)
+      null: var(--#{$prefix}border-radius) !important,
+      0: 0 !important,
     )
   )
 )
