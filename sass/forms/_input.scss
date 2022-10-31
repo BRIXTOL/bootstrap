@@ -16,6 +16,13 @@
   border: $input-border-width solid $input-border-color;
   appearance: none; // Fix appearance for date inputs in Safari
 
+  &.fm-lined {
+    border-radius: 0 !important;
+    border: none;
+    padding: $input-padding-y 1px;
+    border-bottom: $input-border-width solid $input-border-color;
+  }
+
   @if $input-text-uppercase {
     text-transform: uppercase
   }

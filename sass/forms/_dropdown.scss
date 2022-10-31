@@ -1,0 +1,55 @@
+/* DROPDOWN ----------------------------------- */
+
+.fm-dropdown {
+  @include dropdown-button(fieldset);
+
+  &.fm-lined > button + fieldset {
+    border: 0;
+    border-bottom:  $border-width solid $black;
+  }
+
+  > button + fieldset {
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    > label,
+    > label + label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: $btn-padding-y $btn-padding-x;
+      width: 100%;
+      cursor: pointer;
+      text-align: left;
+      border-bottom: $border-width solid $black;
+
+      &:hover {
+        background-color: $gray-200;
+        cursor: pointer;
+      }
+
+      &::after {
+        content: attr(aria-label);
+        font-size: 0.645rem;
+      }
+
+      &.disabled {
+        color: $gray-500;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
+
+      &.selected {
+        pointer-events: none;
+        font-weight: $font-weight-bold;
+      }
+    }
+
+  }
+}

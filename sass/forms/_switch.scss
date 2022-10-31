@@ -1,13 +1,11 @@
 /* -------------------------------------------- */
 /* FORM SWITCH                                  */
 /* -------------------------------------------- */
-
 //
 // Switch
 //
-
 .fm-switch {
-  // padding-left: $form-switch-padding-start;
+   padding-left: $form-switch-padding-start;
 
 
   &.fm-sm {
@@ -23,8 +21,8 @@
     width: $form-switch-width;
     height: calc($form-switch-width / 2);
     margin-top: 0;
-  //  margin-left: $form-switch-padding-start * -1;
-    background-image: escape-svg(icon-square($form-switch-color, calc($form-switch-width / 2)));
+    margin-left: $form-switch-padding-start * -1;
+    background-image: url(icon-square($form-switch-color, calc($form-switch-width / 2)));
     background-position: left center;
     @include border-radius($form-switch-border-radius);
     @include transition($form-switch-transition);
@@ -34,12 +32,12 @@
     }
 
     &:focus {
-      background-image: escape-svg(icon-square($form-switch-color, calc($form-switch-width / 2)));
+      background-image: url(icon-square($form-switch-color, calc($form-switch-width / 2)));
     }
 
     &:checked {
       background-position: $form-switch-checked-bg-position;
-      background-image: escape-svg(icon-square($form-switch-checked-color, calc($form-switch-width / 2)));
+      background-image: url(icon-square($form-switch-checked-color, calc($form-switch-width / 2)));
     }
   }
 

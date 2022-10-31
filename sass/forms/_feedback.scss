@@ -1,0 +1,15 @@
+.feedback {
+  font-size: $font-size-xs - .1;
+  font-weight: $font-weight-light;
+  display: block;
+  margin-top: 8px;
+  width: 100%;
+
+  &.is-invalid {
+    color: $red;
+  }
+
+  &.is-valid {
+    color: $green;
+  }
+}

@@ -2,7 +2,7 @@
 // Base styles
 //
 
-.input-gp {
+.fm-group {
   position: relative;
   display: flex;
   flex-wrap: wrap; // For form validation feedback
@@ -10,6 +10,8 @@
   width: 100%;
 
   > .fm-input,
+  > .fm-dropdown,
+  > .fm-select,
   > .fm-float {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
@@ -24,7 +26,7 @@
   }
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
-  // This isn't needed for `.input-gp-text` since it shares the same border-color
+  // This isn't needed for `.gp-text` since it shares the same border-color
   // as our inputs.
   .btn {
     position: relative;
@@ -34,6 +36,68 @@
       z-index: 5;
     }
   }
+
+  &.fm-hr {
+
+    > .fm-input,
+    > .fm-select,
+    > .fm-float,
+    > .fm-dropdown > .btn, {
+      border-radius: 0 !important;
+      border: none;
+      padding: $input-padding-y 1px;
+      border-bottom: $input-border-width solid $input-border-color;
+    }
+
+    > .fm-dropdown > .btn {
+      border-bottom: none;
+      padding: 0;
+      background-position: right 0 center;
+    }
+
+    .btn:not(.fm-dropdown > .btn) {
+      color: $body-color;
+      border-radius: 0 !important;
+      border: none;
+      border-bottom: $input-border-width solid $input-border-color;
+      padding: 1px;
+
+      &:disabled,
+      &.disabled {
+        opacity: 1;
+        color: $input-placeholder-color;
+        border-bottom: $input-border-width solid $input-border-color;
+      }
+
+      &:hover {
+        color: $input-color;
+        background-color: $transparent;
+      }
+    }
+
+    .fm-select {
+      background-position: right 1px center;
+    }
+
+    .btn:focus {
+      box-shadow: none;
+    }
+
+    .btn ~ .fm-input,
+    .btn ~ .fm-select,
+    .btn ~ .fm-dropdown,
+    .btn ~ .fm-float {
+      padding-left: $btn-padding-x;
+    }
+
+    .fm-input ~ .btn,
+    .fm-select ~ .btn,
+    .fm-dropdown ~ .btn,
+    .fm-float ~ .btn {
+      padding-left: $btn-padding-x
+    }
+
+  }
 }
 
 
@@ -42,7 +106,7 @@
 // Serves as a catch-all element for any text or radio/checkbox input you wish
 // to prepend or append to an input.
 
-.input-gp-text {
+.gp-text {
   display: flex;
   align-items: center;
   padding: $input-group-addon-padding-y $input-group-addon-padding-x;
@@ -63,17 +127,17 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.input-gp-lg > .fm-input,
-.input-gp-lg > .input-gp-text,
-.input-gp-lg > .btn {
+.gp-lg > .fm-input,
+.gp-lg > .gp-text,
+.gp-lg > .btn {
   padding: $input-padding-y-lg $input-padding-x-lg;
   @include font-size($input-font-size-lg);
   @include border-radius($input-border-radius-lg);
 }
 
-.input-gp-sm > .fm-input,
-.input-gp-sm > .input-gp-text,
-.input-gp-sm > .btn {
+.gp-sm > .fm-input,
+.gp-sm > .gp-text,
+.gp-sm > .btn {
   padding: $input-padding-y-sm $input-padding-x-sm;
   @include font-size($input-font-size-sm);
   @include border-radius($input-border-radius-sm);
@@ -83,12 +147,13 @@
 //
 // These rulesets must come after the sizing ones to properly override sm and lg
 // border-radius values when extending. They're more specific than we'd like
-// with the `.input-gp >` part, but without it, we cannot override the sizing.
+// with the `.fm-group >` part, but without it, we cannot override the sizing.
 
 // stylelint-disable-next-line no-duplicate-selectors
-.input-gp {
+.fm-group {
+
   &:not(.has-validation) {
-    > :not(:last-child):not(.fm-floating),
+    > :not(:last-child):not(.fm-float),
     > .fm-float:not(:last-child) > .fm-input {
       @include border-end-radius(0);
     }
