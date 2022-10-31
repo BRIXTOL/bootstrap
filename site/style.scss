@@ -1,0 +1,153 @@
+.content {
+  padding: 25px 50px;
+}
+
+/* -------------------------------------------- */
+/* SYNTAX HIGHLIGHTS                            */
+/* -------------------------------------------- */
+
+.language-scss .token {
+  &.property {
+    color: #8be9fd;
+  }
+
+  &.punctuation {
+    color: #ff79c6;
+  }
+
+  &.string {
+    color: #f8f8f2;
+  }
+}
+
+.style .token.string {
+  color: #f8f8f2;
+}
+
+.token {
+  &.entity, &.operator, &.url, &.variable {
+    color: #f8f8f2;
+  }
+}
+
+.language-scss .token.variable {
+  color: #fff;
+}
+
+.namespace {
+  opacity: .7;
+}
+
+.token {
+  &.atrule, &.attr-value, &.class-name, &.function {
+    color: #f1fa8c;
+  }
+
+  &.attr-name, &.builtin, &.char, &.inserted, &.selector, &.string {
+    color: #50fa7b;
+  }
+
+  &.bold, &.important {
+    font-weight: bold;
+  }
+
+  &.boolean, &.number {
+    color: #bd93f9;
+  }
+
+  &.cdata, &.comment, &.doctype, &.prolog {
+    color: #999999;
+  }
+
+  &.constant, &.deleted, &.property, &.symbol, &.tag {
+    color: #ff79c6;
+  }
+
+  &.entity {
+    cursor: help;
+  }
+
+  &.important, &.regex {
+    color: #ffb86c;
+  }
+
+  &.italic {
+    font-style: italic;
+  }
+
+  &.keyword {
+    color: #8be9fd;
+  }
+
+  &.punctuation {
+    color: #f8f8f2;
+  }
+}
+
+:not(pre) > code[class*='language-'] {
+  border-radius: .3em;
+  padding: .1em;
+  white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .relapse-fold {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+code[class*='language-'] {
+  -moz-hyphens: none;
+  -moz-tab-size: 4;
+  -ms-hyphens: none;
+  -o-tab-size: 4;
+  -webkit-hyphens: none;
+  background: none;
+  color: #f8f8f2;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  hyphens: none;
+  line-height: 1.5;
+  tab-size: 4;
+  text-align: left;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+}
+
+pre[class*='language-'] {
+  -moz-hyphens: none;
+  -moz-tab-size: 4;
+  -ms-hyphens: none;
+  -o-tab-size: 4;
+  -webkit-hyphens: none;
+  background: none;
+  color: #f8f8f2;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  hyphens: none;
+  line-height: 1.5;
+  tab-size: 4;
+  text-align: left;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  border-radius: .3em;
+  margin: .5em 0 2em;
+  overflow: auto;
+  padding: 1.5em 1.2em;
+  background: #282a36;
+}
+
+#search {
+  z-index: 9999;
+
+}
+
+body {
+  width: 85% !important;
+  margin: 0 auto;
+}
