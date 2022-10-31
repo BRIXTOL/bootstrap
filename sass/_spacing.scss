@@ -1,3 +1,5 @@
+$enable-important-utilities: true;
+
 $utilities: map-get-multiple($utilities, (
   "margin",
   "margin-x",
