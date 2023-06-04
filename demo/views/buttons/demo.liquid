@@ -1,0 +1,122 @@
+<div class="row ai-start jc-between">
+
+  <div class="col">
+
+    <h6 class="mb-3 fw-bold">
+      Button Outlined
+    </h6>
+    <p class="fs-xs">Buttons default to using the outlined style.</p>
+    {% for item in item.classes.outline %}
+      <div class="row ai-center jc-center mb-2">
+        <div class="col-8">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col my-0">
+          <button class="btn {{ item.class | remove_first: '.' }}" type="button">
+            {{ item.title }}
+          </button>
+        </div>
+      </div>
+    {% endfor %}
+
+
+    <h6 class="mt-5 mb-3 fw-bold">
+      Button States
+    </h6>
+    <p class="fs-xs">The button states can infer something. Toggle
+      <code class="fs-xs">.is-loding</code>
+      in js
+    </p>
+
+    {% for item in item.classes.states %}
+      <div class="row ai-center jc-center mb-2">
+        <div class="col-8">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-4 my-0">
+
+          <button class="btn btn-black {{ item.class | remove_first: '.' }}" type="button">
+            {{ item.title }}
+          </button>
+
+        </div>
+      </div>
+    {% endfor %}
+
+
+  </div>
+
+  <div class="col-4 pl-5">
+    <h6 class="mb-3 fw-bold">
+      Button Filled Colors
+    </h6>
+    <p class="fs-xs">Unlike Bootstrap, in order to use solid colors we pass
+      <code class="fs-xs">bg-*</code>
+    </p>
+    {% for item in item.classes.colors %}
+      <div class="row ai-center mb-2">
+        <div class="col-6">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6 my-0">
+          {%- if item.class == ".btn" -%}
+            <button class="{{ item.class | remove_first: '.' }}" type="button">
+              {{ item.title }}
+            </button>
+          {%- else -%}
+            <button class="btn {{ item.class | remove_first: '.' }}" type="button">
+              {{ item.title }}
+            </button>
+          {%- endif -%}
+
+        </div>
+      </div>
+    {% endfor %}
+
+    <h6 class="mt-5 mb-3 fw-bold">
+      Button Close
+    </h6>
+    <p class="fs-xs">The
+      <code class="fs-xs">.btn-close</code>
+      uses a
+      <code class="fs-xs">input</code>
+      button
+      <code class="fs-xs">bg-*</code>
+    </p>
+
+    <div class="row mb-2">
+      <div class="col">
+        <pre class="m-1"><code>.btn-close</code></pre>
+      </div>
+      <div class="col mt-1 my-0">
+        <input type="button" class="btn btn-close">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-4">
+
+    <h6 class=" mb-3 fw-bold">
+      Button Sizes
+    </h6>
+    <p class="fs-xs">Buttons can be different sizes
+    </p>
+    {% for item in item.classes.sizes %}
+
+      <div class="row ai-center mb-2">
+        <div class="col">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col my-0">
+          <button class="btn btn-black {{ item.class | remove_first: '.' }}" type="button">
+            {{ item.title }}
+          </button>
+        </div>
+      </div>
+
+    {% endfor %}
+
+
+  </div>
+</div>

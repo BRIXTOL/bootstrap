@@ -1,0 +1,15 @@
+{% highlight html %}
+<!-- Form Number is wrapped within a fieldset -->
+<fieldset class="fm-number">
+
+  <!-- Decrement Button is expressed as an input -->
+  <input class="decrement" type="button" onclick="this.parentNode.children[1].stepDown()">
+
+  <!-- Form Number input -->
+  <input class="fm-input" type="number" placeholder="0" min="0" name="quantity">
+
+  <!-- Increment Button is expressed as an input -->
+  <input class="increment" type="button" onclick="this.parentNode.children[1].stepUp()">
+
+</fieldset>
+{% endhighlight %}

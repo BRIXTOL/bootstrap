@@ -1,0 +1,255 @@
+{
+  "data": [
+    {
+      "title": "Breakpoints",
+      "property": "",
+      "responsive": true,
+      "describe": "The grid uses custom naming conventions of short-name variation and repurposes the Bootstrap grid system logic which is remains the most powerful and well thought through grid available on the web.",
+      "classes": [
+        {
+          "title": "XX Small",
+          "class": "*-xxs"
+        },
+        {
+          "title": "X Small",
+          "class": "*-xs"
+        },
+        {
+          "title": "Small",
+          "class": "*-sm"
+        },
+        {
+          "title": "Medium",
+          "class": "*-md"
+        },
+        {
+          "title": "Large",
+          "class": "*-lg"
+        },
+        {
+          "title": "X Large",
+          "class": "*-xl"
+        },
+        {
+          "title": "XX Large",
+          "class": "*-xxl"
+        }
+      ]
+    },
+    {
+      "title": "Grid",
+      "property": "",
+      "responsive": true,
+      "describe": "The grid uses custom naming conventions of short-name variation and repurposes the Bootstrap grid system logic which is remains the most powerful and well thought through grid available on the web.",
+      "classes": {
+        "flex": [
+          {
+            "title": "Flex Fill",
+            "class": ".flex",
+            "enabled": true
+          },
+          {
+            "title": "Flex Direction Row",
+            "class": ".flex-row",
+            "enabled": true
+          },
+          {
+            "title": "Flex Direction Column",
+            "class": ".flex-col",
+            "enabled": true
+          },
+          {
+            "title": "Flex Direction Row Reverse",
+            "class": ".flex-row-rev",
+            "enabled": false
+          },
+          {
+            "title": "Flex Direction Column Reverse",
+            "class": ".flex-col-rev",
+            "enabled": false
+          }
+        ],
+        "justify_content": [
+          {
+            "title": "Justify Content Start",
+            "class": ".jc-start",
+            "enabled": true
+          },
+          {
+            "title": "Justify Content End",
+            "class": ".jc-end",
+            "enabled": true
+          },
+          {
+            "title": "Justify Content Space Between",
+            "class": ".jc-between",
+            "enabled": true
+          },
+          {
+            "title": "Justify Content Space Around",
+            "class": ".jc-around",
+            "enabled": true
+          },
+          {
+            "title": "Justify Content Space Evenly",
+            "class": ".jc-even",
+            "enabled": false
+          }
+        ],
+        "align_items": [
+          {
+            "title": "Align Items Flex Start",
+            "class": ".ai-start",
+            "enabled": true
+          },
+          {
+            "title": "Align Items Flex End",
+            "class": ".ai-end",
+            "enabled": true
+          },
+          {
+            "title": "Align Items Center",
+            "class": ".ai-center",
+            "enabled": true
+          },
+          {
+            "title": "Align Items Basline",
+            "class": ".ai-base",
+            "enabled": true
+          },
+          {
+            "title": "Align Items Stretch",
+            "class": ".ai-stretch",
+            "enabled": false
+          }
+        ],
+        "align_content": [
+          {
+            "title": "Align Content Flex Start",
+            "class": ".ac-start",
+            "enabled": true
+          },
+          {
+            "title": "Align Content Flex End",
+            "class": ".ac-end",
+            "enabled": true
+          },
+          {
+            "title": "Align Content Center",
+            "class": ".ac-center",
+            "enabled": true
+          },
+          {
+            "title": "Align Content Space Between",
+            "class": ".ac-between",
+            "enabled": true
+          },
+          {
+            "title": "Align Content Space Around",
+            "class": ".ac-around",
+            "enabled": true
+          },
+          {
+            "title": "Align Content Stretch",
+            "class": ".ac-stretch",
+            "enabled": false
+          }
+        ],
+        "align_self": [
+          {
+            "title": "Align Self Auto",
+            "class": ".as-auto",
+            "enabled": true
+          },
+          {
+            "title": "Align Self Flex Start",
+            "class": ".as-start",
+            "enabled": true
+          },
+          {
+            "title": "Align Self Flex End",
+            "class": ".as-end",
+            "enabled": true
+          },
+          {
+            "title": "Align Self Center",
+            "class": ".as-center",
+            "enabled": true
+          },
+          {
+            "title": "Align Self Baseline",
+            "class": ".as-between",
+            "enabled": true
+          },
+          {
+            "title": "Align Self Stretch",
+            "class": ".as-stretch",
+            "enabled": false
+          }
+        ],
+        "columns": [
+          {
+            "title": "Column",
+            "class": ".col"
+          },
+          {
+            "title": "Column Auto",
+            "class": ".col-auto"
+          },
+          {
+            "title": "Column 1",
+            "class": ".col-1"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-2"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-3"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-4"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-4"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-5"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-6"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-7"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-8"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-9"
+          },
+          {
+            "title": "Column 2",
+            "class": ".col-10"
+          },
+          {
+            "title": "Column 11",
+            "class": ".col-11"
+          },
+          {
+            "title": "Column 12",
+            "class": ".col-12"
+          }
+        ]
+      }
+    }
+  ]
+}

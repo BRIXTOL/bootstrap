@@ -1,0 +1,50 @@
+<div class="row mb-5">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-5 ai-center ">
+    <div class="row ai-center mb-2">
+      {% for item in item.classes.position %}
+
+        <div class="col-7">
+          <pre class="m-1 tc"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-5 my-0">
+          <span
+            aria-label="{{ item.title | remove: 'Tooltip ' }}"
+            class="fs-sm p-1 px-2"
+            {{ item.class }}>
+            {{ item.title }}
+          </span>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-6 ai-center">
+    <div class="row ai-center mb-2">
+      {% for item in item.classes.display %}
+
+        <div class="col-7">
+          <pre class="m-1 tc"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col my-0">
+          <span
+            aria-label="{{ item.title | remove: 'Tooltip ' }}"
+            class="fs-sm p-1 px-2"
+            {{ item.class }}>
+            {{ item.title }}
+          </span>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+
+</div>

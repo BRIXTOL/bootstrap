@@ -1,0 +1,78 @@
+<div class="row mb-5">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-6">
+    <h6 class="mb-3 fw-bold">
+      Inputs
+    </h6>
+    <div class="row ai-center mb-2">
+      {% for item in item.classes.inputs %}
+        <div class="col-7 mb-3">
+          <pre class="m-0"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-5 mb-3">
+          <input
+            class="{{ item.class | remove: '.' }}"
+            id="{{ item.title | slug }}"
+            type="range">
+          <label class="fm-label" for="{{ item.title | slug }}">
+            {{ item.title }}
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+
+    <h6 class="mb-3 fw-bold">
+      Attributes
+    </h6>
+    <div class="row ai-center">
+      {% for item in item.classes.attributes %}
+        <div class="col-7 mb-3">
+          <pre class="m-0"><code>{{ item.wrap }}</code></pre>
+        </div>
+        <div class="col-5 mb-3">
+          <input
+            class="fm-range"
+            id="{{ item.title | slug }}"
+            type="range"
+            {{ item.class | remove: '.' }}>
+          <label class="fm-label" for="{{ item.title | slug }}">
+            {{ item.title }}
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+  <div class="col-6">
+    <h6 class="mb-3 fw-bold">
+      States
+    </h6>
+    <div class="row ai-center mb-2">
+      {% for item in item.classes.states %}
+        <div class="col-6 mb-3">
+          <pre class="m-0"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6 mb-3">
+          <div class="{{ item.wrap | remove: '.' }}">
+            <input
+              class="fm-range"
+              id="{{ item.title | slug }}"
+              type="range"
+              {{ item.class | remove: '.' }}>
+            <label class="fm-label" for="{{ item.title | slug }}">
+              {{ item.title }}
+            </label>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>

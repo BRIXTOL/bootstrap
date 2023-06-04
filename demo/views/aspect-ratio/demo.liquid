@@ -1,0 +1,90 @@
+<div class="row mb-5">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+
+    <h6 class="mb-3 fw-bold">
+      Aspect Ratio / Preset
+    </h6>
+
+    <div class="row mb-3">
+      <div class="col-6 mt-2">
+        <pre class="mt-0"><code>.ratio .700x1200</code></pre>
+        <picture class="ratio ratio-3000x2250">
+          <source srcset="https://cdn.shopify.com/s/files/1/0638/4637/products/DEB_BROWN_RUST_0680.jpg?v=1659112928&width=1140" media="all">
+          <img src="https://cdn.shopify.com/s/files/1/0638/4637/products/DEB_BROWN_RUST_0680.jpg?v=1659112928&width=1140">
+        </picture>
+      </div>
+      <div class="col-6 mt-2">
+        <pre class="mt-0 fs-sm tc">
+        <code class="fs-xs fc-pink">
+          $aspect-ratio-bg-svg: url('*');
+        </code>
+        </pre>
+        <div class="ratio ratio-3000x2250">
+          <img src="">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-6">
+
+    <h6 class="mb-3 fw-bold">
+      Aspect Ratio / CSS Variable
+    </h6>
+
+    <div class="row mb-3">
+      <div class="col-6 mt-2">
+        <picture class="ratio" style="--ratio: calc(800 / 1240)">
+          <source srcset="https://cdn.shopify.com/s/files/1/0638/4637/files/WMN_3.jpg?v=1680442779" media="all">
+          <img src="https://cdn.shopify.com/s/files/1/0638/4637/files/WMN_3.jpg?v=1680442779">
+        </picture>
+      </div>
+      <div class="col-6 mt-2">
+        <picture class="ratio" style="--ratio: calc(800 / 1240)">
+          <img src="">
+        </picture>
+      </div>
+    </div>
+
+    <div class="fs-sm py-2">
+      In the above example we are setting the aspect ratio via the inline
+      <code>
+        style="*"
+      </code>
+      attribute. We pass a CSS variable and
+      <code>
+        calc()
+      </code>
+      function which 
+      will be digested by the
+      <code>
+        .ratio
+      </code>
+      class name. The
+      <code>
+        --ratio
+      </code>
+      variable requires height / width
+      <code>
+        calc(height / width)
+      </code>
+    </div>
+
+<!-- esthetic-ignore-next -->
+{% highlight html %}
+<picture class="ratio" style="--ratio: calc(800 / 1240)">
+  <source srcset="*" media="*">
+  <img src="*">
+</picture>
+{% endhighlight %}
+
+  </div>
+
+</div>

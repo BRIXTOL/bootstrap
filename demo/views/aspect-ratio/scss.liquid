@@ -1,0 +1,33 @@
+<h5 class="fw-bold fc-gray d-flex ai-center jc-between py-3">
+
+  SCSS EXAMPLES
+
+  <code class="lower">
+    {{ item.title | slug }}
+  </code>
+
+</h5>
+
+{% highlight scss %}
+// ASPECT RATIO
+//
+// This allows for background images
+//
+$aspect-ratio-bg-svg: null
+$aspect-ratio-bg-color: $gray-200;
+$aspect-ratio-bg-size: 20%;
+
+// RATIO PRESETS
+//
+// This will generate class names
+//
+$aspect-ratios: (
+  "720x1200": calc(720 / 1200),
+);
+
+// MIXINS
+//
+// This is a mixin function you can call to generate ratio
+//
+aspect-ratio($height: 1000, $width: 500);
+{% endhighlight %}

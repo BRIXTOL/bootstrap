@@ -1,0 +1,37 @@
+{% highlight html %}
+
+<!-- Form Dropdown List -->
+<div class="fm-dropdown">
+
+  <!-- Button is always first and required (no class is needed) -->
+  <button type="button">Dropdown Select</button>
+
+  <!-- Wrap the dropdown in a form fieldset -->
+  <fieldset>
+
+    <!-- Each item must use a "label" element, the "for" attribute must point to the "input" id -->
+    <label for="1">Option 1</label>
+    <input id="1" type="radio">
+
+    <!-- When a value is selected, include a "selected" class -->
+    <label class="selected" for="2">Option 2</label>
+    <input id="2" type="radio">
+
+    <!-- Optionally disable a list item using a "disabled" class -->
+    <label class="disabled" for="3">Option 3</label>
+    <input id="3" type="radio">
+
+    <!-- Use the "aria-label" attribute to insert a bade on right side -->
+    <label aria-label="Some Label" for="4">Option 4</label>
+    <input id="4" type="radio">
+
+    <label for="5">Option 5</label>
+    <input id="5" type="radio">
+
+    <label for="6">Option 6</label>
+    <input id="6" type="radio">
+
+  </fieldset>
+</div>
+
+{% endhighlight %}

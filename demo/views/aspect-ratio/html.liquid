@@ -1,0 +1,19 @@
+{% highlight html %}
+
+<!-- Aspect Ratio with Preset-->
+<picture class="ratio ratio-720x1200">
+  <source srcset="*" media="*">
+  <source srcset="*" media="*">
+  <source srcset="*" media="*">
+  <img src="*">
+</picture>
+
+<!-- Aspect Ratio with CSS Variable -->
+<picture class="ratio" style="--ratio: calc(720 / 1200);">
+  <source srcset="*" media="*">
+  <source srcset="*" media="*">
+  <source srcset="*" media="*">
+  <img src="*">
+</picture>
+
+{% endhighlight %}

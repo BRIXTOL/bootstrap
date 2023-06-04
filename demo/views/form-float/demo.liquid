@@ -1,0 +1,93 @@
+<div class="row ac-center ">
+
+  <div class="col-5">
+    {% for item in item.classes.inputs %}
+      <div class="row ac-center mb-2">
+        <div class="col-6">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+
+        <div class="col my-3">
+
+          <div class="{{ item.class | remove: '.' }} mb-3">
+            <input
+              class="fm-input"
+              id="{{ item.title | slug }}"
+              placeholder="{{ item.class }}"
+              type="text">
+            <label for="{{ item.title | slug }}">
+              {{ item.title }}
+            </label>
+          </div>
+
+          <button class="btn btn-outline btn-black" type="submit">
+            button
+          </button>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-5">
+    {% for item in item.classes.select %}
+      <div class="row ac-center mb-2">
+        <div class="col-6">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+
+        <div class="col my-0">
+          <div class="{{ item.class | remove: '.' }} mb-3">
+
+            <select class="fm-select" id="{{ item.title | slug }}">
+              <option value="1">
+                One
+              </option>
+              <option value="2">
+                Two
+              </option>
+              <option value="3">
+                Three
+              </option>
+            </select>
+
+            <label class="legend-input" for="{{ item.title | slug }}">
+              {{ item.title }}
+            </label>
+          </div>
+
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+<div class="row ac-center ">
+
+  {% for item in item.classes.textarea %}
+    <div class="col-5">
+      <div class="row ac-center mb-2">
+        <div class="col-6">
+
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+
+        <div class="col my-0">
+
+          <div class="{{ item.class | remove: '.' }} mb-3">
+            <textarea
+              class="fm-input"
+              id="{{ item.title | slug }}"
+              placeholder=".fm-input"
+              style="height: 100px"></textarea>
+            <label class="legend-textarea" for="{{ item.title | slug }}">
+              {{ item.title }}
+            </label>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>

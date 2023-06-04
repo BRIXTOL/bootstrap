@@ -1,0 +1,48 @@
+<div class="row mb-5">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col-12">
+    <h6 class="mb-3 fw-bold">
+      Form Number Increment/Decrement
+    </h6>
+     {% for item in item.classes.inputs %}
+    <div class="row ai-center mb-3">
+        <div class="col-5">
+          <pre class="m-0 pl-4"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-2 pl-5">
+          <fieldset class="{{ item.class | remove: '.' }}"
+          {% if item.class contains '.fm-sm' %}style="width: 70%"{% endif%}>
+            <input class="decrement" type="button" onclick="this.parentNode.children[1].stepDown()">
+            <input class="fm-input" type="number" min="0" placeholder="0" name="quantity" placeholder="0">
+            <input class="increment" type="button" onclick="this.parentNode.children[1].stepUp()">
+          </fieldset>
+        </div>
+    </div>
+         {% endfor %}
+  </div>
+
+  <div class="col-12">
+    <h6 class="mb-3 fw-bold">
+      Form Number Validations
+    </h6>
+    {% for item in item.classes.validate %}
+      <div class="row mb-3">
+          <div class="col-5 mb-3">
+            <pre class="m-0 pl-4"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-2 pl-5">
+            <fieldset class="{{ item.class | remove: '.' }}">
+              <input class="decrement" type="button" onclick="this.parentNode.children[1].stepDown()">
+              <input class="fm-input" type="number" min="0" placeholder="0" name="quantity" placeholder="0">
+              <input class="increment" type="button" onclick="this.parentNode.children[1].stepUp()">
+            </fieldset>
+          </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
