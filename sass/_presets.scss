@@ -1,0 +1,18 @@
+// THIS FILE IS INCLUDED WITHIN THE _variables.scss
+//
+// This is the preset requirement file which references both
+// bootstrap and the custom _svg.scss function references.
+//
+//
+
+/* BOOTSTRAP REQUIRES ------------------------- */
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/maps";
+@import "bootstrap/mixins";
+@import "bootstrap/utilities";
+
+/* SVG REFERENCES ----------------------------- */
+
+@import 'svg';
