@@ -1,27 +1,12 @@
-/* BOOTSTRAP ---------------------------------- */
+/* VARIABLES ----------------------------------- */
 
-@import "sass/bootstrap/functions";
-@import "sass/bootstrap/variables";
-@import "sass/bootstrap/maps";
-@import "sass/bootstrap/mixins";
-@import "sass/bootstrap/utilities";
+@import "variables";
 
-/* CUSTOM ------------------------------------- */
+/* GRID --------------------------------------- */
 
-@import "sass/svg";
-@import "sass/variables";
-@import "sass/mixins";
-@import "sass/root";
-@import "sass/reboot";
+@import "sass/grid";
 
-/* BOOTSTRAP ---------------------------------- */
-
-@import "sass/bootstrap/vendor/rfs";
-@import "sass/bootstrap/containers";
-@import "sass/bootstrap/grid";
-@import "sass/bootstrap/utilities";
-
-/* CUSTOM ------------------------------------- */
+/* BASE --------------------------------------- */
 
 @import "sass/headings";
 @import "sass/code";
@@ -40,11 +25,13 @@
 @import "sass/spinner";
 @import "sass/buttons";
 @import "sass/tooltip";
+@import "sass/ratio";
 
 /* COMPONENTS -------------------------------- */
 
 @import "sass/components/dropdown";
 @import "sass/components/accordion";
+@import "sass/components/modal";
 
 /* FORMS -------------------------------------- */
 
@@ -59,7 +46,7 @@
 @import "sass/forms/range";
 @import "sass/forms/float";
 @import "sass/forms/group";
+@import "sass/forms/number";
 @import "sass/forms/feedback";
 @import "sass/forms/validation";
-
 
