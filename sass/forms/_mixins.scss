@@ -86,6 +86,16 @@
     }
   }
 
+  .fm-number {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      .fm-input {
+        border-color: $color;
+      }
+    }
+  }
+
   .fm-input {
     @include form-validation-state-selector($state) {
       border-color: $color;
