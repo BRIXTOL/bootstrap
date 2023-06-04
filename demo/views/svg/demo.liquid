@@ -1,0 +1,50 @@
+<div class="row mb-5">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row ai-center mb-2 px-3">
+  <div class="col-auto" style="width: 170px">
+    <h6 class="mb-3 fw-bold">
+      Icon
+    </h6>
+
+  </div>
+  <div class="col-3">
+    <h6 class="mb-3 fw-bold">
+      CSS Variable
+    </h6>
+
+  </div>
+  <div class="col-5">
+    <h6 class="mb-3 fw-bold">
+      SASS Function
+    </h6>
+
+  </div>
+
+</div>
+{% for item in item.classes %}
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      {% if item.title == 'Square' %}
+        <span class="d-block" style="margin: 3px; height: 16px; width: 16px; background-image:var(--svg-{{ item.title |downcase }});"></span>
+      {% else %}
+        <span class="d-block" style="height: 24px; width: 24px; background-image:var(--svg-{{ item.title |downcase }});"></span>
+      {% endif %}
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      {{ item.title }}
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-{{ item.title |downcase }}: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        {{ item.function }}
+      </code>
+    </div>
+
+  </div>
+{% endfor %}
