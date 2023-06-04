@@ -31,13 +31,14 @@
   .btn {
     position: relative;
     z-index: 2;
+    border-width: $input-border-width;
 
     &:focus {
       z-index: 5;
     }
   }
 
-  &.fm-hr {
+  &.fm-lined {
 
     > .fm-input,
     > .fm-select,
