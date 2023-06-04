@@ -289,7 +289,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: $font-family-code;
+  font-family:  var(--#{$prefix}font-code);
   @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
 }
 
@@ -353,6 +353,13 @@ figure {
 img,
 svg {
   vertical-align: middle;
+}
+
+// Lazy Loading
+//
+// Ensure alts are hidden
+img:not([src]):not([srcset]) {
+  visibility: hidden;
 }
 
 
