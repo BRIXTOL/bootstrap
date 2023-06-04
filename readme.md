@@ -4,9 +4,7 @@ Stripped down and customized [Bootstrap v5](https://getbootstrap.com/) variation
 
 **The bundle is refined for usage within our internal and public facing projects. This means that the included logic is developed for our web applications.**
 
-> **Note**&nbsp;
-
-> _You are free to leverage and use the variation but the project will not accept feature requests, only bug reporting or issues._
+> **Note** <br> _You are free to leverage and use the variation but the project will not accept feature requests, only bug reporting or issues._
 
 ### Key Features
 
