@@ -143,6 +143,13 @@
                   
                     <a
                       class="d-block mb-1 upcase"
+                      href="#svg"
+                      id="SVG">
+                      SVG
+                    </a>
+                  
+                    <a
+                      class="d-block mb-1 upcase"
                       href="#aspect-ratio"
                       id="Aspect Ratio">
                       Aspect Ratio
@@ -1050,7 +1057,6 @@
     </div>
   </div>
 
-
                     </div>
                   </div>
 
@@ -1511,6 +1517,284 @@
                 
               
 
+              
+
+                
+
+                
+
+                  
+                    <button type="button" class="accordion-btn d-flex ai-center h3 fw-bold no-icon initial">
+                      <span class="mr-auto py-4">
+                        SVG
+                      </span>
+                      
+                      <code class="lower">style</code>
+                    </button>
+                  
+
+                  <div
+                    class="accordion-fold bg-white"
+                    id="svg"
+                    style="margin-top: 100px;">
+                    <div class="container-fluid gx-0 py-4">
+                      
+                      <div class="row mb-5">
+  <div class="col-12">
+    SVG Icons embedded within the variation are available as SASS Functions and applied to <code>background-image</code> properties. The icons are also available as CSS Variables and expose a value of <code>url()</code> which can be used inline via <code>style</code> attributes.
+  </div>
+</div>
+
+<div class="row ai-center mb-2 px-3">
+  <div class="col-auto" style="width: 170px">
+    <h6 class="mb-3 fw-bold">
+      Icon
+    </h6>
+
+  </div>
+  <div class="col-3">
+    <h6 class="mb-3 fw-bold">
+      CSS Variable
+    </h6>
+
+  </div>
+  <div class="col-5">
+    <h6 class="mb-3 fw-bold">
+      SASS Function
+    </h6>
+
+  </div>
+
+</div>
+
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      
+        <span class="d-block" style="height: 24px; width: 24px; background-image:var(--svg-plus);"></span>
+      
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      Plus
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-plus: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        <span class='fw-bold'>icon-plus(</span><code class='fc-black'>$color</code>: <code class='fc-gray'>currentColor</code>,<code class='fc-black'>$width</code>: <code class='fc-gray'>1.5</code><span class='fw-bold'>)</span>
+      </code>
+    </div>
+
+  </div>
+
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      
+        <span class="d-block" style="height: 24px; width: 24px; background-image:var(--svg-minus);"></span>
+      
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      Minus
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-minus: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        <span class='fw-bold'>icon-minus(</span><code class='fc-black'>$color</code>: <code class='fc-gray'>currentColor</code>, <code class='fc-black'>$width</code>: <code class='fc-gray'>1.5</code><span class='fw-bold'>)</span>
+      </code>
+    </div>
+
+  </div>
+
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      
+        <span class="d-block" style="height: 24px; width: 24px; background-image:var(--svg-check);"></span>
+      
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      Check
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-check: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        <span class='fw-bold'>icon-check(</span><code class='fc-black'>$color</code>: <code class='fc-gray'>currentColor</code>, <code class='fc-black'>$width</code>: <code class='fc-gray'>1.5</code><span class='fw-bold'>)</span>
+      </code>
+    </div>
+
+  </div>
+
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      
+        <span class="d-block" style="height: 24px; width: 24px; background-image:var(--svg-cross);"></span>
+      
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      Cross
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-cross: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        <span class='fw-bold'>icon-cross(</span><code class='fc-black'>$color</code>: <code class='fc-gray'>currentColor</code>, <code class='fc-black'>$width</code>: <code class='fc-gray'>1.5</code><span class='fw-bold'>)</span>
+      </code>
+    </div>
+
+  </div>
+
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      
+        <span class="d-block" style="margin: 3px; height: 16px; width: 16px; background-image:var(--svg-square);"></span>
+      
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      Square
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-square: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        <span class='fw-bold'>icon-square(</span><code class='fc-black'>$color</code>: <code class='fc-gray'>currentColor</code>, <code class='fc-black'>$width</code>: <code class='fc-gray'>1.5</code><span class='fw-bold'>)</span>
+      </code>
+    </div>
+
+  </div>
+
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      
+        <span class="d-block" style="height: 24px; width: 24px; background-image:var(--svg-arrow);"></span>
+      
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      Arrow
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-arrow: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        <span class='fw-bold'>icon-arrow(</span><code class='fc-black'>$color</code>: <code class='fc-gray'>currentColor</code>, <code class='fc-black'>$width</code>: <code class='fc-gray'>1.5</code><span class='fw-bold'>)</span>
+      </code>
+    </div>
+
+  </div>
+
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      
+        <span class="d-block" style="height: 24px; width: 24px; background-image:var(--svg-menu);"></span>
+      
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      Menu
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-menu: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        <span class='fw-bold'>icon-menu(</span><code class='fc-black'>$color</code>: <code class='fc-gray'>currentColor</code>, <code class='fc-black'>$width</code>: <code class='fc-gray'>1.5</code><span class='fw-bold'>)</span>
+      </code>
+    </div>
+
+  </div>
+
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      
+        <span class="d-block" style="height: 24px; width: 24px; background-image:var(--svg-image);"></span>
+      
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      Image
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-image: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        <span class='fw-bold'>icon-image(</span><code class='fc-black'>$color</code>: <code class='fc-gray'>currentColor</code>, <code class='fc-black'>$width</code>: <code class='fc-gray'>0.8</code><span class='fw-bold'>)</span>
+      </code>
+    </div>
+
+  </div>
+
+  <div class="row ai-center mb-1 px-3">
+    <div class="col-auto" style="width: 70px">
+      
+        <span class="d-block" style="height: 24px; width: 24px; background-image:var(--svg-bell);"></span>
+      
+    </div>
+    <div class="col-1 my-0 fs-xs upper fc-gray">
+      Bell
+    </div>
+    <div class="col-3 tc">
+      <pre class="m-1 fc-pink"><code>--svg-bell: url(...)</code></pre>
+    </div>
+    <div class="col-5">
+      <code class="fc-green">
+        <span class='fw-bold'>icon-bell(</span><code class='fc-black'>$color</code>: <code class='fc-gray'>currentColor</code>, <code class='fc-gray'>$width</code>: <code class='fc-gray'>1.5</code><span class='fw-bold'>)</span>
+      </code>
+    </div>
+
+  </div>
+
+                    </div>
+                  </div>
+
+                
+
+                  
+                    <button type="button" class="accordion-btn h6 fw-bold fc-gray py-3 ">
+                      SVG scss
+                    </button>
+                  
+
+                  <div
+                    class="accordion-fold bg-white"
+                    id="svg"
+                    style="margin-top: 100px;">
+                    <div class="container-fluid gx-0 py-1">
+                      
+                      <pre class="language-scss"><code class="language-scss"><span class="token function">icon-plus</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$color</span></span><span class="token punctuation">:</span> currentColor<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$width</span></span><span class="token punctuation">:</span> 1.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">icon-minus</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$color</span></span><span class="token punctuation">:</span> currentColor<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$width</span></span><span class="token punctuation">:</span> 1.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">icon-check</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$color</span></span><span class="token punctuation">:</span> currentColor<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$width</span></span><span class="token punctuation">:</span> 1.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">icon-bell</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$color</span></span><span class="token punctuation">:</span> currentColor<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$width</span></span><span class="token punctuation">:</span> 1.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// etc etc</span></code></pre>
+
+                    </div>
+                  </div>
+
+                
+
+                  
+                    <button type="button" class="accordion-btn h6 fw-bold fc-gray py-3  bb-0">
+                      SVG html
+                    </button>
+                  
+
+                  <div
+                    class="accordion-fold bg-white"
+                    id="svg"
+                    style="margin-top: 100px;">
+                    <div class="container-fluid gx-0 py-1">
+                      
+                      <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Rendering an Icon in markup can be done via style attribute --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--svg-bell<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+
+                    </div>
+                  </div>
+
+                
               
 
                 
@@ -4141,65 +4425,86 @@
     <div class="row mb-3">
       
         <div class="col-5 mb-3">
-          <pre class="m-0 pl-3"><code>.fm-group .fm-lined > </code></pre>
+          <pre class="m-0 pl-3"><code>.fm-dropdown .fm-lined</code></pre>
         </div>
         <div class="col-5 pl-5 mb-3">
-          <div class="fm-group fm-lined">
 
-            <div class="fm-dropdown fm-lined">
-            <button class="btn btn-dropdown" type="button">
-              Dropdown Lined
-            </button>
-            <div class="dropdown-list ">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
+            <div class="fm-dropdown fm-lined" data-controller="dropdown">
+              <button class="btn" type="button" data-action="dropdown#toggle"
+              data-dropdown-target="button">
+                Dropdown Lined
+              </button>
+              <fieldset>
+                <label for="1">Option 1</label>
+                <input id="1" type="radio">
+
+                <label for="2">Option 2</label>
+                <input id="2" type="radio">
+
+                <label for="3">Option 3</label>
+                <input id="3" type="radio">
+
+                <label for="4">Option 4</label>
+                <input id="4" type="radio">
+              </fieldset>
             </div>
-          </div>
 
-          </div>
         </div>
 
       
         <div class="col-5 mb-3">
-          <pre class="m-0 pl-3"><code>.fm-group .fm-lined > </code></pre>
+          <pre class="m-0 pl-3"><code>.fm-dropdown .fm-lined .is-valid</code></pre>
         </div>
         <div class="col-5 pl-5 mb-3">
-          <div class="fm-group fm-lined">
 
-            <div class="fm-dropdown fm-lined is-valid">
-            <button class="btn btn-dropdown" type="button">
-              Valid
-            </button>
-            <div class="dropdown-list ">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
+            <div class="fm-dropdown fm-lined is-valid" data-controller="dropdown">
+              <button class="btn" type="button" data-action="dropdown#toggle"
+              data-dropdown-target="button">
+                Valid
+              </button>
+              <fieldset>
+                <label for="1">Option 1</label>
+                <input id="1" type="radio">
+
+                <label for="2">Option 2</label>
+                <input id="2" type="radio">
+
+                <label for="3">Option 3</label>
+                <input id="3" type="radio">
+
+                <label for="4">Option 4</label>
+                <input id="4" type="radio">
+              </fieldset>
             </div>
-          </div>
 
-          </div>
         </div>
 
       
         <div class="col-5 mb-3">
-          <pre class="m-0 pl-3"><code>.fm-group .fm-lined > </code></pre>
+          <pre class="m-0 pl-3"><code>.fm-dropdown .fm-lined .is-invalid</code></pre>
         </div>
         <div class="col-5 pl-5 mb-3">
-          <div class="fm-group fm-lined">
 
-            <div class="fm-dropdown fm-lined is-invalid">
-            <button class="btn btn-dropdown" type="button">
-              Invalid
-            </button>
-            <div class="dropdown-list ">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
+            <div class="fm-dropdown fm-lined is-invalid" data-controller="dropdown">
+              <button class="btn" type="button" data-action="dropdown#toggle"
+              data-dropdown-target="button">
+                Invalid
+              </button>
+              <fieldset>
+                <label for="1">Option 1</label>
+                <input id="1" type="radio">
+
+                <label for="2">Option 2</label>
+                <input id="2" type="radio">
+
+                <label for="3">Option 3</label>
+                <input id="3" type="radio">
+
+                <label for="4">Option 4</label>
+                <input id="4" type="radio">
+              </fieldset>
             </div>
-          </div>
 
-          </div>
         </div>
 
       
@@ -4260,8 +4565,6 @@
                 class="btn"
                 id="button-addon"
                 type="button"
-                
-                disabled
                 >
                 Button
               </button></div>
@@ -4383,7 +4686,6 @@
   </div>
 
 </div>
-
                     </div>
                   </div>
 
@@ -4518,7 +4820,7 @@
           <div class="fm-group mb-3">
             
               <button
-                class="btn btn-outline-black"
+                class="btn bd br-0 bc-gray"
                 id="button-addon1"
                 type="button">
                 Button
@@ -4543,7 +4845,7 @@
                 placeholder=""
                 type="text">
               <button
-                class="btn btn-outline-black"
+                class="btn bd bl-0 bc-gray"
                 id="button-addon1"
                 type="button">
                 Button
@@ -4557,7 +4859,6 @@
   </div>
 
 </div>
-
                     </div>
                   </div>
 
@@ -5460,30 +5761,23 @@
                       
                       <div class="row ac-center ">
 
-  <div class="col-5">
+  <div class="col-6">
     
       <div class="row ac-center mb-2">
         <div class="col-6">
           <pre class="m-1"><code>.fm-float</code></pre>
         </div>
-
-        <div class="col my-3">
-
+        <div class="col">
           <div class="fm-float mb-3">
             <input
               class="fm-input"
               id="input-(default)"
               placeholder=".fm-float"
               type="text">
-            <label for="input-(default)">
+            <label class="legend-input" for="input-(default)">
               Input (default)
             </label>
           </div>
-
-          <button class="btn btn-outline btn-black" type="submit">
-            button
-          </button>
-
         </div>
       </div>
     
@@ -5491,30 +5785,23 @@
         <div class="col-6">
           <pre class="m-1"><code>.fm-float .fm-lg</code></pre>
         </div>
-
-        <div class="col my-3">
-
+        <div class="col">
           <div class="fm-float fm-lg mb-3">
             <input
               class="fm-input"
               id="input-large"
               placeholder=".fm-float .fm-lg"
               type="text">
-            <label for="input-large">
+            <label class="legend-input" for="input-large">
               Input Large
             </label>
           </div>
-
-          <button class="btn btn-outline btn-black" type="submit">
-            button
-          </button>
-
         </div>
       </div>
     
   </div>
 
-  <div class="col-5">
+  <div class="col-6">
     
       <div class="row ac-center mb-2">
         <div class="col-6">
@@ -5574,11 +5861,32 @@
     
 
   </div>
+
+  <div class="col-6">
+    <div class="fm-group mb-3">
+      <div class="fm-float">
+        <input
+          id="xxx"
+          class="fm-input"
+          placeholder="Placeholder"
+          type="text">
+        <label class="legend-input" for="xxx">
+          Legend
+        </label>
+      </div>
+      <button
+        class="btn bd bc-gray px-4 bl-0"
+        id="button-addon1"
+        type="button">
+        Button
+      </button>
+    </div>
+  </div>
 </div>
 <div class="row ac-center ">
 
   
-    <div class="col-5">
+    <div class="col-6">
       <div class="row ac-center mb-2">
         <div class="col-6">
 
@@ -5602,7 +5910,7 @@
       </div>
     </div>
   
-    <div class="col-5">
+    <div class="col-6">
       <div class="row ac-center mb-2">
         <div class="col-6">
 
