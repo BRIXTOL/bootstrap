@@ -1,0 +1,67 @@
+fieldset.fm-number {
+  overflow: hidden;
+  border: $border-width solid $black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: $form-number-width;
+
+  &.fm-sm  {
+
+    .fm-input {
+      line-height: calc($line-height-sm / 2);
+      font-size:calc($font-size-sm / 1.1);
+      padding: calc($input-padding-y-sm / 2) calc($input-padding-x-sm / 2);
+    }
+    .increment,
+    .decrement { background-size: .9rem; }
+   }
+
+  .fm-input {
+    border: none;
+    padding: $input-padding-y calc($input-padding-x / 2);
+    line-height: calc($input-line-height);
+    text-align: center;
+    -moz-appearance: textfield;
+    border-right: $border-width solid $black;
+    border-left: $border-width solid $black;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+  }
+
+  .increment,
+  .decrement {
+    background-color: transparent;
+    z-index: 100;
+    border: none;
+    background-size: 1.1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 0;
+    line-height: calc($line-height-sm / 2);
+    display: block;
+
+    &:hover {
+      opacity: .5;
+      transition: all 250ms ease-in-out;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+  }
+
+  .increment {
+    background-image: var(--svg-plus);
+  }
+
+  .decrement {
+    background-image: var(--svg-minus);
+  }
+}
