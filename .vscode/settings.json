@@ -13,9 +13,19 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true
   },
-  "[html]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "sissel.shopify-liquid"
+  "[liquid]": {
+    "editor.defaultFormatter": "sissel.shopify-liquid",
+    "editor.formatOnSave": true
   },
-  "liquid.format.enable": true
+  "html.customData": [
+    "./.vscode/custom-data/accordion.html-data.json",
+    "./.vscode/custom-data/carousel.html-data.json",
+    "./.vscode/custom-data/dropdown.html-data.json",
+    "./.vscode/custom-data/form.html-data.json",
+    "./.vscode/custom-data/spx.html-data.json",
+    "./.vscode/custom-data/purchase.html-data.json",
+    "./.vscode/custom-data/sticky.html-data.json",
+    "./.vscode/custom-data/stimulus.html-data.json",
+    "./.vscode/custom-data/viewer.html-data.json"
+  ],
 }
