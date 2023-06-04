@@ -3,9 +3,10 @@
 @mixin dropdown-button($open-element: ul) {
 
   &.opened {
+    z-index: 100;
 
     > button {
-      background-image: url(icon-minus());
+      background-image: var(--svg-minus);
       opacity: .5;
     }
 
@@ -26,12 +27,11 @@
     border-right: $border-width solid $black;
     border-bottom: $border-width solid $black;
     width: 100%;
-    //max-height: 200px;
   }
 }
 
-.fm-dropdown,
-.dropdown {
+.dropdown,
+.fm-dropdown {
   position: relative;
   display: block;
   width: 100%;
@@ -45,7 +45,7 @@
     background-repeat: no-repeat;
     background-position: right $input-height-inner-quarter center;
     background-size: $input-height-inner-half $input-height-inner-half;
-    background-image: url(icon-plus());
+    background-image: var(--svg-plus);
     text-align: left;
     padding: $btn-padding-y $btn-padding-x;
 
@@ -72,10 +72,10 @@
   }
 
   &.selected > button {
-    background-image: url(icon-check());
+    background-image: var(--svg-check);
 
     &:hover {
-      background-image: url(icon-plus());
+      background-image: var(--svg-plus);
     }
   }
 }
