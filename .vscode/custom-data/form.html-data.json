@@ -1,0 +1,168 @@
+{
+  "version": 1.1,
+  "globalAttributes": [
+    {
+      "name": "data-action",
+      "description": "Form actions to be invoked within the controller defined element",
+      "valueSet": "actions"
+    },
+    {
+      "name": "data-form-target",
+      "description": "Target elements for the form",
+      "valueSet": "targets"
+    },
+    {
+      "name": "data-form-session",
+      "description": "Apply on form fields. This is an independent attribute value which is used to reference a customer session data reference. The customer session is stored in local storage. When a form `field` uses this attribute the field `value=\"\"` will be populated with the session data.",
+      "valueSet": "session"
+    },
+    {
+      "name": "data-form-required",
+      "description": "An isolated attribute value typically used on Dropdown controllers to infer whether or not a selection is required. A Dropdown controller select list holds a radio fieldset of items. Only when the `data-dropdown-selected-value` is populated will the field be valid.",
+      "valueSet": "boolean"
+    },
+    {
+      "name": "data-form-id-value",
+      "description": "A unique identifier to use for this form. When undefined, a UUID is generated and used."
+    },
+    {
+      "name": "data-form-type-value",
+      "description": "The form type value. This describes the type of form to generate.",
+      "valueSet": "types"
+    },
+    {
+      "name": "data-form-success-value",
+      "description": "The form success response. When undefined, the `i18n` locales will be used."
+    },
+    {
+      "name": "data-form-session-value",
+      "description": "Attach known customer session values to the form submission. When undefined, it will default to `true` and use references.",
+      "valueSet": "boolean"
+    },
+    {
+      "name": "data-form-response-value",
+      "description": "The response type to invoke upon submission of the form. This will control how the form response value sould be displayed. This defaults to `append`.",
+      "valueSet": "response-types"
+    },
+    {
+      "name": "data-form-klaviyo-value",
+      "description": "The Klaviyo list ID which form data will be submitted."
+    }
+  ],
+  "valueSets": [
+    {
+      "name": "boolean",
+      "values": [
+        {
+          "name": "true",
+          "description": "Enabled"
+        },
+        {
+          "name": "false",
+          "description": "Disabled"
+        }
+      ]
+    },
+    {
+      "name": "response-types",
+      "values": [
+        {
+          "name": "append",
+          "description": "An `append` response type is the **default** and will append the success/failed response text to the defined `data-form-target=\"response\"` element."
+        },
+        {
+          "name": "toggle",
+          "description": "A `toggle` response type will **hide** the form element and **show** the defined `data-form-target=\"response\"` element. The controller will automatically add the `d-none` class to the response form target element if not present upon connection."
+        },
+        {
+          "name": "slide",
+          "description": "A `slide` response type will **slide** the form element to the `data-form-target=\"response\"` element."
+        }
+      ]
+    },
+    {
+      "name": "types",
+      "values": [
+        {
+          "name": "newsletter:advert",
+          "description": "This type of form is an advert newsletter, and is available via a unique URL endpoint. Interfaces with the Klaviyo EaaS service."
+        },
+        {
+          "name": "newsletter:footer",
+          "description": "This type of form is used in the footer. Interfaces with the Klaviyo EaaS service."
+        },
+        {
+          "name": "newsletter:footer",
+          "description": "This type of form is used within the shopping cart. Interfaces with the Klaviyo EaaS service."
+        },
+        {
+          "name": "notification:instock",
+          "description": "The type of form is leveraged to subscribe an email address to instock notifications, typically used when a product is yet to become available. It is used when pre-orders are not active. Interfaces with the Klaviyo EaaS service."
+        },
+        {
+          "name": "notification:restock",
+          "description": "The type of form is leveraged to subscribe an email address to a restock notificaiton alert. It's used when a product of a specific size is out-of-stock and allows customers to subscribe to an email for it becomes available again. Interfaces with the Klaviyo EaaS service."
+        },
+        {
+          "name": "shopify:contact",
+          "description": "The type of form is used for contact subsmissions. It will POST request to Shopify, typically for contact or customer support."
+        },
+        {
+          "name": "api:discount",
+          "description": "The type of form will query the Brixtol Textiles API and validate a discount code."
+        }
+      ]
+    },
+    {
+      "name": "targets",
+      "values": [
+        {
+          "name": "field",
+          "description": "Apply to a `<input>` or `<textarea>` element within the form. Fields also require `data-action` attributes."
+        },
+        {
+          "name": "dropdown",
+          "description": "Apply to a Dropdown select list elements. Form Dropdown targets are added along side the `data-controller=\"dropdown\"` attribute."
+        },
+        {
+          "name": "submit",
+          "description": "Apply on a `<button>` element."
+        },
+        {
+          "name": "form",
+          "description": "Apply on a `<form>` element - Use when `data-form-response-value` is `toggle`"
+        },
+        {
+          "name": "response",
+          "description": "Apply on an element where the response should be inserted."
+        }
+      ]
+    },
+    {
+      "name": "actions",
+      "values": [
+        {
+          "name": "form#onInput",
+          "description": "Apply to an `<input>` or `<textarea>` element. Fields also require `data-target=\"field\"` attributes."
+        },
+        {
+          "name": "form#onSubmit",
+          "description": "Apply to the `<form>` element."
+        },
+        {
+          "name": "form#next",
+          "description": "Apply to a `<button>` element."
+        }
+      ]
+    },
+    {
+      "name": "session",
+      "values": [
+        {
+          "name": "emailAddress",
+          "description": "The customer session `emailAddress` value"
+        }
+      ]
+    }
+  ]
+}
