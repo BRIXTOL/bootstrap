@@ -1,3 +1,5 @@
+@import "sass/presets";
+
 /* -------------------------------------------- */
 /* VARIABLE PREFIX                              */
 /* -------------------------------------------- */
@@ -23,7 +25,7 @@ $enable-gradients:                  false;
 $enable-smooth-scroll:              false;
 $enable-cssgrid:                    false;
 $enable-negative-margins:           false;
-$enable-deprecation-messages:       false;
+$enable-deprecation-messages:       true;
 $enable-important-utilities:        false;
 
 /* -------------------------------------------- */
@@ -81,10 +83,7 @@ $background-colors: (
 /* BORDER COLORS                                */
 /* -------------------------------------------- */
 
-// scss-docs-start border-color
 $border-color: $gray-300;
-// scss-docs-start border-color
-
 $border-colors: (
 
   "black": $black,
@@ -107,7 +106,8 @@ $font-colors: (
   "green": $green,
   "gray": $gray-500,
   "red": $red,
-  "orange": $orange
+  "orange": $orange,
+  "pink": $pink
 
 );
 
@@ -131,7 +131,6 @@ $button-colors: (
 /* -------------------------------------------- */
 
 $spacer:                      1rem;
-
 $spacers: (
 
   0: 0,
@@ -149,6 +148,12 @@ $spacers: (
 $grid-columns:                12;
 $grid-gutter-width:           1.5rem;
 $grid-row-columns:            6;
+
+/* -------------------------------------------- */
+/* CONTAINER PADDING                            */
+/* -------------------------------------------- */
+
+$container-padding-x: $grid-gutter-width;
 
 /* -------------------------------------------- */
 /* GRID > BREAKPOINTS                           */
@@ -180,6 +185,58 @@ $container-max-widths: (
 );
 
 /* -------------------------------------------- */
+/* FLEX CONTROL                                 */
+/* -------------------------------------------- */
+
+$flex-direction: (
+  row: row,
+  col: column,
+  // row-rev: row-reverse,
+  // col-rev: column-reverse
+);
+
+$justify-content: (
+
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  // even: space-evenly,
+
+);
+
+$align-content: (
+
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  // stretch: stretch
+
+);
+
+$align-self: (
+
+  auto: auto,
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  base: baseline,
+  // stretch: stretch
+
+);
+
+$align-items: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  base: baseline,
+  // stretch: stretch,
+);
+
+/* -------------------------------------------- */
 /* Z-INDEXES                                    */
 /* -------------------------------------------- */
 
@@ -204,6 +261,9 @@ $font-family-heading-var:     var(--#{$prefix}font-heading);
 
 $font-family-code:            SFMono-Regular, Menlo, Monaco, "Courier New", Courier, monospace;
 $font-family-code-var:        var(--#{$prefix}font-code);
+
+$font-family-sans: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+$font-family-sans-var: var(--#{$prefix}font-sans);
 
 /* -------------------------------------------- */
 /* BODY                                         */
@@ -243,27 +303,27 @@ $h1-font-size:                     $font-size-base * 2.5 !important;
 $h2-font-size:                     $font-size-base * 2 !important;
 $h3-font-size:                     $font-size-base * 1.75 !important;
 $h4-font-size:                     $font-size-base * 1.5 !important;
-$h5-font-size:                     $font-size-base * 1.25  !important;
+$h5-font-size:                     $font-size-base * 1.25 !important;
 $h6-font-size:                     $font-size-base;
 
 /* -------------------------------------------- */
 /* FONT WEIGHT                                  */
 /* -------------------------------------------- */
 
-$font-weight-normal:          400;
-$font-weight-lighter:         100;
-$font-weight-light:           300;
-$font-weight-bold:            700;
-$font-weight-bolder:          bolder;
+$font-weight-normal:               400;
+$font-weight-lighter:              100;
+$font-weight-light:                300;
+$font-weight-bold:                 700;
+$font-weight-bolder:               bolder;
 
 /* -------------------------------------------- */
 /* LINE HEIGHT                                  */
 /* -------------------------------------------- */
 
-$line-height-base:            1.6;
-$line-height-sm:              1.25;
-$line-height-lg:              2;
-$line-height-xl:              2.4;
+$line-height-base:                 1.6;
+$line-height-sm:                   1.25;
+$line-height-lg:                   2;
+$line-height-xl:                   2.4;
 
 /* -------------------------------------------- */
 /* LINKS                                        */
@@ -276,6 +336,12 @@ $link-decoration:                  none;
 $link-hover-decoration:            none;
 $link-cover:                       after;
 $link-z-index:                     1;
+
+/* -------------------------------------------- */
+/* PARAGRAPH                                    */
+/* -------------------------------------------- */
+
+$paragraph-margin-bottom:           1rem;
 
 /* -------------------------------------------- */
 /* BORDERS                                      */
@@ -317,6 +383,19 @@ $hr-margin-y:                 $spacer;
 $hr-border-width:             $border-width;
 $hr-border-color:             null; // Allows for inherited colors
 $hr-opacity:                  .25;
+
+
+/* -------------------------------------------- */
+/* ASPECT RATIO                                 */
+/* -------------------------------------------- */
+
+$aspect-ratio-bg-svg:              url(icon-image($gray-600));
+$aspect-ratio-bg-color:             $gray-100;
+$aspect-ratio-bg-size:              20%;
+$aspect-ratios: (
+  "3000x2250": calc(3000 / 2250)
+);
+
 
 /* -------------------------------------------- */
 /* CODE                                         */
@@ -408,11 +487,9 @@ $btn-white-space:              nowrap; // Set to `nowrap` to prevent text wrappi
 $spinner-width:               2rem;
 $spinner-height:              $spinner-width;
 $spinner-border-width:        .2rem;
-
 $spinner-width-sm:            1rem;
 $spinner-height-sm:           $spinner-width-sm;
 $spinner-border-width-sm:     .15rem;
-
 $spinner-vertical-align:      -.125em;
 $spinner-border-color:        $gray-300;
 $spinner-animation-speed:     .65s;
@@ -439,12 +516,21 @@ $tooltip-use-outline:          false;
 /* RELAPSE                                      */
 /* -------------------------------------------- */
 
-$relapse-border-width:            $border-width;
-$relapse-border-color:            $border-color;
-$relapse-padding:                 50px;
-$relapse-transition-height:       225ms;
-$relapse-transition-opacity:      200ms;
-$relapse-transition-easing:       ease-in-out;
+$accordion-border-width:            $border-width;
+$accordion-border-color:            $border-color;
+$accordion-btn-opened:              $gray-700;
+$accordion-padding:                 50px;
+$accordion-transition-height:       225ms;
+$accordion-transition-opacity:      200ms;
+$accordion-transition-easing:       ease-in-out;
+$accordion-icon-padding-x:          1.8rem;
+
+/* -------------------------------------------- */
+/* MODAL                                        */
+/* -------------------------------------------- */
+
+$modal-backdrop-bg:                  rgba($color: $black, $alpha: 0.5);
+$modal-transition:                   200ms;
 
 
 /* -------------------------------------------- */
@@ -457,26 +543,12 @@ $drawer-zindex:                99999;
 $drawer-overlay-z-index:       1000 + 10;
 $drawer-overlay-duration:      $drawer-duration;
 $drawer-overlay-bg:            rgba(0, 0, 0, 0.6);
-
 $drawer-directions: (
-
   left,
   right,
   top,
   bottom
-
 );
-
-/* -------------------------------------------- */
-/* FORM OVERWRITE                               */
-/* -------------------------------------------- */
-
-//$input-btn-focus-width:         0rem;
-//$input-btn-focus-color-opacity: .25;
-//$input-btn-focus-color:         rgba($component-active-bg, $input-btn-focus-color-opacity);
-//$input-btn-focus-blur:          0;
-//$input-btn-focus-box-shadow:    0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color;
-
 
 /* -------------------------------------------- */
 /* FORM TEXT                                    */
@@ -526,18 +598,19 @@ $input-disabled-border-color:                   $gray-200;
 $input-color:                                   $body-color;
 
 $input-border-color:                            $gray-400;
-$input-border-width:                            $border-width; // $input-btn-border-width !default;
+$input-border-width:                            $border-width; // $input-btn-border-width;
+$input-height-border:                           $border-width * 2;
 $input-box-shadow:                              $box-shadow-inset;
 
-$input-border-radius:                           0; // $border-radius !default;
-$input-border-radius-sm:                        0; // $border-radius-sm !default;
-$input-border-radius-lg:                        0; // $border-radius-lg !default;
+$input-border-radius:                           0; // $border-radius;
+$input-border-radius-sm:                        0; // $border-radius-sm;
+$input-border-radius-lg:                        0; // $border-radius-lg;
 
 $input-focus-bg:                                $input-bg;
-$input-focus-border-color:                      $black;         // tint-color($component-active-bg, 50%) !default;
+$input-focus-border-color:                      $black;         // tint-color($component-active-bg, 50%);
 $input-focus-color:                             $input-color;
-$input-focus-width:                             $border-width;  // $input-btn-focus-width !default;
-$input-focus-box-shadow:                        none;           // $input-btn-focus-box-shadow !default;
+$input-focus-width:                             $border-width;  // $input-btn-focus-width;
+$input-focus-box-shadow:                        none;           // $input-btn-focus-box-shadow;
 
 $input-btn-focus-box-shadow-lined:              0 0 0 0;
 $input-placeholder-color:                       $gray-500;
@@ -592,7 +665,13 @@ $form-select-transition:                  $input-transition;
 /* FORM COLOR PICKER                            */
 /* -------------------------------------------- */
 
-$form-color-width:                        3rem !default;
+$form-color-width:                             3rem;
+
+/* -------------------------------------------- */
+/* FORM NUMBER                                  */
+/* -------------------------------------------- */
+
+$form-number-width:                             100%;
 
 /* -------------------------------------------- */
 /* FORM RADIO AND CHECKBOX                      */
@@ -619,13 +698,13 @@ $form-check-input-checked-color:                $black;
 $form-check-input-checked-bg-color:             $transparent;
 $form-check-input-checked-border-color:         $black;
 
-$form-check-input-checked-bg-image:             icon-check($form-check-input-checked-color);
+$form-check-input-checked-bg-image:             var(--#{$prefix}svg-check);
 
 
 $form-check-input-indeterminate-color:          $black;
 $form-check-input-indeterminate-bg-color:       $transparent;
 $form-check-input-indeterminate-border-color:   $black;
-$form-check-input-indeterminate-bg-image:       icon-check($form-check-input-indeterminate-color);
+$form-check-input-indeterminate-bg-image:       var(--#{$prefix}svg-check);
 
 
 $form-check-input-disabled-opacity:             .5;
@@ -689,23 +768,25 @@ $form-range-thumb-transition: (
 /* FORM INPUT FILE                              */
 /* -------------------------------------------- */
 
-$form-file-button-color:               $input-color !default;
-$form-file-button-bg:                  $input-group-addon-bg !default;
-$form-file-button-hover-bg:            shade-color($form-file-button-bg, 5%) !default;
+$form-file-button-color:               $input-color;
+$form-file-button-bg:                  $input-group-addon-bg;
+$form-file-button-hover-bg:            shade-color($form-file-button-bg, 5%);
 
 /* -------------------------------------------- */
 /* FORM FLOATING                                */
 /* -------------------------------------------- */
 
-$form-float-height:                    add(3.5rem, $input-height-border);
+
+$form-float-height:                    add(2.5, $input-height-border);
 $form-float-line-height:               1.25;
 $form-float-padding-x:                 $input-padding-x;
-$form-float-padding-y:                 1rem;
-$form-float-input-padding-t:           1.625rem;
-$form-float-input-padding-b:           .625rem;
-$form-float-label-opacity:             .65;
-$form-float-label-transform:           scale(.85) translateY(-.5rem) translateX(.15rem);
+$form-float-padding-y:                 divide(2.6, 5, 2);
+$form-float-input-padding-t:           $form-float-padding-y;
+$form-float-input-padding-b:           $form-float-input-padding-t;
+$form-float-label-opacity:             .85;
+$form-float-label-transform:            scale(.55) translateY(-.5rem) translateX(.5rem);
 $form-float-transition:                opacity .1s ease-in-out, transform .1s ease-in-out;
+$form-float-legend-transform:           scale(.75) translateY(-50%) translateX(0);
 
 /* -------------------------------------------- */
 /* FORM VALIDATION                              */
