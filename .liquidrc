@@ -2,6 +2,7 @@
   "engine": "11ty",
   "format": {
     "ignore": [
+      "./docs/**",
       "./site/views/**/html.liquid",
       "./site/views/**/scss.liquid"
     ],

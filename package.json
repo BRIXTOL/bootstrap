@@ -92,7 +92,7 @@
   },
   "tsup": {
     "entry": [
-      "./site/bundle.ts"
+      "./demo/bundle.ts"
     ],
     "outDir": "docs",
     "bundle": true,
