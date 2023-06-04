@@ -1,4 +1,10 @@
-@mixin drawer($direction: left, $mode: push, $width: 320px, $height: 100%, $background: $white) {
+@mixin drawer(
+  $direction: left,
+  $mode: push,
+  $width: 320px,
+  $height: 100%,
+  $background: $white
+) {
 
   width: $width;
   height: $height;
@@ -64,10 +70,12 @@
   }
 
   @if ($mode == push or $mode == pull or $mode == overlay) {
-    transition: visibility 0s
+    @include transition(
+      visibility 0s
       linear $drawer-duration,
-      opacity 0.05s linear $drawer-duration,
-      transform $drawer-duration $drawer-easing;
+      opacity 5ms linear $drawer-duration,
+      transform $drawer-duration $drawer-easing
+    );
   }
 
   &.drawer-active {
@@ -111,7 +119,7 @@
 
 
 .drawer-push {
-  transition: transform $drawer-duration $drawer-easing;
+  @include transition(transform $drawer-duration $drawer-easing);
 }
 
 .drawer-panel {
@@ -133,7 +141,6 @@
 }
 
 @if index($drawer-directions, right) {
-
   .drawer-right {
     @include drawer(right);
     z-index: 99999;
@@ -156,7 +163,7 @@
   visibility: visible;
   opacity: 1;
   transform: translateX(0);
-  transition: transform $drawer-duration $drawer-easing;
+  @include transition(transform $drawer-duration $drawer-easing);
   //opacity $drawer-overlay-duration ease-in;
 }
 
@@ -170,24 +177,29 @@
   background-color: $drawer-overlay-bg;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear $drawer-duration,
-    transform $drawer-duration $drawer-easing,
-    opacity $drawer-overlay-duration ease;
   user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @include transition(
+    visibility 5ms linear $drawer-duration,
+    transform $drawer-duration $drawer-easing,
+    opacity $drawer-overlay-duration ease
+  );
 
   .bg-visible & {
     visibility: visible;
     opacity: 1;
-    transition: visibility 0.5s linear $drawer-duration,
-      opacity 0.5s linear;
+    @include transition(
+      visibility 5ms linear $drawer-duration,
+      opacity 5ms linear
+    );
   }
 
   .drawer-open & {
     will-change: transform, opacity;
     visibility: visible;
     opacity: 1;
-    transition: transform $drawer-duration $drawer-easing,
-      opacity $drawer-overlay-duration ease;
+    @include transition(
+      transform $drawer-duration $drawer-easing,
+      opacity $drawer-overlay-duration ease
+    );
   }
 }
