@@ -4,6 +4,43 @@
 // styles to be used. This file can be copied and added to projects and
 // leveraged as as the core control for the web application design.
 
+/* -------------------------------------------- */
+/* IMPORTS                                      */
+/* -------------------------------------------- */
+
+$import-sass-grid:                  true;
+$import-sass-headings:              true;
+$import-sass-code:                  true;
+$import-sass-spacing:               true;
+$import-sass-display:               true;
+$import-sass-helpers:               true;
+$import-sass-flex:                  true;
+$import-sass-backgrounds:           true;
+$import-sass-text:                  true;
+$import-sass-font:                  true;
+$import-sass-sizing:                true;
+$import-sass-lists:                 true;
+$import-sass-links:                 true;
+$import-sass-borders:               true;
+$import-sass-radius:                true;
+$import-sass-spinner:               true;
+$import-sass-buttons:               true;
+$import-sass-tooltip:               true;
+$import-form-labels:                true;
+$import-form-text:                  true;
+$import-form-input:                 true;
+$import-form-dropdown:              true;
+$import-form-check:                 true;
+$import-form-color:                 true;
+$import-form-switch:                true;
+$import-form-select:                true;
+$import-form-range:                 true;
+$import-form-float:                 true;
+$import-form-group:                 true;
+$import-form-feedback:              true;
+$import-form-validation:            true;
+$import-component-accordion:        true;
+$import-component-dropdown:         true;
 
 /* -------------------------------------------- */
 /* OPTIONS                                      */
@@ -22,46 +59,56 @@ $enable-smooth-scroll:              false;
 $enable-important-utilities:        false;
 
 /* -------------------------------------------- */
+/* GRID                                         */
+/* -------------------------------------------- */
+
+/* -------------------------------------------- */
+/* CONTAINER PADDING                            */
+/* -------------------------------------------- */
+
+$container-padding-x:               $grid-gutter-width;
+
+/* -------------------------------------------- */
 /* PALETTE                                      */
 /* -------------------------------------------- */
 
-$white:         #ffffff;
-$black:         #000000;
-$blue:          #0d6efd;
-$indigo:        #6610f2;
-$purple:        #6f42c1;
-$pink:          #d63384;
-$red:           #dc3545;
-$orange:        #fd7e14;
-$yellow:        #ffc107;
-$green:         #198754;
-$teal:          #20c997;
-$cyan:          #0dcaf0;
+$white:                             #ffffff;
+$black:                             #000000;
+$blue:                              #0d6efd;
+$indigo:                            #6610f2;
+$purple:                            #6f42c1;
+$pink:                              #d63384;
+$red:                               #dc3545;
+$orange:                            #fd7e14;
+$yellow:                            #ffc107;
+$green:                             #198754;
+$teal:                              #20c997;
+$cyan:                              #0dcaf0;
 
 /* -------------------------------------------- */
 /* GRAYS                                        */
 /* -------------------------------------------- */
 
-$gray-100:      #f8f8f8;
-$gray-200:      #e0e4e7;
-$gray-300:      #ccd3da;
-$gray-400:      #b6c2ce;
-$gray-500:      #98a5b3;
-$gray-600:      #747d85;
-$gray-700:      #575f68;
-$gray-800:      #373d42;
-$gray-900:      #202427;
+$gray-100:                          #f8f8f8;
+$gray-200:                          #e0e4e7;
+$gray-300:                          #ccd3da;
+$gray-400:                          #b6c2ce;
+$gray-500:                          #98a5b3;
+$gray-600:                          #747d85;
+$gray-700:                          #575f68;
+$gray-800:                          #373d42;
+$gray-900:                          #202427;
 
 /* -------------------------------------------- */
 /* BACKGROUND COLORS                            */
 /* -------------------------------------------- */
 
 $background-colors: (
-  transparent: $transparent,
-  white: $white,
-  black: $black,
-  ivory: $gray-100,
-  gray: $gray-400
+  "transparent": $transparent,
+  "white": $white,
+  "black": $black,
+  "ivory": $gray-100,
+  "gray": $gray-400
 );
 
 /* -------------------------------------------- */
@@ -69,38 +116,36 @@ $background-colors: (
 /* -------------------------------------------- */
 
 $border-colors: (
-  black: $black,
-  white: $white,
-  red: $red,
-  gray: $gray-400,
-  green: $green
+  "black": $black,
+  "white": $white,
+  "red": $red,
+  "gray": $gray-400,
+  "green": $green
 );
-
 
 /* -------------------------------------------- */
 /* FONT COLORS                                  */
 /* -------------------------------------------- */
 
 $font-colors: (
-  black: $black,
-  white: $white,
-  green: $green,
-  gray: $gray-500,
-  red: $red,
-  orange: $orange
+  "black": $black,
+  "white": $white,
+  "green": $green,
+  "gray": $gray-500,
+  "red": $red,
+  "orange": $orange
 );
-
 
 /* -------------------------------------------- */
 /* BUTTON COLORS                                */
 /* -------------------------------------------- */
 
 $button-colors: (
-  black: $black,
-  white: $white,
-  gray: $gray-500,
-  red: $red,
-  green: $green
+  "black": $black,
+  "white": $white,
+  "gray": $gray-500,
+  "red": $red,
+  "green": $green
 );
 
 /* -------------------------------------------- */
@@ -173,6 +218,12 @@ $line-height-lg:                   2;
 $line-height-xl:                   2.4;
 
 /* -------------------------------------------- */
+/* PARAGRAPH                                    */
+/* -------------------------------------------- */
+
+$paragraph-margin-bottom:           1rem;
+
+/* -------------------------------------------- */
 /* LINKS                                        */
 /* -------------------------------------------- */
 
@@ -198,7 +249,6 @@ $link-list-active-bold:             true;
 $link-list-active-bg:               null;
 $link-list-active-color:            $black;
 
-
 /* -------------------------------------------- */
 /* BORDERS                                      */
 /* -------------------------------------------- */
@@ -219,17 +269,18 @@ $border-radius-lg:                 .5rem;
 $border-radius-xl:                  1rem;
 $border-radius-pill:                5rem;
 
-
 /* -------------------------------------------- */
 /* ASPECT RATIO                                 */
 /* -------------------------------------------- */
 
+$aspect-ratio-bg-svg:               null;
+$aspect-ratio-bg-color:             $gray-200;
+$aspect-ratio-bg-size:              20%;
 $aspect-ratios: (
-  "1x1": 100%,
-  "4x3": calc(3 / 4 * 100%),
-  "16x9": calc(9 / 16 * 100%),
-  "21x9": calc(9 / 21 * 100%)
+  "3000x2250": calc(3000 / 2250),
+  "720x1200": calc(720 / 1200),
 );
+
 
 /* -------------------------------------------- */
 /* PLACEHOLDERS                                 */
