@@ -23,17 +23,17 @@ $utilities: map-merge($utilities, (
       fill: 1 1 auto
     )
   ),
-
+  "flex-wrap": (
+    responsive: true,
+    property: flex-wrap,
+    class: flex,
+    values: wrap
+  ),
   "flex-direction": (
     responsive: true,
     property: flex-direction,
     class: flex,
-    values: (
-      row: row,
-      col: column,
-      row-rev: row-reverse,
-      col-rev: column-reverse
-    )
+    values: $flex-direction
   ),
 
   /*"flex-grow": (
@@ -67,55 +67,28 @@ $utilities: map-merge($utilities, (
     responsive: true,
     property: justify-content,
     class: jc,
-    values: (
-      start: flex-start,
-      end: flex-end,
-      center: center,
-      between: space-between,
-      around: space-around,
-      even: space-evenly,
-    )
+    values: $justify-content
   ),
 
   "align-items": (
     responsive: true,
     property: align-items,
     class: ai,
-    values: (
-      start: flex-start,
-      end: flex-end,
-      center: center,
-      base: baseline,
-      stretch: stretch,
-    )
+    values: $align-items
   ),
 
   "align-content": (
     responsive: true,
     property: align-content,
     class: ac,
-    values: (
-      start: flex-start,
-      end: flex-end,
-      center: center,
-      between: space-between,
-      around: space-around,
-      stretch: stretch,
-    )
+    values: $align-content
   ),
 
   "align-self": (
     responsive: true,
     property: align-self,
     class: as,
-    values: (
-      auto: auto,
-      start: flex-start,
-      end: flex-end,
-      center: center,
-      base: baseline,
-      stretch: stretch
-    )
+    values: $align-self
   ),
 
   "order": (
