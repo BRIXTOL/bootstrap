@@ -61,4 +61,19 @@
   --#{$prefix}tooltip-font-family: #{$tooltip-font-family};
   --#{$prefix}tooltip-font-style: #{$tooltip-font-style};
 
+  // Aspect Ratio
+
+  @each $key, $ratio in $aspect-ratios {
+    --#{$prefix}aspect-ratio: #{$ratio};
+  }
+
+  // SVG Icons
+
+  --#{$prefix}svg-plus: #{url(icon-plus())};
+  --#{$prefix}svg-minus: #{url(icon-minus())};
+  --#{$prefix}svg-check: #{url(icon-check())};
+  --#{$prefix}svg-cross: #{url(icon-cross())};
+  --#{$prefix}svg-square: #{url(icon-square())};
+  --#{$prefix}svg-arrow: #{url(icon-arrow())};
+  --#{$prefix}svg-menu: #{url(icon-menu())};
 }
