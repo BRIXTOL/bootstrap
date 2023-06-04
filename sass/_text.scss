@@ -27,6 +27,12 @@ $utilities: map-merge($utilities, (
     class: tr,
     values: (null: right)
   ),
+  "text-justify": (
+    responsive: true,
+    property: text-align,
+    class: tj,
+    values: (null: justify)
+  ),
   "text-decoration": (
     property: text-decoration,
     class: null,
