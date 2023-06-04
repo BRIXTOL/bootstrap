@@ -1,10 +1,10 @@
 # @brixtol/bootstrap
 
-Stripped down and customized [Bootstrap v5](https://getbootstrap.com/) variation with a refined set of styles and components. This module is used under the hood in our [webshop](https://brixtoltextiles.com).
+Stripped down and customized [Bootstrap v5](https://getbootstrap.com/) variation with a refined set of styles and components. This module is used under the hood in our [webshop](https://brixtoltextiles.com). The bundle is refined for usage within our internal and public facing projects. This means that the included logic is developed for our web applications.
 
-> **Note** <br> _You are free to leverage and use the variation for your own use cases but be aware that this project will not accept feature requests. Only bug reporting or issues are applicable._
+Visit the reference demo: [https://brixtol.github.io/bootstrap](https://brixtol.github.io/bootstrap/)
 
-**The bundle is refined for usage within our internal and public facing projects. This means that the included logic is developed for our web applications.**
+> **Note** <br> You are free to leverage and use the variation for your own use cases but be aware that this project will not accept feature requests. Only bug reporting or issues are applicable.
 
 ### Key Features
 
