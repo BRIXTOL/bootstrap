@@ -2,9 +2,9 @@
 
 Stripped down and customized [Bootstrap v5](https://getbootstrap.com/) variation with a refined set of styles and components. This module is used under the hood in our [webshop](https://brixtoltextiles.com).
 
-**The bundle is refined for usage within our internal and public facing projects. This means that the included logic is developed for our web applications.**
+> **Note** <br> _You are free to leverage and use the variation for your own use cases but be aware that this project will not accept feature requests. Only bug reporting or issues are applicable._
 
-> **Note** <br> _You are free to leverage and use the variation but the project will not accept feature requests, only bug reporting or issues._
+**The bundle is refined for usage within our internal and public facing projects. This means that the included logic is developed for our web applications.**
 
 ### Key Features
 
