@@ -1,63 +1,15 @@
 
 
-.relapse {
+.accordion {
   position: relative;
   display: block;
   width: 100%;
-  border: $relapse-border-width solid $relapse-border-color;
+  border: $accordion-border-width solid $accordion-border-color;
   border-top: none;
 
   &.lined {
     border: none;
   }
-
-  &-btn {
-    display: inline-block;
-    width: 100%;
-    text-align: left;
-    border: none;
-    border-top: $relapse-border-width solid $relapse-border-color;
-    border-radius: 0;
-    cursor: pointer;
-    user-select: none;
-    background-color: inherit;
-    background-repeat: no-repeat;
-    background-position: right $input-height-inner-quarter center;
-    background-image: url(icon-plus());
-    background-size: $input-height-inner-half $input-height-inner-half;
-
-    &.no-icon {
-      background-image: none !important;
-    }
-
-    .lined & {
-      border-top: none;
-      border-bottom: $relapse-border-width solid $relapse-border-color;
-
-      &:last-of-type {
-        border-bottom: none;
-      }
-    }
-
-    &.initial + .relapse-fold {
-      max-height: unset;
-      visibility: visible;
-      opacity: 1;
-    }
-
-
-    &.is-opened {
-      color: inherit;
-      background-image: url(icon-minus());
-    }
-
-
-    &:focus {
-      outline: 0;
-      box-shadow: $btn-focus-box-shadow;
-    }
-  }
-
 
   &-fold {
     margin: 0 !important;
@@ -66,12 +18,69 @@
     opacity: 0;
     max-height: 0;
     will-change: opacity, max-height;
-    @include transition(opacity $relapse-transition-opacity linear, max-height $relapse-transition-height $relapse-transition-easing);
+    @include transition(
+      opacity $accordion-transition-opacity linear,
+      max-height $accordion-transition-height $accordion-transition-easing
+    );
 
     &.expanded {
       max-height: auto;
       visibility: visible;
       opacity: 1;
+    }
+  }
+
+
+  &-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-top: $accordion-border-width solid $accordion-border-color;
+    border-radius: 0;
+    cursor: pointer;
+    color: $link-color;
+    user-select: none;
+    background-color: inherit;
+    background-repeat: no-repeat;
+    background-position: right $accordion-icon-padding-x center;
+    background-image: url(icon-plus());
+    background-size: $input-height-inner-half $input-height-inner-half;
+
+    &.no-icon {
+      background-image: none !important;
+    }
+
+    &.lined & {
+      border-top: none;
+      border-bottom: $accordion-border-width solid $accordion-border-color;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+
+
+    &.initial {
+      color: inherit;
+      background-color: inherit;
+
+      + .accordion-fold {
+        max-height: unset;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &.opened {
+      color: $accordion-btn-opened;
+      background-image: url(icon-minus());
+    }
+
+
+    &:focus {
+      outline: 0;
+      box-shadow: $btn-focus-box-shadow;
     }
   }
 
