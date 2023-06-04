@@ -2,7 +2,11 @@
 
 Stripped down and customized [Bootstrap v5](https://getbootstrap.com/) variation with a refined set of styles and components. This module is used under the hood in our [webshop](https://brixtoltextiles.com).
 
-**The bundle is refined for usage within our internal and public facing projects. This means that the included logic is developed for our web applications. You are free to leverage and use the variation but the project will not accept feature requests, only bug reporting or issues.**
+**The bundle is refined for usage within our internal and public facing projects. This means that the included logic is developed for our web applications.**
+
+> **Note**
+>
+> _You are free to leverage and use the variation but the project will not accept feature requests, only bug reporting or issues._
 
 ### Key Features
 
@@ -84,9 +88,9 @@ This import method **requires** the base `variables.scss` file to be imported fi
 //
 @import 'custom-variables';
 
-/* GRID & LAYOUT ------------------------------- */
+/* GRID ---------------------------------------- */
 
-@import "@brixtol/bootstrap/sass/imports";
+@import "@brixtol/bootstrap/sass/grid";
 
 /* BASE ---------------------------------------- */
 
