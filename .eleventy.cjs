@@ -19,7 +19,7 @@ module.exports = eleventy(config =>{
     extname: ".liquid",
     dynamicPartials: true,
     jekyllInclude: true,
-    root: ["./site/views/"]
+    root: ["./demo/views/"]
   }))
 
   return {
@@ -28,7 +28,7 @@ module.exports = eleventy(config =>{
     dataTemplateEngine: 'liquid',
     templateFormats: ['liquid', 'json', 'md', 'css', 'html', 'yml'],
     dir: {
-      input: "site",
+      input: "demo",
       output: "docs",
       includes: "views",
       layouts: "",
