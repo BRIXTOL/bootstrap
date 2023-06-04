@@ -1,0 +1,49 @@
+/* -------------------------------------------- */
+/*                 ASPECT RATIO                 */
+/* -------------------------------------------- */
+
+@function aspect-ratio($height, $width) {
+  @return calc(calc(#{$height} / #{$width}) * 100%);
+}
+
+.ratio {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: calc(var(--#{$prefix}ratio) * 100%);
+    background-color: $gray-200;
+
+    @if ($aspect-ratio-bg-svg) {
+      background-image: $aspect-ratio-bg-svg;
+      background-size: $aspect-ratio-bg-size;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  picture,
+  svg,
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+}
+
+@each $key, $ratio in $aspect-ratios {
+  .ratio-#{$key} {
+    --#{$prefix}ratio: #{$ratio};
+  }
+}
+
