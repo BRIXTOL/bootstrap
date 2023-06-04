@@ -1,35 +1,28 @@
 <div class="row ac-center ">
 
-  <div class="col-5">
+  <div class="col-6">
     {% for item in item.classes.inputs %}
       <div class="row ac-center mb-2">
         <div class="col-6">
           <pre class="m-1"><code>{{ item.class }}</code></pre>
         </div>
-
-        <div class="col my-3">
-
+        <div class="col">
           <div class="{{ item.class | remove: '.' }} mb-3">
             <input
               class="fm-input"
               id="{{ item.title | slug }}"
               placeholder="{{ item.class }}"
               type="text">
-            <label for="{{ item.title | slug }}">
+            <label class="legend-input" for="{{ item.title | slug }}">
               {{ item.title }}
             </label>
           </div>
-
-          <button class="btn btn-outline btn-black" type="submit">
-            button
-          </button>
-
         </div>
       </div>
     {% endfor %}
   </div>
 
-  <div class="col-5">
+  <div class="col-6">
     {% for item in item.classes.select %}
       <div class="row ac-center mb-2">
         <div class="col-6">
@@ -61,11 +54,32 @@
     {% endfor %}
 
   </div>
+
+  <div class="col-6">
+    <div class="fm-group mb-3">
+      <div class="fm-float">
+        <input
+          id="xxx"
+          class="fm-input"
+          placeholder="Placeholder"
+          type="text">
+        <label class="legend-input" for="xxx">
+          Legend
+        </label>
+      </div>
+      <button
+        class="btn bd bc-gray px-4 bl-0"
+        id="button-addon1"
+        type="button">
+        Button
+      </button>
+    </div>
+  </div>
 </div>
 <div class="row ac-center ">
 
   {% for item in item.classes.textarea %}
-    <div class="col-5">
+    <div class="col-6">
       <div class="row ac-center mb-2">
         <div class="col-6">
 

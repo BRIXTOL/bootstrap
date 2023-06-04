@@ -58,23 +58,30 @@
     <div class="row mb-3">
       {% for item in item.classes.dropdowns %}
         <div class="col-5 mb-3">
-          <pre class="m-0 pl-3"><code>.fm-group .fm-lined > {{ item.input }}</code></pre>
+          <pre class="m-0 pl-3"><code>{{ item.class }}</code></pre>
         </div>
         <div class="col-5 pl-5 mb-3">
-          <div class="fm-group fm-lined">
 
-            <div class="{{ item.class | remove: '.' }}">
-            <button class="btn btn-dropdown" type="button">
-              {{ item.title }}
-            </button>
-            <div class="dropdown-list {% if item.title contains 'Disabled' %}disabled{% endif %}">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
+            <div class="{{ item.class | remove: '.' }}" data-controller="dropdown">
+              <button class="btn" type="button" data-action="dropdown#toggle"
+              data-dropdown-target="button">
+                {{ item.title }}
+              </button>
+              <fieldset>
+                <label for="1">Option 1</label>
+                <input id="1" type="radio">
+
+                <label for="2">Option 2</label>
+                <input id="2" type="radio">
+
+                <label for="3">Option 3</label>
+                <input id="3" type="radio">
+
+                <label for="4">Option 4</label>
+                <input id="4" type="radio">
+              </fieldset>
             </div>
-          </div>
 
-          </div>
         </div>
 
       {% endfor %}
@@ -114,7 +121,7 @@
                 class="btn"
                 id="button-addon"
                 type="button"
-                {% if item.button == "disabled" %}
+                {% if item.button == " d isabled" %}
                 disabled
                 {% endif %}>
                 Button
