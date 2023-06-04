@@ -1,6 +1,6 @@
 {
   "name": "@brixtol/bootstrap",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "private": false,
   "description": "Webshop strap for Brixtol Textiles.",
   "author": {
@@ -23,14 +23,20 @@
     "node": ">=16"
   },
   "files": [
+    "_readme.md",
+    "_base.scss",
+    "_components.scss",
+    "_forms.scss",
+    "_variables.scss",
+    "_variation.scss",
     "index.scss",
     "sass/**/*.scss"
   ],
   "scripts": {
     "dev": "rm -rf docs && concurrently \"pnpm run 11ty:watch\" \"pnpm run sass:watch\" \"pnpm run sass:wdocs\" \"pnpm run tsup:watch\" ",
     "build": "rm -rf docs && pnpm run 11ty:build && pnpm run sass:build && postcss docs/bootstrap.css -r --no-map && tsup --minify",
-    "sass:wdocs": "sass site/style.scss docs/style.css --no-source-map --watch",
-    "sass:bdocs": "sass site/style.scss docs/style.css --no-source-map",
+    "sass:wdocs": "sass demo/style.scss docs/style.css --no-source-map --watch",
+    "sass:bdocs": "sass demo/style.scss docs/style.css --no-source-map",
     "sass:build": "sass --load-path=node_modules/bootstrap/scss/ index.scss docs/bootstrap.css --no-source-map",
     "sass:watch": "sass --load-path=node_modules/bootstrap/scss/ index.scss docs/bootstrap.css --no-source-map --watch",
     "11ty:watch": "eleventy --config .eleventy.cjs --serve --watch",
@@ -40,6 +46,43 @@
   },
   "license": "MIT",
   "prettier": "@brixtol/prettier-config",
+  "stylelint": {
+    "extends": "@brixtol/stylelint-config",
+    "ignoreFiles": [
+      "sass/bootstrap/**",
+      "demo/style.scss"
+    ],
+    "rules": {
+      "scss/dollar-variable-empty-line-before": null,
+      "indentation": 2,
+      "block-no-empty": null,
+      "color-no-invalid-hex": true,
+      "comment-empty-line-before": [
+        "always",
+        {
+          "ignore": [
+            "stylelint-commands",
+            "after-comment"
+          ]
+        }
+      ],
+      "no-descending-specificity": null,
+      "declaration-colon-space-after": "always",
+      "max-empty-lines": 2,
+      "block-opening-brace-newline-after": "always-multi-line",
+      "rule-empty-line-before": [
+        "always",
+        {
+          "except": [
+            "first-nested"
+          ],
+          "ignore": [
+            "after-comment"
+          ]
+        }
+      ]
+    }
+  },
   "eslintConfig": {
     "ignorePatterns": [
       "package",
@@ -59,28 +102,26 @@
     ]
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2",
+    "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.3.5",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@brixtol/browserslist-config": "workspace:^1.1.0",
     "@brixtol/eslint-config": "workspace:^1.2.4",
     "@brixtol/prettier-config": "workspace:^1.2.0",
-    "@panoply/11ty": "^0.1.0",
-    "autoprefixer": "^10.4.13",
-    "concurrently": "^7.5.0",
-    "cssnano": "^5.1.14",
-    "postcss": "^8.4.18",
-    "postcss-cli": "^10.0.0",
-    "sass": "^1.55.0",
+    "@brixtol/stylelint-config": "workspace:^",
+    "@panoply/11ty": "^0.2.0",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.1.0",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "sass": "^1.62.1",
     "stickybits": "^3.7.11",
-    "stylelint": "^14.14.0",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-standard-scss": "^6.0.0",
-    "stylelint-scss": "^4.3.0",
-    "tsup": "^6.3.0"
+    "stimulus": "^3.2.1",
+    "tsup": "^6.7.0"
   },
   "optionalDependencies": {
-    "@hotwired/stimulus": "^3.1.0",
+    "@hotwired/stimulus": "^3.2.1",
     "fontfaceobserver": "^2.3.0",
     "lazysizes": "^5.3.2",
     "relapse": "^0.5.0"
