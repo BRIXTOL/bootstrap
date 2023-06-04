@@ -1,0 +1,39 @@
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  will-change: transform, opacity;
+
+
+  &-container {
+    background-color: $white;
+    display: none;
+  }
+
+ &.is-open {
+    z-index: 999999;
+    opacity: 1;
+    visibility: visible;
+    background-color: $modal-backdrop-bg;
+    @include transition(opacity $modal-transition linear);
+
+    > .modal-container {
+      display: block;
+    }
+  }
+}
+
+
+
