@@ -1,0 +1,25 @@
+// THIS FILE IS REQUIRED FOR GRID SUPPORT
+//
+// The imports in this file reference the bootstrap grid
+// logic and also some custom logic. This file needs to be
+// included after the _variables.scss file. In projects which
+// generate custom cherry picked builds, this file needs to
+// referenced after the custom variables strap.scss import.
+//
+
+/* CUSTOM LOGICS ------------------------------ */
+
+@import "mixins";
+@import "root";
+@import "reboot";
+
+/* BOOSTRAP GRID ------------------------------ */
+
+@import "bootstrap/vendor/rfs";
+@import "bootstrap/containers";
+@import "bootstrap/grid";
+@import "bootstrap/utilities";
+
+
+
+
