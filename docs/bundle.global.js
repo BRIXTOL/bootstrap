@@ -20,153 +20,6 @@
     });
   };
 
-  // ../../node_modules/.pnpm/relapse@0.5.0/node_modules/relapse/index.js
-  function y(t2) {
-    return { on: (e, i) => {
-      t2[e] || (t2[e] = []), t2[e].push(i);
-    }, off: (e, i) => {
-      let c = [], n = t2[e];
-      if (n && i) {
-        let s = 0, u = n.length;
-        for (; s < u; s++)
-          n[s] !== i && c.push(n[s]);
-      }
-      c.length ? n[e] = c : delete n[e];
-    }, emit: (e, i, c) => {
-      let n = t2[e] || [], s = n.length, u = null;
-      for (let m = 0; m < s; m++) {
-        let p = n[m].apply(i, [c]);
-        u === null && p === false && (u = true);
-      }
-      return u;
-    } };
-  }
-  function E(t2, d) {
-    let { config: l } = t2, { classes: f } = l;
-    return (e) => {
-      let i = (n) => {
-        if (typeof n != "number")
-          return t2.active !== e.index && (t2.active = e.index), e;
-        if (t2.folds[n])
-          return t2.active = e.index, t2.folds[n];
-        throw new TypeError(`No fold exists at index: ${n}`);
-      }, c = (n) => {
-        n.button.ariaDisabled = "false", n.button.ariaExpanded = "false", n.button.classList.remove(f.opened), n.content.classList.remove(f.expanded), n.expanded = false, n.content.style.maxHeight = "0";
-      };
-      e.open = (n) => {
-        let s = i(n);
-        s.expanded || (s.close(), s.button.ariaDisabled = "true", s.button.ariaExpanded = "true", s.button.classList.add(f.opened), s.content.classList.add(f.expanded), s.content.style.maxHeight = `${s.content.scrollHeight}px`, s.expanded = true, s.disable(), t2.count = t2.folds.filter(({ expanded: u }) => u).length, d.emit("expand", t2, s));
-      }, e.close = (n) => {
-        let s = i(n);
-        if (l.multiple)
-          (!l.persist || l.persist && t2.count > 1) && c(s);
-        else
-          for (let u of t2.folds)
-            if (u.expanded) {
-              if (l.persist && u.index === s.index)
-                break;
-              c(u), s = u;
-              break;
-            }
-        s.enable(), t2.count = t2.folds.filter(({ expanded: u }) => u).length, d.emit("collapse", t2, s);
-      }, e.focus = () => {
-        t2.active = e.index, e.button.classList.add(f.focused), d.emit("focus", t2, e);
-      }, e.blur = () => e.button.classList.remove(f.focused), e.enable = (n) => {
-        let s = i(n);
-        s.disabled && (s.disabled = false, s.button.ariaDisabled = "false", s.button.classList.remove(f.disabled));
-      }, e.disable = (n) => {
-        let s = i(n);
-        s.disabled || (s.expanded ? l.persist && (s.disabled = true, s.button.ariaDisabled = "true") : (s.close(), s.disabled = true, s.button.ariaDisabled = "true", s.button.classList.add(f.disabled)));
-      }, e.toggle = () => {
-        if (!d.emit("toggle", t2, e))
-          return e.expanded ? e.close() : e.open();
-      }, e.destroy = (n = false) => {
-        e.close(), e.button.removeEventListener("click", e.toggle), e.button.removeEventListener("focus", e.focus), e.button.removeEventListener("blur", e.blur), n && (t2.element.removeChild(e.content), t2.element.removeChild(e.button));
-      }, e.button.addEventListener("click", e.toggle), e.button.addEventListener("focus", e.focus), e.button.addEventListener("blur", e.blur), t2.folds.push(e);
-    };
-  }
-  var $ = (t2) => {
-    let d = t2.trim();
-    if (!/true|false/.test(d))
-      throw new TypeError(`Invalid value. Boolean expected, received: ${d}`);
-    return d === "true";
-  };
-  var A = (t2, d) => {
-    let l = /* @__PURE__ */ Object.create(null);
-    if (l.classes = /* @__PURE__ */ Object.create(null), l.persist = true, l.multiple = false, l.schema = "data-relapse", l.classes.initial = "initial", l.classes.opened = "opened", l.classes.disabled = "disabled", l.classes.expanded = "expanded", l.classes.focused = "focused", typeof t2 == "object")
-      for (let i in t2)
-        if (i === "classes")
-          for (let c in t2[i])
-            l.classes[c] = t2[i][c];
-        else
-          l[i] = t2[i];
-    let f = /^(?:persist|multiple)$/, e = l.schema === null ? 5 : l.schema.length + 1;
-    for (let { nodeName: i, nodeValue: c } of d) {
-      let n = i.slice(e);
-      f.test(n) && (l[n] = $(c));
-    }
-    return l;
-  };
-  var w = function t(d, l) {
-    let f;
-    if (typeof d == "string")
-      if (d.charCodeAt(0) === 35)
-        f = document.body.querySelector(d);
-      else
-        for (let o of document.body.querySelectorAll(d))
-          t(o, l);
-    else if (d instanceof NodeList)
-      for (let o of d)
-        t(o, l);
-    else
-      d instanceof Element && (f = d);
-    if (!f)
-      return;
-    window.relapse instanceof Map || (window.relapse = /* @__PURE__ */ new Map());
-    let e = /* @__PURE__ */ Object.create(null);
-    e.events = {}, e.folds = [], e.element = f, e.id = `A${window.relapse.size}`, e.count = 0, e.config = A(l, e.element.attributes);
-    let i;
-    e.element.hasAttribute("data-relapse") ? i = e.element.getAttribute("data-relapse") : (i = Math.random().toString(36).slice(2), e.element.setAttribute("data-relapse", i));
-    let c = e.element.getAttribute("id");
-    if (i === null && c === null)
-      i = e.id;
-    else if (i !== null && c !== null) {
-      if (window.relapse.has(c) || window.relapse.has(i))
-        throw new TypeError(`An existing instance is using id "${i}"`);
-    } else
-      i === null && c !== null && (i = c);
-    if (window.relapse.has(i))
-      throw new TypeError(`An existing instance is using id "${i}"`);
-    e.element.ariaMultiSelectable = `${e.config.multiple}`;
-    let n = e.element.children, s = n.length, u = y(e.events), m = E(e, u), { classes: p } = e.config;
-    for (let o = 0; o < s; o = o + 2) {
-      let a = n[o], b = n[o + 1], r = /* @__PURE__ */ Object.create(null);
-      r.index = e.folds.length;
-      let v = a.classList.contains(p.initial), h = a.classList.contains(p.opened), x = a.classList.contains(p.disabled), L = b.classList.contains(p.expanded);
-      a.ariaExpanded === "true" || h || L || v ? (h ? a.ariaExpanded = "true" : a.classList.add(p.opened), L || b.classList.add(p.expanded), x || a.classList.add(p.disabled), v || a.classList.remove(p.initial), a.ariaDisabled = "true", r.expanded = true, r.disabled = true) : a.ariaDisabled === "true" || x ? (x ? a.ariaDisabled = "false" : a.classList.add(p.disabled), b.classList.remove(p.expanded), a.classList.remove(p.opened), a.ariaExpanded = "false", r.expanded = false, r.disabled = true) : (r.expanded = false, r.disabled = false, a.ariaExpanded = "false", a.ariaDisabled = "false"), a.id && (r.id = a.id), b.id && (r.id = b.id), "id" in r || (r.id = `${e.id}F${r.index}`, a.id = `B${r.id}`, b.id = `C${r.id}`), a.setAttribute("aria-controls", r.id), b.setAttribute("aria-labelledby", a.id), b.setAttribute("role", "region"), r.button = a, r.content = b, r.expanded && (e.count = e.count + 1, r.content.style.maxHeight = `${r.content.scrollHeight}px`), m(r);
-    }
-    let g = (o, a, b = false) => {
-      if (typeof a == "number")
-        return o.charCodeAt(0) === 100 ? e.folds[a][o](b) : e.folds[a][o]();
-      if (typeof a == "string") {
-        for (let r of e.folds)
-          if (r.button.dataset[`${e.config.schema}-fold`] === a)
-            return o.charCodeAt(0) === 100 ? r[o](b) : r[o]();
-      }
-      throw new TypeError(`Fold does not exist: "${a}"`);
-    };
-    return e.on = u.on, e.off = u.off, e.collapse = (o) => g("close", o), e.expand = (o) => g("open", o), e.destroy = (o, a = false) => {
-      if (typeof o == "undefined")
-        for (let b of e.folds)
-          b.destroy();
-      else
-        g("destroy", o, a);
-      e.element.removeAttribute("aria-multiselectable"), u.emit("destroy", e), window.relapse.delete(i);
-    }, window.relapse.set(i, e), e;
-  };
-  w.get = (t2) => t2 ? window.relapse.get(t2) : window.relapse;
-  var M = w;
-
   // ../../node_modules/.pnpm/stickybits@3.7.11/node_modules/stickybits/dist/stickybits.es.js
   function _extends() {
     _extends = Object.assign ? Object.assign.bind() : function(target) {
@@ -2754,6 +2607,153 @@
   Controller.outlets = [];
   Controller.values = {};
 
+  // ../../node_modules/.pnpm/relapse@0.5.0/node_modules/relapse/index.js
+  function y(t2) {
+    return { on: (e, i) => {
+      t2[e] || (t2[e] = []), t2[e].push(i);
+    }, off: (e, i) => {
+      let c = [], n = t2[e];
+      if (n && i) {
+        let s = 0, u = n.length;
+        for (; s < u; s++)
+          n[s] !== i && c.push(n[s]);
+      }
+      c.length ? n[e] = c : delete n[e];
+    }, emit: (e, i, c) => {
+      let n = t2[e] || [], s = n.length, u = null;
+      for (let m = 0; m < s; m++) {
+        let p = n[m].apply(i, [c]);
+        u === null && p === false && (u = true);
+      }
+      return u;
+    } };
+  }
+  function E(t2, d) {
+    let { config: l } = t2, { classes: f } = l;
+    return (e) => {
+      let i = (n) => {
+        if (typeof n != "number")
+          return t2.active !== e.index && (t2.active = e.index), e;
+        if (t2.folds[n])
+          return t2.active = e.index, t2.folds[n];
+        throw new TypeError(`No fold exists at index: ${n}`);
+      }, c = (n) => {
+        n.button.ariaDisabled = "false", n.button.ariaExpanded = "false", n.button.classList.remove(f.opened), n.content.classList.remove(f.expanded), n.expanded = false, n.content.style.maxHeight = "0";
+      };
+      e.open = (n) => {
+        let s = i(n);
+        s.expanded || (s.close(), s.button.ariaDisabled = "true", s.button.ariaExpanded = "true", s.button.classList.add(f.opened), s.content.classList.add(f.expanded), s.content.style.maxHeight = `${s.content.scrollHeight}px`, s.expanded = true, s.disable(), t2.count = t2.folds.filter(({ expanded: u }) => u).length, d.emit("expand", t2, s));
+      }, e.close = (n) => {
+        let s = i(n);
+        if (l.multiple)
+          (!l.persist || l.persist && t2.count > 1) && c(s);
+        else
+          for (let u of t2.folds)
+            if (u.expanded) {
+              if (l.persist && u.index === s.index)
+                break;
+              c(u), s = u;
+              break;
+            }
+        s.enable(), t2.count = t2.folds.filter(({ expanded: u }) => u).length, d.emit("collapse", t2, s);
+      }, e.focus = () => {
+        t2.active = e.index, e.button.classList.add(f.focused), d.emit("focus", t2, e);
+      }, e.blur = () => e.button.classList.remove(f.focused), e.enable = (n) => {
+        let s = i(n);
+        s.disabled && (s.disabled = false, s.button.ariaDisabled = "false", s.button.classList.remove(f.disabled));
+      }, e.disable = (n) => {
+        let s = i(n);
+        s.disabled || (s.expanded ? l.persist && (s.disabled = true, s.button.ariaDisabled = "true") : (s.close(), s.disabled = true, s.button.ariaDisabled = "true", s.button.classList.add(f.disabled)));
+      }, e.toggle = () => {
+        if (!d.emit("toggle", t2, e))
+          return e.expanded ? e.close() : e.open();
+      }, e.destroy = (n = false) => {
+        e.close(), e.button.removeEventListener("click", e.toggle), e.button.removeEventListener("focus", e.focus), e.button.removeEventListener("blur", e.blur), n && (t2.element.removeChild(e.content), t2.element.removeChild(e.button));
+      }, e.button.addEventListener("click", e.toggle), e.button.addEventListener("focus", e.focus), e.button.addEventListener("blur", e.blur), t2.folds.push(e);
+    };
+  }
+  var $ = (t2) => {
+    let d = t2.trim();
+    if (!/true|false/.test(d))
+      throw new TypeError(`Invalid value. Boolean expected, received: ${d}`);
+    return d === "true";
+  };
+  var A = (t2, d) => {
+    let l = /* @__PURE__ */ Object.create(null);
+    if (l.classes = /* @__PURE__ */ Object.create(null), l.persist = true, l.multiple = false, l.schema = "data-relapse", l.classes.initial = "initial", l.classes.opened = "opened", l.classes.disabled = "disabled", l.classes.expanded = "expanded", l.classes.focused = "focused", typeof t2 == "object")
+      for (let i in t2)
+        if (i === "classes")
+          for (let c in t2[i])
+            l.classes[c] = t2[i][c];
+        else
+          l[i] = t2[i];
+    let f = /^(?:persist|multiple)$/, e = l.schema === null ? 5 : l.schema.length + 1;
+    for (let { nodeName: i, nodeValue: c } of d) {
+      let n = i.slice(e);
+      f.test(n) && (l[n] = $(c));
+    }
+    return l;
+  };
+  var w = function t(d, l) {
+    let f;
+    if (typeof d == "string")
+      if (d.charCodeAt(0) === 35)
+        f = document.body.querySelector(d);
+      else
+        for (let o of document.body.querySelectorAll(d))
+          t(o, l);
+    else if (d instanceof NodeList)
+      for (let o of d)
+        t(o, l);
+    else
+      d instanceof Element && (f = d);
+    if (!f)
+      return;
+    window.relapse instanceof Map || (window.relapse = /* @__PURE__ */ new Map());
+    let e = /* @__PURE__ */ Object.create(null);
+    e.events = {}, e.folds = [], e.element = f, e.id = `A${window.relapse.size}`, e.count = 0, e.config = A(l, e.element.attributes);
+    let i;
+    e.element.hasAttribute("data-relapse") ? i = e.element.getAttribute("data-relapse") : (i = Math.random().toString(36).slice(2), e.element.setAttribute("data-relapse", i));
+    let c = e.element.getAttribute("id");
+    if (i === null && c === null)
+      i = e.id;
+    else if (i !== null && c !== null) {
+      if (window.relapse.has(c) || window.relapse.has(i))
+        throw new TypeError(`An existing instance is using id "${i}"`);
+    } else
+      i === null && c !== null && (i = c);
+    if (window.relapse.has(i))
+      throw new TypeError(`An existing instance is using id "${i}"`);
+    e.element.ariaMultiSelectable = `${e.config.multiple}`;
+    let n = e.element.children, s = n.length, u = y(e.events), m = E(e, u), { classes: p } = e.config;
+    for (let o = 0; o < s; o = o + 2) {
+      let a = n[o], b = n[o + 1], r = /* @__PURE__ */ Object.create(null);
+      r.index = e.folds.length;
+      let v = a.classList.contains(p.initial), h = a.classList.contains(p.opened), x = a.classList.contains(p.disabled), L = b.classList.contains(p.expanded);
+      a.ariaExpanded === "true" || h || L || v ? (h ? a.ariaExpanded = "true" : a.classList.add(p.opened), L || b.classList.add(p.expanded), x || a.classList.add(p.disabled), v || a.classList.remove(p.initial), a.ariaDisabled = "true", r.expanded = true, r.disabled = true) : a.ariaDisabled === "true" || x ? (x ? a.ariaDisabled = "false" : a.classList.add(p.disabled), b.classList.remove(p.expanded), a.classList.remove(p.opened), a.ariaExpanded = "false", r.expanded = false, r.disabled = true) : (r.expanded = false, r.disabled = false, a.ariaExpanded = "false", a.ariaDisabled = "false"), a.id && (r.id = a.id), b.id && (r.id = b.id), "id" in r || (r.id = `${e.id}F${r.index}`, a.id = `B${r.id}`, b.id = `C${r.id}`), a.setAttribute("aria-controls", r.id), b.setAttribute("aria-labelledby", a.id), b.setAttribute("role", "region"), r.button = a, r.content = b, r.expanded && (e.count = e.count + 1, r.content.style.maxHeight = `${r.content.scrollHeight}px`), m(r);
+    }
+    let g = (o, a, b = false) => {
+      if (typeof a == "number")
+        return o.charCodeAt(0) === 100 ? e.folds[a][o](b) : e.folds[a][o]();
+      if (typeof a == "string") {
+        for (let r of e.folds)
+          if (r.button.dataset[`${e.config.schema}-fold`] === a)
+            return o.charCodeAt(0) === 100 ? r[o](b) : r[o]();
+      }
+      throw new TypeError(`Fold does not exist: "${a}"`);
+    };
+    return e.on = u.on, e.off = u.off, e.collapse = (o) => g("close", o), e.expand = (o) => g("open", o), e.destroy = (o, a = false) => {
+      if (typeof o == "undefined")
+        for (let b of e.folds)
+          b.destroy();
+      else
+        g("destroy", o, a);
+      e.element.removeAttribute("aria-multiselectable"), u.emit("destroy", e), window.relapse.delete(i);
+    }, window.relapse.set(i, e), e;
+  };
+  w.get = (t2) => t2 ? window.relapse.get(t2) : window.relapse;
+  var M = w;
+
   // demo/views/accordion/controller.ts
   var Accordion = class extends Controller {
     get hasClasses() {
@@ -3128,17 +3128,6 @@
   stickybits_es_default("#sidebar");
   stickybits_es_default("#search", {
     stuckClass: "mt-5 pt-5"
-  });
-  M(".relapse", {
-    persist: true,
-    multiple: true,
-    classes: {
-      opened: "is-opened"
-    }
-  });
-  M("#content", {
-    persist: true,
-    multiple: false
   });
   var modalButton = document.querySelector("#btn-modal-1");
   modalButton.addEventListener("click", () => {

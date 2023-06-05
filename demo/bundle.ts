@@ -1,4 +1,3 @@
-import relapse from 'relapse';
 import stickybits from 'stickybits';
 import { Application } from '@hotwired/stimulus';
 import { Accordion } from './views/accordion/controller';
@@ -46,19 +45,6 @@ search.addEventListener('input', function (event) {
 stickybits('#sidebar');
 stickybits('#search', {
   stuckClass: 'mt-5 pt-5'
-});
-
-relapse('.relapse', {
-  persist: true,
-  multiple: true,
-  classes: {
-    opened: 'is-opened'
-  }
-});
-
-relapse('#content', {
-  persist: true,
-  multiple: false
 });
 
 const modalButton = document.querySelector('#btn-modal-1');

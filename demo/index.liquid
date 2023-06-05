@@ -97,34 +97,45 @@ refs:
               class="fm-input">
           </div>
 
-          <div class="accordion lined px-5" id="content">
+          {% for data in refs %}
 
-            {% for data in refs %}
+            {% if data == "layouts" %}
+              {% assign list = layouts.data %}
+            {% elsif data == "fonts" %}
+              {% assign list = fonts.data %}
+            {% elsif data == "text" %}
+              {% assign list = text.data %}
+            {% elsif data == "utilities" %}
+              {% assign list = utilities.data %}
+            {% elsif data == "forms" %}
+              {% assign list = forms.data %}
+            {% elsif data == "components" %}
+              {% assign list = components.data %}
+            {% endif %}
 
-              {% if data == "layouts" %}
-                {% assign list = layouts.data %}
-              {% elsif data == "fonts" %}
-                {% assign list = fonts.data %}
-              {% elsif data == "text" %}
-                {% assign list = text.data %}
-              {% elsif data == "utilities" %}
-                {% assign list = utilities.data %}
-              {% elsif data == "forms" %}
-                {% assign list = forms.data %}
-              {% elsif data == "components" %}
-                {% assign list = components.data %}
-              {% endif %}
+            {% if forloop.index0 %}
+              {% assign one = 'px-4' %}
+            {% else %}
+              {% assign one = '' %}
+            {% endif %}
 
-              {% for item in list %}
+            {% for item in list %}
 
-                {% assign slug = item.title | slug %}
+              {% assign slug = item.title | slug %}
 
-                {% for view in views %}
+              {% for view in views %}
+                <div
+                  class="accordion lined mx-4"
+                  id="{{ slug }}-xx"
+                  data-controller="accordion"
+                  data-accordion-multiple-value="true"
+                  data-accordion-persist-value="false">
 
                   {% if forloop.first %}
-                    <button type="button" class="accordion-btn d-flex ai-center h3 fw-bold no-icon initial">
-                      <span class="mr-auto py-4">
+                    <button type="button" class="accordion-btn d-flex ai-center h3 fw-bold no-icon initial bt-0">
+                      <span class="mr-auto py-4 {{ one }}">
                         {{ item.title }}
+                        {% assign one = '' %}
                       </span>
                       {% if item.responsive %}
                         <code class="lower fc-green">
@@ -141,20 +152,17 @@ refs:
 
                   <div
                     class="accordion-fold bg-white"
-                    id="{{ slug }}"
-                    style="margin-top: 100px;">
+
+                  >
                     <div class="container-fluid gx-0 {% if forloop.first %}py-4{% else %}py-1{% endif %}">
                       {% assign template = slug | append: "/" | append: view %}
-                      {% render template
-                        , item: item %}
+                      {% render template, item: item %}
                     </div>
                   </div>
-
+                </div>
                 {% endfor %}
               {% endfor %}
             {% endfor %}
-          </div>
-
 
         </div>
       </div>
