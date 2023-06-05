@@ -21,18 +21,7 @@ $utilities: map-merge($utilities, (
     print: false,
     property: display,
     class: d,
-    values: (
-      inline: inline,
-      inline-block: inline-block,
-      block: block,
-      grid: grid,
-      flex: flex,
-      inline-flex: inline-flex,
-      none: none,
-      table: table,
-      table-row: table-row,
-      table-cell: table-cell,
-    )
+    values: $display-utils
   )
 ));
 
