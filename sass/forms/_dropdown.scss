@@ -5,7 +5,13 @@
 
   &.fm-lined > button + fieldset {
     border: 0;
-    border-bottom:  $border-width solid $black;
+    border-bottom: $border-width solid $black;
+  }
+
+  &.fm-lined > button,
+  &.fm-lined > button + fieldset {
+    border: 0;
+    border-bottom: $border-width solid $black;
   }
 
   > button + fieldset {

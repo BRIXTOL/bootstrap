@@ -19,13 +19,13 @@ $enable-grid-classes:               true;
 $enable-validation-icons:           true;
 $enable-rounded:                    true;
 $enable-button-pointers:            true;
+$enable-deprecation-messages:       true;
 $enable-caret:                      false;
 $enable-shadows:                    false;
 $enable-gradients:                  false;
 $enable-smooth-scroll:              false;
 $enable-cssgrid:                    false;
 $enable-negative-margins:           false;
-$enable-deprecation-messages:       true;
 $enable-important-utilities:        false;
 
 /* -------------------------------------------- */
@@ -70,13 +70,11 @@ $gray-900:      #202427;
 /* -------------------------------------------- */
 
 $background-colors: (
-
   transparent: $transparent,
   white: $white,
   black: $black,
   ivory: $gray-100,
   gray: $gray-400
-
 );
 
 /* -------------------------------------------- */
@@ -85,13 +83,11 @@ $background-colors: (
 
 $border-color: $gray-300;
 $border-colors: (
-
   "black": $black,
   "white": $white,
   "red": $red,
   "gray": $gray-400,
   "green": $green
-
 );
 
 
@@ -100,7 +96,6 @@ $border-colors: (
 /* -------------------------------------------- */
 
 $font-colors: (
-
   "black": $black,
   "white": $white,
   "green": $green,
@@ -108,7 +103,6 @@ $font-colors: (
   "red": $red,
   "orange": $orange,
   "pink": $pink
-
 );
 
 
@@ -117,30 +111,27 @@ $font-colors: (
 /* -------------------------------------------- */
 
 $button-colors: (
-
   "black": $black,
   "white": $white,
   "gray": $gray-500,
   "red": $red,
   "green": $green
-
 );
 
 /* -------------------------------------------- */
 /* SPACING                                      */
 /* -------------------------------------------- */
 
-$spacer:                      1rem;
+$spacer: 1rem;
 $spacers: (
-
   0: 0,
   1: $spacer * .25,
   2: $spacer * .5,
   3: $spacer,
   4: $spacer * 1.5,
   5: $spacer * 3,
-
 );
+
 /* -------------------------------------------- */
 /* GRID                                         */
 /* -------------------------------------------- */
@@ -160,14 +151,12 @@ $container-padding-x: $grid-gutter-width;
 /* -------------------------------------------- */
 
 $grid-breakpoints: (
-
   xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,
   xl: 1200px,
   xxl: 1400px
-
 );
 
 /* -------------------------------------------- */
@@ -175,13 +164,11 @@ $grid-breakpoints: (
 /* -------------------------------------------- */
 
 $container-max-widths: (
-
   sm: 540px,
   md: 720px,
   lg: 960px,
   xl: 1140px,
   xxl: 1340px
-
 );
 
 /* -------------------------------------------- */
@@ -196,36 +183,30 @@ $flex-direction: (
 );
 
 $justify-content: (
-
   start: flex-start,
   end: flex-end,
   center: center,
   between: space-between,
   around: space-around,
   // even: space-evenly,
-
 );
 
 $align-content: (
-
   start: flex-start,
   end: flex-end,
   center: center,
   between: space-between,
   around: space-around,
   // stretch: stretch
-
 );
 
 $align-self: (
-
   auto: auto,
   start: flex-start,
   end: flex-end,
   center: center,
   base: baseline,
   // stretch: stretch
-
 );
 
 $align-items: (
@@ -234,6 +215,20 @@ $align-items: (
   center: center,
   base: baseline,
   // stretch: stretch,
+);
+
+$display-utils: (
+  unset: unset,
+  inline: inline,
+  block: block,
+  grid: grid,
+  flex: flex,
+  none: none,
+  // flex-inline: inline-flex,
+  // inline-block: inline-block,
+  // table: table,
+  // table-row: table-row,
+  // table-cell: table-cell,
 );
 
 /* -------------------------------------------- */
@@ -253,7 +248,7 @@ $letter-spacing-heading:      inherit;
 /* FONT FAMILY                                  */
 /* -------------------------------------------- */
 
-$font-family-base:            Helvetica, sans-serif;
+$font-family-base:            system-ui, -apple-system, blinkmacsystemfont,"Open Sans", "Helvetica Neue", sans-serif;
 $font-family-base-var:        var(--#{$prefix}font-base);
 
 $font-family-heading:         Arial, sans-serif;
@@ -261,9 +256,6 @@ $font-family-heading-var:     var(--#{$prefix}font-heading);
 
 $font-family-code:            SFMono-Regular, Menlo, Monaco, "Courier New", Courier, monospace;
 $font-family-code-var:        var(--#{$prefix}font-code);
-
-$font-family-sans: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-$font-family-sans-var: var(--#{$prefix}font-sans);
 
 /* -------------------------------------------- */
 /* BODY                                         */
@@ -389,13 +381,12 @@ $hr-opacity:                  .25;
 /* ASPECT RATIO                                 */
 /* -------------------------------------------- */
 
-$aspect-ratio-bg-svg:              url(icon-image($gray-600));
+$aspect-ratio-bg-svg:              url(icon-image($gray-600, 0.7));
 $aspect-ratio-bg-color:             $gray-100;
 $aspect-ratio-bg-size:              20%;
 $aspect-ratios: (
   "3000x2250": calc(3000 / 2250)
 );
-
 
 /* -------------------------------------------- */
 /* CODE                                         */
@@ -406,14 +397,14 @@ $aspect-ratios: (
 $code-font-size:                    $small-font-size;
 $code-color:                        $pink;
 
+$pre-color:                         null;
+
 $kbd-padding-y:                     .1875rem;
 $kbd-padding-x:                     .375rem;
 $kbd-font-size:                     $code-font-size;
 $kbd-color:                         var(--#{$prefix}body-bg);
 $kbd-bg:                            var(--#{$prefix}body-color);
-$nested-kbd-font-weight:            null; // Deprecated in v5.2.0, removing in v6
 
-$pre-color:                         null;
 
 /* -------------------------------------------- */
 /* LINKS LISTS                                  */
@@ -513,7 +504,7 @@ $tooltip-use-outline:          false;
 
 
 /* -------------------------------------------- */
-/* RELAPSE                                      */
+/* ACCORDION                                    */
 /* -------------------------------------------- */
 
 $accordion-border-width:            $border-width;
@@ -523,7 +514,7 @@ $accordion-padding:                 50px;
 $accordion-transition-height:       225ms;
 $accordion-transition-opacity:      200ms;
 $accordion-transition-easing:       ease-in-out;
-$accordion-icon-padding-x:          1.8rem;
+$accordion-icon-padding-x:          .5rem;
 
 /* -------------------------------------------- */
 /* MODAL                                        */
@@ -532,17 +523,16 @@ $accordion-icon-padding-x:          1.8rem;
 $modal-backdrop-bg:                  rgba($color: $black, $alpha: 0.5);
 $modal-transition:                   200ms;
 
-
 /* -------------------------------------------- */
 /*                    DRAWER                    */
 /* -------------------------------------------- */
 
-$drawer-duration:              0.3s;
-$drawer-easing:                ease-in-out;
-$drawer-zindex:                99999;
-$drawer-overlay-z-index:       1000 + 10;
-$drawer-overlay-duration:      $drawer-duration;
-$drawer-overlay-bg:            rgba(0, 0, 0, 0.6);
+$drawer-duration:                    0.3s;
+$drawer-easing:                      ease-in-out;
+$drawer-zindex:                      99999;
+$drawer-overlay-z-index:             1000 + 10;
+$drawer-overlay-duration:            $drawer-duration;
+$drawer-overlay-bg:                  rgba(0, 0, 0, 0.6);
 $drawer-directions: (
   left,
   right,
@@ -733,7 +723,7 @@ $input-group-addon-padding-y:           $input-padding-y;
 $input-group-addon-padding-x:           $input-padding-x;
 $input-group-addon-font-weight:         $input-font-weight;
 $input-group-addon-color:               $input-color;
-$input-group-addon-bg:                  $gray-200;
+$input-group-addon-bg:                  $gray-100;
 $input-group-addon-border-color:        $input-border-color;
 
 /* -------------------------------------------- */
@@ -780,7 +770,7 @@ $form-file-button-hover-bg:            shade-color($form-file-button-bg, 5%);
 $form-float-height:                    add(2.5, $input-height-border);
 $form-float-line-height:               1.25;
 $form-float-padding-x:                 $input-padding-x;
-$form-float-padding-y:                 divide(2.6, 5, 2);
+$form-float-padding-y:                 divide($form-float-height, 5, 2);
 $form-float-input-padding-t:           $form-float-padding-y;
 $form-float-input-padding-b:           $form-float-input-padding-t;
 $form-float-label-opacity:             .85;
