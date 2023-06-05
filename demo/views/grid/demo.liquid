@@ -1,0 +1,192 @@
+<div class="row mb-5">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-12 ai-center mb-5">
+    <h5 class="mb-3 fw-bold">
+      Columns
+    </h5>
+    {% for item in item.classes.columns %}
+      <div class="row ai-center mb-2">
+        <div class="{{ item.class | remove_first: '.' }}">
+          <pre class="m-1 py-1 w-100"><code>{{ item.class }}</code></pre>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-4 ai-center">
+    <h5 class="mb-4 fw-bold">
+      Flex
+    </h5>
+    {% for item in item.classes.flex %}
+      {% if item.enabled %}
+        <div class="row ai-center mb-2">
+          <div class="col-5">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 my-0 fs-sm">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% else %}
+        <div
+          class="row ai-center mb-2"
+          data-tooltip="top"
+          aria-label="Class is disabled">
+          <div class="col-5" style="opacity: .4;">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 fs-sm my-0" style="opacity: .4;">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+
+  <div class="col-6 ai-center ">
+    <h5 class="mb-4 fw-bold">
+      Jusitfy Content
+    </h5>
+    {% for item in item.classes.justify_content %}
+      {% if item.enabled %}
+        <div class="row ai-center mb-2">
+          <div class="col-5">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 my-0 fs-sm">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% else %}
+        <div
+          class="row ai-center mb-2"
+          data-tooltip="top"
+          aria-label="Class is disabled">
+          <div class="col-5" style="opacity: .4;">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 fs-sm my-0" style="opacity: .4;">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="col-4 ai-center ">
+    <h5 class="my-4 fw-bold">
+      Align Content
+    </h5>
+    {% for item in item.classes.align_content %}
+      {% if item.enabled %}
+        <div class="row ai-center mb-2">
+          <div class="col-5">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 my-0 fs-sm">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% else %}
+        <div
+          class="row ai-center mb-2"
+          data-tooltip="top"
+          aria-label="Class is disabled">
+          <div class="col-5" style="opacity: .4;">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 fs-sm my-0" style="opacity: .4;">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="col-4 ai-center ">
+    <h5 class="my-4 fw-bold">
+      Align Self
+    </h5>
+    {% for item in item.classes.align_self %}
+      {% if item.enabled %}
+        <div class="row ai-center mb-2">
+          <div class="col-5">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 my-0 fs-sm">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% else %}
+        <div
+          class="row ai-center mb-2"
+          data-tooltip="top"
+          aria-label="Class is disabled">
+          <div class="col-5" style="opacity: .4;">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 fs-sm my-0" style="opacity: .4;">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="col-4 ai-center ">
+    <h5 class="my-4 fw-bold">
+      Align Items
+    </h5>
+    {% for item in item.classes.align_items %}
+      {% if item.enabled %}
+        <div class="row ai-center mb-2">
+          <div class="col-5">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 my-0 fs-sm">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% else %}
+        <div
+          class="row ai-center mb-2"
+          data-tooltip="top"
+          aria-label="Class is disabled">
+          <div class="col-5" style="opacity: .4;">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 fs-sm my-0" style="opacity: .4;">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="row mb-5">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-2 mr-5 ai-center mb-5">
+
+    <h5 class="mb-3 fw-bold">
+      {{ item.classes.padding.title }}
+    </h5>
+
+    <div class="row ai-center mb-2">
+      {% for item in item.classes.padding.class %}
+        <div class="col-6">
+          <pre class="m-1 tc py-1 w-100"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6">
+          <span class="fs-xs upper">
+            {{ item.title }}
+          </span>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-2 mr-5 ai-center mb-5">
+
+    <h5 class="mb-3 fw-bold">
+      {{ item.classes.margin.title }}
+    </h5>
+
+    <div class="row ai-center mb-2">
+      {% for item in item.classes.margin.class %}
+        <div class="col-6">
+          <pre class="m-1 tc py-1 w-100"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6">
+          <span class="fs-xs upper">
+            {{ item.title }}
+          </span>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-4 ai-center mb-5">
+    <h5 class="mb-3 fw-bold">
+      {{ item.classes.margin_auto.title }}
+    </h5>
+
+    <div class="row ai-center mb-2">
+      {% for item in item.classes.margin_auto.class %}
+        <div class="col-4">
+          <pre class="m-1 tc py-1 w-100"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6">
+          <span class="fs-xs upper">
+            {{ item.title }}
+          </span>
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+</div>

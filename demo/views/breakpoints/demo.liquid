@@ -1,0 +1,22 @@
+<div class="row mb-5">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row jc-between">
+
+  <div class="col-4 ai-center ">
+    {% for item in item.classes %}
+      <div class="row ai-center mb-2">
+        <div class="col-4">
+          <pre class="m-1"><code>{{ item.class }}</code></pre>
+        </div>
+        <div class="col-6 my-0">
+          <span class="{{ item.class | remove_first: '.' }} p-2">
+            {{ item.title }}
+          </span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>

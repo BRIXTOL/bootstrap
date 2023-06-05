@@ -189,10 +189,6 @@
         ],
         "columns": [
           {
-            "title": "Column",
-            "class": ".col"
-          },
-          {
             "title": "Column Auto",
             "class": ".col-auto"
           },
@@ -247,9 +243,121 @@
           {
             "title": "Column 12",
             "class": ".col-12"
+          },
+          {
+            "title": "Column",
+            "class": ".col"
           }
         ]
       }
+    },
+    {
+      "title": "Spacing",
+      "property": "",
+      "responsive": true,
+      "describe": "The spacing utilities use different naming convention than that of Bootstrap, employing the original are far more logical references. Spacings are all responsive and apply <code>!important</code> suffixes.",
+      "classes": {
+        "padding": {
+          "title": "Padding 0 - 5",
+          "class": [
+            { "title": "All", "class": ".p-*" },
+            { "title": "Left + Right", "class": ".px-*" },
+            { "title": "Top + Bottom", "class": ".py-*" },
+            { "title": "Left", "class": ".pl-*" },
+            { "title": "Top", "class": ".pt-*" },
+            { "title": "Right", "class": ".pr-*" },
+            { "title": "bottom", "class": ".pb-*" },
+            { "title": "Left", "class": ".pl-*" }
+          ]
+        },
+        "margin": {
+          "title": "Margin 0 - 5",
+          "class": [
+            { "title": "All", "class": ".m-*" },
+            { "title": "Left + Right", "class": ".mx-*" },
+            { "title": "Top + Bottom", "class": ".my-*" },
+            { "title": "Left", "class": ".ml-*" },
+            { "title": "Top", "class": ".mt-*" },
+            { "title": "Right", "class": ".mr-*" },
+            { "title": "bottom", "class": ".mb-*" },
+            { "title": "Left", "class": ".ml-*" }
+          ]
+        },
+        "margin_auto": {
+          "title": "Margin Auto",
+          "class": [
+            { "title": "Left + Right", "class": ".mx-*-auto" },
+            { "title": "Top + Bottom", "class": ".my-*-auto" },
+            { "title": "Top", "class": ".mt-*-auto" },
+            { "title": "Right", "class": ".mr-*-auto" },
+            { "title": "Bottom", "class": ".mb-*-auto" },
+            { "title": "Left", "class": ".ml-*-auto" }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Display",
+      "property": "",
+      "responsive": true,
+      "describe": "",
+      "classes": [
+        {
+          "title": "Display None",
+          "class": ".d-none",
+          "enabled": true
+        },
+        {
+          "title": "Display Block",
+          "class": ".d-block",
+          "enabled": true
+        },
+        {
+          "title": "Display Unset",
+          "class": ".d-unset",
+          "enabled": true
+        },
+        {
+          "title": "Display Flex",
+          "class": ".d-flex",
+          "enabled": true
+        },
+        {
+          "title": "Display Inline Flex",
+          "class": ".d-flex-inline",
+          "enabled": false
+        },
+        {
+          "title": "Display Grid",
+          "class": ".d-grid",
+          "enabled": true
+        },
+        {
+          "title": "Display Inline",
+          "class": ".d-inline",
+          "enabled": true
+        },
+        {
+          "title": "Display Inline Block",
+          "class": ".d-inline-block",
+          "enabled": false
+        },
+        {
+          "title": "Display Table",
+          "class": ".d-table",
+          "enabled": false
+        },
+        {
+          "title": "Display Table Row",
+          "class": ".d-table-row",
+          "enabled": false
+        },
+        {
+          "title": "Display Table Cell",
+          "class": ".d-table-cell",
+          "enabled": false
+        }
+      ]
     }
   ]
 }

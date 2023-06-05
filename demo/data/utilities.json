@@ -1,6 +1,50 @@
 {
   "data": [
     {
+      "title": "Svg",
+      "property": "style",
+      "responsive": false,
+      "describe": "SVG Icons embedded within the variation are available as SASS Functions and applied to <code>background-image</code> properties. The icons are also available as CSS Variables and expose a value of <code>url()</code> which can be used inline via <code>style</code> attributes.",
+      "classes": [
+        {
+          "title": "Plus",
+          "function": "icon-plus($color: currentColor,$width: 1)"
+        },
+        {
+          "title": "Minus",
+          "function": "icon-minus($color: currentColor, $width: 1)"
+        },
+        {
+          "title": "Check",
+          "function": "icon-check($color: currentColor, $width: 1)"
+        },
+        {
+          "title": "Cross",
+          "function": "icon-cross($color: currentColor, $width: 1)"
+        },
+        {
+          "title": "Square",
+          "function": "icon-square($color: currentColor, $width: 1)"
+        },
+        {
+          "title": "Arrow",
+          "function": "icon-arrow($color: currentColor, $width: 1)"
+        },
+        {
+          "title": "Menu",
+          "function": "icon-menu($color: currentColor, $width: 1)"
+        },
+        {
+          "title": "Image",
+          "function": "icon-image($color: currentColor, $width: 1)"
+        },
+        {
+          "title": "Bell",
+          "function": "icon-bell($color: currentColor, $width: 1)"
+        }
+      ]
+    },
+    {
       "title": "Aspect Ratio",
       "property": "img picture",
       "responsive": true,

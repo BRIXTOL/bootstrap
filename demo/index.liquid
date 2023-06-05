@@ -5,6 +5,7 @@ views:
   - scss
   - html
 refs:
+  - layouts
   - fonts
   - text
   - utilities
@@ -38,7 +39,7 @@ refs:
   <body>
     <div class="container-fluid gx-0">
       <div class="row gx-0 jc-center vh-100">
-        <div class="col-2 br bg-white">
+        <div class="col-2 bx bg-white">
           <div
             class="accordion lined"
             data-controller="accordion"
@@ -48,7 +49,9 @@ refs:
 
             {% for data in refs %}
 
-              {% if data == "fonts" %}
+              {% if data == "layouts" %}
+                {% assign list = layouts.data %}
+              {% elsif data == "fonts" %}
                 {% assign list = fonts.data %}
               {% elsif data == "text" %}
                 {% assign list = text.data %}
@@ -65,16 +68,18 @@ refs:
               </button>
 
               <div class="accordion-fold">
-                <div class="d-block p-3">
+                <ul class="list-dash p-3">
                   {% for item in list %}
-                    <a
-                      class="d-block mb-1 upcase"
-                      href="{{ item.title | slugify | prepend: '#' }}"
-                      id="{{ item.title }}">
-                      {{ item.title }}
-                    </a>
+                    <li>
+                      <a
+                        class="d-block mb-1 upcase"
+                        href="{{ item.title | slugify | prepend: '#' }}"
+                        id="{{ item.title }}">
+                        {{ item.title }}
+                      </a>
+                    </li>
                   {% endfor %}
-                </div>
+                </ul>
               </div>
 
             {% endfor %}
@@ -83,6 +88,7 @@ refs:
         </div>
 
         <div class="col-10 mb-5 bg-white">
+
           <div class="d-block py-3 px-5 bg-white" id="search">
             <input
               type="search"
@@ -90,11 +96,14 @@ refs:
               placeholder="Search property or class name"
               class="fm-input">
           </div>
+
           <div class="accordion lined px-5" id="content">
 
             {% for data in refs %}
 
-              {% if data == "fonts" %}
+              {% if data == "layouts" %}
+                {% assign list = layouts.data %}
+              {% elsif data == "fonts" %}
                 {% assign list = fonts.data %}
               {% elsif data == "text" %}
                 {% assign list = text.data %}

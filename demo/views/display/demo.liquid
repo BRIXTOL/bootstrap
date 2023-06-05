@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-12">
+    {{ item.describe }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3 pt-2 ai-center">
+    {% for item in item.classes %}
+      {% if item.enabled %}
+        <div class="row ai-center mb-2">
+          <div class="col-5">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-7 my-0 fs-sm">
+            <span class="p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+  <div class="col-4 pt-2 ai-center">
+    {% for item in item.classes %}
+      {% unless item.enabled %}
+
+        <div
+          class="row ai-center mb-2"
+          data-tooltip="top"
+          aria-label="Class is disabled">
+          <div class="col-7" style="opacity: .4;">
+            <pre class="m-1"><code>{{ item.class }}</code></pre>
+          </div>
+          <div class="col-5 fs-sm my-0" style="opacity: .4;">
+            <span class="{{ item.class | remove_first: '.' }} p-2">
+              {{ item.title }}
+            </span>
+          </div>
+        </div>
+      {% endunless %}
+    {% endfor %}
+
+  </div>
+
+</div>

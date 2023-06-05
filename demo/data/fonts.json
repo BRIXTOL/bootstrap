@@ -4,10 +4,11 @@
       "title": "Font Family",
       "property": "font-family",
       "responsive": false,
+      "description": "There are 3 available font family references.",
       "classes": [
         {
           "example": "This is the headings type font!",
-          "class": ".ff-heading"
+          "class": ".ff-head"
         },
         {
           "example": "This is the body (base) type font!",
@@ -22,6 +23,7 @@
     {
       "title": "Font Sizes",
       "property": "font-size",
+      "description": "There are 5 available font size utility classes available. The <strong>default</strong> font size is set at <code>Medium (Base)</code>.",
       "responsive": false,
       "classes": [
         {
@@ -49,6 +51,7 @@
     {
       "title": "Font Style",
       "property": "font-style",
+      "description": "Font style classes can either normalize text content of apply italic.",
       "responsive": false,
       "classes": [
         {
