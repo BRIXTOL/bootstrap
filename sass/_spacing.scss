@@ -22,7 +22,7 @@ $utilities: map-merge($utilities, (
     responsive: true,
     property: margin,
     class: m,
-    values: map-merge($spacers, (auto: auto))
+    values: $spacers
   ),
   "margin-x": (
     responsive: true,
