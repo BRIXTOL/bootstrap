@@ -2,10 +2,10 @@ $enable-important-utilities: false;
 
 $utilities: map-get-multiple($utilities, (
   "width",
-  "max-width",
+ // "max-width",
   "viewport-width",
   "height",
-  "max-height",
+  // "max-height",
   "viewport-height",
 ));
 
@@ -23,11 +23,11 @@ $utilities: map-merge($utilities, (
     )
   ),
 
-  "max-width": (
-    property: max-width,
-    class: mw,
-    values: (100: 100%)
-  ),
+  // "max-width": (
+  //   property: max-width,
+  //   class: mw,
+  //   values: (100: 100%)
+  // ),
 
   "viewport-width": (
     property: width,
@@ -47,11 +47,11 @@ $utilities: map-merge($utilities, (
     )
   ),
 
-  "max-height": (
-    property: max-height,
-    class: mh,
-    values: (100: 100%)
-  ),
+  // "max-height": (
+  //   property: max-height,
+  //   class: mh,
+  //   values: (100: 100%)
+  // ),
 
   "viewport-height": (
     property: height,
