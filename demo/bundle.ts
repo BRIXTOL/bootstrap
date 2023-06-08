@@ -15,10 +15,54 @@ for (const id in controllers) {
   stimulus.register(id.toLowerCase(), controllers[id]);
 }
 
+const cache = 1;
+
 const sidebar = document.querySelector('#sidebar');
 const items = Array.from(sidebar.querySelectorAll('a')).map(a => a.id.toLowerCase());
 
 const search: HTMLInputElement = document.querySelector('#search-input');
+const anchors: NodeListOf<HTMLLinkElement> = document.querySelectorAll('.anchor');
+
+anchors.forEach((link) => {
+
+  link.onclick = (e) => {
+
+    e.preventDefault();
+
+    anchors.forEach(item => {
+      if (item.classList.contains('fw-bold')) {
+        item.classList.remove('fw-bold');
+      }
+    });
+
+    link.classList.add('fw-bold');
+    const anchor = document.querySelector('#' + link.href.split('#').pop());
+
+    scrollBy({
+      behavior: 'smooth',
+      top: anchor.getBoundingClientRect().top - 80
+    });
+
+  };
+
+});
+
+// const intersect = new IntersectionObserver(function (entries) {
+
+//   const nav = window.relapse.get('sidebar');
+//   const entry = entries[0];
+//   const index = +entry.target.getAttribute('data-ref');
+
+//   if (index === cache) {
+//     nav.expand(cache);
+//   } else {
+//     nav.collapse(cache);
+//     cache = index;
+//   }
+
+// });
+
+// document.querySelectorAll('[data-ref]').forEach(i => intersect.observe(i));
 
 search.addEventListener('input', function (event) {
 
@@ -33,9 +77,13 @@ search.addEventListener('input', function (event) {
 
     const slug = '#' + hash[0].replace(' ', '-');
     const qs = document.querySelector(slug);
-    console.log(qs, slug);
+
     if (qs) {
-      qs.scrollIntoView({ block: 'center' });
+
+      scrollBy({
+        behavior: 'instant',
+        top: qs.getBoundingClientRect().top - 80
+      });
 
     }
   }
@@ -43,9 +91,7 @@ search.addEventListener('input', function (event) {
 });
 
 stickybits('#sidebar');
-stickybits('#search', {
-  stuckClass: 'mt-5 pt-5'
-});
+stickybits('#search');
 
 const modalButton = document.querySelector('#btn-modal-1');
 

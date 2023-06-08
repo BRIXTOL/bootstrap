@@ -4,25 +4,15 @@
 // https://primer.github.io/.
 
 .fm-select {
-  display: block;
+
   width: 100%;
   padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
   -moz-padding-start: subtract($form-select-padding-x, 3px); // See https://github.com/twbs/bootstrap/issues/32636
-  font-family: $form-select-font-family;
-  @include font-size($form-select-font-size);
-  font-weight: $form-select-font-weight;
-  line-height: $form-select-line-height;
-  color: $form-select-color;
-  background-color: $form-select-bg;
-  background-image: url($form-select-indicator);
-  background-repeat: no-repeat;
-  background-position: $form-select-bg-position;
-  background-size: $form-select-bg-size;
-  border: $form-select-border-width solid $form-select-border-color;
   appearance: none;
+  @include form-dropdown-and-select(select);
   @include border-radius($form-select-border-radius, 0);
   @include box-shadow($form-select-box-shadow);
-  @include transition($form-select-transition);
+  @include transition(border-color .25s ease-in-out, color .25s ease-in-out);
 
   &.fm-lined {
     border-radius: 0 !important;
@@ -46,23 +36,11 @@
     @include border-radius($form-select-border-radius-sm);
   }
 
-  &.fm-lg {
-    padding-top: $form-select-padding-y-lg;
-    padding-bottom: $form-select-padding-y-lg;
-    padding-left: $form-select-padding-x-lg;
-    @include font-size($form-select-font-size-lg);
-    @include border-radius($form-select-border-radius-lg);
-  }
-
+  &:hover,
   &:focus {
     border-color: $form-select-focus-border-color;
+    color: $form-select-focus-border-color;
     outline: 0;
-    @if $enable-shadows {
-      @include box-shadow($form-select-box-shadow, $form-select-focus-box-shadow);
-    } @else {
-      // Avoid using mixin so we can pass custom focus shadow properly
-      box-shadow: $form-select-focus-box-shadow;
-    }
   }
 
   &[multiple],

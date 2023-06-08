@@ -1,0 +1,417 @@
+// CORE CONTROL
+//
+// The variables and maps defined here can be used to refine the applied
+// styles to be used. This file can be copied and added to projects and
+// leveraged as as the core control for the web application design.
+
+/* -------------------------------------------- */
+/* OPTIONS                                      */
+/* -------------------------------------------- */
+
+$enable-rfs:                        true;
+$enable-font-smoothing:             true;
+$enable-font-smoothing-heading:     true;
+$enable-transitions:                true;
+$enable-reduced-motion:             true;
+$enable-grid-classes:               true;
+$enable-validation-icons:           true;
+$enable-rounded:                    true;
+$enable-button-pointers:            true;
+$enable-deprecation-messages:       true;
+$enable-caret:                      false;
+$enable-shadows:                    false;
+$enable-gradients:                  false;
+$enable-smooth-scroll:              false;
+$enable-cssgrid:                    false;
+$enable-negative-margins:           false;
+$enable-important-utilities:        false;
+
+
+/* -------------------------------------------- */
+/* PALETTE                                      */
+/* -------------------------------------------- */
+
+$white:         #ffffff;
+$black:         #000000;
+$blue:          #0d6efd;
+$indigo:        #6610f2;
+$purple:        #6f42c1;
+$pink:          #d63384;
+$red:           #dc3545;
+$orange:        #fd7e14;
+$yellow:        #ffc107;
+$green:         #198754;
+$teal:          #20c997;
+$cyan:          #0dcaf0;
+
+/* -------------------------------------------- */
+/* GRAYS                                        */
+/* -------------------------------------------- */
+
+$gray-100:      #f8f8f8;
+$gray-200:      #e0e4e7;
+$gray-300:      #ccd3da;
+$gray-400:      #b6c2ce;
+$gray-500:      #98a5b3;
+$gray-600:      #747d85;
+$gray-700:      #575f68;
+$gray-800:      #373d42;
+$gray-900:      #202427;
+
+/* -------------------------------------------- */
+/* COLOR UTILITIES                              */
+/* -------------------------------------------- */
+
+$background-colors: (
+  transparent: $transparent,
+  white: $white,
+  black: $black,
+  ivory: $gray-100,
+  gray: $gray-400,
+);
+
+$border-colors: (
+  black: $black,
+  white: $white,
+  red: $red,
+  gray: $gray-400,
+  green: $green
+);
+
+$font-colors: (
+  black: $black,
+  white: $white,
+  green: $green,
+  gray: $gray-500,
+  red: $red,
+  orange: $orange,
+  pink: $pink
+);
+
+$button-colors: (
+  black: $black,
+  white: $white,
+  gray: $gray-500,
+  red: $red,
+  green: $green
+);
+
+/* -------------------------------------------- */
+/* Z-INDEXES                                    */
+/* -------------------------------------------- */
+
+$zindex-tooltip:  99999;
+
+/* -------------------------------------------- */
+/* FONT FAMILY                                  */
+/* -------------------------------------------- */
+
+$font-family-base:         system-ui, -apple-system, blinkmacsystemfont,"Open Sans", "Helvetica Neue", sans-serif;
+$font-family-heading:      Arial, sans-serif;
+$font-family-code:         SFMono-Regular, Menlo, Monaco, "Courier New", Courier, monospace;
+$font-family-sans:         system-ui, -apple-system, blinkmacsystemfont, "Open Sans", "Helvetica Neue", sans-serif;
+
+/* -------------------------------------------- */
+/* FONT SIZES                                   */
+/* -------------------------------------------- */
+
+$font-size-xs:                    $font-size-base * .595;
+$font-size-sm:                    $font-size-base * .725;
+$font-size-md:                    $font-size-base * .975;
+$font-size-lg:                    $font-size-base * 1.25;
+$font-size-xl:                    $font-size-base * 1.75;
+
+/* -------------------------------------------- */
+/* BODY                                         */
+/* -------------------------------------------- */
+
+$body-bg:                          $white;
+$body-color:                       $gray-900;
+$body-letter-spacing:              $letter-spacing-base;
+
+/* -------------------------------------------- */
+/* FONT HEADINGS                                */
+/* -------------------------------------------- */
+
+$headings-letter-spacing:          inherit;
+$headings-font-style:              null;
+$headings-font-weight:             500;
+$headings-line-height:             1.4;
+$headings-uppercase:               true;
+$headings-margin-bottom:           0;
+
+$h1-font-size:                    $font-size-base * 2.5;
+$h2-font-size:                    $font-size-base * 2;
+$h3-font-size:                    $font-size-base * 1.75;
+$h4-font-size:                    $font-size-base * 1.5;
+$h5-font-size:                    $font-size-base * 1.25;
+$h6-font-size:                    $font-size-base * 1;
+
+
+/* -------------------------------------------- */
+/* FONT WEIGHT                                  */
+/* -------------------------------------------- */
+
+$font-weight-lighter:              100;
+$font-weight-light:                300;
+$font-weight-normal:               400;
+$font-weight-bold:                 700;
+$font-weight-bolder:               bolder;
+
+/* -------------------------------------------- */
+/* LINE HEIGHT                                  */
+/* -------------------------------------------- */
+
+$line-height-base:                 1.5;
+
+$line-height-sm:                   1.25;
+$line-height-lg:                   2;
+$line-height-xl:                   2.4;
+
+/* -------------------------------------------- */
+/* LINKS                                        */
+/* -------------------------------------------- */
+
+$link-color:                       $black;
+$link-shade-percentage:            40%;
+$link-hover-color:                 tint-color($link-color, $link-shade-percentage);
+$link-decoration:                  none;
+$link-hover-decoration:            none;
+$link-cover:                       after;
+$link-z-index:                     1;
+
+/* -------------------------------------------- */
+/* PARAGRAPH                                    */
+/* -------------------------------------------- */
+
+$paragraph-margin-bottom:           1rem;
+
+/* -------------------------------------------- */
+/* BORDERS                                      */
+/* -------------------------------------------- */
+
+$border-width:                .07rem;
+$border-style:                solid;
+$border-color-translucent:    rgba($black, .175);
+$border-widths: (
+  1: .1rem,
+  2: .2rem
+);
+
+/* -------------------------------------------- */
+/* RADIUS                                       */
+/* -------------------------------------------- */
+
+$border-radius:               .375rem;
+$border-radius-sm:            .25rem;
+$border-radius-lg:            .5rem;
+$border-radius-xl:             1rem;
+$border-radius-pill:           5rem;
+
+/* -------------------------------------------- */
+/* SHADOWS                                      */
+/* -------------------------------------------- */
+
+$box-shadow:                  0 .5rem 1rem rgba($black, .15);
+$box-shadow-sm:               0 .125rem .25rem rgba($black, .075);
+$box-shadow-lg:               0 1rem 3rem rgba($black, .175);
+$box-shadow-inset:            inset 0 1px 2px rgba($black, .075);
+
+/* -------------------------------------------- */
+/* HR LINE                                      */
+/* -------------------------------------------- */
+
+$hr-color:                    inherit;
+$hr-margin-y:                 $spacer;
+$hr-border-width:             $border-width;
+$hr-border-color:             null; // Allows for inherited colors
+$hr-opacity:                  .25;
+
+
+/* -------------------------------------------- */
+/* ASPECT RATIO                                 */
+/* -------------------------------------------- */
+
+$aspect-ratio-bg-svg:              url(icon-image($gray-600, 0.7));
+$aspect-ratio-bg-color:             $gray-100;
+$aspect-ratio-bg-size:              20%;
+$aspect-ratios: (
+  "3000x2250": calc(3000 / 2250)
+);
+
+/* -------------------------------------------- */
+/* CODE                                         */
+/* -------------------------------------------- */
+
+// Code
+
+$code-font-size:                    $small-font-size;
+$code-color:                        $pink;
+
+$pre-color:                         null;
+
+$kbd-padding-y:                     .1875rem;
+$kbd-padding-x:                     .375rem;
+$kbd-font-size:                     $code-font-size;
+$kbd-color:                         var(--#{$prefix}body-bg);
+$kbd-bg:                            var(--#{$prefix}body-color);
+
+
+/* -------------------------------------------- */
+/* LINKS LISTS                                  */
+/* -------------------------------------------- */
+
+$link-list-radius:          0;
+$link-list-padding-y:       .395rem;
+$link-list-padding-x:       .75rem;
+$link-list-color:           $black;
+$link-list-hover-bg:        $gray-200;
+$link-list-hover-color:     $black;
+$link-list-disabled-color:  $gray-500;
+$link-list-active-bold:     true;
+$link-list-active-bg:       null;
+$link-list-active-color:    $black;
+
+
+/* -------------------------------------------- */
+/* LISTS                                        */
+/* -------------------------------------------- */
+
+$list-pipe-spacing:        20px;
+$list-inline-spacing:      20px;
+$list-dash-indent:         12px;
+
+/* -------------------------------------------- */
+/* BUTTONS                                      */
+/* -------------------------------------------- */
+
+$btn-border-width: $border-width;
+
+// Allows for customizing button radius independently from global border radius
+//
+$btn-border-radius:           0;
+$btn-border-radius-sm:        0;
+$btn-border-radius-lg:        0;
+
+$btn-link-color:              var(--#{$prefix}link-color);
+$btn-link-hover-color:        var(--#{$prefix}link-hover-color);
+
+$btn-text-uppercase:          true;
+$btn-font-family:             $font-family-heading;
+$btn-font-size:               $font-size-sm;
+$btn-font-size-sm:            $font-size-xs;
+$btn-font-size-lg:            $font-size-lg;
+$btn-line-height:             $line-height-base;
+
+// Controls the border highlighting to be applied when pressing a button element
+//
+$btn-focus-color:             $transparent;
+$btn-focus-width:             .15rem;
+$btn-focus-opacity:           .25;
+$btn-focus-box-shadow:         0;
+
+$btn-disabled-opacity:        .55;
+
+$btn-padding-y:               .375rem;
+$btn-padding-y-sm:            .2rem;
+$btn-padding-x-sm:            .45rem;
+
+$btn-padding-x:               .75rem;
+$btn-padding-y-lg:            .5rem;
+$btn-padding-x-lg:             1rem;
+
+$btn-white-space:              nowrap; // Set to `nowrap` to prevent text wrapping
+
+/* -------------------------------------------- */
+/* SPINNER                                      */
+/* -------------------------------------------- */
+
+$spinner-width:               2rem;
+$spinner-height:              $spinner-width;
+$spinner-border-width:        .2rem;
+$spinner-width-sm:            1rem;
+$spinner-height-sm:           $spinner-width-sm;
+$spinner-border-width-sm:     .15rem;
+$spinner-vertical-align:      -.125em;
+$spinner-border-color:        $gray-300;
+$spinner-animation-speed:     .65s;
+
+/* -------------------------------------------- */
+/* TOOLTIP                                      */
+/* -------------------------------------------- */
+
+$tooltip-bg:                   $black;
+$tooltip-font-family:          $font-family-base;
+$tooltip-font-style:           normal;
+$tooltip-font-size:            $font-size-xs;
+$tooltip-font-color:           $white;
+$tooltip-padding-y:            .1rem;
+$tooltip-padding-x:            .5rem;
+$tooltip-arrow-size:           5px;
+$tooltip-radius:               0;
+$tooltip-border-width:         .03rem;
+$tooltip-animation:            true;
+$tooltip-use-outline:          false;
+
+
+/* -------------------------------------------- */
+/* ACCORDION                                    */
+/* -------------------------------------------- */
+
+$accordion-border-width:            $border-width;
+$accordion-border-color:            $border-color;
+$accordion-btn-opened:              $gray-700;
+$accordion-padding:                 50px;
+$accordion-transition-height:       225ms;
+$accordion-transition-opacity:      200ms;
+$accordion-transition-easing:       ease-in-out;
+$accordion-icon-padding-x:          .5rem;
+
+/* -------------------------------------------- */
+/* MODAL                                        */
+/* -------------------------------------------- */
+
+$modal-backdrop-bg:                  rgba($color: $black, $alpha: 0.5);
+$modal-transition:                   200ms;
+
+/* -------------------------------------------- */
+/*                    DRAWER                    */
+/* -------------------------------------------- */
+
+$drawer-duration:                    0.3s;
+$drawer-easing:                      ease-in-out;
+$drawer-zindex:                      99999;
+$drawer-overlay-z-index:             1000 + 10;
+$drawer-overlay-duration:            $drawer-duration;
+$drawer-overlay-bg:                  rgba(0, 0, 0, 0.6);
+$drawer-directions: (
+  left,
+  right,
+  top,
+  bottom
+);
+
+/* -------------------------------------------- */
+/* FORM INPUT                                   */
+/* -------------------------------------------- */
+
+$input-padding-y:                               .335rem;
+$input-padding-y-sm:                            .32rem;
+$input-padding-x:                               .75rem;
+$input-padding-x-sm:                            .5rem;
+
+$input-font-family:                             $font-family-base;
+$input-font-weight:                             $font-weight-base;
+$input-font-size:                               $font-size-base * .925;
+$input-font-size-sm:                            $font-size-sm;
+$input-line-height:                             $line-height-base;
+$input-text-uppercase:                          false;
+
+$input-bg:                                      $body-bg;
+$input-color:                                   $body-color;
+
+$input-disabled-bg:                             $gray-100;
+$input-disabled-border-color:                   $gray-200;
+
+$input-border-color:                            $gray-400;
+$input-border-width:                            $border-width;

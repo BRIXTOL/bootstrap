@@ -2,7 +2,7 @@
 // Check/radio
 //
 
-.fm-check {
+.fm-toggle {
   display: block;
   min-height: $form-check-min-height;
   padding-left: $form-check-padding-start;
@@ -13,37 +13,30 @@
     padding-left: 0;
     text-align: right;
 
-    .fm-check-input {
+    > .fm-radio,
+    > .fm-checkbox {
       float: right;
       margin-right: $form-check-padding-start * -1;
       margin-left: 0;
     }
   }
 
-  &-input {
+  > .fm-radio,
+  > .fm-checkbox {
     float: left;
     margin-left: $form-check-padding-start * -1;
   }
 
-  &.fm-lg {
-     padding-left: $form-check-padding-start + .5;
-
+  .fm-label {
+    color: $form-check-label-color;
+    cursor: $form-check-label-cursor;
   }
 
 
-  &.fm-lg &-input {
-    width: $form-check-input-width  + .4;
-    height: $form-check-input-width + .4;
-    float: left;
-    margin-left: ($form-check-padding-start + .5) * -1;
-  }
-
-  &.fm-lg &-label {
-    line-height: ($form-check-input-width * 2) - .1;
-  }
 }
 
-.fm-check-input {
+input.fm-radio,
+input.fm-checkbox {
   width: $form-check-input-width;
   height: $form-check-input-width;
   margin-top: ($line-height-base - $form-check-input-width) * .5; // line-height minus check height
@@ -55,6 +48,7 @@
   border: $form-check-input-border;
   appearance: none;
   print-color-adjust: exact; // Keep themed appearance for print
+
   @include transition($form-check-transition);
 
   &[type="checkbox"] {
@@ -81,11 +75,11 @@
     border-color: $form-check-input-checked-border-color;
 
     &[type="checkbox"] {
-      background-image: url(icon-cross($form-check-input-checked-color));
+      background-image: var(--svg-cross);
     }
 
     &[type="radio"] {
-      background-image: url(icon-square($form-check-input-checked-color));
+      background-image: var(--svg-square);
     }
   }
 
@@ -99,17 +93,13 @@
   // See: https://github.com/twbs/bootstrap/issues/28247
   &[disabled],
   &:disabled {
-    ~ .fm-check-label {
+    ~ .fm-label {
       cursor: default;
       opacity: $form-check-label-disabled-opacity;
     }
   }
 }
 
-.fm-check-label {
-  color: $form-check-label-color;
-  cursor: $form-check-label-cursor;
-}
 
 
 

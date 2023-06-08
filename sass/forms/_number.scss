@@ -14,13 +14,16 @@ fieldset.fm-number {
       font-size:calc($font-size-sm / 1.1);
       padding: calc($input-padding-y-sm / 2) calc($input-padding-x-sm / 2);
     }
+
     .increment,
-    .decrement { background-size: .9rem; }
+    .decrement {
+      background-size: .9rem;
+    }
    }
 
   .fm-input {
     border: none;
-    padding: $input-padding-y calc($input-padding-x / 2);
+    height: calc($form-switch-width / 2);
     line-height: calc($input-line-height);
     text-align: center;
     -moz-appearance: textfield;

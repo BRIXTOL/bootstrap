@@ -7,6 +7,10 @@ const { Liquid } = require("liquidjs");
 module.exports = eleventy(config =>{
 
 
+  config.addPairedLiquidShortcode('code', function (code) {
+     return `${code}`;
+   });
+
   config.addPlugin(EleventyRenderPlugin);
   config.addPlugin(navigation);
   config.addPlugin(highlight, {
@@ -15,6 +19,8 @@ module.exports = eleventy(config =>{
   config.setBrowserSyncConfig({
     notify: true
   });
+
+
   config.setLibrary('liquid', new Liquid({
     extname: ".liquid",
     dynamicPartials: true,
@@ -26,13 +32,12 @@ module.exports = eleventy(config =>{
     htmlTemplateEngine: 'liquid',
     passthroughFileCopy: true,
     dataTemplateEngine: 'liquid',
-    templateFormats: ['liquid', 'json', 'md', 'css', 'html', 'yml'],
+    templateFormats: ['liquid', 'json'],
     dir: {
       input: "demo",
       output: "docs",
       includes: "views",
       layouts: "",
-     // layouts: "",
       data: "data",
     },
   };

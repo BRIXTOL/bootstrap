@@ -16,13 +16,13 @@ samp {
 
 pre {
   display: block;
-  margin-top: 1rem; // 1
-  margin-bottom: 1rem; // 2
+  margin-top: .5rem; // 1
+  margin-bottom: .5rem; // 2
   padding: .5rem;
   color: $pre-color;
   white-space: normal;
   background-color: $gray-200;
-  border-radius: $border-radius-sm;
+  border-radius: $pre-radius;
 
   @include font-size($font-size-sm);
 

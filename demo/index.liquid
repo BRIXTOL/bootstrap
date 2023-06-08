@@ -2,8 +2,8 @@
 title: BRIXTOL | BOOTSTRAP
 views:
   - demo
-  - scss
   - html
+  - scss
 refs:
   - layouts
   - fonts
@@ -39,12 +39,14 @@ refs:
   <body>
     <div class="container-fluid gx-0">
       <div class="row gx-0 jc-center vh-100">
-        <div class="col-2 bx bg-white">
+
+        <div class="col-2 br bg-white">
           <div
-            class="accordion lined"
+            class="accordion lined vh-100 overflow"
             data-controller="accordion"
-            data-accordion-multiple-value="false"
-            data-accordion-persist-value="true"
+            data-accordion-multiple-value="true"
+            data-accordion-persist-value="false"
+            data-relapse="sidebar"
             id="sidebar">
 
             {% for data in refs %}
@@ -63,17 +65,18 @@ refs:
                 {% assign list = components.data %}
               {% endif %}
 
-              <button class="accordion-btn upper fs-sm py-3 pl-4 fw-bold" type="button">
+              <button class="accordion-btn upper py-3 pl-4 fw-bold" type="button">
                 {{ data }}
               </button>
 
               <div class="accordion-fold">
-                <ul class="list-dash p-3">
+                <ul class="list p-3 bg-ivory bt mx-0 pl-4">
                   {% for item in list %}
                     <li>
                       <a
-                        class="d-block mb-1 upcase"
+                        class="d-block mb-1 upcase anchor"
                         href="{{ item.title | slugify | prepend: '#' }}"
+                        data-href="{{ item.title | slugify }}"
                         id="{{ item.title }}">
                         {{ item.title }}
                       </a>
@@ -87,15 +90,16 @@ refs:
           </div>
         </div>
 
-        <div class="col-10 mb-5 bg-white">
-
-          <div class="d-block py-3 px-5 bg-white" id="search">
+        <div class="col-10 mb-5 bg-white px-5" id="contents">
+          <div class="d-block py-3 bg-white" id="search">
             <input
               type="search"
               id="search-input"
               placeholder="Search property or class name"
-              class="fm-input">
+              class="fm-input mx-2">
           </div>
+
+          {% assign ref = 0 %}
 
           {% for data in refs %}
 
@@ -113,56 +117,81 @@ refs:
               {% assign list = components.data %}
             {% endif %}
 
-            {% if forloop.index0 %}
-              {% assign one = 'px-4' %}
-            {% else %}
-              {% assign one = '' %}
-            {% endif %}
-
             {% for item in list %}
 
               {% assign slug = item.title | slug %}
 
+              <div
+                id="{{ slug }}"
+                class="row jc-between px-4 mt-5"
+                data-ref="{{ ref }}">
+                <div class="col-auto">
+                  <a href="#{{ slug }}" class="h4 d-block fw-bold fc-dark-gray">
+                    {{ item.title }}
+                  </a>
+                  <code class="lower fw-bold fs-sm fc-green mt-2">
+                    responsive
+                </code>
+                </div>
+                <div class="col-auto mt-2">
+                  <!-- esthetic-ignore-start -->
+                  {% if item.property.size > 0 %}
+                    <code class="lower fw-bold fs-sm">{{ item.property }}</code>
+                  {% endif %}
+                  <!-- esthetic-ignore-end -->
+                </div>
+              </div>
+
+              {% if item.description %}
+
+                <div class="d-block px-4 mt-4 mb-4">
+                  {{ item.description }}
+                </div>
+
+                {% else %}
+
+                <div class="d-block my-4"></div>
+
+              {% endif %}
+
               {% for view in views %}
+
+                {% assign template = slug | append: "/" | append: view %}
+
+                {% if view == 'demo' and item.expanded == true %}
+                  {% assign expanded = 'initial bt-0' %}
+                {% elsif view == 'scss' %}
+                  {% assign expanded = 'bb' %}
+                {% else %}
+                  {% assign expanded = '' %}
+                {% endif %}
+
                 <div
-                  class="accordion lined mx-4"
+                  class="accordion px-4 lined"
                   id="{{ slug }}-xx"
                   data-controller="accordion"
                   data-accordion-multiple-value="true"
                   data-accordion-persist-value="false">
 
-                  {% if forloop.first %}
-                    <button type="button" class="accordion-btn d-flex ai-center h3 fw-bold no-icon initial bt-0">
-                      <span class="mr-auto py-4 {{ one }}">
-                        {{ item.title }}
-                        {% assign one = '' %}
-                      </span>
-                      {% if item.responsive %}
-                        <code class="lower fc-green">
-                          responsive</code>
-                        <span class="fc-gray px-4 fs-sm">|</span>
-                      {% endif %}
-                      <code class="lower">{{ item.property }}</code>
-                    </button>
-                  {% else %}
-                    <button type="button" class="accordion-btn h6 fw-bold fc-gray py-3 {% if forloop.last %} bb-0{% endif %}">
-                      {{ item.title | append: " " | append: view }}
-                    </button>
-                  {% endif %}
+                  <button type="button" class="accordion-btn fc-gray upper fs-md fw-bold py-3 px-0 {{ expanded }}">
 
-                  <div
-                    class="accordion-fold bg-white"
+                    {{ view }}
 
-                  >
-                    <div class="container-fluid gx-0 {% if forloop.first %}py-4{% else %}py-1{% endif %}">
-                      {% assign template = slug | append: "/" | append: view %}
+                  </button>
+
+                  <div class="accordion-fold bg-white">
+                    <div class="container-fluid px-0 py-4">
                       {% render template, item: item %}
                     </div>
                   </div>
                 </div>
-                {% endfor %}
+
               {% endfor %}
             {% endfor %}
+
+            {% assign ref = forloop.index %}
+
+          {% endfor %}
 
         </div>
       </div>
@@ -170,7 +199,9 @@ refs:
 
     <div id="modal-example" class="modal">
       <div class="modal-container">
-        <h1>Hello World</h1>
+        <h1>
+          Hello World
+        </h1>
       </div>
     </div>
 

@@ -53,8 +53,9 @@ body {
   font-family: $font-family-base-var;
   line-height: var(--#{$prefix}body-line-height);
   text-align: var(--#{$prefix}body-text-align);
-  letter-spacing: $letter-spacing-base;
+  letter-spacing: $body-letter-spacing;
   background-color: var(--#{$prefix}body-bg);
+
 
   -webkit-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
@@ -91,11 +92,10 @@ hr {
 %heading {
   margin-top: 0; // 1
   margin-bottom: $headings-margin-bottom;
-  font-family: $headings-font-family;
+  font-family: $font-family-heading;
   font-style: $headings-font-style;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
-  color: $headings-color;
   letter-spacing: $headings-letter-spacing;
 
   @if $headings-uppercase {
@@ -283,16 +283,6 @@ a:not([href]):not([class]) {
 }
 
 
-// Code
-
-pre,
-code,
-kbd,
-samp {
-  font-family:  var(--#{$prefix}font-code);
-  @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
-}
-
 // 1. Remove browser default top margin
 // 2. Reset browser default of `1em` to use `rem`s
 // 3. Don't allow content to break outside
@@ -455,7 +445,7 @@ select {
   // Remove the inheritance of word-wrap in Safari.
   // See https://github.com/twbs/bootstrap/issues/24990
   word-wrap: normal;
-
+  cursor: pointer;
   // Undo the opacity change from Chrome
   &:disabled {
     opacity: 1;

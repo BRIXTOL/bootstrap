@@ -1,0 +1,290 @@
+{% assign values = 'Option 1,Option 2,Option 3,Option 4,Option 5' | split: ',' %}
+
+<div class="row ac-center">
+  <div class="col-12">
+    <h6 class="mb-3 fw-bold">
+      INPUTS
+    </h6>
+    <p class="fs-xs mb-4">
+      Demonstrates input type form fields. The examples are used to showcase precision height, width and pseudo overwrites.
+    </p>
+  </div>
+  <div class="col-3">
+    <span class="fs-xs fw-bold upper">
+      Text Input
+    </span>
+    <p class="fs-xs">
+      Basic text input field
+    </p>
+    <div class="d-block mb-3">
+      <input
+        class="fm-input"
+        placeholder="Placeholder"
+        type="text">
+    </div>
+
+    <div class="d-block mb-3">
+      <span class="fs-xs fw-bold upper">
+        Search Input
+      </span>
+      <p class="fs-xs">
+        Search input field with customisations
+      </p>
+      <input
+        class="fm-input"
+        placeholder="Placeholder"
+        type="search">
+    </div>
+  </div>
+
+  <div class="col-3">
+    <span class="fs-xs fw-bold upper">
+      Float Input
+    </span>
+    <p class="fs-xs">
+      Basic text input field using float placeholder
+    </p>
+    <div class="d-block mb-3">
+      <div class="fm-float">
+        <input
+          class="fm-input"
+          placeholder="Placeholder"
+          id="input-float"
+          type="text">
+        <label class="fm-label" for="input-float">
+          Float Placeholder
+        </label>
+      </div>
+    </div>
+
+    <div class="d-block mb-3">
+      <span class="fs-xs fw-bold upper">
+        Float Search
+      </span>
+      <p class="fs-xs">
+        Basic text input field using float placeholder
+      </p>
+      <div class="fm-float">
+        <input
+          class="fm-input"
+          placeholder="Placeholder"
+          id="input-float"
+          type="search">
+        <label class="fm-label" for="input-float">
+          Float Search
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3">
+
+    <div class="d-block mb-3">
+
+      <span class="fs-xs fw-bold upper">
+        Select
+      </span>
+      <p class="fs-xs">
+        The native select form element
+      </p>
+
+      <select class="fm-select">
+        <option selected disabled>
+          Native Select
+        </option>
+        {% for option in values %}
+          <option value="{{ forloop.index }}">
+            {{ option }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="d-block">
+
+      <span class="fs-xs fw-bold upper">
+        Dropdown
+      </span>
+      <p class="fs-xs">
+        Dynamic dropdown select component which replicates a select
+      </p>
+      <dropdown
+        class="fm-dropdown"
+        data-controller="dropdown"
+        data-dropdown-type-value="select">
+
+        <button
+          type="button"
+          data-action="dropdown#toggle"
+          data-dropdown-target="button">
+          Dropdown Select
+        </button>
+
+        <fieldset data-dropdown-target="collapse">
+
+          {% for option in values %}
+
+            <label
+              {% if forloop.index == 1 %}
+                aria-label="Example Badge"
+              {% elsif forloop.index == 3 %}
+                class="disabled"
+                aria-label="Disabled"
+              {% elsif forloop.index == 3 %}
+                aria-label="Foo Badge"
+              {% elsif forloop.index == 4 %}
+                aria-label="Badge Bar"
+              {% endif %}
+              for="{{ forloop.index }}">
+              {{ option }}
+            </label>
+
+            <input
+              id="{{ forloop.index }}"
+              type="radio"
+              name="test"
+              aria-label="{{ option }}"
+              value="{{ option }}"
+              data-action="dropdown#select">
+
+          {% endfor %}
+        </fieldset>
+      </dropdown>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-3">
+
+    <div class="d-block mb-3">
+
+      <span class="fs-xs fw-bold upper">
+        Switch Checkbox
+      </span>
+      <p class="fs-xs">
+        Switch checkbox form component
+      </p>
+
+      <div class="fm-switch w-100">
+
+        <input
+          class="fm-checkbox"
+          id="toggle-1"
+          name="toggle-1"
+          type="checkbox">
+
+        <label
+          aria-checked="false"
+          data-checked="Enabled"
+          class="fm-check-label fs-sm upper"
+          for="toggle-1">
+          Switched Off
+        </label>
+
+      </div>
+    </div>
+
+    <div class="d-block mb-3">
+      <span class="fs-xs fw-bold upper">
+        NUMBER
+      </span>
+      <p class="fs-xs">
+        Incremental form component which applied type number
+      </p>
+      <fieldset class="fm-number" style="width: 90px;">
+        <input
+          class="decrement"
+          type="button"
+          onclick="this.parentNode.children[1].stepDown()">
+        <input
+          class="fm-input"
+          type="number"
+          min="0"
+          placeholder="0"
+          name="quantity"
+          placeholder="0">
+        <input
+          class="increment"
+          type="button"
+          onclick="this.parentNode.children[1].stepUp()">
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="col-3">
+
+    <div class="d-block mb-3">
+      <span class="fs-xs fw-bold upper">
+        Native Checkbox
+      </span>
+      <p class="fs-xs">
+        Native default checkbox using custom SVG icons
+      </p>
+
+      <div class="fm-toggle">
+
+        <input
+          class="fm-checkbox"
+          type="checkbox"
+          id="xx"
+          name="xx">
+
+        <label class="fm-check-label" for="xx">
+          Checkbox
+        </label>
+
+      </div>
+
+    </div>
+
+    <div class="d-block mb-3">
+      <span class="fs-xs fw-bold upper">
+        Native Radio
+      </span>
+      <p class="fs-xs">
+        Native default radio using custom SVG icons
+      </p>
+
+      <div class="row">
+        <div class="fm-toggle col">
+          <input
+            class="fm-radio"
+            type="radio"
+            id="foo"
+            name="xx-radio">
+
+          <label class="fm-label fm-xs upper" for="foo">
+            Foo
+          </label>
+        </div>
+        <div class="fm-toggle col">
+          <input
+            class="fm-radio"
+            type="radio"
+            id="bar"
+            name="xx-radio">
+
+          <label class="fm-label fm-xs upper" for="bar">
+            Bar
+          </label>
+        </div>
+        <div class="fm-toggle col">
+          <input
+            class="fm-radio"
+            type="radio"
+            id="baz"
+            name="xx-radio">
+
+          <label class="fm-label fm-xs upper" for="baz">
+            Baz
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

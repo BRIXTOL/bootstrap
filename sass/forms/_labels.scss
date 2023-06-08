@@ -24,12 +24,6 @@
   color: $form-label-color;
 }
 
-.col-fm-label-lg {
-  padding-top: add($input-padding-y-lg, $input-border-width);
-  padding-bottom: add($input-padding-y-lg, $input-border-width);
-  @include font-size($input-font-size-lg);
-}
-
 .col-fm-label-sm {
   padding-top: add($input-padding-y-sm, $input-border-width);
   padding-bottom: add($input-padding-y-sm, $input-border-width);

@@ -74,7 +74,7 @@ $background-colors: (
   white: $white,
   black: $black,
   ivory: $gray-100,
-  gray: $gray-400
+  gray: $gray-400,
 );
 
 /* -------------------------------------------- */
@@ -100,6 +100,7 @@ $font-colors: (
   "white": $white,
   "green": $green,
   "gray": $gray-500,
+  "dark-gray": $gray-800,
   "red": $red,
   "orange": $orange,
   "pink": $pink
@@ -122,15 +123,15 @@ $button-colors: (
 /* SPACING                                      */
 /* -------------------------------------------- */
 
-$spacer: 1rem;
-$spacers: (
-  0: 0,
-  1: $spacer * .25,
-  2: $spacer * .5,
-  3: $spacer,
-  4: $spacer * 1.5,
-  5: $spacer * 3,
-);
+/// Base Spacing
+///
+$spacer:        1rem;
+
+$spacer-1:     .25rem;
+$spacer-2:     .5rem;
+$spacer-3:     1rem;
+$spacer-4:     1.5rem;
+$spacer-5:     3rem;
 
 /* -------------------------------------------- */
 /* GRID                                         */
@@ -175,6 +176,7 @@ $container-max-widths: (
 /* FLEX CONTROL                                 */
 /* -------------------------------------------- */
 
+/// Passed to the Bootstrap flex directions utility.
 $flex-direction: (
   row: row,
   col: column,
@@ -182,6 +184,8 @@ $flex-direction: (
   // col-rev: column-reverse
 );
 
+
+/// Passed to the Bootstrap flex justify content utility.
 $justify-content: (
   start: flex-start,
   end: flex-end,
@@ -191,6 +195,7 @@ $justify-content: (
   // even: space-evenly,
 );
 
+/// Passed to the Bootstrap flex align content utility.
 $align-content: (
   start: flex-start,
   end: flex-end,
@@ -200,6 +205,8 @@ $align-content: (
   // stretch: stretch
 );
 
+
+/// Passed to the Bootstrap flex align self utility.
 $align-self: (
   auto: auto,
   start: flex-start,
@@ -209,6 +216,7 @@ $align-self: (
   // stretch: stretch
 );
 
+/// Passed to the Bootstrap flex align items utility.
 $align-items: (
   start: flex-start,
   end: flex-end,
@@ -217,6 +225,7 @@ $align-items: (
   // stretch: stretch,
 );
 
+/// Passed to the Bootstrap flex justify content utility.
 $display-utils: (
   unset: unset,
   inline: inline,
@@ -238,24 +247,25 @@ $display-utils: (
 $zindex-tooltip:  99999;
 
 /* -------------------------------------------- */
-/* LETTER SPACING                               */
-/* -------------------------------------------- */
-
-$letter-spacing-base:         inherit;
-$letter-spacing-heading:      inherit;
-
-/* -------------------------------------------- */
 /* FONT FAMILY                                  */
 /* -------------------------------------------- */
 
-$font-family-base:            system-ui, -apple-system, blinkmacsystemfont,"Open Sans", "Helvetica Neue", sans-serif;
-$font-family-base-var:        var(--#{$prefix}font-base);
+/// Base font family
+///
+$font-family-base:         system-ui, -apple-system, blinkmacsystemfont, "Open Sans", "Helvetica Neue", sans-serif;
+$font-family-base-var:     var(--#{$prefix}font-base);
 
-$font-family-heading:         Arial, sans-serif;
-$font-family-heading-var:     var(--#{$prefix}font-heading);
+$font-family-heading:      Arial, sans-serif;
+$font-family-heading-var:  var(--#{$prefix}font-heading);
 
-$font-family-code:            SFMono-Regular, Menlo, Monaco, "Courier New", Courier, monospace;
-$font-family-code-var:        var(--#{$prefix}font-code);
+$font-family-code:         SFMono-Regular, Menlo, Monaco, "Courier New", Courier, monospace;
+$font-family-code-var:     var(--#{$prefix}font-code);
+
+/// Fallback sans font family for situations when we
+/// are using identical base and heading font families.
+///
+$font-family-sans:         system-ui, -apple-system, blinkmacsystemfont, "Open Sans", "Helvetica Neue", sans-serif;
+$font-family-sans-var:     var(--#{$prefix}font-sans);
 
 /* -------------------------------------------- */
 /* BODY                                         */
@@ -263,48 +273,48 @@ $font-family-code-var:        var(--#{$prefix}font-code);
 
 $body-bg:                          $white;
 $body-color:                       $gray-900;
-$body-letter-spacing:              $letter-spacing-base;
+$body-letter-spacing:              inherit;
 
 
 /* -------------------------------------------- */
 /* FONT SIZES                                   */
 /* -------------------------------------------- */
 
+/// Base font size uses `.fs` class name.
+///
 $font-size-base:                   1rem;
 
-$font-size-xs:                     $font-size-base * .675;
-$font-size-sm:                     $font-size-base * .875;
-$font-size-md:                     $font-size-base;
+$font-size-xs:                     $font-size-base * .595;
+$font-size-sm:                     $font-size-base * .725;
+$font-size-md:                     $font-size-base * .975;
 $font-size-lg:                     $font-size-base * 1.25;
-$font-size-xl:                     $font-size-base * 1.50;
+$font-size-xl:                     $font-size-base * 1.75;
 
 /* -------------------------------------------- */
 /* FONT HEADINGS                                */
 /* -------------------------------------------- */
 
-$headings-letter-spacing:          $letter-spacing-heading;
-$headings-font-family:             $font-family-heading;
-$headings-margin-bottom:           $spacer * .5;
+$headings-letter-spacing:          inherit;
 $headings-font-style:              null;
 $headings-font-weight:             500;
 $headings-line-height:             1.4;
-$headings-color:                   null;
 $headings-uppercase:               true;
+$headings-margin-bottom:           0;    // We use spacing utilities for heading margins
 
-$h1-font-size:                     $font-size-base * 2.5 !important;
-$h2-font-size:                     $font-size-base * 2 !important;
-$h3-font-size:                     $font-size-base * 1.75 !important;
-$h4-font-size:                     $font-size-base * 1.5 !important;
-$h5-font-size:                     $font-size-base * 1.25 !important;
-$h6-font-size:                     $font-size-base;
+$h1-font-size:                    $font-size-base * 2.5;
+$h2-font-size:                    $font-size-base * 2;
+$h3-font-size:                    $font-size-base * 1.75;
+$h4-font-size:                    $font-size-base * 1.5;
+$h5-font-size:                    $font-size-base * 1.25;
+$h6-font-size:                    $font-size-base * 1;
 
 /* -------------------------------------------- */
 /* FONT WEIGHT                                  */
 /* -------------------------------------------- */
 
-$font-weight-normal:               400;
 $font-weight-lighter:              100;
 $font-weight-light:                300;
+$font-weight-normal:               400;
 $font-weight-bold:                 700;
 $font-weight-bolder:               bolder;
 
@@ -312,7 +322,7 @@ $font-weight-bolder:               bolder;
 /* LINE HEIGHT                                  */
 /* -------------------------------------------- */
 
-$line-height-base:                 1.6;
+$line-height-base:                 1.5;
 $line-height-sm:                   1.25;
 $line-height-lg:                   2;
 $line-height-xl:                   2.4;
@@ -382,8 +392,8 @@ $hr-opacity:                  .25;
 /* -------------------------------------------- */
 
 $aspect-ratio-bg-svg:              url(icon-image($gray-600, 0.7));
-$aspect-ratio-bg-color:             $gray-100;
-$aspect-ratio-bg-size:              20%;
+$aspect-ratio-bg-color:            $gray-100;
+$aspect-ratio-bg-size:             20%;
 $aspect-ratios: (
   "3000x2250": calc(3000 / 2250)
 );
@@ -394,10 +404,14 @@ $aspect-ratios: (
 
 // Code
 
-$code-font-size:                    $small-font-size;
-$code-color:                        $pink;
-
 $pre-color:                         null;
+$pre-radius:                        .25rem;
+$pre-bg-color:                      inherit;
+
+$code-font-size:                    $font-size-md;
+$code-color:                        $pink;
+$code-bg-color:                     inherit;
+$code-radius:                       inherit;
 
 $kbd-padding-y:                     .1875rem;
 $kbd-padding-x:                     .375rem;
@@ -410,16 +424,16 @@ $kbd-bg:                            var(--#{$prefix}body-color);
 /* LINKS LISTS                                  */
 /* -------------------------------------------- */
 
-$link-list-radius:          0;
-$link-list-padding-y:       .395rem;
-$link-list-padding-x:       .75rem;
-$link-list-color:           $black;
-$link-list-hover-bg:        $gray-200;
-$link-list-hover-color:     $black;
-$link-list-disabled-color:  $gray-500;
-$link-list-active-bold:     true;
-$link-list-active-bg:       null;
-$link-list-active-color:    $black;
+$link-list-radius:             0;
+$link-list-padding-y:          .395rem;
+$link-list-padding-x:          .75rem;
+$link-list-color:              $black;
+$link-list-hover-bg:           $gray-200;
+$link-list-hover-color:        $black;
+$link-list-disabled-color:     $gray-500;
+$link-list-active-bold:        true;
+$link-list-active-bg:          null;
+$link-list-active-color:       $black;
 
 
 /* -------------------------------------------- */
@@ -445,12 +459,12 @@ $btn-border-radius-lg:        0;
 $btn-link-color:              var(--#{$prefix}link-color);
 $btn-link-hover-color:        var(--#{$prefix}link-hover-color);
 
-$btn-text-uppercase:          true;
 $btn-font-family:             $font-family-heading;
 $btn-font-size:               $font-size-sm;
 $btn-font-size-sm:            $font-size-xs;
-$btn-font-size-lg:            $font-size-lg;
+$btn-text-uppercase:          true;
 $btn-line-height:             $line-height-base;
+$btn-letter-spacing:          inherit;
 
 // Controls the border highlighting to be applied when pressing a button element
 //
@@ -462,14 +476,12 @@ $btn-focus-box-shadow:         0;
 $btn-disabled-opacity:        .55;
 
 $btn-padding-y:               .375rem;
+$btn-padding-x:               .75rem;
+
 $btn-padding-y-sm:            .2rem;
 $btn-padding-x-sm:            .45rem;
 
-$btn-padding-x:               .75rem;
-$btn-padding-y-lg:            .5rem;
-$btn-padding-x-lg:             1rem;
-
-$btn-white-space:              nowrap; // Set to `nowrap` to prevent text wrapping
+$btn-white-space:              nowrap;  // Set to `nowrap` to prevent text wrapping
 
 /* -------------------------------------------- */
 /* SPINNER                                      */
@@ -490,10 +502,10 @@ $spinner-animation-speed:     .65s;
 /* -------------------------------------------- */
 
 $tooltip-bg:                   $black;
-$tooltip-font-family:          $font-family-base;
-$tooltip-font-style:           normal;
+$tooltip-font-family:          $font-family-sans;
 $tooltip-font-size:            $font-size-xs;
 $tooltip-font-color:           $white;
+$tooltip-font-style:           normal;
 $tooltip-padding-y:            .1rem;
 $tooltip-padding-x:            .5rem;
 $tooltip-arrow-size:           5px;
@@ -565,42 +577,38 @@ $form-label-color:                      null;
 /* FORM INPUT TEXT                              */
 /* -------------------------------------------- */
 
-$input-padding-y:                               .375rem;
-$input-padding-y-sm:                            .25rem;
-$input-padding-y-lg:                            .5rem;
+$input-padding-y:                               .335rem;
+$input-padding-y-sm:                            .32rem;
 $input-padding-x:                               .75rem;
 $input-padding-x-sm:                            .5rem;
-$input-padding-x-lg:                            1rem;
 
-$input-font-family:                             $headings-font-family;
+$input-font-family:                             $font-family-base;
 $input-font-weight:                             $font-weight-base;
-$input-font-size:                               $font-size-base;
+$input-font-size:                               $font-size-base * 0.925;
 $input-font-size-sm:                            $font-size-sm;
 $input-font-size-lg:                            $font-size-lg;
-
 $input-line-height:                             $line-height-base;
 $input-text-uppercase:                          false;
 
 $input-bg:                                      $body-bg;
+$input-color:                                   $body-color;
 
 $input-disabled-bg:                             $gray-100;
 $input-disabled-border-color:                   $gray-200;
-$input-color:                                   $body-color;
 
 $input-border-color:                            $gray-400;
 $input-border-width:                            $border-width; // $input-btn-border-width;
-$input-height-border:                           $border-width * 2;
-$input-box-shadow:                              $box-shadow-inset;
+$input-height-border:                           $input-border-width * 2;
+$input-box-shadow:                              none; //$box-shadow-inset;
 
 $input-border-radius:                           0; // $border-radius;
 $input-border-radius-sm:                        0; // $border-radius-sm;
-$input-border-radius-lg:                        0; // $border-radius-lg;
 
 $input-focus-bg:                                $input-bg;
-$input-focus-border-color:                      $black;         // tint-color($component-active-bg, 50%);
+$input-focus-border-color:                      $black;
 $input-focus-color:                             $input-color;
 $input-focus-width:                             $border-width;  // $input-btn-focus-width;
-$input-focus-box-shadow:                        none;           // $input-btn-focus-box-shadow;
+$input-focus-box-shadow:                        null;           // $input-btn-focus-box-shadow;
 
 $input-btn-focus-box-shadow-lined:              0 0 0 0;
 $input-placeholder-color:                       $gray-500;
@@ -622,9 +630,12 @@ $form-select-disabled-color:              null;
 $form-select-disabled-bg:                 $gray-200;
 $form-select-disabled-border-color:       $input-disabled-border-color;
 $form-select-bg-position:                 right $form-select-padding-x center;
-$form-select-bg-size:                     17px 34px; // In pixels because image dimensions
-$form-select-indicator-color:             $gray-800;
-$form-select-indicator:                   icon-plus($form-select-indicator-color);
+$form-select-bg-size:                     22px; // In pixels because image dimensions
+$form-select-indicator-color:             $input-placeholder-color;
+$form-select-indicator:                   url(icon-arrow($form-select-indicator-color));
+
+$form-dropdown-indicator:                 var(--#{$prefix}svg-plus);
+$form-dropdown-indicator-size:            20px; // In pixels because image dimensions
 
 $form-select-feedback-icon-padding-end:   $form-select-padding-x * 2 + $form-select-indicator-padding;
 $form-select-feedback-icon-position:      center right $form-select-indicator-padding;
@@ -766,8 +777,7 @@ $form-file-button-hover-bg:            shade-color($form-file-button-bg, 5%);
 /* FORM FLOATING                                */
 /* -------------------------------------------- */
 
-
-$form-float-height:                    add(2.5, $input-height-border);
+$form-float-height:                    add(2, $input-height-border);
 $form-float-line-height:               1.25;
 $form-float-padding-x:                 $input-padding-x;
 $form-float-padding-y:                 divide($form-float-height, 5, 2);
@@ -782,21 +792,21 @@ $form-float-legend-transform:           scale(.75) translateY(-50%) translateX(0
 /* FORM VALIDATION                              */
 /* -------------------------------------------- */
 
-$form-feedback-margin-top:             $form-text-margin-top;
-$form-feedback-font-size:              $form-text-font-size;
-$form-feedback-font-style:             $form-text-font-style;
-$form-feedback-valid-color:            $green;
-$form-feedback-invalid-color:          $red;
-$form-feedback-icon-valid-color:       $form-feedback-valid-color;
-$form-feedback-icon-invalid-color:     $form-feedback-invalid-color;
+$form-feedback-margin-top:               $form-text-margin-top;
+$form-feedback-font-size:                $form-text-font-size;
+$form-feedback-font-style:               $form-text-font-style;
+$form-feedback-valid-color:              $green;
+$form-feedback-invalid-color:            $red;
+$form-feedback-icon-valid-color:         $form-feedback-valid-color;
+$form-feedback-icon-invalid-color:       $form-feedback-invalid-color;
 
 $form-validation-states: (
   "valid": (
     "color": $form-feedback-valid-color,
-    "icon": icon-check($form-feedback-icon-valid-color)
+    "icon": icon-check($form-feedback-icon-valid-color, 1.4)
   ),
   "invalid": (
     "color": $form-feedback-invalid-color,
-    "icon": icon-cross($form-feedback-invalid-color)
+    "icon": icon-cross($form-feedback-invalid-color, 1.4)
   )
 );

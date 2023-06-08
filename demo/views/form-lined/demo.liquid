@@ -1,12 +1,6 @@
-<div class="row mb-5">
-  <div class="col-12">
-    {{ item.describe }}
-  </div>
-</div>
-
 <div class="row mb-2">
 
-  <div class="col-12">
+  <div class="col-8">
     <h6 class="mb-3 fw-bold">
       Input Horizontal Rule
     </h6>
@@ -25,7 +19,7 @@
     </div>
   </div>
 
-  <div class="col-12">
+  <div class="col-8">
     <h6 class="mb-3 fw-bold">
       Select Lined
     </h6>
@@ -51,7 +45,7 @@
     </div>
   </div>
 
-  <div class="col-12">
+  <div class="col-8">
     <h6 class="mb-3 fw-bold">
       Dropdown Lined
     </h6>
@@ -89,18 +83,17 @@
   </div>
 
 
-  <div class="col-12">
+  <div class="col-8">
     <h6 class="mb-3 fw-bold">
       Button Lined Groups
     </h6>
     <div class="row mb-3">
       {% for item in item.classes.groups.buttons %}
         <div class="col-5 mb-3">
-          <pre class="m-0 pl-3"><code>.fm-group .fm-lined > {{ item.input }}</code></pre>
+          <pre class="m-0 pl-3"><code>.fm-group .fm-lined > {{ item.class }}</code></pre>
         </div>
         <div class="col-5 pl-5 mb-3">
           <div class="fm-group fm-lined">
-
             {%- if forloop.first -%}
               <button
                 class="btn"
@@ -114,7 +107,7 @@
                 type="text">
             {%- else -%}
               <input
-                class="{{ item.input | remove: '.' }}"
+                class="{{ item.class | remove: '.' }}"
                 placeholder="{{ item.title }}"
                 type="text">
               <button
@@ -142,10 +135,10 @@
     </h6>
     <div class="row mb-3">
       {% for item in item.classes.groups.buttons %}
-        <div class="col-6 mb-3">
+        <div class="col-5 mb-3">
           <pre class="m-0"><code>{{ item.class }}</code></pre>
         </div>
-        <div class="col-6">
+        <div class="col-5">
           <div class="fm-group fm-lined">
 
             {%- if forloop.first -%}

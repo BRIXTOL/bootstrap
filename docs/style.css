@@ -126,6 +126,11 @@ pre[class*=language-] {
   z-index: 9999;
 }
 
+.code > pre {
+  padding: 10px;
+  text-align: center;
+}
+
 .link-cover-sample {
   border: 1px solid #111;
   width: 150px;
@@ -157,9 +162,12 @@ pre[class*=language-] {
   align-items: center;
 }
 
+.overflow {
+  overflow-y: scroll;
+}
+
 body {
   width: 100%;
   min-width: 1200px;
-  max-width: 1500px;
   margin: 0 auto;
 }

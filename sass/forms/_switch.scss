@@ -16,7 +16,7 @@
   }
 
 
-  .fm-check-input {
+  .fm-checkbox {
     display: inline-flex;
     width: $form-switch-width;
     height: calc($form-switch-width / 2);
@@ -45,7 +45,7 @@
     padding-right: $form-switch-padding-start;
     padding-left: 0;
 
-    .fm-check-input {
+    .fm-checkbox {
       margin-right: $form-switch-padding-start * -1;
       margin-left: 0;
     }

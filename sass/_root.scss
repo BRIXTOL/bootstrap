@@ -25,6 +25,7 @@
   --#{$prefix}font-base: #{inspect($font-family-base)};
   --#{$prefix}font-heading: #{inspect($font-family-heading)};
   --#{$prefix}font-code: #{inspect($font-family-code)};
+  --#{$prefix}font-sans: #{inspect($font-family-sans)};
 
   // Root and body
   @if $font-size-root != null {
@@ -44,8 +45,6 @@
   --#{$prefix}link-hover-color: #{$link-hover-color};
 
   --#{$prefix}body-bg: #{$body-bg};
-  --#{$prefix}letter-spacing-base: #{$letter-spacing-base};
-  --#{$prefix}letter-spacing-heading: #{$letter-spacing-heading};
 
   --#{$prefix}border-radius: #{$border-radius};
   --#{$prefix}border-radius-sm: #{$border-radius-sm};
@@ -69,6 +68,9 @@
 
   // SVG Icons
 
+  --#{$prefix}svg-color: currentColor;
+  --#{$prefix}svg-width: 1.4;
+
   --#{$prefix}svg-plus: #{url(icon-plus())};
   --#{$prefix}svg-minus: #{url(icon-minus())};
   --#{$prefix}svg-check: #{url(icon-check())};
@@ -77,5 +79,7 @@
   --#{$prefix}svg-arrow: #{url(icon-arrow())};
   --#{$prefix}svg-menu: #{url(icon-menu())};
   --#{$prefix}svg-image: #{url(icon-image())};
+  --#{$prefix}svg-search: #{url(icon-search())};
+  --#{$prefix}svg-delete: #{url(icon-delete())};
   --#{$prefix}svg-bell: #{url(icon-bell())};
 }

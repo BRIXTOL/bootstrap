@@ -131,7 +131,7 @@
   font-weight: $btn-font-weight;
   font-family: $btn-font-family;
   line-height: $btn-line-height;
-  letter-spacing: $letter-spacing-heading;
+  letter-spacing: $btn-letter-spacing;
   white-space: $btn-white-space;
   text-align: center;
   text-decoration: if($link-decoration == none, null, none);
@@ -232,20 +232,6 @@
   }
 }
 
-
-//
-// Button Sizes
-//
-
-.btn-lg {
-  @include button-size(
-    $btn-padding-y-lg,
-    $btn-padding-x-lg,
-    $btn-font-size-lg,
-    $btn-border-radius-lg
-  );
-}
-
 .btn-sm {
   @include button-size(
     $btn-padding-y-sm,
@@ -255,10 +241,9 @@
   );
 }
 
-//
-// Button SVGs
-//
 
+/// Button rendered with a cross (x) SVG
+///
 .btn-close {
   background-repeat: no-repeat;
   background-position: center;

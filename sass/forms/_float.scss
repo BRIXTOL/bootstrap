@@ -1,29 +1,23 @@
 .fm-float {
   position: relative;
 
-
-  &.fm-lg > .fm-input,
-  &.fm-lg > .fm-select {
-    height: $form-float-height;
-    line-height: $form-float-line-height;
-    font-size: $input-font-size;
-  }
-
-
   > .btn-dropdown,
   > .fm-input,
-  > .fm-select {
-    height: calc($form-float-height - .8rem);
-    line-height: calc($form-float-line-height - .35);
-    font-size: $input-font-size-sm;
+  > .fm-select, {
+    height: $form-float-height;
+    line-height: $form-float-line-height;
   }
 
   .fm-dropdown {
     .fm-options > .fm-option > label {
-      height: calc($form-float-height - .8rem);
-      line-height: calc($form-float-line-height - .35);
-      font-size: $input-font-size-sm;
+      height: $form-float-height;
+      line-height: $form-float-line-height;
     }
+  }
+
+  + button {
+    height: $form-float-height;
+    padding: inherit;
   }
 
 
@@ -33,8 +27,9 @@
     left: 0;
     width: 100%;
     height: 100%; // allow textareas
-    padding: calc($form-float-padding-x - .05rem);
+    padding: $form-float-padding-y $form-float-padding-x;
     font-size: $input-font-size-sm;
+    color: $input-placeholder-color;
     overflow: hidden;
     text-align: start;
     text-overflow: ellipsis;
@@ -43,13 +38,42 @@
     border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
     transform-origin: 0 0;
     @include transition($form-float-transition);
+
+    &.legend-textarea,
+    &.fm-label {
+      width: auto;
+      padding-left: divide($form-float-padding-x, 2, 2);
+      padding-right: divide($form-float-padding-x, 2, 2);
+      margin-left: divide($form-float-padding-x, 2, 2);
+      margin-right: divide($form-float-padding-x, 2, 2);
+    }
+
+    &.fm-label {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      padding-top: 0;
+      padding-bottom: 0;
+
+      @include transition(
+        height .1s ease-in-out,
+        background-color .1s ease-in-out,
+        transform .1s ease-in-out,
+      );
+    }
+
+    &.legend-textarea {
+      height: auto;
+
+      @include transition(
+        height .1s ease-in-out,
+        background-color .1s ease-in-out,
+        transform .1s ease-in-out,
+      );
+    }
   }
 
 
-  &.fm-lg > label {
-    padding: $form-float-padding-y $form-float-padding-x;
-    font-size: $input-font-size;
-  }
 
   > .fm-input {
     padding: $form-float-padding-y $form-float-padding-x;
@@ -76,13 +100,25 @@
   }
 
   > .fm-select {
-    padding-top: calc($form-float-input-padding-t - .2rem);
-    padding-bottom: calc($form-float-input-padding-b - .2rem);
+    padding-top: $form-float-input-padding-t;
+    padding-bottom: $form-float-input-padding-b;
   }
 
   > .fm-input:focus,
   > .fm-input:not(:placeholder-shown),
   > .fm-select {
+
+    ~ label.legend-textarea,
+    ~ label.fm-label {
+      will-change: auto;
+      opacity: 1;
+      height: auto;
+      line-height: initial;
+      background-color: $input-bg;
+      color: $input-color;
+      transform: $form-float-legend-transform;
+    }
+
     ~ label {
       opacity: $form-float-label-opacity;
       transform: $form-float-label-transform;

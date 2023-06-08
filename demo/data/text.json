@@ -3,6 +3,7 @@
     {
       "title": "Text Align",
       "property": "text-align",
+      "expanded": true,
       "responsive": true,
       "classes": [
         {
@@ -26,6 +27,7 @@
     {
       "title": "Text Transform",
       "property": "text-transform",
+      "expanded": true,
       "responsive": false,
       "classes": [
         {
@@ -49,6 +51,7 @@
     {
       "title": "Text Decoration",
       "property": "text-decoration",
+      "expanded": true,
       "responsive": false,
       "classes": [
         {
@@ -68,6 +71,7 @@
     {
       "title": "Text Headings",
       "property": "h1, h2, h3, h4, h5, h6",
+      "expanded": true,
       "responsive": false,
       "classes": [
         {

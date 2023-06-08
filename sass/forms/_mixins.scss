@@ -17,6 +17,37 @@
   }
 }
 
+@mixin form-dropdown-and-select($type) {
+
+  padding: $input-padding-y $input-padding-x;
+  font-family: $form-select-font-family;
+  @include font-size($input-font-size);
+
+  font-weight: $form-select-font-weight;
+  line-height: $form-select-line-height;
+  color: $input-placeholder-color;
+  background-color: $form-select-bg;
+  border: $form-select-border-width solid $form-select-border-color;
+
+  @if $type == 'dropdown' {
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
+
+  } @else {
+
+    background-repeat: no-repeat;
+    background-position: right $input-height-inner-quarter center;
+    background-image: $form-select-indicator;
+    background-size:$form-select-bg-size;
+
+  }
+
+
+
+}
+
 @mixin form-validation-state(
   $state,
   $color,
@@ -60,7 +91,8 @@
 
         &:focus {
           border-color: $color;
-          box-shadow: $focus-box-shadow;
+          box-shadow: none;
+          // box-shadow: $focus-box-shadow;
         }
 
         &:hover {
@@ -112,6 +144,7 @@
         border-color: $color;
         box-shadow: $focus-box-shadow;
       }
+
 
       &.fm-lined,
        .fm-group.fm-lined & {
@@ -190,7 +223,8 @@
     }
   }
 
-  .fm-check-input {
+  .fm-checkbox,
+  .fm-radio {
     @include form-validation-state-selector($state) {
       border-color: $color;
 
@@ -202,7 +236,7 @@
         box-shadow: none; // $focus-box-shadow;
       }
 
-      ~ .fm-check-label {
+      ~ .fm-label {
         color: $color;
       }
     }
@@ -218,6 +252,7 @@
     > .fm-input:not(:focus),
     > .fm-select:not(:focus),
     > .fm-float:not(:focus-within) {
+
       @include form-validation-state-selector($state) {
         @if $state == "valid" {
           z-index: 3;
@@ -226,6 +261,9 @@
         }
       }
     }
+
+
+
   }
 }
 // scss-docs-end form-validation-mixins

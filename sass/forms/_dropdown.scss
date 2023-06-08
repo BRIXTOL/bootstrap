@@ -1,7 +1,117 @@
 /* DROPDOWN ----------------------------------- */
 
 .fm-dropdown {
-  @include dropdown-button(fieldset);
+  position: relative;
+  width: 100%;
+  display: block;
+  text-align: left;
+  @include font-size($input-font-size);
+
+
+  &.is-open,
+  &.is-open.selected {
+    z-index: 100;
+
+    > button {
+      color: $input-color;
+      border-color: $input-color;
+
+      &::before {
+        background-color: $input-color;
+        mask: var(--#{$prefix}svg-minus);
+        -webkit-mask: var(--#{$prefix}svg-minus);
+      }
+
+      + fieldset {
+        display: block;
+      }
+    }
+
+  }
+
+  &.is-valid > button,
+  &.is-invalid > button {
+
+    &::before {
+      background-color: unset;
+      mask: unset;
+      -webkit-mask: unset;
+    }
+  }
+
+  > button {
+    width: 100%;
+    text-align: left;
+    z-index: 2;
+    padding: $form-select-padding-y 0 $form-select-padding-y  $form-select-padding-x;
+    font-family: $form-select-font-family;
+    font-weight: $form-select-font-weight;
+    line-height: $form-select-line-height;
+    color: $input-placeholder-color;
+    background-color: $form-select-bg;
+    border: $form-select-border-width solid $form-select-border-color;
+    @include transition(border-color .25s ease-in-out, color .25s ease-in-out);
+
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      top: add($input-padding-y, $form-select-border-width);
+      right: subtract($form-select-padding-x, $form-select-border-width * 2);
+      height: $form-dropdown-indicator-size;
+      width: $form-dropdown-indicator-size;
+      pointer-events: none;
+      background-color: $input-placeholder-color;
+      mask: var(--#{$prefix}svg-plus);
+      -webkit-mask: var(--#{$prefix}svg-plus);
+    }
+
+    + fieldset {
+      display: none;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      left: 0;
+      overflow-y: scroll;
+      background-color: $body-bg;
+      border-left: $border-width solid $black;
+      border-right: $border-width solid $black;
+      border-bottom: $border-width solid $black;
+      width: 100%;
+    }
+
+    &:hover {
+      color: $input-color;
+      border-color: $input-color;
+
+      &::before:not(.is-valid):not(.is-invalid)  {
+        background-color: $input-color;
+      }
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: none;
+      color: $input-color;
+      border-color: $input-color;
+    }
+
+    &:disabled {
+      opacity: $btn-disabled-opacity;
+      pointer-events: none;
+      @include box-shadow(none);
+    }
+  }
+
+  &.disabled > button {
+    opacity: $btn-disabled-opacity;
+    pointer-events: none;
+    @include box-shadow(none);
+  }
+
+  &.selected > button {
+    color: $input-color;
+  }
 
   &.fm-lined > button + fieldset {
     border: 0;
@@ -13,6 +123,7 @@
     border: 0;
     border-bottom: $border-width solid $black;
   }
+
 
   > button + fieldset {
 
@@ -42,7 +153,7 @@
 
       &::after {
         content: attr(aria-label);
-        font-size: 0.645rem;
+        font-size: $font-size-xs;
       }
 
       &.disabled {

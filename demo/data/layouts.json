@@ -4,7 +4,8 @@
       "title": "Breakpoints",
       "property": "",
       "responsive": true,
-      "describe": "The grid uses custom naming conventions of short-name variation and repurposes the Bootstrap grid system logic which is remains the most powerful and well thought through grid available on the web.",
+      "expanded": false,
+      "description": "The grid uses custom naming conventions of short-name variation and repurposes the Bootstrap grid system logic which is remains the most powerful and well thought through grid available on the web.",
       "classes": [
         {
           "title": "XX Small",
@@ -40,7 +41,8 @@
       "title": "Grid",
       "property": "",
       "responsive": true,
-      "describe": "The grid uses custom naming conventions of short-name variation and repurposes the Bootstrap grid system logic which is remains the most powerful and well thought through grid available on the web.",
+      "expanded": false,
+      "description": "The grid uses custom naming conventions of short-name variation and repurposes the Bootstrap grid system logic which is remains the most powerful and well thought through grid available on the web.",
       "classes": {
         "flex": [
           {
@@ -254,8 +256,9 @@
     {
       "title": "Spacing",
       "property": "",
+      "expanded": false,
       "responsive": true,
-      "describe": "The spacing utilities use different naming convention than that of Bootstrap, employing the original are far more logical references. Spacings are all responsive and apply <code>!important</code> suffixes.",
+      "description": "The spacing utilities use different naming convention than that of Bootstrap, employing the original are far more logical references. Spacings are all responsive and apply <code>!important</code> suffixes.",
       "classes": {
         "padding": {
           "title": "Padding 0 - 5",
@@ -300,7 +303,8 @@
       "title": "Display",
       "property": "",
       "responsive": true,
-      "describe": "",
+      "expanded": false,
+      "description": "",
       "classes": [
         {
           "title": "Display None",

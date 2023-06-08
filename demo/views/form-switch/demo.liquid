@@ -13,12 +13,12 @@
           <div class="fm-switch">
 
             <input
-              class="fm-check-input"
+              class="fm-checkbox"
               id="{{ item.title | slug }}"
               name="{{ item.title | slug }}"
               type="checkbox">
 
-            <label class="fm-check-label ml-3" for="{{ item.title | slug }}">
+            <label class="fm-label ml-3" for="{{ item.title | slug }}">
               Some Form Label
             </label>
 
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div class="col-6">
+  <div class="col-5">
     {% for item in item.classes.validate %}
       <div class="row ac-center mb-2">
         <div class="col-6">
@@ -46,7 +46,7 @@
               name="{{ item.title | slug }}"
               type="checkbox">
 
-            <label class="fm-check-label ml-3" for="{{ item.title | slug }}">
+            <label class="fm-label ml-3" for="{{ item.title | slug }}">
               Some Form Label
             </label>
 
@@ -56,6 +56,5 @@
       </div>
     {% endfor %}
   </div>
-
 
 </div>

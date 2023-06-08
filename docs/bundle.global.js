@@ -2945,7 +2945,6 @@
      * @memberof Dropdown
      */
     connect() {
-      this.isFormSelect = this.element.hasAttribute("data-form-target");
     }
     /**
      * Stimulus Disconnect
@@ -2956,10 +2955,13 @@
      */
     disconnect() {
     }
+    /**
+     * Returns all `<label>` elements in the dropdown
+     */
     inViewport() {
-      const rect = this.viewportTarget.getBoundingClientRect();
+      const rect = this.collapseTarget.getBoundingClientRect();
       for (const { element, folds } of M.get().values()) {
-        if (element.id === "product-description") {
+        if (element.id === this.accordionValue) {
           if (!(rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth))) {
             folds.find((fold) => fold.expanded === true).close();
           }
@@ -2972,12 +2974,12 @@
      */
     toggle(event) {
       event.stopPropagation();
-      if (this.element.classList.contains("opened"))
+      if (this.element.classList.contains("is-open"))
         return this.close();
       this.collapseValue = "opened";
-      this.element.classList.add("opened");
+      this.element.classList.add("is-open");
       this.buttonTarget.classList.remove("selected");
-      if (this.hasViewportTarget)
+      if (this.hasAccordionValue)
         this.inViewport();
       addEventListener("click", this.outsideClick.bind(this));
     }
@@ -2986,7 +2988,7 @@
      */
     outsideClick(event) {
       if (this.buttonTarget !== event.target) {
-        if (this.element.classList.contains("opened")) {
+        if (this.element.classList.contains("is-open")) {
           this.close();
         }
       }
@@ -2995,13 +2997,15 @@
      * Close Dropdown
      */
     close() {
-      this.element.classList.remove("opened");
+      this.element.classList.remove("is-open");
       if (this.collapseValue === "selected" || this.hasSelectedValue) {
         this.element.classList.add("selected");
+        this.collapseValue = "selected";
       } else {
         this.collapseValue = "closed";
       }
       removeEventListener("click", this.outsideClick);
+      this.buttonTarget.focus();
     }
     /**
      * Select Inputs
@@ -3009,9 +3013,22 @@
      * Used for Dropdown Forms
      */
     select({ target }) {
+      target.checked = true;
       this.selectedValue = target.value;
-      this.buttonTarget.innerText = target.ariaLabel;
+      this.buttonTarget.innerText = target.getAttribute("aria-label");
       this.collapseValue = "selected";
+      for (const label of this.element.getElementsByTagName("label")) {
+        if (label.getAttribute("for") === target.id) {
+          if (!label.classList.contains("selected")) {
+            label.classList.add("selected");
+          }
+        } else {
+          if (label.classList.contains("selected")) {
+            label.classList.remove("selected");
+          }
+        }
+      }
+      ;
       this.close();
     }
     /**
@@ -3025,7 +3042,6 @@
             this.selectedValue = selected.id;
         }
         if (event.currentTarget instanceof HTMLElement) {
-          console.log(event.currentTarget);
         }
         if (this.hasRequiredValue) {
           if (this.buttonTarget.classList.contains("is-invalid")) {
@@ -3042,26 +3058,12 @@
     }
   };
   /**
-   * Public Attributes - Consumed by components
-   */
-  Dropdown.public = {
-    contoller: {
-      "data-controller": "dropdown",
-      "data-dropdown-active-class": "active",
-      "data-dropdown-collapse-value": "closed",
-      "data-dropdown-selected-class": "selected"
-    },
-    button: {
-      "data-action": "click->dropdown#toggle",
-      "data-dropdown-target": "button"
-    }
-  };
-  /**
    * Stimulus Values
    */
   Dropdown.values = {
     selected: String,
     form: String,
+    accordion: String,
     required: {
       type: Boolean,
       default: false
@@ -3079,7 +3081,7 @@
    * Stimulus Targets
    */
   Dropdown.targets = [
-    "list",
+    "collapse",
     "button",
     "placeholder",
     "input",
@@ -3110,6 +3112,23 @@
   var sidebar = document.querySelector("#sidebar");
   var items = Array.from(sidebar.querySelectorAll("a")).map((a) => a.id.toLowerCase());
   var search = document.querySelector("#search-input");
+  var anchors = document.querySelectorAll(".anchor");
+  anchors.forEach((link) => {
+    link.onclick = (e) => {
+      e.preventDefault();
+      anchors.forEach((item) => {
+        if (item.classList.contains("fw-bold")) {
+          item.classList.remove("fw-bold");
+        }
+      });
+      link.classList.add("fw-bold");
+      const anchor = document.querySelector("#" + link.href.split("#").pop());
+      scrollBy({
+        behavior: "smooth",
+        top: anchor.getBoundingClientRect().top - 80
+      });
+    };
+  });
   search.addEventListener("input", function(event) {
     const target = event.target;
     if (target.value) {
@@ -3119,16 +3138,16 @@
       });
       const slug = "#" + hash[0].replace(" ", "-");
       const qs = document.querySelector(slug);
-      console.log(qs, slug);
       if (qs) {
-        qs.scrollIntoView({ block: "center" });
+        scrollBy({
+          behavior: "instant",
+          top: qs.getBoundingClientRect().top - 80
+        });
       }
     }
   });
   stickybits_es_default("#sidebar");
-  stickybits_es_default("#search", {
-    stuckClass: "mt-5 pt-5"
-  });
+  stickybits_es_default("#search");
   var modalButton = document.querySelector("#btn-modal-1");
   modalButton.addEventListener("click", () => {
     const m = document.querySelector("#modal-example");

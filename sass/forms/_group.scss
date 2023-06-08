@@ -128,14 +128,6 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.gp-lg > .fm-input,
-.gp-lg > .gp-text,
-.gp-lg > .btn {
-  padding: $input-padding-y-lg $input-padding-x-lg;
-  @include font-size($input-font-size-lg);
-  @include border-radius($input-border-radius-lg);
-}
-
 .gp-sm > .fm-input,
 .gp-sm > .gp-text,
 .gp-sm > .btn {

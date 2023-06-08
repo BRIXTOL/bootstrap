@@ -2,7 +2,8 @@
   "data": [
     {
       "title": "Modal",
-      "describe": "The modal component is a popup element which applies an overlay background and centered content element.",
+      "expanded": false,
+      "description": "The modal component is a popup element which applies an overlay background and centered content element.",
       "classes": {
         "inputs": [
           {
@@ -22,7 +23,8 @@
     },
     {
       "title": "Accordion",
-      "describe": "Accordion collapse component leverages <a href=\"https://github.com/panoply/relapse\" class=\"underline\">Relapse</a> to provide functionality. The classes exported do not use the default <code>.relapse</code> class name, but instead use <code>.accordion</code>. The styles are inherited from vairous utilities and can be customized.",
+      "expanded": true,
+      "description": "Accordion collapse component leverages <a href=\"https://github.com/panoply/relapse\" class=\"underline\">Relapse</a> to provide functionality. The classes exported do not use the default <code>.relapse</code> class name, but instead use <code>.accordion</code>. The styles are inherited from vairous utilities and can be customized.",
       "classes": {
         "inputs": [
           {

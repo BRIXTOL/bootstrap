@@ -1,11 +1,6 @@
-{%- liquid
+{% liquid
   assign list = "One,Two,Three,Four,Five,Six" | split: ","
--%}
-<div class="row mb-5">
-  <div class="col-12">
-    {{ item.describe }}
-  </div>
-</div>
+%}
 
 <div class="row">
   <div class="col-6">
@@ -18,7 +13,9 @@
         <pre class="pl-3 mt-0"><code>&lt;a href="*"&gt;</code></pre>
       </div>
       <div class="col mt-2">
-        <a href="#">Default Link</a>
+        <a href="#">
+          Default Link
+        </a>
       </div>
     </div>
 
@@ -27,16 +24,26 @@
     </h6>
     <p class="fs-xs">
       This is the
-      <a href="https://getbootstrap.com/docs/5.2/helpers/stretched-link/">stretched
-        link</a>
+      <a href="https://getbootstrap.com/docs/5.2/helpers/stretched-link/">
+        stretched 
+        link
+      </a>
       logic but uses a the
-      <code class="fs-xs">.link</code>
+      <code class="fs-xs">
+        .link
+      </code>
       class naming convention. Hover over the outer
-      <code class="fs-xs">div</code>
+      <code class="fs-xs">
+        div
+      </code>
       with black border and the
-      <strong>Link</strong>
+      <strong>
+        Link
+      </strong>
       will be detected. It requires the parent element uses a postion
-      <code class="fs-xs">relative.</code>
+      <code class="fs-xs">
+        relative.
+      </code>
     </p>
 
     <div class="row ai- mb-3">
@@ -47,7 +54,9 @@
         <div class="rel">
           <div class="abs-flex jc-center ai-center jc-center bd bc-black px-4 py-4">
             <div class="d-flex bd bc-red py-1 px-4 jc-center ac-end">
-              <a href="#" class="link">Link</a>
+              <a href="#" class="link">
+                Link
+              </a>
             </div>
           </div>
         </div>
@@ -65,13 +74,21 @@
         <div class="link-list">
           {% for item in list limit: 4 %}
             {% if forloop.index == 1 %}
-              <a href="#" class="disabled">{{ item }} (disabled)</a>
-            {% elsif forloop.index == 2 or forloop.index == 4%}
-              <a href="#">{{ item }}</a>
+              <a href="#" class="disabled">
+                {{ item }} (disabled)
+              </a>
+            {% elsif forloop.index == 2 or forloop.index == 4 %}
+              <a href="#">
+                {{ item }}
+              </a>
             {% elsif forloop.index == 3 %}
-              <a href="#" class="active">{{ item }}</a>
+              <a href="#" class="active">
+                {{ item }}
+              </a>
             {% else %}
-              <a href="#">{{ item }}</a>
+              <a href="#">
+                {{ item }}
+              </a>
             {% endif %}
           {% endfor %}
         </div>
@@ -79,6 +96,5 @@
     </div>
 
   </div>
-
 
 </div>

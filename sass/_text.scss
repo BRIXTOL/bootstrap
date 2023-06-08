@@ -52,22 +52,22 @@ $utilities: map-merge($utilities, (
       uncase: none
     )
   ),
-  "white-space": (
-    property: white-space,
-    class: text,
-    values: (
-      wrap: normal,
-      nowrap: nowrap
-    )
-  ),
-  "word-wrap": (
-    property: word-wrap word-break,
-    class: text,
-    rtl: false,
-    values: (
-      break: break-word
-    )
-  ),
+  // "white-space": (
+  //   property: white-space,
+  //   class: text,
+  //   values: (
+  //     wrap: normal,
+  //     nowrap: nowrap
+  //   )
+  // ),
+  // "word-wrap": (
+  //   property: word-wrap word-break,
+  //   class: text,
+  //   rtl: false,
+  //   values: (
+  //     break: break-word
+  //   )
+  // ),
   "line-height": (
     property: line-height,
     class: lh,

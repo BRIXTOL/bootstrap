@@ -3,8 +3,8 @@
   "format": {
     "ignore": [
       "./docs/**",
-      "./site/views/**/html.liquid",
-      "./site/views/**/scss.liquid"
+      "./demo/views/**/html.liquid",
+      "./demo/views/**/scss.liquid"
     ],
     "wrap": 125,
     "crlf": false,
@@ -15,6 +15,9 @@
       "commentIndent": true,
       "commentNewline": true,
       "dedentTagList": [],
+      "ignoreTagList": [
+        "highlight"
+      ],
       "delimiterPlacement": "consistent",
       "delimiterTrims": "never",
       "lineBreakSeparator": "before",

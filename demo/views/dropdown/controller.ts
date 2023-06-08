@@ -1,11 +1,6 @@
 
 import { Controller } from '@hotwired/stimulus';
 import relapse from 'relapse';
-
-/* -------------------------------------------- */
-/* INTERFACE                                    */
-/* -------------------------------------------- */
-
 /**
  * Dropdown
  *
@@ -14,27 +9,12 @@ import relapse from 'relapse';
 export class Dropdown extends Controller {
 
   /**
-   * Public Attributes - Consumed by components
-   */
-  static public = {
-    contoller: {
-      'data-controller': 'dropdown',
-      'data-dropdown-active-class': 'active',
-      'data-dropdown-collapse-value': 'closed',
-      'data-dropdown-selected-class': 'selected'
-    },
-    button: {
-      'data-action': 'click->dropdown#toggle',
-      'data-dropdown-target': 'button'
-    }
-  };
-
-  /**
    * Stimulus Values
    */
   static values = {
     selected: String,
     form: String,
+    accordion: String,
     required: {
       type: Boolean,
       default: false
@@ -53,7 +33,7 @@ export class Dropdown extends Controller {
    * Stimulus Targets
    */
   static targets = [
-    'list',
+    'collapse',
     'button',
     'placeholder',
     'input',
@@ -80,8 +60,6 @@ export class Dropdown extends Controller {
    */
   connect () {
 
-    this.isFormSelect = this.element.hasAttribute('data-form-target');
-
   }
 
   /**
@@ -97,12 +75,15 @@ export class Dropdown extends Controller {
 
   }
 
+  /**
+   * Returns all `<label>` elements in the dropdown
+   */
   inViewport () {
 
-    const rect = this.viewportTarget.getBoundingClientRect();
+    const rect = this.collapseTarget.getBoundingClientRect();
 
     for (const { element, folds } of relapse.get().values()) {
-      if (element.id === 'product-description') {
+      if (element.id === this.accordionValue) {
 
         if (!(
           rect.top >= 0 &&
@@ -126,13 +107,13 @@ export class Dropdown extends Controller {
 
     event.stopPropagation();
 
-    if (this.element.classList.contains('opened')) return this.close();
+    if (this.element.classList.contains('is-open')) return this.close();
 
     this.collapseValue = 'opened';
-    this.element.classList.add('opened');
+    this.element.classList.add('is-open');
     this.buttonTarget.classList.remove('selected');
 
-    if (this.hasViewportTarget) this.inViewport();
+    if (this.hasAccordionValue) this.inViewport();
 
     // listen for outside clicks
     addEventListener('click', this.outsideClick.bind(this));
@@ -145,7 +126,7 @@ export class Dropdown extends Controller {
   outsideClick (event: Event) {
 
     if (this.buttonTarget !== event.target) {
-      if (this.element.classList.contains('opened')) {
+      if (this.element.classList.contains('is-open')) {
         this.close();
       }
     }
@@ -157,16 +138,17 @@ export class Dropdown extends Controller {
    */
   close () {
 
-    this.element.classList.remove('opened');
+    this.element.classList.remove('is-open');
 
     if (this.collapseValue === 'selected' || this.hasSelectedValue) {
       this.element.classList.add('selected');
+      this.collapseValue = 'selected';
     } else {
       this.collapseValue = 'closed';
     }
 
     removeEventListener('click', this.outsideClick);
-
+    this.buttonTarget.focus();
   }
 
   /**
@@ -176,9 +158,25 @@ export class Dropdown extends Controller {
    */
   select ({ target }: { target: HTMLInputElement }) {
 
+    target.checked = true;
     this.selectedValue = target.value;
-    this.buttonTarget.innerText = target.ariaLabel;
+    this.buttonTarget.innerText = target.getAttribute('aria-label');
     this.collapseValue = 'selected';
+
+    for (const label of this.element.getElementsByTagName('label')) {
+
+      if (label.getAttribute('for') === target.id) {
+        if (!label.classList.contains('selected')) {
+          label.classList.add('selected');
+        }
+      } else {
+        if (label.classList.contains('selected')) {
+          label.classList.remove('selected');
+        }
+      }
+
+    };
+
     this.close();
 
   }
@@ -195,7 +193,7 @@ export class Dropdown extends Controller {
         if (selected) this.selectedValue = selected.id; // the <span> text
       }
       if (event.currentTarget instanceof HTMLElement) {
-        console.log(event.currentTarget);
+        // console.log(event.currentTarget);
       }
 
       if (this.hasRequiredValue) {
@@ -211,8 +209,6 @@ export class Dropdown extends Controller {
       this.selectedValue = event.target.textContent;
       this.buttonTarget.textContent = event.target.textContent;
       this.collapseValue = 'selected';
-
-      // if (this.isFormSelect) this.inputTarget.value = this.selectedValue;
 
       this.toggle(event);
 
@@ -288,6 +284,15 @@ export class Dropdown extends Controller {
    * Stimulus: Whether or not type value exists - Defaults to `dropdown` is undefined
    */
   hasTypeValue: boolean;
+
+  /**
+ * Stimulus: Whether or not the dropdown is using an accordion toggle
+ */
+  hasAccordionValue: boolean;
+  /**
+   * Stimulus: The element `id` of the accordion to trigger viewport toggle
+   */
+  accordionValue: string;
 
   /**
    * Stimulus: The current selected list item value in the dropdown list

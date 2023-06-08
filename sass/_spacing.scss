@@ -17,12 +17,21 @@ $utilities: map-get-multiple($utilities, (
   "padding-start",
 ));
 
+$spacers: (
+  0: 0,
+  1: $spacer-1,
+  2: $spacer-2,
+  3: $spacer-3,
+  4: $spacer-4,
+  5: $spacer-5
+);
+
 $utilities: map-merge($utilities, (
   "margin": (
     responsive: true,
     property: margin,
     class: m,
-    values: $spacers
+    values: map-merge($spacers, (auto: auto))
   ),
   "margin-x": (
     responsive: true,

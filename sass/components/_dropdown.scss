@@ -2,7 +2,7 @@
 
 @mixin dropdown-button($open-element: ul) {
 
-  &.opened {
+  &.is-open {
     z-index: 100;
 
     > button {
@@ -30,8 +30,7 @@
   }
 }
 
-.dropdown,
-.fm-dropdown {
+.dropdown {
   position: relative;
   display: block;
   width: 100%;

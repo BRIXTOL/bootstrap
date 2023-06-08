@@ -6,9 +6,19 @@
     "scss"
   ],
   "scss.validate": false,
-  "scss.scannerExclude": [
-    "**/.git",
-    "**/node_modules"
+  "html-css-class-completion.HTMLLanguages": [
+    "html",
+    "liquid"
+  ],
+  "somesass.scannerDepth": 30,
+  "somesass.suggestAllFromOpenDocument": true,
+  "somesass.suggestFunctionsInStringContextAfterSymbols": " (+-*%'",
+  "somesass.scannerExclude": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/strap.scss/**",
+    "**/sass/bootstrap/**"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true

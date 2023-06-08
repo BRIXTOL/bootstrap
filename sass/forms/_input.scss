@@ -2,7 +2,7 @@
 // General form controls (plus a few specific high-level interventions)
 //
 
-.fm-input {
+input.fm-input {
   display: block;
   width: 100%;
   padding: $input-padding-y $input-padding-x;
@@ -27,7 +27,7 @@
     text-transform: uppercase
   }
 
-  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  // Note: This has no effect on <select> in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius, 0);
   @include box-shadow($input-box-shadow);
   @include transition($input-transition);
@@ -45,16 +45,35 @@
     }
   }
 
-  &.fm-lg {
-    min-height: $input-height-lg;
-    padding: $input-padding-y-lg $input-padding-x-lg;
-    @include font-size($input-font-size-lg);
-    @include border-radius($input-border-radius-lg);
+  &[type="search"],
+  &[type="search"]::-webkit-search-cancel-button {
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-color: $input-bg;
+  }
 
-    &::file-selector-button {
-      padding: $input-padding-y-lg $input-padding-x-lg;
-      margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
-      margin-inline-end: $input-padding-x-lg;
+  &[type="search"] {
+    background-image: url(icon-search($input-placeholder-color));
+    background-position: right 8px bottom 4px;
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+      height: 20px;
+      width: 20px;
+      opacity: 0;
+      pointer-events: none;
+      background-position: right center;
+    }
+
+    &:focus::-webkit-search-cancel-button {
+      opacity: 1;
+      pointer-events: all;
+      cursor: pointer;
+      background-image: url(icon-delete($input-color));
+
+      &:hover {
+        background-image: url(icon-delete($input-placeholder-color));
+      }
     }
   }
 
@@ -72,10 +91,11 @@
     background-color: $input-focus-bg;
     border-color: $input-focus-border-color;
     outline: 0;
+    @include transition(border-color .25s ease-in-out);
+
     @if $enable-shadows {
       @include box-shadow($input-box-shadow, $input-focus-box-shadow);
     } @else {
-      // Avoid using mixin so we can pass custom focus shadow properly
       box-shadow: $input-focus-box-shadow;
     }
   }
@@ -133,6 +153,7 @@
   }
 }
 
+
 // Make sure textareas don't shrink too much when resized
 // https://github.com/twbs/bootstrap/pull/29124
 // stylelint-disable selector-no-qualifying-type
@@ -145,10 +166,6 @@ textarea {
 
   &.fm-sm {
     min-height: $input-height-sm;
-  }
-
-  &.fm-lg {
-    min-height: $input-height-lg;
   }
 }
 // stylelint-enable selector-no-qualifying-type

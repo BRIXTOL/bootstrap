@@ -3,8 +3,9 @@
     {
       "title": "Svg",
       "property": "style",
+      "expanded": true,
       "responsive": false,
-      "describe": "SVG Icons embedded within the variation are available as SASS Functions and applied to <code>background-image</code> properties. The icons are also available as CSS Variables and expose a value of <code>url()</code> which can be used inline via <code>style</code> attributes.",
+      "description": "SVG Icons embedded within the variation are available as SASS Functions and applied to <code>background-image</code> properties. The icons are also available as CSS Variables and expose a value of <code>url()</code> which can be used inline via <code>style</code> attributes.",
       "classes": [
         {
           "title": "Plus",
@@ -39,6 +40,14 @@
           "function": "icon-image($color: currentColor, $width: 1)"
         },
         {
+          "title": "Search",
+          "function": "icon-search($color: currentColor)"
+        },
+        {
+          "title": "Delete",
+          "function": "icon-delete($color: currentColor, $width: 1)"
+        },
+        {
           "title": "Bell",
           "function": "icon-bell($color: currentColor, $width: 1)"
         }
@@ -47,12 +56,14 @@
     {
       "title": "Aspect Ratio",
       "property": "img picture",
+      "expanded": true,
       "responsive": true,
-      "describe": "Aspect ratio classes, mixins and helper utilities. Aspect ratio can be controlled using inline CSS variables and <code>.aspect-ratio</code> class. There are multiple ways to leverage this utility."
+      "description": "Aspect ratio classes, mixins and helper utilities. Aspect ratio can be controlled using inline CSS variables and <code>.aspect-ratio</code> class. There are multiple ways to leverage this utility."
     },
     {
       "title": "Background Colors",
       "property": "background-color",
+      "expanded": true,
       "responsive": false,
       "classes": [
         {
@@ -79,8 +90,9 @@
     },
     {
       "title": "Borders",
-      "describe": "Border widths, sizes and colors employ custom naming conventions and are responsive. The single class name <code>.b</code> is used to apply a full border whereas suffixed directions of <code>t</code> (top), <code>b</code> (bottom), <code>l</code> (left) and <code>r</code> (right) are used to apply borders according to angle.",
+      "description": "Border widths, sizes and colors employ custom naming conventions and are responsive. The single class name <code>.b</code> is used to apply a full border whereas suffixed directions of <code>t</code> (top), <code>b</code> (bottom), <code>l</code> (left) and <code>r</code> (right) are used to apply borders according to angle.",
       "property": "border-* border",
+      "expanded": true,
       "responsive": true,
       "classes": {
         "border": [
@@ -154,6 +166,7 @@
     {
       "title": "Radius",
       "property": "border-radius",
+      "expanded": true,
       "responsive": false,
       "classes": {
         "radius": [
@@ -201,6 +214,7 @@
     {
       "title": "Buttons",
       "property": "button",
+      "expanded": true,
       "responsive": false,
       "classes": {
         "colors": [
@@ -268,12 +282,14 @@
     {
       "title": "Links",
       "property": "a",
+      "expanded": true,
       "responsive": false,
-      "describe": "Basic level <code>href</code> logics. Most the Bootstrap helpers and utilities are stripped out. We only want the bare minimum here. The <code>list-list</code> is a re-write and only supports nested <code>href</code> nodes."
+      "description": "Basic level <code>href</code> logics. Most the Bootstrap helpers and utilities are stripped out. We only want the bare minimum here. The <code>list-list</code> is a re-write and only supports nested <code>href</code> nodes."
     },
     {
       "title": "Lists",
       "property": "al, ol, ul",
+      "expanded": true,
       "responsive": false
     },
     {
@@ -300,8 +316,9 @@
     },
     {
       "title": "Tooltip",
-      "describe": "Tooltips are a hardfork of Balloons but the resulting CSS has been stripped and removed of most features. Tooltips ase a combination of <code>aria-label</code> and <code>data-tooltip</code> attribute annotations. The logic is exteremly simply. The <code>$tooltip-use-outline</code> will invert the styling.",
+      "description": "Tooltips are a hardfork of Balloons but the resulting CSS has been stripped and removed of most features. Tooltips ase a combination of <code>aria-label</code> and <code>data-tooltip</code> attribute annotations. The logic is exteremly simply. The <code>$tooltip-use-outline</code> will invert the styling.",
       "property": "data-tooltip",
+      "expanded": true,
       "responsive": false,
       "classes": {
         "position": [

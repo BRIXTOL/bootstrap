@@ -1,8 +1,48 @@
 {
   "data": [
     {
+      "title": "Forms",
+      "expanded": true,
+      "description": "Forms have been heavily modified in the variation. The vast majority of customisation have been stripped from Bootstrap and the aesthetic follows a simple and basic flow with some additional features made available. Below is a basic side by side comparison of what to expect. The variables controlling field generation can customize the outputs but only slightly.",
+      "data": {
+        "inputs": {
+          "text": {
+            "title": "Input Text",
+            "class": ".fm-input"
+          },
+          "search": {
+            "title": "Input Search",
+            "class": ".fm-input"
+          },
+          "select": {
+            "title": "Select Native",
+            "class": ".fm-select"
+          },
+          "dropdown": {
+            "title": "Select Dropdown",
+            "class": ".fm-dropdown"
+          }
+        },
+        "checkboxes": [
+          {
+            "title": "Checkbox Switch",
+            "class": ".fm-switch"
+          },
+          {
+            "title": "Checkbox Native",
+            "class": ".fm-checkbox"
+          },
+          {
+            "title": "Radio",
+            "class": ".fm-radio"
+          }
+        ]
+      }
+    },
+    {
       "title": "Form Dropdown",
-      "describe": "The from dropdown <code>.fm-dropdown</code> class is for usage within forms designed to work together with the Stimulus <code>Dropdown</code> controller. The structure leverages <code>type=\"radio\"</code> and <code>label</code> inputs to infer a selection. In addition, you can annotate the <code>label</code> with a <code>aria-label</code> which will render a badge to the right side.",
+      "expanded": true,
+      "description": "The from dropdown <code>.fm-dropdown</code> class is for usage within forms designed to work together with the Stimulus <code>Dropdown</code> controller. The structure leverages <code>type=\"radio\"</code> and <code>label</code> inputs to infer a selection. In addition, you can annotate the <code>label</code> with a <code>aria-label</code> which will render a badge to the right side.",
       "classes": {
         "states": [
           {
@@ -29,7 +69,7 @@
         "expanded": [
           {
             "title": "Dropdown Select",
-            "class": ".fm-dropdown .opened",
+            "class": ".fm-dropdown .is-open",
             "type": "Collapsed"
           }
         ]
@@ -37,7 +77,8 @@
     },
     {
       "title": "Form Input",
-      "describe": "Form input fields account for any element using the <code>input</code> tag. The classes are mostly inherited from Bootstrap with refined naming conventions and SVG validation icon changes.",
+      "expanded": true,
+      "description": "Form input fields account for any element using the <code>input</code> tag. The classes are mostly inherited from Bootstrap with refined naming conventions and SVG validation icon changes. There are only 2 sizes available in form inputs, small (<code>fm-sm</code>) and the normal default (base) sizing.",
       "classes": {
         "inputs": [
           {
@@ -73,15 +114,20 @@
             "class": ".fm-input .fm-sm"
           },
           {
-            "title": "Input Large",
-            "class": ".fm-input .fm-lg"
+            "title": "Valid",
+            "class": ".fm-input .fm-sm .is-valid"
+          },
+          {
+            "title": "Invalid",
+            "class": ".fm-input .fm-sm .is-invalid"
           }
         ]
       }
     },
     {
       "title": "Form Lined",
-      "describe": "Annotating form classes with <code>fm-lined</code> will result in a bottom line based style to form inputs, selects and dropdowns. This lined style is used as an UI aesthetic in the Brixtol Textiles webshop.",
+      "expanded": false,
+      "description": "Annotating form classes with <code>fm-lined</code> will result in a bottom line based style to form inputs, selects and dropdowns. This lined style is used as an UI aesthetic in the Brixtol Textiles webshop.",
       "classes": {
         "inputs": [
           {
@@ -129,24 +175,19 @@
           "buttons": [
             {
               "title": "Button Left",
-              "input": ".fm-input"
+              "class": ".fm-input"
             },
             {
               "title": "Button Right",
-              "input": ".fm-input"
-            },
-            {
-              "title": "Button (disabled)",
-              "button": "disabled",
-              "input": ".fm-input"
+              "class": ".fm-input"
             },
             {
               "title": "Valid",
-              "input": ".fm-input .is-valid"
+              "class": ".fm-input .is-valid"
             },
             {
               "title": "Invalid",
-              "input": ".fm-input .is-invalid"
+              "class": ".fm-input .is-invalid"
             }
           ]
         }
@@ -154,6 +195,7 @@
     },
     {
       "title": "Form Group",
+      "expanded": true,
       "classes": {
         "inputs": [
           {
@@ -179,39 +221,40 @@
     },
     {
       "title": "Form Checkbox",
-      "describe": "Checkbox (checkmarks) are similar to Bootstraps official logic. The fields require an <code>id</code> and <code>for</code> attributes to relate the <code>input</code> and <code>label</code> as they are identified as siblings. The items use the short-name <code>fm-</code> and need to nested in a <code>.fm-check</code> node.",
+      "expanded": false,
+      "description": "Checkbox (checkmarks) borrow minor logic from Bootstrap v5.2 but for the most part have been refactored. The main changes are class defintions, wherein checkboxes use a <code>fm-toggle</code> class wrapper. The fields require a <code>id</code> be applied to the inputs and <code>for</code> attribute to label as they are identified as siblings. The items use the short-name <code>fm-</code> and need to be nested in a <code>.fm-toggle</code> node.",
       "classes": {
         "inputs": [
           {
             "title": "Default",
-            "wrap": ".fm-check",
-            "class": ".fm-check-input"
+            "wrap": ".fm-toggle",
+            "class": ".fm-checkbox"
           },
           {
             "title": "Valid",
-            "wrap": ".fm-check",
-            "class": ".fm-check-input .is-valid"
+            "wrap": ".fm-toggle",
+            "class": ".fm-checkbox .is-valid"
           },
           {
             "title": "Invalid",
-            "wrap": ".fm-check",
-            "class": ".fm-check-input .is-invalid"
+            "wrap": ".fm-toggle",
+            "class": ".fm-checkbox .is-invalid"
           }
         ],
         "states": [
           {
             "title": "Checked",
-            "wrap": ".fm-check",
+            "wrap": ".fm-toggle",
             "class": "checked"
           },
           {
             "title": "Checked + Disabled",
-            "wrap": ".fm-check",
+            "wrap": ".fm-toggle",
             "class": "checked disabled"
           },
           {
             "title": "Disabled",
-            "wrap": ".fm-check",
+            "wrap": ".fm-toggle",
             "class": "disabled"
           }
         ],
@@ -219,26 +262,27 @@
           {
             "title": "Large",
             "wrap": ".fm-check .fm-lg",
-            "class": ".fm-check-input"
+            "class": ".fm-checkbox"
           },
           {
             "title": "Large Checked",
             "wrap": ".fm-check .fm-lg",
-            "class": ".fm-check-input"
+            "class": ".fm-checkbox"
           }
         ],
         "layouts": [
           {
             "title": "Reverse Label",
             "wrap": ".fm-check reverse",
-            "class": ".fm-check-input"
+            "class": ".fm-checkbox"
           }
         ]
       }
     },
     {
       "title": "Form Range",
-      "describe": "Form range inputs are almost identical to the logic found within Bootstrap. The differences are subtle but do exist. In most cases range sliders can be omitted to produce more leaner distributed stylesheets.",
+      "expanded": false,
+      "description": "Form range inputs are almost identical to the logic found within Bootstrap. The differences are subtle but do exist. In most cases range sliders can be omitted to produce more leaner distributed stylesheets.",
       "classes": {
         "inputs": [
           {
@@ -274,7 +318,8 @@
     },
     {
       "title": "Form Switch",
-      "describe": "The form switch toggles are similar to Bootstraps official logic but have some minor refinments applied. The switches are forced as rectangular shapes and also offer additional sizing logic.",
+      "expanded": false,
+      "description": "The form switch toggles are similar to Bootstraps official logic but have some minor refinments applied. The switches are forced as rectangular shapes and also offer additional sizing logic.",
       "classes": {
         "inputs": [
           {
@@ -294,18 +339,19 @@
           {
             "title": "Switch Valid",
             "wrap": ".fm-switch",
-            "class": ".fm-check-input .is-valid"
+            "class": ".fm-checkbox .is-valid"
           },
           {
             "title": "Switch Invalid",
             "wrap": ".fm-switch",
-            "class": ".fm-check-input .is-invalid"
+            "class": ".fm-checkbox .is-invalid"
           }
         ]
       }
     },
     {
       "title": "Form Float",
+      "expanded": true,
       "classes": {
         "inputs": [
           {
