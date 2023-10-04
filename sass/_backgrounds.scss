@@ -11,6 +11,13 @@ $utilities: map-merge($utilities, (
     local-vars: ("bg-opacity": 1),
     values: $background-colors
   ),
+  "background-blur": (
+    property: backdrop-filter,
+    class: bg,
+    values: (
+      blur: 10px
+    )
+  )
 ));
 
 

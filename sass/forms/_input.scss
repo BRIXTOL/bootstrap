@@ -2,6 +2,7 @@
 // General form controls (plus a few specific high-level interventions)
 //
 
+textarea.fm-input,
 input.fm-input {
   display: block;
   width: 100%;
@@ -162,10 +163,12 @@ textarea {
 
   &.fm-input {
     min-height: $input-height;
+
   }
 
   &.fm-sm {
     min-height: $input-height-sm;
+    width: 100%;
   }
 }
 // stylelint-enable selector-no-qualifying-type

@@ -89,6 +89,27 @@
       ]
     },
     {
+      "title": "Box Shadow",
+      "property": "box-shadow",
+      "expanded": true,
+      "responsive": false,
+      "description": "Box shadows uses the same logic as found in the Bootstrap utility but applies a different class name approach using suffixed <code>-number</code> levels.",
+      "classes": [
+        {
+          "title": "Box Shadow 1",
+          "class": ".bs-1"
+        },
+        {
+          "title": "Box Shadow 2",
+          "class": ".bs-2"
+        },
+        {
+          "title": "Box Shadow 3",
+          "class": ".bs-3"
+        }
+      ]
+    },
+    {
       "title": "Borders",
       "description": "Border widths, sizes and colors employ custom naming conventions and are responsive. The single class name <code>.b</code> is used to apply a full border whereas suffixed directions of <code>t</code> (top), <code>b</code> (bottom), <code>l</code> (left) and <code>r</code> (right) are used to apply borders according to angle.",
       "property": "border-* border",

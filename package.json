@@ -1,6 +1,6 @@
 {
   "name": "@brixtol/bootstrap",
-  "version": "1.4.3",
+  "version": "1.6.0",
   "private": false,
   "description": "Webshop strap for Brixtol Textiles.",
   "author": {
@@ -113,8 +113,10 @@
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.1.0",
     "cssnano": "^6.0.1",
+    "embla-carousel": "8.0.0-rc12",
     "postcss": "^8.4.24",
     "postcss-cli": "^10.1.0",
+    "qvp": "^0.3.2",
     "sass": "^1.63.0",
     "stickybits": "^3.7.11",
     "stimulus": "^3.2.1",

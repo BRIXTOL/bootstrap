@@ -1,3 +1,5 @@
+@import "../sass/components/carousel";
+
 .content {
   padding: 25px 50px;
 }
@@ -185,6 +187,19 @@ pre[class*='language-'] {
   }
 
 
+}
+
+.carousel {
+  @include carousel(1);
+}
+
+.carousel-x2 {
+
+  @include carousel((
+    slides: 2,
+    margin: 20px,
+    cursor: move
+  ))
 }
 
 .overflow {

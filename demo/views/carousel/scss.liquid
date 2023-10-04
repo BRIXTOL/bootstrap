@@ -1,0 +1,36 @@
+{% highlight scss %}
+
+// Accepts a number
+//
+@include carousel(1)
+
+// 2 slides with 20px margin
+//
+@include carousel((
+  slides: 2,
+  margin: 10px,
+))
+
+// 3 slides with 10px margin and cursor
+//
+@include carousel((
+  slides: 2,
+  margin: 10px,
+  cursor: move
+))
+
+// Responsive slides to generate
+//
+@include carousel((
+  xs: (
+    slides: 2,
+    margin: 10px,
+    cursor: pointer
+  ),
+  md: (
+    slides: 1,
+    margin: 0,
+    cursor: move
+  )
+))
+{% endhighlight %}

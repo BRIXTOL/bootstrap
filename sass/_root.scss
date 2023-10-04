@@ -66,6 +66,8 @@
     --#{$prefix}aspect-ratio: #{$ratio};
   }
 
+  --#{$prefix}ratio-bg-color: $aspect-ratio-bg-color;
+
   // SVG Icons
 
   --#{$prefix}svg-color: currentColor;

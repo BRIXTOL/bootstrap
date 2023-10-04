@@ -1,6 +1,10 @@
 .fm-float {
   position: relative;
 
+  .feedback {
+    position: absolute;
+  }
+
   > .btn-dropdown,
   > .fm-input,
   > .fm-select, {
@@ -48,6 +52,7 @@
       margin-right: divide($form-float-padding-x, 2, 2);
     }
 
+    &.legend-textarea,
     &.fm-label {
       display: flex;
       height: 100%;
@@ -63,6 +68,7 @@
     }
 
     &.legend-textarea {
+      padding-top: $form-float-padding-y;
       height: auto;
 
       @include transition(

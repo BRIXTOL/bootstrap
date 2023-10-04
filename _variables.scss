@@ -177,6 +177,7 @@ $container-max-widths: (
 /* -------------------------------------------- */
 
 /// Passed to the Bootstrap flex directions utility.
+///
 $flex-direction: (
   row: row,
   col: column,
@@ -186,6 +187,7 @@ $flex-direction: (
 
 
 /// Passed to the Bootstrap flex justify content utility.
+///
 $justify-content: (
   start: flex-start,
   end: flex-end,
@@ -196,6 +198,7 @@ $justify-content: (
 );
 
 /// Passed to the Bootstrap flex align content utility.
+///
 $align-content: (
   start: flex-start,
   end: flex-end,
@@ -205,8 +208,8 @@ $align-content: (
   // stretch: stretch
 );
 
-
 /// Passed to the Bootstrap flex align self utility.
+///
 $align-self: (
   auto: auto,
   start: flex-start,
@@ -217,6 +220,7 @@ $align-self: (
 );
 
 /// Passed to the Bootstrap flex align items utility.
+///
 $align-items: (
   start: flex-start,
   end: flex-end,
@@ -226,6 +230,7 @@ $align-items: (
 );
 
 /// Passed to the Bootstrap flex justify content utility.
+///
 $display-utils: (
   unset: unset,
   inline: inline,
@@ -250,14 +255,18 @@ $zindex-tooltip:  99999;
 /* FONT FAMILY                                  */
 /* -------------------------------------------- */
 
-/// Base font family
+/// Base font family - This is applied to <body> and for all general text content
 ///
 $font-family-base:         system-ui, -apple-system, blinkmacsystemfont, "Open Sans", "Helvetica Neue", sans-serif;
 $font-family-base-var:     var(--#{$prefix}font-base);
 
+/// Heading font family - This is applied the h1, h2, h3, h4, h5 and h6 types
+///
 $font-family-heading:      Arial, sans-serif;
 $font-family-heading-var:  var(--#{$prefix}font-heading);
 
+/// Code font family - This is applied to <code> or <pre>
+///
 $font-family-code:         SFMono-Regular, Menlo, Monaco, "Courier New", Courier, monospace;
 $font-family-code-var:     var(--#{$prefix}font-code);
 
@@ -271,7 +280,12 @@ $font-family-sans-var:     var(--#{$prefix}font-sans);
 /* BODY                                         */
 /* -------------------------------------------- */
 
+/// The background color of <body>
+///
 $body-bg:                          $white;
+
+/// The font color of all text
+///
 $body-color:                       $gray-900;
 $body-letter-spacing:              inherit;
 
@@ -371,10 +385,11 @@ $border-radius-pill:           5rem;
 /* SHADOWS                                      */
 /* -------------------------------------------- */
 
-$box-shadow:                  0 .5rem 1rem rgba($black, .15);
-$box-shadow-sm:               0 .125rem .25rem rgba($black, .075);
-$box-shadow-lg:               0 1rem 3rem rgba($black, .175);
+$box-shadow-1:               0 0 1.5rem 0.25rem rgba($black, 0.1);
+$box-shadow-2:               0 0 1rem 0.5rem rgba($black, 0.1);
+$box-shadow-3:               0 0 2rem 0.5rem  rgba($black, 0.20);
 $box-shadow-inset:            inset 0 1px 2px rgba($black, .075);
+
 
 /* -------------------------------------------- */
 /* HR LINE                                      */
@@ -758,7 +773,6 @@ $form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-
 $form-range-thumb-focus-box-shadow-width:  $input-focus-width;
 $form-range-thumb-active-bg:               tint-color($black, 40%);
 $form-range-thumb-disabled-bg:             $gray-500;
-
 $form-range-thumb-transition: (
   background-color .10s ease-in-out,
   border-color .10s ease-in-out,

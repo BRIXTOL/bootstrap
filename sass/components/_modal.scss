@@ -27,6 +27,7 @@
     opacity: 1;
     visibility: visible;
     background-color: $modal-backdrop-bg;
+    backdrop-filter: blur(1px);
     @include transition(opacity $modal-transition linear);
 
     > .modal-container {

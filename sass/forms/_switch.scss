@@ -32,12 +32,12 @@
     }
 
     &:focus {
-      background-image: url(icon-square($form-switch-color, calc($form-switch-width / 2)));
+      background-image: url(icon-square($form-switch-color, calc($form-switch-width / 2))) !important;
     }
 
     &:checked {
       background-position: $form-switch-checked-bg-position;
-      background-image: url(icon-square($form-switch-checked-color, calc($form-switch-width / 2)));
+      background-image: url(icon-square($form-switch-checked-color, calc($form-switch-width / 2))) !important;
     }
   }
 

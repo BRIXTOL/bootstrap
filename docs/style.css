@@ -162,6 +162,30 @@ pre[class*=language-] {
   align-items: center;
 }
 
+.carousel {
+  overflow: hidden;
+}
+.carousel > * {
+  display: flex;
+}
+.carousel .slide {
+  overflow: hidden;
+  flex: 0 0 100%;
+}
+
+.carousel-x2 {
+  overflow: hidden;
+}
+.carousel-x2 > * {
+  display: flex;
+}
+.carousel-x2 .slide {
+  overflow: hidden;
+  flex: 0 0 calc((100% - 20px) / 2);
+  margin-right: 20px;
+  cursor: move;
+}
+
 .overflow {
   overflow-y: scroll;
 }

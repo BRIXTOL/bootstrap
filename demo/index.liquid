@@ -37,8 +37,8 @@ refs:
 
   </head>
   <body>
-    <div class="container-fluid gx-0">
-      <div class="row gx-0 jc-center vh-100">
+    <div class="container-fluid">
+      <div class="row  jc-center vh-100">
 
         <div class="col-2 br bg-white">
           <div
@@ -53,15 +53,15 @@ refs:
 
               {% if data == "layouts" %}
                 {% assign list = layouts.data %}
-              {% elsif data == "fonts" %}
+              {% elsif data == 'fonts' %}
                 {% assign list = fonts.data %}
-              {% elsif data == "text" %}
+              {% elsif data == 'text' %}
                 {% assign list = text.data %}
-              {% elsif data == "utilities" %}
+              {% elsif data == 'utilities' %}
                 {% assign list = utilities.data %}
-              {% elsif data == "forms" %}
+              {% elsif data == 'forms' %}
                 {% assign list = forms.data %}
-              {% elsif data == "components" %}
+              {% elsif data == 'components' %}
                 {% assign list = components.data %}
               {% endif %}
 
@@ -90,7 +90,8 @@ refs:
           </div>
         </div>
 
-        <div class="col-10 mb-5 bg-white px-5" id="contents">
+        <div class="col-10 mb-5 bg-white" id="contents">
+
           <div class="d-block py-3 bg-white" id="search">
             <input
               type="search"
@@ -105,15 +106,15 @@ refs:
 
             {% if data == "layouts" %}
               {% assign list = layouts.data %}
-            {% elsif data == "fonts" %}
+            {% elsif data == 'fonts' %}
               {% assign list = fonts.data %}
-            {% elsif data == "text" %}
+            {% elsif data == 'text' %}
               {% assign list = text.data %}
-            {% elsif data == "utilities" %}
+            {% elsif data == 'utilities' %}
               {% assign list = utilities.data %}
-            {% elsif data == "forms" %}
+            {% elsif data == 'forms' %}
               {% assign list = forms.data %}
-            {% elsif data == "components" %}
+            {% elsif data == 'components' %}
               {% assign list = components.data %}
             {% endif %}
 
@@ -129,16 +130,12 @@ refs:
                   <a href="#{{ slug }}" class="h4 d-block fw-bold fc-dark-gray">
                     {{ item.title }}
                   </a>
-                  <code class="lower fw-bold fs-sm fc-green mt-2">
-                    responsive
-                </code>
+                  <code class="lower fw-bold fs-sm fc-green mt-2">responsive</code>
                 </div>
                 <div class="col-auto mt-2">
-                  <!-- esthetic-ignore-start -->
                   {% if item.property.size > 0 %}
                     <code class="lower fw-bold fs-sm">{{ item.property }}</code>
                   {% endif %}
-                  <!-- esthetic-ignore-end -->
                 </div>
               </div>
 
@@ -147,10 +144,6 @@ refs:
                 <div class="d-block px-4 mt-4 mb-4">
                   {{ item.description }}
                 </div>
-
-                {% else %}
-
-                <div class="d-block my-4"></div>
 
               {% endif %}
 

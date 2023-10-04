@@ -1,0 +1,42 @@
+{% highlight html %}
+
+<!-- Basic carousel with required markup -->
+<div class="carousel" data-controller="carousel">
+  <div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+  </div>
+</div>
+
+<!-- Basic carousel with images -->
+<div class="carousel" data-controller="carousel">
+  <div>
+    <div class="slide">
+
+      <!-- Response Images with Ratio -->
+      <div class="ratio ratio-*">
+        <picture>
+          <source srcset="*" media="*">
+          <source srcset="*" media="*">
+          <img src="*">
+        </picture>
+      </div>
+
+    </div>
+    <div class="slide">
+
+      <!-- Response Images with Ratio -->
+      <div class="ratio ratio-*">
+        <picture>
+          <source srcset="*" media="*">
+          <source srcset="*" media="*">
+          <img src="*">
+        </picture>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endhighlight %}

@@ -1,0 +1,106 @@
+///
+/// @output A class name of `.slide` with overflow hidden
+///
+/// @example scss
+///
+///   // Single slide with no margin
+///   @include carousel(1)
+///
+///   // 2 slides with 20px margin
+///   @include carousel((
+///     slides: 2,
+///     margin: 10px,
+///   ))
+///
+///   // Passing config
+///   @include carousel((
+///     slides: 2,
+///     margin: 10px,
+///     cursor: move
+///   ))
+///
+///   // Responsive
+///   @include carousel((
+///     xs: (
+///      slides: 2,
+///      margin: 10px,
+///      cursor: move
+///     ),
+///     md: (
+///      slides: 1,
+///      margin: 0,
+///      cursor: move
+///     )
+///   ))
+@mixin carousel($slide: (
+  slides: 1,
+  margin: 0
+)) {
+  overflow: hidden;
+
+  > * {
+    display: flex;
+  }
+
+  .slide {
+    overflow: hidden;
+
+    @if $slide == null {
+
+      flex: 0 0 100%;
+
+    } @else if type-of($slide) == "number" {
+
+      flex: 0 0 calc(100% / $slide);
+
+    } @else if map-has-key($slide, slides) {
+
+        @if map-has-key($slide, margin) {
+
+          $m: map-get($slide, margin);
+          $s: map-get($slide, slides);
+
+          flex: 0 0 calc(calc(100% - $m) / $s);
+          margin-right: $m;
+
+        } @else {
+          flex: 0 0 calc(100% / map-get($slide, slides));
+        }
+
+        @if map-has-key($slide, cursor) {
+          cursor: map-get($slide, cursor);
+        }
+
+
+    } @else {
+
+      @each $breakpoint in map-keys($slide) {
+
+        @debug type-of($breakpoint);
+        @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+
+          $setting: map-get($breakpoint, $slide);
+
+          @if type-of($setting) == "number" {
+            flex: 0 0 calc(100% / $setting);
+          } @else {
+            @each $option in $setting {
+
+              $m: map-get(margin, $setting);
+              $c: calc(100% - $m);
+
+              flex: 0 0 calc(percentage($c) / map-get(slides, $setting));
+              margin-right: map-get(margin, $setting)
+            }
+          }
+
+
+        }
+      }
+
+    }
+  }
+}
+
+
+

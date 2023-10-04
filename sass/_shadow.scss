@@ -1,0 +1,22 @@
+$enable-important-utilities: true;
+
+$utilities: map-get-multiple($utilities, (
+  "box-shadow"
+));
+
+
+$utilities: map-merge($utilities, (
+  "box-shadow": (
+    responsive: false,
+    property: box-shadow,
+    class: bs,
+    values: (
+      1: $box-shadow-1,
+      2: $box-shadow-2,
+      3: $box-shadow-3
+    )
+  )
+));
+
+
+@import "bootstrap/utilities/api";

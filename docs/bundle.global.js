@@ -23,8 +23,8 @@
   // ../../node_modules/.pnpm/stickybits@3.7.11/node_modules/stickybits/dist/stickybits.es.js
   function _extends() {
     _extends = Object.assign ? Object.assign.bind() : function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -66,9 +66,9 @@
       this.els = typeof target === "string" ? document.querySelectorAll(target) : target;
       if (!("length" in this.els))
         this.els = [this.els];
-      for (var i = 0; i < this.els.length; i++) {
+      for (var i2 = 0; i2 < this.els.length; i2++) {
         var _styles;
-        var el = this.els[i];
+        var el = this.els[i2];
         var instance = this.addInstance(el, this.props);
         this.props.applyStyle({
           styles: (_styles = {}, _styles[verticalPosition] = verticalPositionStyle, _styles.position = positionStyle, _styles),
@@ -86,8 +86,8 @@
       } else {
         var prefix = ["", "-o-", "-webkit-", "-moz-", "-ms-"];
         var test = document.head.style;
-        for (var i = 0; i < prefix.length; i += 1) {
-          test.position = prefix[i] + "sticky";
+        for (var i2 = 0; i2 < prefix.length; i2 += 1) {
+          test.position = prefix[i2] + "sticky";
         }
         stickyProp = test.position ? test.position : "fixed";
         test.position = "";
@@ -151,11 +151,11 @@
       it.stickyChange = it.stickyStart + stickyChangeOffset;
       it.stickyStop = isTop ? parentBottom - (el.offsetHeight + it.offset) : parentBottom - window.innerHeight;
     };
-    _proto.toggleClasses = function toggleClasses(el, r, a) {
+    _proto.toggleClasses = function toggleClasses(el, r, a2) {
       var e = el;
       var cArray = e.className.split(" ");
-      if (a && cArray.indexOf(a) === -1)
-        cArray.push(a);
+      if (a2 && cArray.indexOf(a2) === -1)
+        cArray.push(a2);
       var rItem = cArray.indexOf(r);
       if (rItem !== -1)
         cArray.splice(rItem, 1);
@@ -179,8 +179,8 @@
       var isTop = vp !== "bottom";
       var aS = p.applyStyle;
       var ns = p.noStyles;
-      var rAFStub = function rAFDummy(f) {
-        f();
+      var rAFStub = function rAFDummy(f2) {
+        f2();
       };
       var rAF = !this.isWin ? rAFStub : window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || rAFStub;
       var scroll = this.isWin ? window.scrollY || window.pageYOffset : se.scrollTop;
@@ -292,8 +292,8 @@
       this.toggleClasses(e.parentNode, p.parentClass);
     };
     _proto.cleanup = function cleanup() {
-      for (var i = 0; i < this.instances.length; i += 1) {
-        var instance = this.instances[i];
+      for (var i2 = 0; i2 < this.instances.length; i2 += 1) {
+        var instance = this.instances[i2];
         if (instance.stateContainer) {
           instance.props.scrollEl.removeEventListener("scroll", instance.stateContainer);
         }
@@ -309,7 +309,7 @@
   }
   var stickybits_es_default = stickybits;
 
-  // ../../node_modules/.pnpm/@hotwired+stimulus@3.2.1/node_modules/@hotwired/stimulus/dist/stimulus.js
+  // ../../node_modules/.pnpm/@hotwired+stimulus@3.2.2/node_modules/@hotwired/stimulus/dist/stimulus.js
   var EventListener = class {
     constructor(eventTarget, eventName, eventOptions) {
       this.eventTarget = eventTarget;
@@ -466,23 +466,23 @@
       }
     }
   };
-  var descriptorPattern = /^(?:(.+?)(?:\.(.+?))?(?:@(window|document))?->)?(.+?)(?:#([^:]+?))(?::(.+))?$/;
+  var descriptorPattern = /^(?:(?:([^.]+?)\+)?(.+?)(?:\.(.+?))?(?:@(window|document))?->)?(.+?)(?:#([^:]+?))(?::(.+))?$/;
   function parseActionDescriptorString(descriptorString) {
     const source = descriptorString.trim();
     const matches = source.match(descriptorPattern) || [];
-    let eventName = matches[1];
-    let keyFilter = matches[2];
+    let eventName = matches[2];
+    let keyFilter = matches[3];
     if (keyFilter && !["keydown", "keyup", "keypress"].includes(eventName)) {
       eventName += `.${keyFilter}`;
       keyFilter = "";
     }
     return {
-      eventTarget: parseEventTarget(matches[3]),
+      eventTarget: parseEventTarget(matches[4]),
       eventName,
-      eventOptions: matches[6] ? parseEventOptions(matches[6]) : {},
-      identifier: matches[4],
-      methodName: matches[5],
-      keyFilter
+      eventOptions: matches[7] ? parseEventOptions(matches[7]) : {},
+      identifier: matches[5],
+      methodName: matches[6],
+      keyFilter: matches[1] || keyFilter
     };
   }
   function parseEventTarget(eventTargetName) {
@@ -517,6 +517,13 @@
   function tokenize(value) {
     return value.match(/[^\s]+/g) || [];
   }
+  function isSomething(object) {
+    return object !== null && object !== void 0;
+  }
+  function hasProperty(object, property) {
+    return Object.prototype.hasOwnProperty.call(object, property);
+  }
+  var allModifiers = ["meta", "ctrl", "alt", "shift"];
   var Action = class {
     constructor(element, index, descriptor, schema) {
       this.element = element;
@@ -537,24 +544,32 @@
       const eventTarget = this.eventTargetName ? `@${this.eventTargetName}` : "";
       return `${this.eventName}${eventFilter}${eventTarget}->${this.identifier}#${this.methodName}`;
     }
-    isFilterTarget(event) {
+    shouldIgnoreKeyboardEvent(event) {
       if (!this.keyFilter) {
         return false;
       }
-      const filteres = this.keyFilter.split("+");
-      const modifiers = ["meta", "ctrl", "alt", "shift"];
-      const [meta, ctrl, alt, shift] = modifiers.map((modifier) => filteres.includes(modifier));
-      if (event.metaKey !== meta || event.ctrlKey !== ctrl || event.altKey !== alt || event.shiftKey !== shift) {
+      const filters = this.keyFilter.split("+");
+      if (this.keyFilterDissatisfied(event, filters)) {
         return true;
       }
-      const standardFilter = filteres.filter((key) => !modifiers.includes(key))[0];
+      const standardFilter = filters.filter((key) => !allModifiers.includes(key))[0];
       if (!standardFilter) {
         return false;
       }
-      if (!Object.prototype.hasOwnProperty.call(this.keyMappings, standardFilter)) {
+      if (!hasProperty(this.keyMappings, standardFilter)) {
         error(`contains unknown key filter: ${this.keyFilter}`);
       }
       return this.keyMappings[standardFilter].toLowerCase() !== event.key.toLowerCase();
+    }
+    shouldIgnoreMouseEvent(event) {
+      if (!this.keyFilter) {
+        return false;
+      }
+      const filters = [this.keyFilter];
+      if (this.keyFilterDissatisfied(event, filters)) {
+        return true;
+      }
+      return false;
     }
     get params() {
       const params = {};
@@ -573,6 +588,10 @@
     }
     get keyMappings() {
       return this.schema.keyMappings;
+    }
+    keyFilterDissatisfied(event, filters) {
+      const [meta, ctrl, alt, shift] = allModifiers.map((modifier) => filters.includes(modifier));
+      return event.metaKey !== meta || event.ctrlKey !== ctrl || event.altKey !== alt || event.shiftKey !== shift;
     }
   };
   var defaultEventNames = {
@@ -618,8 +637,9 @@
       return this.context.identifier;
     }
     handleEvent(event) {
-      if (this.willBeInvokedByEvent(event) && this.applyEventModifiers(event)) {
-        this.invokeWithEvent(event);
+      const actionEvent = this.prepareActionEvent(event);
+      if (this.willBeInvokedByEvent(event) && this.applyEventModifiers(actionEvent)) {
+        this.invokeWithEvent(actionEvent);
       }
     }
     get eventName() {
@@ -635,23 +655,25 @@
     applyEventModifiers(event) {
       const { element } = this.action;
       const { actionDescriptorFilters } = this.context.application;
+      const { controller } = this.context;
       let passes = true;
       for (const [name, value] of Object.entries(this.eventOptions)) {
         if (name in actionDescriptorFilters) {
           const filter = actionDescriptorFilters[name];
-          passes = passes && filter({ name, value, event, element });
+          passes = passes && filter({ name, value, event, element, controller });
         } else {
           continue;
         }
       }
       return passes;
     }
+    prepareActionEvent(event) {
+      return Object.assign(event, { params: this.action.params });
+    }
     invokeWithEvent(event) {
       const { target, currentTarget } = event;
       try {
-        const { params } = this.action;
-        const actionEvent = Object.assign(event, { params });
-        this.method.call(this.controller, actionEvent);
+        this.method.call(this.controller, event);
         this.context.logDebugActivity(this.methodName, { event, target, currentTarget, action: this.methodName });
       } catch (error2) {
         const { identifier, controller, element, index } = this;
@@ -661,7 +683,10 @@
     }
     willBeInvokedByEvent(event) {
       const eventTarget = event.target;
-      if (event instanceof KeyboardEvent && this.action.isFilterTarget(event)) {
+      if (event instanceof KeyboardEvent && this.action.shouldIgnoreKeyboardEvent(event)) {
+        return false;
+      }
+      if (event instanceof MouseEvent && this.action.shouldIgnoreMouseEvent(event)) {
         return false;
       }
       if (this.element === eventTarget) {
@@ -747,8 +772,7 @@
         this.processAddedNodes(mutation.addedNodes);
       }
     }
-    processAttributeChange(node, attributeName) {
-      const element = node;
+    processAttributeChange(element, attributeName) {
       if (this.elements.has(element)) {
         if (this.delegate.elementAttributeChanged && this.matchElement(element)) {
           this.delegate.elementAttributeChanged(element, attributeName);
@@ -930,8 +954,8 @@
     }
   };
   var SelectorObserver = class {
-    constructor(element, selector, delegate, details = {}) {
-      this.selector = selector;
+    constructor(element, selector, delegate, details) {
+      this._selector = selector;
       this.details = details;
       this.elementObserver = new ElementObserver(element, this);
       this.delegate = delegate;
@@ -939,6 +963,13 @@
     }
     get started() {
       return this.elementObserver.started;
+    }
+    get selector() {
+      return this._selector;
+    }
+    set selector(selector) {
+      this._selector = selector;
+      this.refresh();
     }
     start() {
       this.elementObserver.start();
@@ -956,39 +987,58 @@
       return this.elementObserver.element;
     }
     matchElement(element) {
-      const matches = element.matches(this.selector);
-      if (this.delegate.selectorMatchElement) {
-        return matches && this.delegate.selectorMatchElement(element, this.details);
+      const { selector } = this;
+      if (selector) {
+        const matches = element.matches(selector);
+        if (this.delegate.selectorMatchElement) {
+          return matches && this.delegate.selectorMatchElement(element, this.details);
+        }
+        return matches;
+      } else {
+        return false;
       }
-      return matches;
     }
     matchElementsInTree(tree) {
-      const match = this.matchElement(tree) ? [tree] : [];
-      const matches = Array.from(tree.querySelectorAll(this.selector)).filter((match2) => this.matchElement(match2));
-      return match.concat(matches);
+      const { selector } = this;
+      if (selector) {
+        const match = this.matchElement(tree) ? [tree] : [];
+        const matches = Array.from(tree.querySelectorAll(selector)).filter((match2) => this.matchElement(match2));
+        return match.concat(matches);
+      } else {
+        return [];
+      }
     }
     elementMatched(element) {
-      this.selectorMatched(element);
+      const { selector } = this;
+      if (selector) {
+        this.selectorMatched(element, selector);
+      }
     }
     elementUnmatched(element) {
-      this.selectorUnmatched(element);
+      const selectors = this.matchesByElement.getKeysForValue(element);
+      for (const selector of selectors) {
+        this.selectorUnmatched(element, selector);
+      }
     }
     elementAttributeChanged(element, _attributeName) {
-      const matches = this.matchElement(element);
-      const matchedBefore = this.matchesByElement.has(this.selector, element);
-      if (!matches && matchedBefore) {
-        this.selectorUnmatched(element);
+      const { selector } = this;
+      if (selector) {
+        const matches = this.matchElement(element);
+        const matchedBefore = this.matchesByElement.has(selector, element);
+        if (matches && !matchedBefore) {
+          this.selectorMatched(element, selector);
+        } else if (!matches && matchedBefore) {
+          this.selectorUnmatched(element, selector);
+        }
       }
     }
-    selectorMatched(element) {
-      if (this.delegate.selectorMatched) {
-        this.delegate.selectorMatched(element, this.selector, this.details);
-        this.matchesByElement.add(this.selector, element);
-      }
+    selectorMatched(element, selector) {
+      this.delegate.selectorMatched(element, selector, this.details);
+      this.matchesByElement.add(selector, element);
     }
-    selectorUnmatched(element) {
-      this.delegate.selectorUnmatched(element, this.selector, this.details);
-      this.matchesByElement.delete(this.selector, element);
+    selectorUnmatched(element, selector) {
+      this.delegate.selectorUnmatched(element, selector, this.details);
+      this.matchesByElement.delete(selector, element);
     }
   };
   var StringMapObserver = class {
@@ -1468,34 +1518,47 @@
   }
   var OutletObserver = class {
     constructor(context, delegate) {
+      this.started = false;
       this.context = context;
       this.delegate = delegate;
       this.outletsByName = new Multimap();
       this.outletElementsByName = new Multimap();
       this.selectorObserverMap = /* @__PURE__ */ new Map();
+      this.attributeObserverMap = /* @__PURE__ */ new Map();
     }
     start() {
-      if (this.selectorObserverMap.size === 0) {
+      if (!this.started) {
         this.outletDefinitions.forEach((outletName) => {
-          const selector = this.selector(outletName);
-          const details = { outletName };
-          if (selector) {
-            this.selectorObserverMap.set(outletName, new SelectorObserver(document.body, selector, this, details));
-          }
+          this.setupSelectorObserverForOutlet(outletName);
+          this.setupAttributeObserverForOutlet(outletName);
         });
-        this.selectorObserverMap.forEach((observer) => observer.start());
-      }
-      this.dependentContexts.forEach((context) => context.refresh());
-    }
-    stop() {
-      if (this.selectorObserverMap.size > 0) {
-        this.disconnectAllOutlets();
-        this.selectorObserverMap.forEach((observer) => observer.stop());
-        this.selectorObserverMap.clear();
+        this.started = true;
+        this.dependentContexts.forEach((context) => context.refresh());
       }
     }
     refresh() {
       this.selectorObserverMap.forEach((observer) => observer.refresh());
+      this.attributeObserverMap.forEach((observer) => observer.refresh());
+    }
+    stop() {
+      if (this.started) {
+        this.started = false;
+        this.disconnectAllOutlets();
+        this.stopSelectorObservers();
+        this.stopAttributeObservers();
+      }
+    }
+    stopSelectorObservers() {
+      if (this.selectorObserverMap.size > 0) {
+        this.selectorObserverMap.forEach((observer) => observer.stop());
+        this.selectorObserverMap.clear();
+      }
+    }
+    stopAttributeObservers() {
+      if (this.attributeObserverMap.size > 0) {
+        this.attributeObserverMap.forEach((observer) => observer.stop());
+        this.attributeObserverMap.clear();
+      }
     }
     selectorMatched(element, _selector, { outletName }) {
       const outlet = this.getOutlet(element, outletName);
@@ -1510,7 +1573,32 @@
       }
     }
     selectorMatchElement(element, { outletName }) {
-      return this.hasOutlet(element, outletName) && element.matches(`[${this.context.application.schema.controllerAttribute}~=${outletName}]`);
+      const selector = this.selector(outletName);
+      const hasOutlet = this.hasOutlet(element, outletName);
+      const hasOutletController = element.matches(`[${this.schema.controllerAttribute}~=${outletName}]`);
+      if (selector) {
+        return hasOutlet && hasOutletController && element.matches(selector);
+      } else {
+        return false;
+      }
+    }
+    elementMatchedAttribute(_element, attributeName) {
+      const outletName = this.getOutletNameFromOutletAttributeName(attributeName);
+      if (outletName) {
+        this.updateSelectorObserverForOutlet(outletName);
+      }
+    }
+    elementAttributeValueChanged(_element, attributeName) {
+      const outletName = this.getOutletNameFromOutletAttributeName(attributeName);
+      if (outletName) {
+        this.updateSelectorObserverForOutlet(outletName);
+      }
+    }
+    elementUnmatchedAttribute(_element, attributeName) {
+      const outletName = this.getOutletNameFromOutletAttributeName(attributeName);
+      if (outletName) {
+        this.updateSelectorObserverForOutlet(outletName);
+      }
     }
     connectOutlet(outlet, element, outletName) {
       var _a;
@@ -1537,8 +1625,32 @@
         }
       }
     }
+    updateSelectorObserverForOutlet(outletName) {
+      const observer = this.selectorObserverMap.get(outletName);
+      if (observer) {
+        observer.selector = this.selector(outletName);
+      }
+    }
+    setupSelectorObserverForOutlet(outletName) {
+      const selector = this.selector(outletName);
+      const selectorObserver = new SelectorObserver(document.body, selector, this, { outletName });
+      this.selectorObserverMap.set(outletName, selectorObserver);
+      selectorObserver.start();
+    }
+    setupAttributeObserverForOutlet(outletName) {
+      const attributeName = this.attributeNameForOutletName(outletName);
+      const attributeObserver = new AttributeObserver(this.scope.element, attributeName, this);
+      this.attributeObserverMap.set(outletName, attributeObserver);
+      attributeObserver.start();
+    }
     selector(outletName) {
       return this.scope.outlets.getSelectorForOutletName(outletName);
+    }
+    attributeNameForOutletName(outletName) {
+      return this.scope.schema.outletAttributeForScope(this.identifier, outletName);
+    }
+    getOutletNameFromOutletAttributeName(attributeName) {
+      return this.outletDefinitions.find((outletName) => this.attributeNameForOutletName(outletName) === attributeName);
     }
     get outletDependencies() {
       const dependencies = new Multimap();
@@ -1570,6 +1682,9 @@
     }
     get scope() {
       return this.context.scope;
+    }
+    get schema() {
+      return this.context.schema;
     }
     get identifier() {
       return this.context.identifier;
@@ -1731,10 +1846,10 @@
       return extended;
     }
     function testReflectExtension() {
-      const a = function() {
+      const a2 = function() {
         this.a.call(this);
       };
-      const b = extendWithReflect(a);
+      const b = extendWithReflect(a2);
       b.prototype.a = function() {
       };
       return new b();
@@ -2038,6 +2153,9 @@
     }
     parseValueForToken(token) {
       const { element, content: identifier } = token;
+      return this.parseValueForElementAndIdentifier(element, identifier);
+    }
+    parseValueForElementAndIdentifier(element, identifier) {
       const scopesByIdentifier = this.fetchScopesByIdentifierForElement(element);
       let scope = scopesByIdentifier.get(identifier);
       if (!scope) {
@@ -2108,7 +2226,7 @@
       this.connectModule(module);
       const afterLoad = definition.controllerConstructor.afterLoad;
       if (afterLoad) {
-        afterLoad(definition.identifier, this.application);
+        afterLoad.call(definition.controllerConstructor, definition.identifier, this.application);
       }
     }
     unloadIdentifier(identifier) {
@@ -2121,6 +2239,14 @@
       const module = this.modulesByIdentifier.get(identifier);
       if (module) {
         return module.contexts.find((context) => context.element == element);
+      }
+    }
+    proposeToConnectScopeForElementAndIdentifier(element, identifier) {
+      const scope = this.scopeObserver.parseValueForElementAndIdentifier(element, identifier);
+      if (scope) {
+        this.scopeObserver.elementMatchedValue(scope.element, scope);
+      } else {
+        console.error(`Couldn't find or create scope for identifier: "${identifier}" and element:`, element);
       }
     }
     handleError(error2, message, detail) {
@@ -2160,7 +2286,7 @@
     targetAttribute: "data-target",
     targetAttributeForScope: (identifier) => `data-${identifier}-target`,
     outletAttributeForScope: (identifier, outlet) => `data-${identifier}-${outlet}-outlet`,
-    keyMappings: Object.assign(Object.assign({ enter: "Enter", tab: "Tab", esc: "Escape", space: " ", up: "ArrowUp", down: "ArrowDown", left: "ArrowLeft", right: "ArrowRight", home: "Home", end: "End" }, objectFromEntries("abcdefghijklmnopqrstuvwxyz".split("").map((c) => [c, c]))), objectFromEntries("0123456789".split("").map((n) => [n, n])))
+    keyMappings: Object.assign(Object.assign({ enter: "Enter", tab: "Tab", esc: "Escape", space: " ", up: "ArrowUp", down: "ArrowDown", left: "ArrowLeft", right: "ArrowRight", home: "Home", end: "End", page_up: "PageUp", page_down: "PageDown" }, objectFromEntries("abcdefghijklmnopqrstuvwxyz".split("").map((c) => [c, c]))), objectFromEntries("0123456789".split("").map((n) => [n, n])))
   };
   function objectFromEntries(array) {
     return array.reduce((memo, [k, v]) => Object.assign(Object.assign({}, memo), { [k]: v }), {});
@@ -2287,34 +2413,43 @@
       return Object.assign(properties, propertiesForOutletDefinition(outletDefinition));
     }, {});
   }
+  function getOutletController(controller, element, identifier) {
+    return controller.application.getControllerForElementAndIdentifier(element, identifier);
+  }
+  function getControllerAndEnsureConnectedScope(controller, element, outletName) {
+    let outletController = getOutletController(controller, element, outletName);
+    if (outletController)
+      return outletController;
+    controller.application.router.proposeToConnectScopeForElementAndIdentifier(element, outletName);
+    outletController = getOutletController(controller, element, outletName);
+    if (outletController)
+      return outletController;
+  }
   function propertiesForOutletDefinition(name) {
     const camelizedName = namespaceCamelize(name);
     return {
       [`${camelizedName}Outlet`]: {
         get() {
-          const outlet = this.outlets.find(name);
-          if (outlet) {
-            const outletController = this.application.getControllerForElementAndIdentifier(outlet, name);
-            if (outletController) {
+          const outletElement = this.outlets.find(name);
+          const selector = this.outlets.getSelectorForOutletName(name);
+          if (outletElement) {
+            const outletController = getControllerAndEnsureConnectedScope(this, outletElement, name);
+            if (outletController)
               return outletController;
-            } else {
-              throw new Error(`Missing "data-controller=${name}" attribute on outlet element for "${this.identifier}" controller`);
-            }
+            throw new Error(`The provided outlet element is missing an outlet controller "${name}" instance for host controller "${this.identifier}"`);
           }
-          throw new Error(`Missing outlet element "${name}" for "${this.identifier}" controller`);
+          throw new Error(`Missing outlet element "${name}" for host controller "${this.identifier}". Stimulus couldn't find a matching outlet element using selector "${selector}".`);
         }
       },
       [`${camelizedName}Outlets`]: {
         get() {
           const outlets = this.outlets.findAll(name);
           if (outlets.length > 0) {
-            return outlets.map((outlet) => {
-              const controller = this.application.getControllerForElementAndIdentifier(outlet, name);
-              if (controller) {
-                return controller;
-              } else {
-                console.warn(`The provided outlet element is missing the outlet controller "${name}" for "${this.identifier}"`, outlet);
-              }
+            return outlets.map((outletElement) => {
+              const outletController = getControllerAndEnsureConnectedScope(this, outletElement, name);
+              if (outletController)
+                return outletController;
+              console.warn(`The provided outlet element is missing an outlet controller "${name}" instance for host controller "${this.identifier}"`, outletElement);
             }).filter((controller) => controller);
           }
           return [];
@@ -2322,11 +2457,12 @@
       },
       [`${camelizedName}OutletElement`]: {
         get() {
-          const outlet = this.outlets.find(name);
-          if (outlet) {
-            return outlet;
+          const outletElement = this.outlets.find(name);
+          const selector = this.outlets.getSelectorForOutletName(name);
+          if (outletElement) {
+            return outletElement;
           } else {
-            throw new Error(`Missing outlet element "${name}" for "${this.identifier}" controller`);
+            throw new Error(`Missing outlet element "${name}" for host controller "${this.identifier}". Stimulus couldn't find a matching outlet element using selector "${selector}".`);
           }
         }
       },
@@ -2453,51 +2589,67 @@
       return "object";
   }
   function parseValueTypeObject(payload) {
-    const typeFromObject = parseValueTypeConstant(payload.typeObject.type);
-    if (!typeFromObject)
-      return;
-    const defaultValueType = parseValueTypeDefault(payload.typeObject.default);
-    if (typeFromObject !== defaultValueType) {
-      const propertyPath = payload.controller ? `${payload.controller}.${payload.token}` : payload.token;
-      throw new Error(`The specified default value for the Stimulus Value "${propertyPath}" must match the defined type "${typeFromObject}". The provided default value of "${payload.typeObject.default}" is of type "${defaultValueType}".`);
+    const { controller, token, typeObject } = payload;
+    const hasType = isSomething(typeObject.type);
+    const hasDefault = isSomething(typeObject.default);
+    const fullObject = hasType && hasDefault;
+    const onlyType = hasType && !hasDefault;
+    const onlyDefault = !hasType && hasDefault;
+    const typeFromObject = parseValueTypeConstant(typeObject.type);
+    const typeFromDefaultValue = parseValueTypeDefault(payload.typeObject.default);
+    if (onlyType)
+      return typeFromObject;
+    if (onlyDefault)
+      return typeFromDefaultValue;
+    if (typeFromObject !== typeFromDefaultValue) {
+      const propertyPath = controller ? `${controller}.${token}` : token;
+      throw new Error(`The specified default value for the Stimulus Value "${propertyPath}" must match the defined type "${typeFromObject}". The provided default value of "${typeObject.default}" is of type "${typeFromDefaultValue}".`);
     }
-    return typeFromObject;
+    if (fullObject)
+      return typeFromObject;
   }
   function parseValueTypeDefinition(payload) {
-    const typeFromObject = parseValueTypeObject({
-      controller: payload.controller,
-      token: payload.token,
-      typeObject: payload.typeDefinition
-    });
-    const typeFromDefaultValue = parseValueTypeDefault(payload.typeDefinition);
-    const typeFromConstant = parseValueTypeConstant(payload.typeDefinition);
+    const { controller, token, typeDefinition } = payload;
+    const typeObject = { controller, token, typeObject: typeDefinition };
+    const typeFromObject = parseValueTypeObject(typeObject);
+    const typeFromDefaultValue = parseValueTypeDefault(typeDefinition);
+    const typeFromConstant = parseValueTypeConstant(typeDefinition);
     const type = typeFromObject || typeFromDefaultValue || typeFromConstant;
     if (type)
       return type;
-    const propertyPath = payload.controller ? `${payload.controller}.${payload.typeDefinition}` : payload.token;
-    throw new Error(`Unknown value type "${propertyPath}" for "${payload.token}" value`);
+    const propertyPath = controller ? `${controller}.${typeDefinition}` : token;
+    throw new Error(`Unknown value type "${propertyPath}" for "${token}" value`);
   }
   function defaultValueForDefinition(typeDefinition) {
     const constant = parseValueTypeConstant(typeDefinition);
     if (constant)
       return defaultValuesByType[constant];
-    const defaultValue = typeDefinition.default;
-    if (defaultValue !== void 0)
-      return defaultValue;
+    const hasDefault = hasProperty(typeDefinition, "default");
+    const hasType = hasProperty(typeDefinition, "type");
+    const typeObject = typeDefinition;
+    if (hasDefault)
+      return typeObject.default;
+    if (hasType) {
+      const { type } = typeObject;
+      const constantFromType = parseValueTypeConstant(type);
+      if (constantFromType)
+        return defaultValuesByType[constantFromType];
+    }
     return typeDefinition;
   }
   function valueDescriptorForTokenAndTypeDefinition(payload) {
-    const key = `${dasherize(payload.token)}-value`;
+    const { token, typeDefinition } = payload;
+    const key = `${dasherize(token)}-value`;
     const type = parseValueTypeDefinition(payload);
     return {
       type,
       key,
       name: camelize(key),
       get defaultValue() {
-        return defaultValueForDefinition(payload.typeDefinition);
+        return defaultValueForDefinition(typeDefinition);
       },
       get hasCustomDefaultValue() {
-        return parseValueTypeDefault(payload.typeDefinition) !== void 0;
+        return parseValueTypeDefault(typeDefinition) !== void 0;
       },
       reader: readers[type],
       writer: writers[type] || writers.default
@@ -2526,7 +2678,7 @@
       return !(value == "0" || String(value).toLowerCase() == "false");
     },
     number(value) {
-      return Number(value);
+      return Number(value.replace(/_/g, ""));
     },
     object(value) {
       const object = JSON.parse(value);
@@ -2609,61 +2761,61 @@
 
   // ../../node_modules/.pnpm/relapse@0.5.0/node_modules/relapse/index.js
   function y(t2) {
-    return { on: (e, i) => {
-      t2[e] || (t2[e] = []), t2[e].push(i);
-    }, off: (e, i) => {
+    return { on: (e, i2) => {
+      t2[e] || (t2[e] = []), t2[e].push(i2);
+    }, off: (e, i2) => {
       let c = [], n = t2[e];
-      if (n && i) {
-        let s = 0, u = n.length;
-        for (; s < u; s++)
-          n[s] !== i && c.push(n[s]);
+      if (n && i2) {
+        let s = 0, u2 = n.length;
+        for (; s < u2; s++)
+          n[s] !== i2 && c.push(n[s]);
       }
       c.length ? n[e] = c : delete n[e];
-    }, emit: (e, i, c) => {
-      let n = t2[e] || [], s = n.length, u = null;
+    }, emit: (e, i2, c) => {
+      let n = t2[e] || [], s = n.length, u2 = null;
       for (let m = 0; m < s; m++) {
-        let p = n[m].apply(i, [c]);
-        u === null && p === false && (u = true);
+        let p = n[m].apply(i2, [c]);
+        u2 === null && p === false && (u2 = true);
       }
-      return u;
+      return u2;
     } };
   }
   function E(t2, d) {
-    let { config: l } = t2, { classes: f } = l;
+    let { config: l2 } = t2, { classes: f2 } = l2;
     return (e) => {
-      let i = (n) => {
+      let i2 = (n) => {
         if (typeof n != "number")
           return t2.active !== e.index && (t2.active = e.index), e;
         if (t2.folds[n])
           return t2.active = e.index, t2.folds[n];
         throw new TypeError(`No fold exists at index: ${n}`);
       }, c = (n) => {
-        n.button.ariaDisabled = "false", n.button.ariaExpanded = "false", n.button.classList.remove(f.opened), n.content.classList.remove(f.expanded), n.expanded = false, n.content.style.maxHeight = "0";
+        n.button.ariaDisabled = "false", n.button.ariaExpanded = "false", n.button.classList.remove(f2.opened), n.content.classList.remove(f2.expanded), n.expanded = false, n.content.style.maxHeight = "0";
       };
       e.open = (n) => {
-        let s = i(n);
-        s.expanded || (s.close(), s.button.ariaDisabled = "true", s.button.ariaExpanded = "true", s.button.classList.add(f.opened), s.content.classList.add(f.expanded), s.content.style.maxHeight = `${s.content.scrollHeight}px`, s.expanded = true, s.disable(), t2.count = t2.folds.filter(({ expanded: u }) => u).length, d.emit("expand", t2, s));
+        let s = i2(n);
+        s.expanded || (s.close(), s.button.ariaDisabled = "true", s.button.ariaExpanded = "true", s.button.classList.add(f2.opened), s.content.classList.add(f2.expanded), s.content.style.maxHeight = `${s.content.scrollHeight}px`, s.expanded = true, s.disable(), t2.count = t2.folds.filter(({ expanded: u2 }) => u2).length, d.emit("expand", t2, s));
       }, e.close = (n) => {
-        let s = i(n);
-        if (l.multiple)
-          (!l.persist || l.persist && t2.count > 1) && c(s);
+        let s = i2(n);
+        if (l2.multiple)
+          (!l2.persist || l2.persist && t2.count > 1) && c(s);
         else
-          for (let u of t2.folds)
-            if (u.expanded) {
-              if (l.persist && u.index === s.index)
+          for (let u2 of t2.folds)
+            if (u2.expanded) {
+              if (l2.persist && u2.index === s.index)
                 break;
-              c(u), s = u;
+              c(u2), s = u2;
               break;
             }
-        s.enable(), t2.count = t2.folds.filter(({ expanded: u }) => u).length, d.emit("collapse", t2, s);
+        s.enable(), t2.count = t2.folds.filter(({ expanded: u2 }) => u2).length, d.emit("collapse", t2, s);
       }, e.focus = () => {
-        t2.active = e.index, e.button.classList.add(f.focused), d.emit("focus", t2, e);
-      }, e.blur = () => e.button.classList.remove(f.focused), e.enable = (n) => {
-        let s = i(n);
-        s.disabled && (s.disabled = false, s.button.ariaDisabled = "false", s.button.classList.remove(f.disabled));
+        t2.active = e.index, e.button.classList.add(f2.focused), d.emit("focus", t2, e);
+      }, e.blur = () => e.button.classList.remove(f2.focused), e.enable = (n) => {
+        let s = i2(n);
+        s.disabled && (s.disabled = false, s.button.ariaDisabled = "false", s.button.classList.remove(f2.disabled));
       }, e.disable = (n) => {
-        let s = i(n);
-        s.disabled || (s.expanded ? l.persist && (s.disabled = true, s.button.ariaDisabled = "true") : (s.close(), s.disabled = true, s.button.ariaDisabled = "true", s.button.classList.add(f.disabled)));
+        let s = i2(n);
+        s.disabled || (s.expanded ? l2.persist && (s.disabled = true, s.button.ariaDisabled = "true") : (s.close(), s.disabled = true, s.button.ariaDisabled = "true", s.button.classList.add(f2.disabled)));
       }, e.toggle = () => {
         if (!d.emit("toggle", t2, e))
           return e.expanded ? e.close() : e.open();
@@ -2679,77 +2831,77 @@
     return d === "true";
   };
   var A = (t2, d) => {
-    let l = /* @__PURE__ */ Object.create(null);
-    if (l.classes = /* @__PURE__ */ Object.create(null), l.persist = true, l.multiple = false, l.schema = "data-relapse", l.classes.initial = "initial", l.classes.opened = "opened", l.classes.disabled = "disabled", l.classes.expanded = "expanded", l.classes.focused = "focused", typeof t2 == "object")
-      for (let i in t2)
-        if (i === "classes")
-          for (let c in t2[i])
-            l.classes[c] = t2[i][c];
+    let l2 = /* @__PURE__ */ Object.create(null);
+    if (l2.classes = /* @__PURE__ */ Object.create(null), l2.persist = true, l2.multiple = false, l2.schema = "data-relapse", l2.classes.initial = "initial", l2.classes.opened = "opened", l2.classes.disabled = "disabled", l2.classes.expanded = "expanded", l2.classes.focused = "focused", typeof t2 == "object")
+      for (let i2 in t2)
+        if (i2 === "classes")
+          for (let c in t2[i2])
+            l2.classes[c] = t2[i2][c];
         else
-          l[i] = t2[i];
-    let f = /^(?:persist|multiple)$/, e = l.schema === null ? 5 : l.schema.length + 1;
-    for (let { nodeName: i, nodeValue: c } of d) {
-      let n = i.slice(e);
-      f.test(n) && (l[n] = $(c));
+          l2[i2] = t2[i2];
+    let f2 = /^(?:persist|multiple)$/, e = l2.schema === null ? 5 : l2.schema.length + 1;
+    for (let { nodeName: i2, nodeValue: c } of d) {
+      let n = i2.slice(e);
+      f2.test(n) && (l2[n] = $(c));
     }
-    return l;
+    return l2;
   };
-  var w = function t(d, l) {
-    let f;
+  var w = function t(d, l2) {
+    let f2;
     if (typeof d == "string")
       if (d.charCodeAt(0) === 35)
-        f = document.body.querySelector(d);
+        f2 = document.body.querySelector(d);
       else
         for (let o of document.body.querySelectorAll(d))
-          t(o, l);
+          t(o, l2);
     else if (d instanceof NodeList)
       for (let o of d)
-        t(o, l);
+        t(o, l2);
     else
-      d instanceof Element && (f = d);
-    if (!f)
+      d instanceof Element && (f2 = d);
+    if (!f2)
       return;
     window.relapse instanceof Map || (window.relapse = /* @__PURE__ */ new Map());
     let e = /* @__PURE__ */ Object.create(null);
-    e.events = {}, e.folds = [], e.element = f, e.id = `A${window.relapse.size}`, e.count = 0, e.config = A(l, e.element.attributes);
-    let i;
-    e.element.hasAttribute("data-relapse") ? i = e.element.getAttribute("data-relapse") : (i = Math.random().toString(36).slice(2), e.element.setAttribute("data-relapse", i));
+    e.events = {}, e.folds = [], e.element = f2, e.id = `A${window.relapse.size}`, e.count = 0, e.config = A(l2, e.element.attributes);
+    let i2;
+    e.element.hasAttribute("data-relapse") ? i2 = e.element.getAttribute("data-relapse") : (i2 = Math.random().toString(36).slice(2), e.element.setAttribute("data-relapse", i2));
     let c = e.element.getAttribute("id");
-    if (i === null && c === null)
-      i = e.id;
-    else if (i !== null && c !== null) {
-      if (window.relapse.has(c) || window.relapse.has(i))
-        throw new TypeError(`An existing instance is using id "${i}"`);
+    if (i2 === null && c === null)
+      i2 = e.id;
+    else if (i2 !== null && c !== null) {
+      if (window.relapse.has(c) || window.relapse.has(i2))
+        throw new TypeError(`An existing instance is using id "${i2}"`);
     } else
-      i === null && c !== null && (i = c);
-    if (window.relapse.has(i))
-      throw new TypeError(`An existing instance is using id "${i}"`);
+      i2 === null && c !== null && (i2 = c);
+    if (window.relapse.has(i2))
+      throw new TypeError(`An existing instance is using id "${i2}"`);
     e.element.ariaMultiSelectable = `${e.config.multiple}`;
-    let n = e.element.children, s = n.length, u = y(e.events), m = E(e, u), { classes: p } = e.config;
+    let n = e.element.children, s = n.length, u2 = y(e.events), m = E(e, u2), { classes: p } = e.config;
     for (let o = 0; o < s; o = o + 2) {
-      let a = n[o], b = n[o + 1], r = /* @__PURE__ */ Object.create(null);
+      let a2 = n[o], b = n[o + 1], r = /* @__PURE__ */ Object.create(null);
       r.index = e.folds.length;
-      let v = a.classList.contains(p.initial), h = a.classList.contains(p.opened), x = a.classList.contains(p.disabled), L = b.classList.contains(p.expanded);
-      a.ariaExpanded === "true" || h || L || v ? (h ? a.ariaExpanded = "true" : a.classList.add(p.opened), L || b.classList.add(p.expanded), x || a.classList.add(p.disabled), v || a.classList.remove(p.initial), a.ariaDisabled = "true", r.expanded = true, r.disabled = true) : a.ariaDisabled === "true" || x ? (x ? a.ariaDisabled = "false" : a.classList.add(p.disabled), b.classList.remove(p.expanded), a.classList.remove(p.opened), a.ariaExpanded = "false", r.expanded = false, r.disabled = true) : (r.expanded = false, r.disabled = false, a.ariaExpanded = "false", a.ariaDisabled = "false"), a.id && (r.id = a.id), b.id && (r.id = b.id), "id" in r || (r.id = `${e.id}F${r.index}`, a.id = `B${r.id}`, b.id = `C${r.id}`), a.setAttribute("aria-controls", r.id), b.setAttribute("aria-labelledby", a.id), b.setAttribute("role", "region"), r.button = a, r.content = b, r.expanded && (e.count = e.count + 1, r.content.style.maxHeight = `${r.content.scrollHeight}px`), m(r);
+      let v = a2.classList.contains(p.initial), h = a2.classList.contains(p.opened), x = a2.classList.contains(p.disabled), L = b.classList.contains(p.expanded);
+      a2.ariaExpanded === "true" || h || L || v ? (h ? a2.ariaExpanded = "true" : a2.classList.add(p.opened), L || b.classList.add(p.expanded), x || a2.classList.add(p.disabled), v || a2.classList.remove(p.initial), a2.ariaDisabled = "true", r.expanded = true, r.disabled = true) : a2.ariaDisabled === "true" || x ? (x ? a2.ariaDisabled = "false" : a2.classList.add(p.disabled), b.classList.remove(p.expanded), a2.classList.remove(p.opened), a2.ariaExpanded = "false", r.expanded = false, r.disabled = true) : (r.expanded = false, r.disabled = false, a2.ariaExpanded = "false", a2.ariaDisabled = "false"), a2.id && (r.id = a2.id), b.id && (r.id = b.id), "id" in r || (r.id = `${e.id}F${r.index}`, a2.id = `B${r.id}`, b.id = `C${r.id}`), a2.setAttribute("aria-controls", r.id), b.setAttribute("aria-labelledby", a2.id), b.setAttribute("role", "region"), r.button = a2, r.content = b, r.expanded && (e.count = e.count + 1, r.content.style.maxHeight = `${r.content.scrollHeight}px`), m(r);
     }
-    let g = (o, a, b = false) => {
-      if (typeof a == "number")
-        return o.charCodeAt(0) === 100 ? e.folds[a][o](b) : e.folds[a][o]();
-      if (typeof a == "string") {
+    let g2 = (o, a2, b = false) => {
+      if (typeof a2 == "number")
+        return o.charCodeAt(0) === 100 ? e.folds[a2][o](b) : e.folds[a2][o]();
+      if (typeof a2 == "string") {
         for (let r of e.folds)
-          if (r.button.dataset[`${e.config.schema}-fold`] === a)
+          if (r.button.dataset[`${e.config.schema}-fold`] === a2)
             return o.charCodeAt(0) === 100 ? r[o](b) : r[o]();
       }
-      throw new TypeError(`Fold does not exist: "${a}"`);
+      throw new TypeError(`Fold does not exist: "${a2}"`);
     };
-    return e.on = u.on, e.off = u.off, e.collapse = (o) => g("close", o), e.expand = (o) => g("open", o), e.destroy = (o, a = false) => {
+    return e.on = u2.on, e.off = u2.off, e.collapse = (o) => g2("close", o), e.expand = (o) => g2("open", o), e.destroy = (o, a2 = false) => {
       if (typeof o == "undefined")
         for (let b of e.folds)
           b.destroy();
       else
-        g("destroy", o, a);
-      e.element.removeAttribute("aria-multiselectable"), u.emit("destroy", e), window.relapse.delete(i);
-    }, window.relapse.set(i, e), e;
+        g2("destroy", o, a2);
+      e.element.removeAttribute("aria-multiselectable"), u2.emit("destroy", e), window.relapse.delete(i2);
+    }, window.relapse.set(i2, e), e;
   };
   w.get = (t2) => t2 ? window.relapse.get(t2) : window.relapse;
   var M = w;
@@ -3099,55 +3251,1950 @@
     "invalid"
   ];
 
-  // demo/bundle.ts
-  var stimulus = Application.start();
-  var controllers = {
-    Accordion,
-    Modal,
-    Dropdown
-  };
-  for (const id in controllers) {
-    stimulus.register(id.toLowerCase(), controllers[id]);
+  // ../../node_modules/.pnpm/embla-carousel@8.0.0-rc12/node_modules/embla-carousel/embla-carousel.esm.js
+  function isNumber(subject) {
+    return typeof subject === "number";
   }
-  var sidebar = document.querySelector("#sidebar");
-  var items = Array.from(sidebar.querySelectorAll("a")).map((a) => a.id.toLowerCase());
-  var search = document.querySelector("#search-input");
-  var anchors = document.querySelectorAll(".anchor");
-  anchors.forEach((link) => {
-    link.onclick = (e) => {
-      e.preventDefault();
-      anchors.forEach((item) => {
-        if (item.classList.contains("fw-bold")) {
-          item.classList.remove("fw-bold");
-        }
+  function isString(subject) {
+    return typeof subject === "string";
+  }
+  function isBoolean(subject) {
+    return typeof subject === "boolean";
+  }
+  function isObject(subject) {
+    return Object.prototype.toString.call(subject) === "[object Object]";
+  }
+  function mathAbs(n) {
+    return Math.abs(n);
+  }
+  function mathSign(n) {
+    return Math.sign(n);
+  }
+  function deltaAbs(valueB, valueA) {
+    return mathAbs(valueB - valueA);
+  }
+  function factorAbs(valueB, valueA) {
+    if (valueB === 0 || valueA === 0)
+      return 0;
+    if (mathAbs(valueB) <= mathAbs(valueA))
+      return 0;
+    const diff = deltaAbs(mathAbs(valueB), mathAbs(valueA));
+    return mathAbs(diff / valueB);
+  }
+  function arrayKeys(array) {
+    return objectKeys(array).map(Number);
+  }
+  function arrayLast(array) {
+    return array[arrayLastIndex(array)];
+  }
+  function arrayLastIndex(array) {
+    return Math.max(0, array.length - 1);
+  }
+  function arrayFromNumber(n, startAt = 0) {
+    return Array.from(Array(n), (_, i2) => startAt + i2);
+  }
+  function objectKeys(object) {
+    return Object.keys(object);
+  }
+  function objectsMergeDeep(objectA, objectB) {
+    return [objectA, objectB].reduce((mergedObjects, currentObject) => {
+      objectKeys(currentObject).forEach((key) => {
+        const valueA = mergedObjects[key];
+        const valueB = currentObject[key];
+        const areObjects = isObject(valueA) && isObject(valueB);
+        mergedObjects[key] = areObjects ? objectsMergeDeep(valueA, valueB) : valueB;
       });
-      link.classList.add("fw-bold");
-      const anchor = document.querySelector("#" + link.href.split("#").pop());
-      scrollBy({
-        behavior: "smooth",
-        top: anchor.getBoundingClientRect().top - 80
-      });
+      return mergedObjects;
+    }, {});
+  }
+  function isMouseEvent(evt, ownerWindow) {
+    return typeof ownerWindow.MouseEvent !== "undefined" && evt instanceof ownerWindow.MouseEvent;
+  }
+  function Alignment(align, viewSize) {
+    const predefined = {
+      start,
+      center,
+      end
     };
-  });
-  search.addEventListener("input", function(event) {
-    const target = event.target;
-    if (target.value) {
-      console.log(target.value);
-      const hash = items.filter((value) => {
-        return value.indexOf(target.value) > -1;
-      });
-      const slug = "#" + hash[0].replace(" ", "-");
-      const qs = document.querySelector(slug);
-      if (qs) {
-        scrollBy({
-          behavior: "instant",
-          top: qs.getBoundingClientRect().top - 80
-        });
+    function start() {
+      return 0;
+    }
+    function center(n) {
+      return end(n) / 2;
+    }
+    function end(n) {
+      return viewSize - n;
+    }
+    function percent() {
+      return viewSize * Number(align);
+    }
+    function measure(n) {
+      if (isNumber(align))
+        return percent();
+      return predefined[align](n);
+    }
+    const self = {
+      measure
+    };
+    return self;
+  }
+  function Axis(axis, direction) {
+    const scroll = axis === "y" ? "y" : "x";
+    const cross = axis === "y" ? "x" : "y";
+    const startEdge = getStartEdge();
+    const endEdge = getEndEdge();
+    function measureSize(rect) {
+      const {
+        width,
+        height
+      } = rect;
+      return scroll === "x" ? width : height;
+    }
+    function getStartEdge() {
+      if (scroll === "y")
+        return "top";
+      return direction === "rtl" ? "right" : "left";
+    }
+    function getEndEdge() {
+      if (scroll === "y")
+        return "bottom";
+      return direction === "rtl" ? "left" : "right";
+    }
+    const self = {
+      scroll,
+      cross,
+      startEdge,
+      endEdge,
+      measureSize
+    };
+    return self;
+  }
+  function Limit(min, max) {
+    const length = mathAbs(min - max);
+    function reachedMin(n) {
+      return n < min;
+    }
+    function reachedMax(n) {
+      return n > max;
+    }
+    function reachedAny(n) {
+      return reachedMin(n) || reachedMax(n);
+    }
+    function constrain(n) {
+      if (!reachedAny(n))
+        return n;
+      return reachedMin(n) ? min : max;
+    }
+    function removeOffset(n) {
+      if (!length)
+        return n;
+      return n - length * Math.ceil((n - max) / length);
+    }
+    const self = {
+      length,
+      max,
+      min,
+      constrain,
+      reachedAny,
+      reachedMax,
+      reachedMin,
+      removeOffset
+    };
+    return self;
+  }
+  function Counter(max, start, loop) {
+    const {
+      constrain
+    } = Limit(0, max);
+    const loopEnd = max + 1;
+    let counter = withinLimit(start);
+    function withinLimit(n) {
+      return !loop ? constrain(n) : mathAbs((loopEnd + n) % loopEnd);
+    }
+    function get() {
+      return counter;
+    }
+    function set(n) {
+      counter = withinLimit(n);
+      return self;
+    }
+    function add2(n) {
+      return clone().set(get() + n);
+    }
+    function clone() {
+      return Counter(max, get(), loop);
+    }
+    const self = {
+      get,
+      set,
+      add: add2,
+      clone
+    };
+    return self;
+  }
+  function Direction(direction) {
+    const sign = direction === "rtl" ? -1 : 1;
+    function apply(n) {
+      return n * sign;
+    }
+    const self = {
+      apply
+    };
+    return self;
+  }
+  function EventStore() {
+    let listeners = [];
+    function add2(node, type, handler, options = {
+      passive: true
+    }) {
+      node.addEventListener(type, handler, options);
+      listeners.push(() => node.removeEventListener(type, handler, options));
+      return self;
+    }
+    function clear() {
+      listeners = listeners.filter((remove) => remove());
+    }
+    const self = {
+      add: add2,
+      clear
+    };
+    return self;
+  }
+  function DragHandler(axis, direction, rootNode, ownerDocument, ownerWindow, target, dragTracker, location, animation, scrollTo, scrollBody, scrollTarget, index, eventHandler, percentOfView, dragFree, dragThreshold, skipSnaps, baseFriction, watchDrag) {
+    const {
+      cross: crossAxis
+    } = axis;
+    const focusNodes = ["INPUT", "SELECT", "TEXTAREA"];
+    const nonPassiveEvent = {
+      passive: false
+    };
+    const initEvents = EventStore();
+    const dragEvents = EventStore();
+    const goToNextThreshold = Limit(50, 225).constrain(percentOfView.measure(20));
+    const snapForceBoost = {
+      mouse: 300,
+      touch: 400
+    };
+    const freeForceBoost = {
+      mouse: 500,
+      touch: 600
+    };
+    const baseSpeed = dragFree ? 43 : 25;
+    let isMoving = false;
+    let startScroll = 0;
+    let startCross = 0;
+    let pointerIsDown = false;
+    let preventScroll = false;
+    let preventClick = false;
+    let isMouse = false;
+    function init(emblaApi) {
+      if (!watchDrag)
+        return;
+      function downIfAllowed(evt) {
+        if (isBoolean(watchDrag) || watchDrag(emblaApi, evt))
+          down(evt);
+      }
+      const node = rootNode;
+      initEvents.add(node, "dragstart", (evt) => evt.preventDefault(), nonPassiveEvent).add(node, "touchmove", () => void 0, nonPassiveEvent).add(node, "touchend", () => void 0).add(node, "touchstart", downIfAllowed).add(node, "mousedown", downIfAllowed).add(node, "touchcancel", up).add(node, "contextmenu", up).add(node, "click", click, true);
+    }
+    function destroy() {
+      initEvents.clear();
+      dragEvents.clear();
+    }
+    function addDragEvents() {
+      const node = isMouse ? ownerDocument : rootNode;
+      dragEvents.add(node, "touchmove", move, nonPassiveEvent).add(node, "touchend", up).add(node, "mousemove", move, nonPassiveEvent).add(node, "mouseup", up);
+    }
+    function isFocusNode(node) {
+      const nodeName = node.nodeName || "";
+      return focusNodes.includes(nodeName);
+    }
+    function forceBoost() {
+      const boost = dragFree ? freeForceBoost : snapForceBoost;
+      const type = isMouse ? "mouse" : "touch";
+      return boost[type];
+    }
+    function allowedForce(force, targetChanged) {
+      const next = index.add(mathSign(force) * -1);
+      const baseForce = scrollTarget.byDistance(force, !dragFree).distance;
+      if (dragFree || mathAbs(force) < goToNextThreshold)
+        return baseForce;
+      if (skipSnaps && targetChanged)
+        return baseForce * 0.5;
+      return scrollTarget.byIndex(next.get(), 0).distance;
+    }
+    function down(evt) {
+      const isMouseEvt = isMouseEvent(evt, ownerWindow);
+      isMouse = isMouseEvt;
+      if (isMouseEvt && evt.button !== 0)
+        return;
+      if (isFocusNode(evt.target))
+        return;
+      preventClick = dragFree && isMouseEvt && !evt.buttons && isMoving;
+      isMoving = deltaAbs(target.get(), location.get()) >= 2;
+      pointerIsDown = true;
+      dragTracker.pointerDown(evt);
+      scrollBody.useFriction(0).useDuration(0);
+      target.set(location);
+      addDragEvents();
+      startScroll = dragTracker.readPoint(evt);
+      startCross = dragTracker.readPoint(evt, crossAxis);
+      eventHandler.emit("pointerDown");
+    }
+    function move(evt) {
+      const lastScroll = dragTracker.readPoint(evt);
+      const lastCross = dragTracker.readPoint(evt, crossAxis);
+      const diffScroll = deltaAbs(lastScroll, startScroll);
+      const diffCross = deltaAbs(lastCross, startCross);
+      if (!preventScroll && !isMouse) {
+        if (!evt.cancelable)
+          return up(evt);
+        preventScroll = diffScroll > diffCross;
+        if (!preventScroll)
+          return up(evt);
+      }
+      const diff = dragTracker.pointerMove(evt);
+      if (diffScroll > dragThreshold)
+        preventClick = true;
+      scrollBody.useFriction(0.3).useDuration(1);
+      animation.start();
+      target.add(direction.apply(diff));
+      evt.preventDefault();
+    }
+    function up(evt) {
+      const currentLocation = scrollTarget.byDistance(0, false);
+      const targetChanged = currentLocation.index !== index.get();
+      const rawForce = dragTracker.pointerUp(evt) * forceBoost();
+      const force = allowedForce(direction.apply(rawForce), targetChanged);
+      const forceFactor = factorAbs(rawForce, force);
+      const speed = baseSpeed - 10 * forceFactor;
+      const friction = baseFriction + forceFactor / 50;
+      preventScroll = false;
+      pointerIsDown = false;
+      dragEvents.clear();
+      scrollBody.useDuration(speed).useFriction(friction);
+      scrollTo.distance(force, !dragFree);
+      isMouse = false;
+      eventHandler.emit("pointerUp");
+    }
+    function click(evt) {
+      if (preventClick) {
+        evt.stopPropagation();
+        evt.preventDefault();
       }
     }
-  });
-  stickybits_es_default("#sidebar");
-  stickybits_es_default("#search");
+    function pointerDown() {
+      return pointerIsDown;
+    }
+    const self = {
+      init,
+      pointerDown,
+      destroy
+    };
+    return self;
+  }
+  function DragTracker(axis, ownerWindow) {
+    const logInterval = 170;
+    let startEvent;
+    let lastEvent;
+    function readTime(evt) {
+      return evt.timeStamp;
+    }
+    function readPoint(evt, evtAxis) {
+      const property = evtAxis || axis.scroll;
+      const coord = `client${property === "x" ? "X" : "Y"}`;
+      return (isMouseEvent(evt, ownerWindow) ? evt : evt.touches[0])[coord];
+    }
+    function pointerDown(evt) {
+      startEvent = evt;
+      lastEvent = evt;
+      return readPoint(evt);
+    }
+    function pointerMove(evt) {
+      const diff = readPoint(evt) - readPoint(lastEvent);
+      const expired = readTime(evt) - readTime(startEvent) > logInterval;
+      lastEvent = evt;
+      if (expired)
+        startEvent = evt;
+      return diff;
+    }
+    function pointerUp(evt) {
+      if (!startEvent || !lastEvent)
+        return 0;
+      const diffDrag = readPoint(lastEvent) - readPoint(startEvent);
+      const diffTime = readTime(evt) - readTime(startEvent);
+      const expired = readTime(evt) - readTime(lastEvent) > logInterval;
+      const force = diffDrag / diffTime;
+      const isFlick = diffTime && !expired && mathAbs(force) > 0.1;
+      return isFlick ? force : 0;
+    }
+    const self = {
+      pointerDown,
+      pointerMove,
+      pointerUp,
+      readPoint
+    };
+    return self;
+  }
+  function PercentOfView(viewSize) {
+    function measure(n) {
+      return viewSize * (n / 100);
+    }
+    const self = {
+      measure
+    };
+    return self;
+  }
+  function ResizeHandler(container, eventHandler, ownerWindow, slides, axis, watchResize) {
+    let resizeObserver;
+    let containerSize;
+    let slideSizes = [];
+    let destroyed = false;
+    function readSize(node) {
+      return axis.measureSize(node.getBoundingClientRect());
+    }
+    function init(emblaApi) {
+      if (!watchResize)
+        return;
+      containerSize = readSize(container);
+      slideSizes = slides.map(readSize);
+      function defaultCallback(entries) {
+        for (const entry of entries) {
+          const isContainer = entry.target === container;
+          const slideIndex = slides.indexOf(entry.target);
+          const lastSize = isContainer ? containerSize : slideSizes[slideIndex];
+          const newSize = readSize(isContainer ? container : slides[slideIndex]);
+          if (lastSize !== newSize) {
+            ownerWindow.requestAnimationFrame(() => {
+              emblaApi.reInit();
+              eventHandler.emit("resize");
+            });
+            break;
+          }
+        }
+      }
+      resizeObserver = new ResizeObserver((entries) => {
+        if (destroyed)
+          return;
+        if (isBoolean(watchResize) || watchResize(emblaApi, entries)) {
+          defaultCallback(entries);
+        }
+      });
+      const observeNodes = [container].concat(slides);
+      observeNodes.forEach((node) => resizeObserver.observe(node));
+    }
+    function destroy() {
+      if (resizeObserver)
+        resizeObserver.disconnect();
+      destroyed = true;
+    }
+    const self = {
+      init,
+      destroy
+    };
+    return self;
+  }
+  function ScrollBody(location, target, baseDuration, baseFriction) {
+    let hasSettled = true;
+    let bodyVelocity = 0;
+    let scrollDirection = 0;
+    let scrollDuration = baseDuration;
+    let scrollFriction = baseFriction;
+    let rawLocation = location.get();
+    let rawLocationPrevious = 0;
+    function seek() {
+      const diff = target.get() - location.get();
+      const isInstant = !scrollDuration;
+      let directionDiff = 0;
+      if (isInstant) {
+        bodyVelocity = 0;
+        location.set(target);
+        directionDiff = diff;
+      } else {
+        bodyVelocity += diff / scrollDuration;
+        bodyVelocity *= scrollFriction;
+        rawLocation += bodyVelocity;
+        location.add(bodyVelocity);
+        directionDiff = rawLocation - rawLocationPrevious;
+      }
+      scrollDirection = mathSign(directionDiff);
+      rawLocationPrevious = rawLocation;
+      hasSettled = mathAbs(diff) < 1e-3;
+      return self;
+    }
+    function settled() {
+      return hasSettled;
+    }
+    function duration() {
+      return scrollDuration;
+    }
+    function direction() {
+      return scrollDirection;
+    }
+    function velocity() {
+      return bodyVelocity;
+    }
+    function useBaseDuration() {
+      return useDuration(baseDuration);
+    }
+    function useBaseFriction() {
+      return useFriction(baseFriction);
+    }
+    function useDuration(n) {
+      scrollDuration = n;
+      return self;
+    }
+    function useFriction(n) {
+      scrollFriction = n;
+      return self;
+    }
+    const self = {
+      direction,
+      duration,
+      velocity,
+      seek,
+      settled,
+      useBaseFriction,
+      useBaseDuration,
+      useFriction,
+      useDuration
+    };
+    return self;
+  }
+  function ScrollBounds(limit, location, target, scrollBody, percentOfView) {
+    const pullBackThreshold = percentOfView.measure(10);
+    const edgeOffsetTolerance = percentOfView.measure(50);
+    const frictionLimit = Limit(0.1, 0.99);
+    let disabled = false;
+    function shouldConstrain() {
+      if (disabled)
+        return false;
+      if (!limit.reachedAny(target.get()))
+        return false;
+      if (!limit.reachedAny(location.get()))
+        return false;
+      return true;
+    }
+    function constrain(pointerDown) {
+      if (!shouldConstrain())
+        return;
+      const edge = limit.reachedMin(location.get()) ? "min" : "max";
+      const diffToEdge = mathAbs(limit[edge] - location.get());
+      const diffToTarget = target.get() - location.get();
+      const friction = frictionLimit.constrain(diffToEdge / edgeOffsetTolerance);
+      target.subtract(diffToTarget * friction);
+      if (!pointerDown && mathAbs(diffToTarget) < pullBackThreshold) {
+        target.set(limit.constrain(target.get()));
+        scrollBody.useDuration(25).useBaseFriction();
+      }
+    }
+    function toggleActive(active) {
+      disabled = !active;
+    }
+    const self = {
+      constrain,
+      toggleActive
+    };
+    return self;
+  }
+  function ScrollContain(viewSize, contentSize, snapsAligned, containScroll) {
+    const scrollBounds = Limit(-contentSize + viewSize, 0);
+    const snapsBounded = measureBounded();
+    const scrollContainLimit = findScrollContainLimit();
+    const snapsContained = measureContained();
+    function findScrollContainLimit() {
+      const startSnap = snapsBounded[0];
+      const endSnap = arrayLast(snapsBounded);
+      const min = snapsBounded.lastIndexOf(startSnap);
+      const max = snapsBounded.indexOf(endSnap) + 1;
+      return Limit(min, max);
+    }
+    function measureBounded() {
+      return snapsAligned.map(scrollBounds.constrain).map((scrollBound) => parseFloat(scrollBound.toFixed(3)));
+    }
+    function measureContained() {
+      if (contentSize <= viewSize)
+        return [scrollBounds.max];
+      if (containScroll === "keepSnaps")
+        return snapsBounded;
+      const {
+        min,
+        max
+      } = scrollContainLimit;
+      return snapsBounded.slice(min, max);
+    }
+    const self = {
+      snapsContained,
+      scrollContainLimit
+    };
+    return self;
+  }
+  function ScrollLimit(contentSize, scrollSnaps, loop) {
+    const max = scrollSnaps[0];
+    const min = loop ? max - contentSize : arrayLast(scrollSnaps);
+    const limit = Limit(min, max);
+    const self = {
+      limit
+    };
+    return self;
+  }
+  function ScrollLooper(contentSize, limit, offsetLocation, vectors) {
+    const jointSafety = 0.1;
+    const min = limit.min + jointSafety;
+    const max = limit.max + jointSafety;
+    const {
+      reachedMin,
+      reachedMax
+    } = Limit(min, max);
+    function shouldLoop(direction) {
+      if (direction === 1)
+        return reachedMax(offsetLocation.get());
+      if (direction === -1)
+        return reachedMin(offsetLocation.get());
+      return false;
+    }
+    function loop(direction) {
+      if (!shouldLoop(direction))
+        return;
+      const loopDistance = contentSize * (direction * -1);
+      vectors.forEach((v) => v.add(loopDistance));
+    }
+    const self = {
+      loop
+    };
+    return self;
+  }
+  function ScrollProgress(limit) {
+    const {
+      max,
+      length
+    } = limit;
+    function get(n) {
+      const currentLocation = n - max;
+      return length ? currentLocation / -length : 0;
+    }
+    const self = {
+      get
+    };
+    return self;
+  }
+  function ScrollSnaps(axis, alignment, containerRect, slideRects, slidesToScroll) {
+    const {
+      startEdge,
+      endEdge
+    } = axis;
+    const {
+      groupSlides
+    } = slidesToScroll;
+    const alignments = measureSizes().map(alignment.measure);
+    const snaps = measureUnaligned();
+    const snapsAligned = measureAligned();
+    function measureSizes() {
+      return groupSlides(slideRects).map((rects) => arrayLast(rects)[endEdge] - rects[0][startEdge]).map(mathAbs);
+    }
+    function measureUnaligned() {
+      return slideRects.map((rect) => containerRect[startEdge] - rect[startEdge]).map((snap) => -mathAbs(snap));
+    }
+    function measureAligned() {
+      return groupSlides(snaps).map((g2) => g2[0]).map((snap, index) => snap + alignments[index]);
+    }
+    const self = {
+      snaps,
+      snapsAligned
+    };
+    return self;
+  }
+  function SlideRegistry(viewSize, contentSize, containSnaps, scrollContainLimit, slidesToScroll, slideIndexes) {
+    const {
+      groupSlides
+    } = slidesToScroll;
+    const {
+      min,
+      max
+    } = scrollContainLimit;
+    const slideRegistry = createSlideRegistry();
+    function createSlideRegistry() {
+      const groupedSlideIndexes = groupSlides(slideIndexes);
+      if (!containSnaps || contentSize <= viewSize)
+        return groupedSlideIndexes;
+      return groupedSlideIndexes.slice(min, max).map((group, index, groups) => {
+        const indexIsFirst = !index;
+        const indexIsLast = !indexIsFirst && index === arrayLastIndex(groups);
+        if (indexIsFirst) {
+          const range = arrayLast(groups[0]) + 1;
+          return arrayFromNumber(range);
+        }
+        if (indexIsLast) {
+          const range = arrayLastIndex(slideIndexes) - arrayLast(groups)[0] + 1;
+          return arrayFromNumber(range, arrayLast(groups)[0]);
+        }
+        return group;
+      });
+    }
+    const self = {
+      slideRegistry
+    };
+    return self;
+  }
+  function ScrollTarget(loop, scrollSnaps, contentSize, limit, targetVector) {
+    const {
+      reachedAny,
+      removeOffset,
+      constrain
+    } = limit;
+    function minDistance(distances) {
+      return distances.concat().sort((a2, b) => mathAbs(a2) - mathAbs(b))[0];
+    }
+    function findTargetSnap(target) {
+      const distance = loop ? removeOffset(target) : constrain(target);
+      const ascDiffsToSnaps = scrollSnaps.map((scrollSnap) => scrollSnap - distance).map((diffToSnap) => shortcut(diffToSnap, 0)).map((diff, i2) => ({
+        diff,
+        index: i2
+      })).sort((d1, d2) => mathAbs(d1.diff) - mathAbs(d2.diff));
+      const {
+        index
+      } = ascDiffsToSnaps[0];
+      return {
+        index,
+        distance
+      };
+    }
+    function shortcut(target, direction) {
+      const targets = [target, target + contentSize, target - contentSize];
+      if (!loop)
+        return targets[0];
+      if (!direction)
+        return minDistance(targets);
+      const matchingTargets = targets.filter((t2) => mathSign(t2) === direction);
+      if (matchingTargets.length)
+        return minDistance(matchingTargets);
+      return arrayLast(targets) - contentSize;
+    }
+    function byIndex(index, direction) {
+      const diffToSnap = scrollSnaps[index] - targetVector.get();
+      const distance = shortcut(diffToSnap, direction);
+      return {
+        index,
+        distance
+      };
+    }
+    function byDistance(distance, snap) {
+      const target = targetVector.get() + distance;
+      const {
+        index,
+        distance: targetSnapDistance
+      } = findTargetSnap(target);
+      const reachedBound = !loop && reachedAny(target);
+      if (!snap || reachedBound)
+        return {
+          index,
+          distance
+        };
+      const diffToSnap = scrollSnaps[index] - targetSnapDistance;
+      const snapDistance = distance + shortcut(diffToSnap, 0);
+      return {
+        index,
+        distance: snapDistance
+      };
+    }
+    const self = {
+      byDistance,
+      byIndex,
+      shortcut
+    };
+    return self;
+  }
+  function ScrollTo(animation, indexCurrent, indexPrevious, scrollTarget, scrollBody, targetVector, eventHandler) {
+    function scrollTo(target) {
+      const distanceDiff = target.distance;
+      const indexDiff = target.index !== indexCurrent.get();
+      targetVector.add(distanceDiff);
+      if (distanceDiff) {
+        if (scrollBody.duration()) {
+          animation.start();
+        } else {
+          animation.update();
+          animation.render(1);
+          animation.update();
+        }
+      }
+      if (indexDiff) {
+        indexPrevious.set(indexCurrent.get());
+        indexCurrent.set(target.index);
+        eventHandler.emit("select");
+      }
+    }
+    function distance(n, snap) {
+      const target = scrollTarget.byDistance(n, snap);
+      scrollTo(target);
+    }
+    function index(n, direction) {
+      const targetIndex = indexCurrent.clone().set(n);
+      const target = scrollTarget.byIndex(targetIndex.get(), direction);
+      scrollTo(target);
+    }
+    const self = {
+      distance,
+      index
+    };
+    return self;
+  }
+  function SlideFocus(root, slides, slideRegistry, scrollTo, scrollBody, eventStore) {
+    let lastTabPressTime = 0;
+    function init() {
+      eventStore.add(document, "keydown", registerTabPress, false);
+      slides.forEach(addSlideFocusEvent);
+    }
+    function registerTabPress(event) {
+      if (event.code === "Tab")
+        lastTabPressTime = (/* @__PURE__ */ new Date()).getTime();
+    }
+    function addSlideFocusEvent(slide) {
+      const focus = () => {
+        const nowTime = (/* @__PURE__ */ new Date()).getTime();
+        const diffTime = nowTime - lastTabPressTime;
+        if (diffTime > 10)
+          return;
+        root.scrollLeft = 0;
+        const index = slides.indexOf(slide);
+        const group = slideRegistry.findIndex((group2) => group2.includes(index));
+        if (!isNumber(group))
+          return;
+        scrollBody.useDuration(0);
+        scrollTo.index(group, 0);
+      };
+      eventStore.add(slide, "focus", focus, {
+        passive: true,
+        capture: true
+      });
+    }
+    const self = {
+      init
+    };
+    return self;
+  }
+  function Vector1D(initialValue) {
+    let value = initialValue;
+    function get() {
+      return value;
+    }
+    function set(n) {
+      value = normalizeInput(n);
+    }
+    function add2(n) {
+      value += normalizeInput(n);
+    }
+    function subtract(n) {
+      value -= normalizeInput(n);
+    }
+    function normalizeInput(n) {
+      return isNumber(n) ? n : n.get();
+    }
+    const self = {
+      get,
+      set,
+      add: add2,
+      subtract
+    };
+    return self;
+  }
+  function Translate(axis, direction, container) {
+    const translate = axis.scroll === "x" ? x : y2;
+    const containerStyle = container.style;
+    let disabled = false;
+    function x(n) {
+      return `translate3d(${n}px,0px,0px)`;
+    }
+    function y2(n) {
+      return `translate3d(0px,${n}px,0px)`;
+    }
+    function to(target) {
+      if (disabled)
+        return;
+      containerStyle.transform = translate(direction.apply(target));
+    }
+    function toggleActive(active) {
+      disabled = !active;
+    }
+    function clear() {
+      if (disabled)
+        return;
+      containerStyle.transform = "";
+      if (!container.getAttribute("style"))
+        container.removeAttribute("style");
+    }
+    const self = {
+      clear,
+      to,
+      toggleActive
+    };
+    return self;
+  }
+  function SlideLooper(axis, direction, viewSize, contentSize, slideSizes, slideSizesWithGaps, snaps, scrollSnaps, offsetLocation, slides) {
+    const roundingSafety = 0.5;
+    const ascItems = arrayKeys(slideSizesWithGaps);
+    const descItems = arrayKeys(slideSizesWithGaps).reverse();
+    const loopPoints = startPoints().concat(endPoints());
+    function removeSlideSizes(indexes, from) {
+      return indexes.reduce((a2, i2) => {
+        return a2 - slideSizesWithGaps[i2];
+      }, from);
+    }
+    function slidesInGap(indexes, gap) {
+      return indexes.reduce((a2, i2) => {
+        const remainingGap = removeSlideSizes(a2, gap);
+        return remainingGap > 0 ? a2.concat([i2]) : a2;
+      }, []);
+    }
+    function findSlideBounds(offset) {
+      return snaps.map((snap, index) => ({
+        start: snap - slideSizes[index] + roundingSafety + offset,
+        end: snap + viewSize - roundingSafety + offset
+      }));
+    }
+    function findLoopPoints(indexes, offset, isEndEdge) {
+      const slideBounds = findSlideBounds(offset);
+      return indexes.map((index) => {
+        const initial = isEndEdge ? 0 : -contentSize;
+        const altered = isEndEdge ? contentSize : 0;
+        const boundEdge = isEndEdge ? "end" : "start";
+        const loopPoint = slideBounds[index][boundEdge];
+        return {
+          index,
+          slideLocation: Vector1D(-1),
+          translate: Translate(axis, direction, slides[index]),
+          target: () => offsetLocation.get() > loopPoint ? initial : altered
+        };
+      });
+    }
+    function startPoints() {
+      const gap = scrollSnaps[0] - 1;
+      const indexes = slidesInGap(descItems, gap);
+      return findLoopPoints(indexes, contentSize, false);
+    }
+    function endPoints() {
+      const gap = viewSize - scrollSnaps[0] - 1;
+      const indexes = slidesInGap(ascItems, gap);
+      return findLoopPoints(indexes, -contentSize, true);
+    }
+    function canLoop() {
+      return loopPoints.every(({
+        index
+      }) => {
+        const otherIndexes = ascItems.filter((i2) => i2 !== index);
+        return removeSlideSizes(otherIndexes, viewSize) <= 0.1;
+      });
+    }
+    function loop() {
+      loopPoints.forEach((loopPoint) => {
+        const {
+          target,
+          translate,
+          slideLocation
+        } = loopPoint;
+        const shiftLocation = target();
+        if (shiftLocation === slideLocation.get())
+          return;
+        translate.to(shiftLocation);
+        slideLocation.set(shiftLocation);
+      });
+    }
+    function clear() {
+      loopPoints.forEach((loopPoint) => loopPoint.translate.clear());
+    }
+    const self = {
+      canLoop,
+      clear,
+      loop,
+      loopPoints
+    };
+    return self;
+  }
+  function SlidesHandler(container, eventHandler, watchSlides) {
+    let mutationObserver;
+    let destroyed = false;
+    function init(emblaApi) {
+      if (!watchSlides)
+        return;
+      function defaultCallback(mutations) {
+        for (const mutation of mutations) {
+          if (mutation.type === "childList") {
+            emblaApi.reInit();
+            eventHandler.emit("slidesChanged");
+            break;
+          }
+        }
+      }
+      mutationObserver = new MutationObserver((mutations) => {
+        if (destroyed)
+          return;
+        if (isBoolean(watchSlides) || watchSlides(emblaApi, mutations)) {
+          defaultCallback(mutations);
+        }
+      });
+      mutationObserver.observe(container, {
+        childList: true
+      });
+    }
+    function destroy() {
+      if (mutationObserver)
+        mutationObserver.disconnect();
+      destroyed = true;
+    }
+    const self = {
+      init,
+      destroy
+    };
+    return self;
+  }
+  function SlidesInView(container, slides, eventHandler, threshold) {
+    const intersectionEntryMap = {};
+    let inViewCache = null;
+    let notInViewCache = null;
+    let intersectionObserver;
+    let destroyed = false;
+    function init() {
+      intersectionObserver = new IntersectionObserver((entries) => {
+        if (destroyed)
+          return;
+        entries.forEach((entry) => {
+          const index = slides.indexOf(entry.target);
+          intersectionEntryMap[index] = entry;
+        });
+        inViewCache = null;
+        notInViewCache = null;
+        eventHandler.emit("slidesInView");
+      }, {
+        root: container.parentElement,
+        threshold
+      });
+      slides.forEach((slide) => intersectionObserver.observe(slide));
+    }
+    function destroy() {
+      if (intersectionObserver)
+        intersectionObserver.disconnect();
+      destroyed = true;
+    }
+    function createInViewList(inView) {
+      return objectKeys(intersectionEntryMap).reduce((list, slideIndex) => {
+        const index = parseInt(slideIndex);
+        const {
+          isIntersecting
+        } = intersectionEntryMap[index];
+        const inViewMatch = inView && isIntersecting;
+        const notInViewMatch = !inView && !isIntersecting;
+        if (inViewMatch || notInViewMatch)
+          list.push(index);
+        return list;
+      }, []);
+    }
+    function get(inView = true) {
+      if (inView && inViewCache)
+        return inViewCache;
+      if (!inView && notInViewCache)
+        return notInViewCache;
+      const slideIndexes = createInViewList(inView);
+      if (inView)
+        inViewCache = slideIndexes;
+      if (!inView)
+        notInViewCache = slideIndexes;
+      return slideIndexes;
+    }
+    const self = {
+      init,
+      destroy,
+      get
+    };
+    return self;
+  }
+  function SlideSizes(axis, containerRect, slideRects, slides, readEdgeGap, ownerWindow) {
+    const {
+      measureSize,
+      startEdge,
+      endEdge
+    } = axis;
+    const withEdgeGap = slideRects[0] && readEdgeGap;
+    const startGap = measureStartGap();
+    const endGap = measureEndGap();
+    const slideSizes = slideRects.map(measureSize);
+    const slideSizesWithGaps = measureWithGaps();
+    function measureStartGap() {
+      if (!withEdgeGap)
+        return 0;
+      const slideRect = slideRects[0];
+      return mathAbs(containerRect[startEdge] - slideRect[startEdge]);
+    }
+    function measureEndGap() {
+      if (!withEdgeGap)
+        return 0;
+      const style = ownerWindow.getComputedStyle(arrayLast(slides));
+      return parseFloat(style.getPropertyValue(`margin-${endEdge}`));
+    }
+    function measureWithGaps() {
+      return slideRects.map((rect, index, rects) => {
+        const isFirst = !index;
+        const isLast = index === arrayLastIndex(rects);
+        if (isFirst)
+          return slideSizes[index] + startGap;
+        if (isLast)
+          return slideSizes[index] + endGap;
+        return rects[index + 1][startEdge] - rect[startEdge];
+      }).map(mathAbs);
+    }
+    const self = {
+      slideSizes,
+      slideSizesWithGaps,
+      startGap,
+      endGap
+    };
+    return self;
+  }
+  function SlidesToScroll(axis, direction, viewSize, slidesToScroll, loop, containerRect, slideRects, startGap, endGap) {
+    const {
+      startEdge,
+      endEdge
+    } = axis;
+    const groupByNumber = isNumber(slidesToScroll);
+    function byNumber(array, groupSize) {
+      return arrayKeys(array).filter((i2) => i2 % groupSize === 0).map((i2) => array.slice(i2, i2 + groupSize));
+    }
+    function bySize(array) {
+      if (!array.length)
+        return [];
+      return arrayKeys(array).reduce((groups, rectB) => {
+        const rectA = arrayLast(groups) || 0;
+        const isFirst = rectA === 0;
+        const isLast = rectB === arrayLastIndex(array);
+        const edgeA = containerRect[startEdge] - slideRects[rectA][startEdge];
+        const edgeB = containerRect[startEdge] - slideRects[rectB][endEdge];
+        const gapA = !loop && isFirst ? direction.apply(startGap) : 0;
+        const gapB = !loop && isLast ? direction.apply(endGap) : 0;
+        const chunkSize = mathAbs(edgeB - gapB - (edgeA + gapA));
+        if (chunkSize > viewSize)
+          groups.push(rectB);
+        if (isLast)
+          groups.push(array.length);
+        return groups;
+      }, []).map((currentSize, index, groups) => {
+        const previousSize = Math.max(groups[index - 1] || 0);
+        return array.slice(previousSize, currentSize);
+      });
+    }
+    function groupSlides(array) {
+      return groupByNumber ? byNumber(array, slidesToScroll) : bySize(array);
+    }
+    const self = {
+      groupSlides
+    };
+    return self;
+  }
+  function Engine(root, container, slides, ownerDocument, ownerWindow, options, eventHandler, animations) {
+    const {
+      align,
+      axis: scrollAxis,
+      direction: contentDirection,
+      startIndex,
+      loop,
+      duration,
+      dragFree,
+      dragThreshold,
+      inViewThreshold,
+      slidesToScroll: groupSlides,
+      skipSnaps,
+      containScroll,
+      watchResize,
+      watchSlides,
+      watchDrag
+    } = options;
+    const containerRect = container.getBoundingClientRect();
+    const slideRects = slides.map((slide) => slide.getBoundingClientRect());
+    const direction = Direction(contentDirection);
+    const axis = Axis(scrollAxis, contentDirection);
+    const viewSize = axis.measureSize(containerRect);
+    const percentOfView = PercentOfView(viewSize);
+    const alignment = Alignment(align, viewSize);
+    const containSnaps = !loop && !!containScroll;
+    const readEdgeGap = loop || !!containScroll;
+    const {
+      slideSizes,
+      slideSizesWithGaps,
+      startGap,
+      endGap
+    } = SlideSizes(axis, containerRect, slideRects, slides, readEdgeGap, ownerWindow);
+    const slidesToScroll = SlidesToScroll(axis, direction, viewSize, groupSlides, loop, containerRect, slideRects, startGap, endGap);
+    const {
+      snaps,
+      snapsAligned
+    } = ScrollSnaps(axis, alignment, containerRect, slideRects, slidesToScroll);
+    const contentSize = -arrayLast(snaps) + arrayLast(slideSizesWithGaps);
+    const {
+      snapsContained,
+      scrollContainLimit
+    } = ScrollContain(viewSize, contentSize, snapsAligned, containScroll);
+    const scrollSnaps = containSnaps ? snapsContained : snapsAligned;
+    const {
+      limit
+    } = ScrollLimit(contentSize, scrollSnaps, loop);
+    const index = Counter(arrayLastIndex(scrollSnaps), startIndex, loop);
+    const indexPrevious = index.clone();
+    const slideIndexes = arrayKeys(slides);
+    const update = ({
+      dragHandler,
+      scrollBody: scrollBody2,
+      scrollBounds,
+      eventHandler: eventHandler2,
+      animation: animation2,
+      options: {
+        loop: loop2
+      }
+    }) => {
+      const pointerDown = dragHandler.pointerDown();
+      if (!loop2)
+        scrollBounds.constrain(pointerDown);
+      const hasSettled = scrollBody2.seek().settled();
+      if (hasSettled && !pointerDown) {
+        animation2.stop();
+        eventHandler2.emit("settle");
+      }
+      if (!hasSettled)
+        eventHandler2.emit("scroll");
+    };
+    const render = ({
+      scrollBody: scrollBody2,
+      translate,
+      location: location2,
+      offsetLocation: offsetLocation2,
+      scrollLooper,
+      slideLooper,
+      options: {
+        loop: loop2
+      }
+    }, lagOffset) => {
+      const velocity = scrollBody2.velocity();
+      offsetLocation2.set(location2.get() - velocity + velocity * lagOffset);
+      if (loop2) {
+        scrollLooper.loop(scrollBody2.direction());
+        slideLooper.loop();
+      }
+      translate.to(offsetLocation2.get());
+    };
+    const animation = {
+      start: () => animations.start(engine),
+      stop: () => animations.stop(engine),
+      update: () => update(engine),
+      render: (lagOffset) => render(engine, lagOffset)
+    };
+    const friction = 0.68;
+    const startLocation = scrollSnaps[index.get()];
+    const location = Vector1D(startLocation);
+    const offsetLocation = Vector1D(startLocation);
+    const target = Vector1D(startLocation);
+    const scrollBody = ScrollBody(location, target, duration, friction);
+    const scrollTarget = ScrollTarget(loop, scrollSnaps, contentSize, limit, target);
+    const scrollTo = ScrollTo(animation, index, indexPrevious, scrollTarget, scrollBody, target, eventHandler);
+    const scrollProgress = ScrollProgress(limit);
+    const eventStore = EventStore();
+    const slidesInView = SlidesInView(container, slides, eventHandler, inViewThreshold);
+    const {
+      slideRegistry
+    } = SlideRegistry(viewSize, contentSize, containSnaps, scrollContainLimit, slidesToScroll, slideIndexes);
+    const slideFocus = SlideFocus(root, slides, slideRegistry, scrollTo, scrollBody, eventStore);
+    const engine = {
+      ownerDocument,
+      ownerWindow,
+      eventHandler,
+      containerRect,
+      slideRects,
+      animation,
+      axis,
+      direction,
+      dragHandler: DragHandler(axis, direction, root, ownerDocument, ownerWindow, target, DragTracker(axis, ownerWindow), location, animation, scrollTo, scrollBody, scrollTarget, index, eventHandler, percentOfView, dragFree, dragThreshold, skipSnaps, friction, watchDrag),
+      eventStore,
+      percentOfView,
+      index,
+      indexPrevious,
+      limit,
+      location,
+      offsetLocation,
+      options,
+      resizeHandler: ResizeHandler(container, eventHandler, ownerWindow, slides, axis, watchResize),
+      scrollBody,
+      scrollBounds: ScrollBounds(limit, location, target, scrollBody, percentOfView),
+      scrollLooper: ScrollLooper(contentSize, limit, offsetLocation, [location, offsetLocation, target]),
+      scrollProgress,
+      scrollSnapList: scrollSnaps.map(scrollProgress.get),
+      scrollSnaps,
+      scrollTarget,
+      scrollTo,
+      slideLooper: SlideLooper(axis, direction, viewSize, contentSize, slideSizes, slideSizesWithGaps, snaps, scrollSnaps, offsetLocation, slides),
+      slideFocus,
+      slidesHandler: SlidesHandler(container, eventHandler, watchSlides),
+      slidesInView,
+      slideIndexes,
+      slideRegistry,
+      slidesToScroll,
+      target,
+      translate: Translate(axis, direction, container)
+    };
+    return engine;
+  }
+  function Animations(ownerWindow) {
+    const timeStep = 1e3 / 60;
+    let engines = [];
+    let lastTimeStamp = null;
+    let lag = 0;
+    let animationFrame = 0;
+    function animate(timeStamp) {
+      if (!lastTimeStamp)
+        lastTimeStamp = timeStamp;
+      const elapsed = timeStamp - lastTimeStamp;
+      lastTimeStamp = timeStamp;
+      lag += elapsed;
+      while (lag >= timeStep) {
+        engines.forEach(({
+          animation
+        }) => animation.update());
+        lag -= timeStep;
+      }
+      const lagOffset = mathAbs(lag / timeStep);
+      engines.forEach(({
+        animation
+      }) => animation.render(lagOffset));
+      if (animationFrame)
+        ownerWindow.requestAnimationFrame(animate);
+    }
+    function start(engine) {
+      if (!engines.includes(engine))
+        engines.push(engine);
+      if (animationFrame)
+        return;
+      animationFrame = ownerWindow.requestAnimationFrame(animate);
+    }
+    function stop(engine) {
+      engines = engines.filter((e) => e !== engine);
+      if (engines.length)
+        return;
+      ownerWindow.cancelAnimationFrame(animationFrame);
+      lastTimeStamp = null;
+      lag = 0;
+      animationFrame = 0;
+    }
+    function reset() {
+      lastTimeStamp = null;
+      lag = 0;
+    }
+    const self = {
+      start,
+      stop,
+      reset,
+      window: ownerWindow
+    };
+    return self;
+  }
+  function EventHandler() {
+    const listeners = {};
+    let api;
+    function init(emblaApi) {
+      api = emblaApi;
+    }
+    function getListeners(evt) {
+      return listeners[evt] || [];
+    }
+    function emit(evt) {
+      getListeners(evt).forEach((e) => e(api, evt));
+      return self;
+    }
+    function on(evt, cb) {
+      listeners[evt] = getListeners(evt).concat([cb]);
+      return self;
+    }
+    function off(evt, cb) {
+      listeners[evt] = getListeners(evt).filter((e) => e !== cb);
+      return self;
+    }
+    const self = {
+      init,
+      emit,
+      off,
+      on
+    };
+    return self;
+  }
+  var defaultOptions = {
+    align: "center",
+    axis: "x",
+    container: null,
+    slides: null,
+    containScroll: "trimSnaps",
+    direction: "ltr",
+    slidesToScroll: 1,
+    inViewThreshold: 0,
+    breakpoints: {},
+    dragFree: false,
+    dragThreshold: 10,
+    loop: false,
+    skipSnaps: false,
+    duration: 25,
+    startIndex: 0,
+    active: true,
+    watchDrag: true,
+    watchResize: true,
+    watchSlides: true
+  };
+  function OptionsHandler(ownerWindow) {
+    function mergeOptions(optionsA, optionsB) {
+      return objectsMergeDeep(optionsA, optionsB || {});
+    }
+    function optionsAtMedia(options) {
+      const optionsAtMedia2 = options.breakpoints || {};
+      const matchedMediaOptions = objectKeys(optionsAtMedia2).filter((media) => ownerWindow.matchMedia(media).matches).map((media) => optionsAtMedia2[media]).reduce((a2, mediaOption) => mergeOptions(a2, mediaOption), {});
+      return mergeOptions(options, matchedMediaOptions);
+    }
+    function optionsMediaQueries(optionsList) {
+      return optionsList.map((options) => objectKeys(options.breakpoints || {})).reduce((acc, mediaQueries) => acc.concat(mediaQueries), []).map(ownerWindow.matchMedia);
+    }
+    const self = {
+      mergeOptions,
+      optionsAtMedia,
+      optionsMediaQueries
+    };
+    return self;
+  }
+  function PluginsHandler(optionsHandler) {
+    let activePlugins = [];
+    function init(emblaApi, plugins) {
+      activePlugins = plugins.filter(({
+        options
+      }) => optionsHandler.optionsAtMedia(options).active !== false);
+      activePlugins.forEach((plugin) => plugin.init(emblaApi, optionsHandler));
+      return plugins.reduce((map, plugin) => Object.assign(map, {
+        [plugin.name]: plugin
+      }), {});
+    }
+    function destroy() {
+      activePlugins = activePlugins.filter((plugin) => plugin.destroy());
+    }
+    const self = {
+      init,
+      destroy
+    };
+    return self;
+  }
+  function EmblaCarousel(root, userOptions, userPlugins) {
+    const ownerDocument = root.ownerDocument;
+    const ownerWindow = ownerDocument.defaultView;
+    const optionsHandler = OptionsHandler(ownerWindow);
+    const pluginsHandler = PluginsHandler(optionsHandler);
+    const mediaHandlers = EventStore();
+    const documentVisibleHandler = EventStore();
+    const eventHandler = EventHandler();
+    const {
+      animationRealms
+    } = EmblaCarousel;
+    const {
+      mergeOptions,
+      optionsAtMedia,
+      optionsMediaQueries
+    } = optionsHandler;
+    const {
+      on,
+      off,
+      emit
+    } = eventHandler;
+    const reInit = reActivate;
+    let destroyed = false;
+    let engine;
+    let optionsBase = mergeOptions(defaultOptions, EmblaCarousel.globalOptions);
+    let options = mergeOptions(optionsBase);
+    let pluginList = [];
+    let pluginApis;
+    let container;
+    let slides;
+    function storeElements() {
+      const {
+        container: userContainer,
+        slides: userSlides
+      } = options;
+      const customContainer = isString(userContainer) ? root.querySelector(userContainer) : userContainer;
+      container = customContainer || root.children[0];
+      const customSlides = isString(userSlides) ? container.querySelectorAll(userSlides) : userSlides;
+      slides = [].slice.call(customSlides || container.children);
+    }
+    function createEngine(options2, animations) {
+      const engine2 = Engine(root, container, slides, ownerDocument, ownerWindow, options2, eventHandler, animations);
+      if (options2.loop && !engine2.slideLooper.canLoop()) {
+        const optionsWithoutLoop = Object.assign({}, options2, {
+          loop: false
+        });
+        return createEngine(optionsWithoutLoop, animations);
+      }
+      return engine2;
+    }
+    function activate(withOptions, withPlugins) {
+      if (destroyed)
+        return;
+      const animationRealm = animationRealms.find((a2) => a2.window === ownerWindow);
+      const animations = animationRealm || Animations(ownerWindow);
+      if (!animationRealm)
+        animationRealms.push(animations);
+      optionsBase = mergeOptions(optionsBase, withOptions);
+      options = optionsAtMedia(optionsBase);
+      pluginList = withPlugins || pluginList;
+      storeElements();
+      engine = createEngine(options, animations);
+      optionsMediaQueries([optionsBase, ...pluginList.map(({
+        options: options2
+      }) => options2)]).forEach((query) => mediaHandlers.add(query, "change", reActivate));
+      if (!options.active)
+        return;
+      engine.translate.to(engine.location.get());
+      engine.slidesInView.init();
+      engine.slideFocus.init();
+      engine.eventHandler.init(self);
+      engine.resizeHandler.init(self);
+      engine.slidesHandler.init(self);
+      documentVisibleHandler.add(ownerDocument, "visibilitychange", () => {
+        if (ownerDocument.hidden)
+          animations.reset();
+      });
+      if (engine.options.loop)
+        engine.slideLooper.loop();
+      if (container.offsetParent && slides.length)
+        engine.dragHandler.init(self);
+      pluginApis = pluginsHandler.init(self, pluginList);
+    }
+    function reActivate(withOptions, withPlugins) {
+      const startIndex = selectedScrollSnap();
+      deActivate();
+      activate(mergeOptions({
+        startIndex
+      }, withOptions), withPlugins);
+      eventHandler.emit("reInit");
+    }
+    function deActivate() {
+      engine.dragHandler.destroy();
+      engine.animation.stop();
+      engine.eventStore.clear();
+      engine.translate.clear();
+      engine.slideLooper.clear();
+      engine.resizeHandler.destroy();
+      engine.slidesHandler.destroy();
+      pluginsHandler.destroy();
+      mediaHandlers.clear();
+      documentVisibleHandler.clear();
+    }
+    function destroy() {
+      if (destroyed)
+        return;
+      destroyed = true;
+      mediaHandlers.clear();
+      deActivate();
+      eventHandler.emit("destroy");
+    }
+    function scrollTo(index, jump, direction) {
+      if (!options.active || destroyed)
+        return;
+      engine.scrollBody.useBaseFriction().useDuration(jump ? 0 : options.duration);
+      engine.scrollTo.index(index, direction || 0);
+    }
+    function scrollNext(jump) {
+      const next = engine.index.add(1).get();
+      scrollTo(next, jump === true, -1);
+    }
+    function scrollPrev(jump) {
+      const prev = engine.index.add(-1).get();
+      scrollTo(prev, jump === true, 1);
+    }
+    function canScrollNext() {
+      const next = engine.index.add(1).get();
+      return next !== selectedScrollSnap();
+    }
+    function canScrollPrev() {
+      const prev = engine.index.add(-1).get();
+      return prev !== selectedScrollSnap();
+    }
+    function scrollSnapList() {
+      return engine.scrollSnapList;
+    }
+    function scrollProgress() {
+      return engine.scrollProgress.get(engine.location.get());
+    }
+    function selectedScrollSnap() {
+      return engine.index.get();
+    }
+    function previousScrollSnap() {
+      return engine.indexPrevious.get();
+    }
+    function slidesInView() {
+      return engine.slidesInView.get();
+    }
+    function slidesNotInView() {
+      return engine.slidesInView.get(false);
+    }
+    function plugins() {
+      return pluginApis;
+    }
+    function internalEngine() {
+      return engine;
+    }
+    function rootNode() {
+      return root;
+    }
+    function containerNode() {
+      return container;
+    }
+    function slideNodes() {
+      return slides;
+    }
+    const self = {
+      canScrollNext,
+      canScrollPrev,
+      containerNode,
+      internalEngine,
+      destroy,
+      off,
+      on,
+      emit,
+      plugins,
+      previousScrollSnap,
+      reInit,
+      rootNode,
+      scrollNext,
+      scrollPrev,
+      scrollProgress,
+      scrollSnapList,
+      scrollTo,
+      selectedScrollSnap,
+      slideNodes,
+      slidesInView,
+      slidesNotInView
+    };
+    activate(userOptions, userPlugins);
+    setTimeout(() => eventHandler.emit("init"), 0);
+    return self;
+  }
+  EmblaCarousel.animationRealms = [];
+  EmblaCarousel.globalOptions = void 0;
+
+  // ../../node_modules/.pnpm/qvp@0.3.2/node_modules/qvp/index.js
+  var i = function(t2) {
+    if (Array.isArray(t2))
+      return t2.forEach(i);
+    if (!("id" in t2)) {
+      for (let s of ["onenter", "onexit", "oninit", "onresize"])
+        if (s in t2)
+          throw new Error('qvp: Missing an "id" reference');
+      return Object.entries(t2).forEach(([s, o]) => {
+        let c = typeof t2[s];
+        if (c === "string")
+          return i({ id: s, query: o });
+        throw new TypeError(`qvp: Invalid query type. Expected "string" received "${c}"`);
+      });
+    }
+    let n = g(t2), { id: r } = n.screen;
+    i.viewports.size || addEventListener("resize", u(() => {
+      i.viewports.forEach((s) => {
+        s.screen.active && s.onresize(window.innerWidth);
+      });
+    }, 25), true), i.viewports.has(r) ? console.warn(`qvp: The id "${r}" is already defined, use qvp.add() instead.`) : i.viewports.set(r, n);
+  };
+  i.viewports = /* @__PURE__ */ new Map();
+  Object.defineProperty(i, "isTouch", { get() {
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  } });
+  i.get = (e) => i.viewports.has(e) ? i.viewports.get(e) : false;
+  i.add = (e, t2) => {
+    let n = i.get(e);
+    if (n === false)
+      return console.error(`qvp: There is no viewport using an id of "${e}"`);
+    f(t2, n.screen), n.screen.test.matches && n.onenter();
+  };
+  i.off = (e, t2) => {
+    let n = i.get(e.split(":")[0]);
+    if (n === false || !(e in n.events))
+      return;
+    let r = n.events[e].length;
+    if (typeof t2 == "number")
+      t2 <= r - 1 && n.events[e].splice(t2, 1);
+    else if (typeof t2 == "function") {
+      let s = [];
+      for (let o = 0; o < r; o++)
+        n.events[e][o] !== t2 && s.push(n.events[e][o]);
+      s.length > 0 && (n.events[e] = s);
+    } else
+      delete n.events[e];
+  };
+  i.on = (e, t2, n) => {
+    let [r, s] = e.split(":"), o = i.get(r);
+    if (o === false)
+      return;
+    e in o.events || (o.events[e] = []);
+    let c = n ? t2.bind(n) : t2;
+    return c["qvp:event"] = o.events[e].length, o.events[e].push(c), o.screen.test.matches ? s === "oninit" ? c.call() : (s === "onenter" && c.call(), f({ [s]: c }, o.screen)) : f({ [s]: c }, o.screen), c["qvp:event"];
+  };
+  i.list = (e) => {
+    let t2 = Array.from(i.viewports.values()).map(({ screen: n }) => n);
+    return e ? t2.filter(({ id: n }) => e.includes(n)) : t2;
+  };
+  i.active = (e) => {
+    let t2 = i.list();
+    if (e) {
+      let r = i.get(e);
+      return r ? r.screen.active : false;
+    }
+    let n = t2.filter(({ active: r }) => r === true);
+    return n.length > 1 ? n : n[0];
+  };
+  i.test = (e, t2 = ",") => typeof e == "string" ? e.indexOf(t2) > -1 ? e.split(t2).some(i.active) : !!i.active(e) : e.some(i.active);
+  i.remove = (e) => {
+    i.viewports.has(e) && (i.viewports.get(e).destroy(), i.viewports.delete(e));
+  };
+  i.destroy = () => {
+    removeEventListener("resize", u()), i.viewports.forEach((e) => e.destroy()), i.viewports.clear();
+  };
+  i.screens = () => {
+    throw Error("qvp: The qvp.screens() is deprecated, use the default import, e.g: qvp(...)");
+  };
+  function u(e, t2) {
+    let n = t2;
+    return function() {
+      let r = () => {
+        n = null, e.apply(this, arguments);
+      };
+      n && cancelAnimationFrame(n), n = requestAnimationFrame(r);
+    };
+  }
+  function f(e, t2) {
+    typeof e.onenter == "function" && ("qvp:event" in e.onenter || (e.onenter["qvp:event"] = NaN), t2.onenter.add(e.onenter)), typeof e.onexit == "function" && ("qvp:event" in e.onexit || (e.onexit["qvp:event"] = NaN), t2.onexit.add(e.onexit)), typeof e.onresize == "function" && ("qvp:event" in e.onresize || (e.onresize["qvp:event"] = NaN), t2.onresize.add(e.onresize)), typeof e.oninit == "function" && ("qvp:event" in e.oninit || (e.oninit["qvp:event"] = NaN), t2.oninit.add(e.oninit));
+  }
+  function a(e, ...t2) {
+    let n = i.get(e.split(":")[0]);
+    if (n !== false && e in n.events)
+      for (let r = 0; r < n.events[e].length && (n.events[e][r].apply(null, t2), e.endsWith(":oninit") && i.off(e, r), e in n.events); r++)
+        ;
+  }
+  function g(e) {
+    let t2 = e.query || "all", n = { id: e.id, query: t2, active: false, test: matchMedia(t2), onenter: /* @__PURE__ */ new Set(), onexit: /* @__PURE__ */ new Set(), onresize: /* @__PURE__ */ new Set(), oninit: /* @__PURE__ */ new Set(), events: /* @__PURE__ */ Object.create(null) };
+    f(e, n);
+    let r = () => {
+      n.oninit.size > 0 && (n.oninit.forEach((v) => !isNaN(v["qvp:event"]) || v()), a(`${e.id}:oninit`), n.oninit.clear()), n.onenter.forEach((v) => !isNaN(v["qvp:event"]) || v()), a(`${e.id}:onenter`), n.active = true;
+    }, s = () => {
+      n.onexit.forEach((v) => !isNaN(v["qvp:event"]) || v()), a(`${e.id}:onexit`), n.active = false;
+    }, o = (v) => {
+      n.onresize.forEach((d) => !isNaN(d["qvp:event"]) || d()), a(`${e.id}:onresize`, v);
+    }, c = ({ matches: v }) => v ? r() : s(), p = () => {
+      for (let v in n.events)
+        delete n.events[v];
+      n.test.removeEventListener("change", c);
+    };
+    return n.test.addEventListener("change", c), n.test.matches && r(), { onenter: r, onexit: s, onresize: o, destroy: p, get screen() {
+      return n;
+    }, get events() {
+      return n.events;
+    } };
+  }
+  var l = i;
+
+  // demo/views/carousel/controller.ts
+  var Carousel = class extends Controller {
+    constructor() {
+      super(...arguments);
+      /**
+       * Timeout Throttle for navs
+       */
+      this.timeout = null;
+    }
+    /**
+     * Whether or not the carousel should be enabled
+     */
+    get enabled() {
+      return this.hasBreakpointValue ? l.test(this.breakpointValue, "|") : true;
+    }
+    get selector() {
+      return this.hasSlideshowTarget ? this.slideshowTarget : this.element;
+    }
+    /* -------------------------------------------- */
+    /* STIMULUS LIFECYCLE                           */
+    /* -------------------------------------------- */
+    /**
+     * Stimulus Initialize
+     */
+    initialize() {
+      this.active = false;
+    }
+    /**
+     * Stimulus Connect
+     */
+    connect() {
+      if (this.enabled && !this.active)
+        this.screen();
+    }
+    /**
+     * Stimulus Disconnect
+     */
+    disconnect() {
+      if (this.active && this.enabled)
+        this.carousel.destroy();
+    }
+    /* -------------------------------------------- */
+    /* METHODS                                      */
+    /* -------------------------------------------- */
+    screen() {
+      if (!this.active && this.enabled) {
+        this.active = true;
+        this.carousel = EmblaCarousel(this.selector, {
+          align: this.alignValue,
+          dragFree: this.dragFreeValue,
+          watchDrag: this.watchDragValue,
+          skipSnaps: this.skipSnapsValue,
+          containScroll: this.containScrollValue,
+          duration: this.durationValue,
+          startIndex: this.startIndexValue,
+          loop: this.loopValue
+        });
+      } else if (this.active && !this.enabled) {
+        this.carousel.destroy();
+        this.active = false;
+      }
+    }
+    /* -------------------------------------------- */
+    /* STIMULUS EVENTS                              */
+    /* -------------------------------------------- */
+    /**
+     * Carousel - Next
+     */
+    next() {
+      this.carousel.scrollNext();
+    }
+    /**
+     * Carousel - Previous
+     */
+    prev() {
+      this.carousel.scrollPrev();
+    }
+    /**
+     * Carousel - Goto
+     *
+     * Goto Slide
+     */
+    goto({ target }) {
+      const slide = Number(target.id);
+      for (const button of target.parentElement.children) {
+        if (button.classList.contains("active"))
+          button.classList.remove("active");
+        if (button.id === `${slide}`) {
+          button.classList.add("active");
+        }
+      }
+      this.carousel.scrollTo(slide);
+    }
+  };
+  /**
+   * Stimulus Values
+   */
+  Carousel.values = {
+    breakpoint: String,
+    align: {
+      type: String,
+      default: "start"
+    },
+    axis: {
+      type: String,
+      default: "x"
+    },
+    dragFree: {
+      type: Boolean,
+      default: true
+    },
+    watchDrag: {
+      type: Boolean,
+      default: true
+    },
+    loop: {
+      type: Boolean,
+      default: true
+    },
+    skipSnaps: {
+      type: Boolean,
+      default: false
+    },
+    containScroll: {
+      type: String,
+      default: "keepSnaps"
+    },
+    startIndex: {
+      type: Number,
+      default: 0
+    },
+    duration: {
+      type: Number,
+      default: 10
+    }
+  };
+  /**
+   * Stimulus Targets
+   */
+  Carousel.targets = [
+    "slideshow",
+    "nav"
+  ];
+
+  // demo/bundle.ts
+  onInit();
+  onSearch();
+  function onInit() {
+    const stimulus = Application.start();
+    const controllers = {
+      Accordion,
+      Modal,
+      Dropdown,
+      Carousel
+    };
+    for (const id in controllers) {
+      stimulus.register(id.toLowerCase(), controllers[id]);
+    }
+  }
+  function onSearch() {
+    const sidebar = document.querySelector("#sidebar");
+    const items = Array.from(sidebar.querySelectorAll("a")).map((a2) => a2.id.toLowerCase());
+    const search = document.querySelector("#search-input");
+    const anchors = document.querySelectorAll(".anchor");
+    anchors.forEach((link) => {
+      link.onclick = (e) => {
+        e.preventDefault();
+        anchors.forEach((item) => {
+          if (item.classList.contains("fw-bold")) {
+            item.classList.remove("fw-bold");
+          }
+        });
+        link.classList.add("fw-bold");
+        const anchor = document.querySelector("#" + link.href.split("#").pop());
+        scrollBy({
+          behavior: "smooth",
+          top: anchor.getBoundingClientRect().top - 80
+        });
+      };
+    });
+    search.addEventListener("input", function(event) {
+      const target = event.target;
+      if (target.value) {
+        console.log(target.value);
+        const hash = items.filter((value) => {
+          return value.indexOf(target.value) > -1;
+        });
+        const slug = "#" + hash[0].replace(" ", "-");
+        const qs = document.querySelector(slug);
+        if (qs) {
+          scrollBy({
+            behavior: "instant",
+            top: qs.getBoundingClientRect().top - 80
+          });
+        }
+      }
+    });
+    stickybits_es_default("#sidebar");
+    stickybits_es_default("#search");
+  }
   var modalButton = document.querySelector("#btn-modal-1");
   modalButton.addEventListener("click", () => {
     const m = document.querySelector("#modal-example");

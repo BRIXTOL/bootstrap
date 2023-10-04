@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-5 pr-5">
+    <h6 class="mb-3 fw-bold">
+      Mixin
+    </h6>
+{% highlight scss %}
+@include carousel(( slides: 2, margin: 10px, cursor: move ));
+{% endhighlight %}
+
+    <div class="d-block">
+      <h6 class="mb-3 fw-bold">
+        Example
+      </h6>
+      <div
+        class="carousel-x2"
+        data-controller="carousel"
+        data-action="resize@window->viewer#screen"
+        data-viewer-breakpoint-value="xs|sm|md"
+        data-viewer-loop-value="true">
+        <div itemscope itemtype="http://schema.org/imagegallery">
+          {% for image in (1..10) %}
+            <div class="slide">
+              <div class="ratio ratio-3000x2250">
+                <picture>
+                  <source srcset="https://brixtol.cloud/img/{{ image }}.webp" media="all">
+                  <img src="/img/{{ image }}.webp">
+                </picture>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-3 pl-5">
+    <h6 class="mb-3 fw-bold">
+      Mixin Responsive
+    </h6>
+{% highlight scss %}
+
+// xxs, xs, sm, md, lg, xl, xxl
+@include carousel((
+  xs: (
+    slides: 2,
+    margin: 10px,
+    cursor: pointer
+  ),
+  md: (
+    slides: 2,
+    margin: 0,
+    cursor: move
+  ),
+  lg: (
+    slides: 2,
+    margin: 10px,
+    cursor: pointer
+  ),
+  xl: (
+    slides: 1,
+    margin: 0,
+    cursor: move
+  )
+))
+{% endhighlight %}
+  </div>
+
+  <div class="col-3">
+    <h6 class="mb-3 fw-bold">
+      Example
+    </h6>
+    <div
+      class="carousel"
+      data-controller="carousel"
+      data-action="resize@window->viewer#screen"
+      data-viewer-breakpoint-value="xs|sm|md"
+      data-viewer-loop-value="true">
+      <div itemscope itemtype="http://schema.org/imagegallery">
+        {% for image in (1..10) %}
+          <div class="slide">
+            <div class="ratio ratio-3000x2250">
+              <picture>
+                <source srcset="https://brixtol.cloud/img/{{ image }}.webp" media="all">
+                <img src="/img/{{ image }}.webp">
+              </picture>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</div>

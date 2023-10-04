@@ -14,7 +14,7 @@
     content: "";
     display: block;
     padding-top: calc(var(--#{$prefix}ratio) * 100%);
-    background-color: $gray-200;
+    background-color: var(--#{$prefix}ratio-bg-color);
 
     @if ($aspect-ratio-bg-svg) {
       background-image: $aspect-ratio-bg-svg;
