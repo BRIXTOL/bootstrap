@@ -34,7 +34,7 @@
   ],
   "scripts": {
     "dev": "rm -rf docs && concurrently \"pnpm run 11ty:watch\" \"pnpm run sass:watch\" \"pnpm run sass:wdocs\" \"pnpm run tsup:watch\" ",
-    "build": "rm -rf docs && pnpm run 11ty:build && pnpm run sass:build && postcss docs/bootstrap.css -r --no-map && tsup --minify",
+    "build": "rm -rf docs && pnpm run 11ty:build && pnpm run sass:bdocs && pnpm run sass:build && postcss docs/bootstrap.css -r --no-map && tsup --minify",
     "sass:wdocs": "sass demo/style.scss docs/style.css --no-source-map --watch",
     "sass:bdocs": "sass demo/style.scss docs/style.css --no-source-map",
     "sass:build": "sass --load-path=node_modules/bootstrap/scss/ index.scss docs/bootstrap.css --no-source-map",
