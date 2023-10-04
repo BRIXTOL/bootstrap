@@ -44,7 +44,7 @@
     },
     {
       "title": "Carousel",
-      "expanded": false,
+      "expanded": true,
       "description": "Carousel component leverages <a href=\"https://www.embla-carousel.com/\" class=\"underline\">Embla</a> to provide functionality. There is an exposed mixin within stylesheet which will generate class requires styles for carousel components. The stimulus controller exposes all accepted options via values on the controller which vscode will provide in auto-completions."
     }
   ]
