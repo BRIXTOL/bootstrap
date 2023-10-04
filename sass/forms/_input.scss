@@ -55,22 +55,26 @@ input.fm-input {
 
   &[type="search"] {
     background-image: url(icon-search($input-placeholder-color));
-    background-position: right 8px bottom 4px;
+    background-position: right 10px center;
 
     &::-webkit-search-cancel-button {
       appearance: none;
-      height: 20px;
-      width: 20px;
+      margin: 0;
+      height: 21px;
+      width: 21px;
       opacity: 0;
       pointer-events: none;
-      background-position: right center;
+      background-size: 21px;
+      background-position: right 1px center;
+      position: absolute;
+      right: $input-padding-x;
     }
 
     &:focus::-webkit-search-cancel-button {
       opacity: 1;
       pointer-events: all;
       cursor: pointer;
-      background-image: url(icon-delete($input-color));
+      background-image: var(--#{$prefix}svg-delete);
 
       &:hover {
         background-image: url(icon-delete($input-placeholder-color));

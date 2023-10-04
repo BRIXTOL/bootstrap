@@ -51,12 +51,12 @@ input.fm-checkbox {
 
   @include transition($form-check-transition);
 
-  &[type="checkbox"] {
-    @include border-radius($form-check-input-border-radius);
-  }
+  // &[type="checkbox"] {
+  //   @include border-radius($form-check-input-border-radius);
+  // }
 
+  &[type="checkbox"],
   &[type="radio"] {
-    // stylelint-disable-next-line property-disallowed-list
     border-radius: $form-check-radio-border-radius;
   }
 

@@ -5,15 +5,12 @@
     </h6>
     {% for item in item.classes.inputs %}
       <div class="row ai-center mb-3">
-        <div class="col-5">
-          <pre class="m-0 pl-4"><code>{{ item.class }}</code></pre>
+        <div class="col-2">
+<pre class="m-0 pl-4"><code>{{ item.class }}</code></pre>
         </div>
-        <div class="col-2 pl-5">
-          <fieldset
-            class="{{ item.class | remove: '.' }}"
-            {% if item.class contains '.fm-sm' %}
-              style="width: 70%"
-            {% endif %}>
+        <div class="col-1 pl-5">
+
+          <fieldset class="{{ item.class | remove: '.' }}" style="width: 90px;">
             <input
               class="decrement"
               type="button"
@@ -41,11 +38,11 @@
     </h6>
     {% for item in item.classes.validate %}
       <div class="row mb-3">
-        <div class="col-5 mb-3">
-          <pre class="m-0 pl-4"><code>{{ item.class }}</code></pre>
+        <div class="col-2 mb-3">
+<pre class="m-0 pl-4"><code>{{ item.class }}</code></pre>
         </div>
-        <div class="col-2 pl-5">
-          <fieldset class="{{ item.class | remove: '.' }}">
+        <div class="col-1 pl-5">
+          <fieldset class="{{ item.class | remove: '.' }}" style="width: 90px;">
             <input
               class="decrement"
               type="button"

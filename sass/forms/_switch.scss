@@ -6,7 +6,14 @@
 //
 .fm-switch {
    padding-left: $form-switch-padding-start;
+   display: flex;
+   align-items: center;
 
+  .fm-label {
+    cursor: pointer;
+    margin-bottom: 0;
+    margin-left: calc($form-switch-width / 3);
+  }
 
   &.fm-sm {
     height: 0.5rem;
@@ -15,14 +22,14 @@
     width: 2rem;
   }
 
-
   .fm-checkbox {
+    cursor: pointer;
     display: inline-flex;
     width: $form-switch-width;
     height: calc($form-switch-width / 2);
     margin-top: 0;
     margin-left: $form-switch-padding-start * -1;
-    background-image: url(icon-square($form-switch-color, calc($form-switch-width / 2)));
+    background-image: var(--#{$prefix}icon-switch);
     background-position: left center;
     @include border-radius($form-switch-border-radius);
     @include transition($form-switch-transition);
@@ -32,7 +39,11 @@
     }
 
     &:focus {
-      background-image: url(icon-square($form-switch-color, calc($form-switch-width / 2))) !important;
+      background-image: var(--icon-switch) !important;
+    }
+
+    &:focus:not(&:checked) {
+      border-color: $gray-300;
     }
 
     &:checked {
@@ -44,6 +55,10 @@
   &.reverse {
     padding-right: $form-switch-padding-start;
     padding-left: 0;
+
+    .fm-label {
+      margin-right: calc($form-switch-width / 3);
+    }
 
     .fm-checkbox {
       margin-right: $form-switch-padding-start * -1;

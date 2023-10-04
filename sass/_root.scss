@@ -84,4 +84,6 @@
   --#{$prefix}svg-search: #{url(icon-search())};
   --#{$prefix}svg-delete: #{url(icon-delete())};
   --#{$prefix}svg-bell: #{url(icon-bell())};
+
+  --#{$prefix}icon-switch: #{url(icon-square($form-switch-color, calc($form-switch-width / 2)))};
 }

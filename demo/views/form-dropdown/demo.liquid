@@ -3,11 +3,11 @@
     {% for item in item.classes.states %}
       <div class="row mb-2">
         <div class="col-6 mb-3">
-          <pre class="m-0"><code>{{ item.class }}</code></pre>
+<pre class="m-0"><code>{{ item.class }}</code></pre>
         </div>
         <div class="col-6">
           <div data-controller="dropdown" class="{{ item.class | remove: '.' }}">
-            <button class="btn btn-dropdown" type="button">
+            <button type="button">
               {{ item.title }}
             </button>
             <div class="dropdown-list {% if item.title contains 'Disabled' %}disabled{% endif %}">
@@ -24,7 +24,7 @@
     {% for item in item.classes.expanded %}
       <div class="row mb-2">
         <div class="col-6 mb-3">
-          <pre class="m-0"><code>{{ item.class }}</code></pre>
+<pre class="m-0"><code>{{ item.class }}</code></pre>
         </div>
         <div class="col-6">
           <div class="{{ item.class | remove: '.' }}">

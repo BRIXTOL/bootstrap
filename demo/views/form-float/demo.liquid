@@ -4,7 +4,7 @@
     {% for item in item.classes.inputs %}
       <div class="row ac-center mb-2">
         <div class="col-6">
-          <pre class="m-1"><code>{{ item.class }}</code></pre>
+<pre class="m-1"><code>{{ item.class }}</code></pre>
         </div>
         <div class="col">
           <div class="{{ item.class | remove: '.' }} mb-3">
@@ -13,7 +13,7 @@
               id="{{ item.title | slug }}"
               placeholder="{{ item.class }}"
               type="text">
-            <label class="legend-input" for="{{ item.title | slug }}">
+            <label class="fm-label" for="{{ item.title | slug }}">
               {{ item.title }}
             </label>
           </div>
@@ -26,7 +26,7 @@
     {% for item in item.classes.select %}
       <div class="row ac-center mb-2">
         <div class="col-6">
-          <pre class="m-1"><code>{{ item.class }}</code></pre>
+<pre class="m-1"><code>{{ item.class }}</code></pre>
         </div>
 
         <div class="col my-0">
@@ -44,7 +44,7 @@
               </option>
             </select>
 
-            <label class="legend-input" for="{{ item.title | slug }}">
+            <label class="fm-label" for="{{ item.title | slug }}">
               {{ item.title }}
             </label>
           </div>
@@ -63,7 +63,7 @@
           class="fm-input"
           placeholder="Placeholder"
           type="text">
-        <label class="legend-input" for="xxx">
+        <label class="fm-label" for="xxx">
           Legend
         </label>
       </div>
@@ -83,7 +83,7 @@
       <div class="row ac-center mb-2">
         <div class="col-6">
 
-          <pre class="m-1"><code>{{ item.class }}</code></pre>
+<pre class="m-1"><code>{{ item.class }}</code></pre>
         </div>
 
         <div class="col my-0">

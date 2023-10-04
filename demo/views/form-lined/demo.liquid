@@ -7,7 +7,7 @@
     <div class="row mb-3">
       {% for item in item.classes.inputs %}
         <div class="col-5 mb-3">
-          <pre class="m-0 pl-4"><code>{{ item.class }}</code></pre>
+<pre class="m-0 pl-4"><code>{{ item.class }}</code></pre>
         </div>
         <div class="col-5 pl-5">
           <input
@@ -26,7 +26,7 @@
     <div class="row mb-3">
       {% for item in item.classes.selects %}
         <div class="col-5 mb-3">
-          <pre class="m-0 pl-4""><code>{{ item.class }}</code></pre>
+<pre class="m-0 pl-4""><code>{{ item.class }}</code></pre>
         </div>
         <div class="col-5 pl-5">
           <select class="{{ item.class | remove: '.' }}" id="{{ item.title | slug }}">
@@ -57,7 +57,7 @@
         <div class="col-5 pl-5 mb-3">
 
             <div class="{{ item.class | remove: '.' }}" data-controller="dropdown">
-              <button class="btn" type="button" data-action="dropdown#toggle"
+              <button type="button" data-action="dropdown#toggle"
               data-dropdown-target="button">
                 {{ item.title }}
               </button>

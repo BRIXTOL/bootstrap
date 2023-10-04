@@ -52,7 +52,7 @@
   $state,
   $color,
   $icon,
-  $focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($color, $input-btn-focus-color-opacity)
+  $focus-box-shadow: 0 // 0 0 $input-btn-focus-blur $input-focus-width rgba($color, $input-btn-focus-color-opacity)
 ) {
 
   .#{$state}-fb {
@@ -78,13 +78,10 @@
         border-color: $black;
       }
 
-      > .btn {
-        background-image: none;
+      > button {
         border-color: $color;
 
         @if $enable-validation-icons {
-          background-repeat: no-repeat;
-          background-position: right $input-height-inner-quarter center;
           background-image: url($icon);
           background-size: $input-height-inner-half $input-height-inner-half;
         }
@@ -96,16 +93,16 @@
         }
 
         &:hover {
-          background-image: url(icon-plus());
+          background-image: var(--#{$prefix}svg-plus);
           border-color: $black;
         }
       }
 
-      .fm-lined & {
+      &.fm-lined  {
         box-shadow: none;
         border-color: $color;
 
-        ~ .btn {
+        ~ button {
           border-color: $color;
           color: $body-color;
         }
@@ -194,7 +191,7 @@
           padding-right: $input-height-inner;
           background-image: url($icon);
           background-position: right 1px center, $form-select-feedback-icon-position;
-          background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+          background-size: 18px;
         }
       }
 
@@ -261,8 +258,6 @@
         }
       }
     }
-
-
 
   }
 }

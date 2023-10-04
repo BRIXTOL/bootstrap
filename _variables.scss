@@ -599,7 +599,7 @@ $input-padding-x-sm:                            .5rem;
 
 $input-font-family:                             $font-family-base;
 $input-font-weight:                             $font-weight-base;
-$input-font-size:                               $font-size-base * 0.925;
+$input-font-size:                               $font-size-base * 0.875;
 $input-font-size-sm:                            $font-size-sm;
 $input-font-size-lg:                            $font-size-lg;
 $input-line-height:                             $line-height-base;
@@ -800,7 +800,7 @@ $form-float-input-padding-b:           $form-float-input-padding-t;
 $form-float-label-opacity:             .85;
 $form-float-label-transform:            scale(.55) translateY(-.5rem) translateX(.5rem);
 $form-float-transition:                opacity .1s ease-in-out, transform .1s ease-in-out;
-$form-float-legend-transform:           scale(.75) translateY(-50%) translateX(0);
+$form-float-legend-transform:           scale(.65) translateY(-50%) translateX(0);
 
 /* -------------------------------------------- */
 /* FORM VALIDATION                              */
@@ -813,7 +813,6 @@ $form-feedback-valid-color:              $green;
 $form-feedback-invalid-color:            $red;
 $form-feedback-icon-valid-color:         $form-feedback-valid-color;
 $form-feedback-icon-invalid-color:       $form-feedback-invalid-color;
-
 $form-validation-states: (
   "valid": (
     "color": $form-feedback-valid-color,

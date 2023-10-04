@@ -8,19 +8,19 @@
   > .btn-dropdown,
   > .fm-input,
   > .fm-select, {
-    height: $form-float-height;
-    line-height: $form-float-line-height;
+    //height: $form-float-height;
+
   }
 
   .fm-dropdown {
     .fm-options > .fm-option > label {
-      height: $form-float-height;
-      line-height: $form-float-line-height;
+   //   height: $form-float-height;
+     // line-height: $form-float-line-height;
     }
   }
 
   + button {
-    height: $form-float-height;
+   // height: $form-float-height;
     padding: inherit;
   }
 
@@ -31,8 +31,7 @@
     left: 0;
     width: 100%;
     height: 100%; // allow textareas
-    padding: $form-float-padding-y $form-float-padding-x;
-    font-size: $input-font-size-sm;
+    font-size: $input-font-size;
     color: $input-placeholder-color;
     overflow: hidden;
     text-align: start;
@@ -82,7 +81,7 @@
 
 
   > .fm-input {
-    padding: $form-float-padding-y $form-float-padding-x;
+  //  padding: $form-float-padding-y $form-float-padding-x;
 
     &::placeholder {
       color: transparent;
@@ -90,13 +89,13 @@
 
     &:focus,
     &:not(:placeholder-shown) {
-      padding-top: $form-float-input-padding-t;
-      padding-bottom: $form-float-input-padding-b;
+      // padding-top: $form-float-input-padding-t;
+      // padding-bottom: $form-float-input-padding-b;
     }
     // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
     &:-webkit-autofill {
-      padding-top: $form-float-input-padding-t;
-      padding-bottom: $form-float-input-padding-b;
+      // padding-top: $form-float-input-padding-t;
+      // padding-bottom: $form-float-input-padding-b;
     }
   }
 

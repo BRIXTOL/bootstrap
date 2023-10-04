@@ -15,28 +15,13 @@
     > button {
       color: $input-color;
       border-color: $input-color;
-
-      &::before {
-        background-color: $input-color;
-        mask: var(--#{$prefix}svg-minus);
-        -webkit-mask: var(--#{$prefix}svg-minus);
-      }
+      background-image: var(--#{$prefix}svg-minus);
 
       + fieldset {
         display: block;
       }
     }
 
-  }
-
-  &.is-valid > button,
-  &.is-invalid > button {
-
-    &::before {
-      background-color: unset;
-      mask: unset;
-      -webkit-mask: unset;
-    }
   }
 
   > button {
@@ -50,21 +35,12 @@
     color: $input-placeholder-color;
     background-color: $form-select-bg;
     border: $form-select-border-width solid $form-select-border-color;
-    @include transition(border-color .25s ease-in-out, color .25s ease-in-out);
+    background-repeat: no-repeat;
+    background-position: right $input-height-inner-quarter center;
+    background-image: url(icon-plus($input-placeholder-color));
+    background-size: 18px;
 
-    &::before {
-      content: '';
-      position: absolute;
-      display: block;
-      top: add($input-padding-y, $form-select-border-width);
-      right: subtract($form-select-padding-x, $form-select-border-width * 2);
-      height: $form-dropdown-indicator-size;
-      width: $form-dropdown-indicator-size;
-      pointer-events: none;
-      background-color: $input-placeholder-color;
-      mask: var(--#{$prefix}svg-plus);
-      -webkit-mask: var(--#{$prefix}svg-plus);
-    }
+    @include transition(border-color .25s ease-in-out, color .25s ease-in-out);
 
     + fieldset {
       display: none;
@@ -83,10 +59,10 @@
     &:hover {
       color: $input-color;
       border-color: $input-color;
+    }
 
-      &::before:not(.is-valid):not(.is-invalid)  {
-        background-color: $input-color;
-      }
+    &:hover:not(:focus) {
+      background-image: var(--#{$prefix}svg-plus);
     }
 
     &:focus {
@@ -113,17 +89,29 @@
     color: $input-color;
   }
 
-  &.fm-lined > button + fieldset {
-    border: 0;
-    border-bottom: $border-width solid $black;
-  }
 
   &.fm-lined > button,
   &.fm-lined > button + fieldset {
     border: 0;
     border-bottom: $border-width solid $black;
-  }
+    padding-right: 0;
+    padding-left: 0;
+    background-position: right center;
 
+    > label,
+    > label + label {
+      padding-right: 0;
+      padding-left: 0;
+
+
+      &:hover {
+        background-color: inherit;
+        color: $input-placeholder-color;
+        cursor: pointer;
+      }
+
+    }
+  }
 
   > button + fieldset {
 

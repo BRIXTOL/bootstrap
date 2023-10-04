@@ -126,7 +126,7 @@
     },
     {
       "title": "Form Lined",
-      "expanded": false,
+      "expanded": true,
       "description": "Annotating form classes with <code>fm-lined</code> will result in a bottom line based style to form inputs, selects and dropdowns. This lined style is used as an UI aesthetic in the Brixtol Textiles webshop.",
       "classes": {
         "inputs": [
@@ -318,7 +318,7 @@
     },
     {
       "title": "Form Switch",
-      "expanded": false,
+      "expanded": true,
       "description": "The form switch toggles are similar to Bootstraps official logic but have some minor refinments applied. The switches are forced as rectangular shapes and also offer additional sizing logic.",
       "classes": {
         "inputs": [
