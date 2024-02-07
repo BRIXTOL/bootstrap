@@ -1,6 +1,7 @@
 import stickybits from 'stickybits';
 import { Application } from '@hotwired/stimulus';
 import { Accordion } from './views/accordion/controller';
+import { Collapse } from './views/collapse/controller';
 import { Modal } from './views/modal/controller';
 import { Dropdown } from './views/dropdown/controller';
 import { Carousel } from './views/carousel/controller';
@@ -15,7 +16,8 @@ function onInit () {
     Accordion,
     Modal,
     Dropdown,
-    Carousel
+    Carousel,
+    Collapse
   };
 
   for (const id in controllers) {

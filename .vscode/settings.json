@@ -13,15 +13,14 @@
   "somesass.scannerDepth": 30,
   "somesass.suggestAllFromOpenDocument": true,
   "somesass.suggestFunctionsInStringContextAfterSymbols": " (+-*%'",
+  "somesass.suggestionStyle": "all",
   "somesass.scannerExclude": [
     "**/.git/**",
     "**/node_modules/**",
     "**/bower_components/**",
-    "**/strap.scss/**",
-    "**/sass/bootstrap/**"
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll.stylelint": true
+    "source.fixAll.stylelint": "explicit"
   },
   "[liquid]": {
     "editor.defaultFormatter": "sissel.shopify-liquid",

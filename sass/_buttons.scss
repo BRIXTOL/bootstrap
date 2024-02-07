@@ -23,14 +23,15 @@
 
   &:hover {
     color: $hover-color;
-    @include gradient-bg($hover-background);
+    background-color: $hover-background;
     border-color: $hover-border;
   }
 
   &:focus {
     color: $hover-color;
-    @include gradient-bg($hover-background);
     border-color: $hover-border;
+    background-color: $hover-background;
+
     @if $enable-shadows {
       @include box-shadow(
         $btn-box-shadow,
@@ -121,9 +122,22 @@
   @include border-radius($border-radius, 0);
 }
 
+
+/// Button reset
+///
+%button-reset {
+  border: none;
+  background-color: transparent;
+  padding: initial;
+  text-align: initial;
+  cursor: if($enable-button-pointers, pointer, null);
+  user-select: none;
+}
+
 /* -------------------------------------------- */
 /* BUTTONS                                      */
 /* -------------------------------------------- */
+
 
 .btn {
   display: inline-block;

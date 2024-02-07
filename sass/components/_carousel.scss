@@ -76,21 +76,26 @@
 
       @each $breakpoint in map-keys($slide) {
 
-        @debug type-of($breakpoint);
         @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
 
-          $setting: map-get($breakpoint, $slide);
+          $setting: map-get($slide, $breakpoint);
 
           @if type-of($setting) == "number" {
             flex: 0 0 calc(100% / $setting);
           } @else {
             @each $option in $setting {
 
-              $m: map-get(margin, $setting);
-              $c: calc(100% - $m);
+              $m: map-get($setting, margin);
 
-              flex: 0 0 calc(percentage($c) / map-get(slides, $setting));
-              margin-right: map-get(margin, $setting)
+              @if $m != 0 {
+                $c: calc(100% - $m);
+                flex: 0 0 calc($c / $m);
+              } @else {
+                flex: 0 0 calc(100% / map-get($setting, slides));
+              }
+
+
+              margin-right: $m;
             }
           }
 

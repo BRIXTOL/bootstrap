@@ -22,6 +22,27 @@
       }
     },
     {
+      "title": "Collapse",
+      "expanded": true,
+      "description": "Collapsible list using <a href=\"https://github.com/panoply/relapse\" class=\"underline\">Relapse</a> to provide functionality. The classes exported do not use the default <code>.relapse</code> class name, but instead use <code>.collapse</code>. The styles are inherited from vairous utilities and can be customized.",
+      "classes": {
+        "inputs": [
+          {
+            "title": "Input (base)",
+            "class": ".accordion"
+          },
+          {
+            "title": "Valid",
+            "class": ".fm-input .is-valid"
+          },
+          {
+            "title": "Invalid",
+            "class": ".fm-input .is-invalid"
+          }
+        ]
+      }
+    },
+    {
       "title": "Accordion",
       "expanded": true,
       "description": "Accordion collapse component leverages <a href=\"https://github.com/panoply/relapse\" class=\"underline\">Relapse</a> to provide functionality. The classes exported do not use the default <code>.relapse</code> class name, but instead use <code>.accordion</code>. The styles are inherited from vairous utilities and can be customized.",

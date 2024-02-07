@@ -7,14 +7,51 @@
         </div>
         <div class="col-6">
           <div data-controller="dropdown" class="{{ item.class | remove: '.' }}">
-            <button type="button">
+            <button
+              type="button"
+              data-action="dropdown#toggle"
+              data-dropdown-target="button">
               {{ item.title }}
             </button>
-            <div class="dropdown-list {% if item.title contains 'Disabled' %}disabled{% endif %}">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
-            </div>
+            <fieldset data-dropdown-target="collapse">
+
+              <label aria-label="Badge" for="1">
+                One
+              </label>
+              <input id="1" type="radio">
+
+              <label
+                aria-label="Selected"
+                class="selected"
+                for="2">
+                Two
+              </label>
+              <input id="2" type="radio">
+
+              <label aria-label="Badge" for="3">
+                Three
+              </label>
+              <input id="3" type="radio">
+
+              <label aria-label="Badge" for="4">
+                Four
+              </label>
+              <input id="4" type="radio">
+
+              <label
+                aria-label="Disabled"
+                class="fm-option disabled"
+                for="5">
+                Five
+              </label>
+              <input id="5" type="radio">
+
+              <label aria-label="Badge" for="6">
+                Six
+              </label>
+              <input id="6" type="radio">
+
+            </fieldset>
           </div>
         </div>
       </div>

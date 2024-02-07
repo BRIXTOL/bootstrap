@@ -407,7 +407,7 @@ $hr-opacity:                  .25;
 /* -------------------------------------------- */
 
 $aspect-ratio-bg-svg:              url(icon-image($gray-600, 0.7));
-$aspect-ratio-bg-color:            $gray-100;
+$aspect-ratio-bg-color:            $gray-300;
 $aspect-ratio-bg-size:             20%;
 $aspect-ratios: (
   "3000x2250": calc(3000 / 2250)
@@ -538,8 +538,8 @@ $accordion-border-width:            $border-width;
 $accordion-border-color:            $border-color;
 $accordion-btn-opened:              $gray-700;
 $accordion-padding:                 50px;
-$accordion-transition-height:       225ms;
-$accordion-transition-opacity:      200ms;
+$accordion-transition-height:       250ms;
+$accordion-transition-display:      200ms;
 $accordion-transition-easing:       ease-in-out;
 $accordion-icon-padding-x:          .5rem;
 
@@ -649,21 +649,34 @@ $form-select-bg-size:                     22px; // In pixels because image dimen
 $form-select-indicator-color:             $input-placeholder-color;
 $form-select-indicator:                   url(icon-arrow($form-select-indicator-color));
 
-$form-dropdown-indicator:                 var(--#{$prefix}svg-plus);
-$form-dropdown-indicator-size:            20px; // In pixels because image dimensions
+/* -------------------------------------------- */
+/* FORM SELECT FEEDBACK                         */
+/* -------------------------------------------- */
 
 $form-select-feedback-icon-padding-end:   $form-select-padding-x * 2 + $form-select-indicator-padding;
 $form-select-feedback-icon-position:      center right $form-select-indicator-padding;
 $form-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half;
+
+/* -------------------------------------------- */
+/* FORM SELECT BORDER                           */
+/* -------------------------------------------- */
 
 $form-select-border-width:                $input-border-width;
 $form-select-border-color:                $input-border-color;
 $form-select-border-radius:               $input-border-radius;
 $form-select-box-shadow:                  $box-shadow-inset;
 
+/* -------------------------------------------- */
+/* FORM SELECT FOCUS                            */
+/* -------------------------------------------- */
+
 $form-select-focus-border-color:          $input-focus-border-color;
 $form-select-focus-width:                 $input-focus-width;
 $form-select-focus-box-shadow:            0 0 0 $form-select-focus-width $input-btn-focus-color;
+
+/* -------------------------------------------- */
+/* FORM SELECT SIZING                           */
+/* -------------------------------------------- */
 
 $form-select-padding-y-sm:                $input-padding-y-sm;
 $form-select-padding-x-sm:                $input-padding-x-sm;
@@ -676,6 +689,13 @@ $form-select-font-size-lg:                $input-font-size-lg;
 $form-select-border-radius-lg:            $input-border-radius-lg;
 
 $form-select-transition:                  $input-transition;
+
+/* -------------------------------------------- */
+/* FORM DROPDOWN                                */
+/* -------------------------------------------- */
+
+$form-dropdown-indicator:                 var(--#{$prefix}svg-plus);
+$form-dropdown-indicator-size:            20px; // In pixels because image dimensions
 
 /* -------------------------------------------- */
 /* FORM COLOR PICKER                            */

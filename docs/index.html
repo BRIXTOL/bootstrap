@@ -491,6 +491,16 @@
                     <li>
                       <a
                         class="d-block mb-1 upcase anchor"
+                        href="#collapse"
+                        data-href="collapse"
+                        id="Collapse">
+                        Collapse
+                      </a>
+                    </li>
+                  
+                    <li>
+                      <a
+                        class="d-block mb-1 upcase anchor"
                         href="#accordion"
                         data-href="accordion"
                         id="Accordion">
@@ -4207,9 +4217,9 @@
           $aspect-ratio-bg-svg: url('*');
         </code>
         </pre>
-        <div class="ratio ratio-3000x2250">
+        <picture class="ratio ratio-3000x2250">
           <img src="">
-        </div>
+        </picture>
       </div>
     </div>
 
@@ -4244,7 +4254,7 @@
       <code>
         calc()
       </code>
-      function which 
+      function which
       will be digested by the
       <code>
         .ratio
@@ -7291,14 +7301,51 @@
         </div>
         <div class="col-6">
           <div data-controller="dropdown" class="fm-dropdown">
-            <button type="button">
+            <button
+              type="button"
+              data-action="dropdown#toggle"
+              data-dropdown-target="button">
               Dropdown Collapse
             </button>
-            <div class="dropdown-list ">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
-            </div>
+            <fieldset data-dropdown-target="collapse">
+
+              <label aria-label="Badge" for="1">
+                One
+              </label>
+              <input id="1" type="radio">
+
+              <label
+                aria-label="Selected"
+                class="selected"
+                for="2">
+                Two
+              </label>
+              <input id="2" type="radio">
+
+              <label aria-label="Badge" for="3">
+                Three
+              </label>
+              <input id="3" type="radio">
+
+              <label aria-label="Badge" for="4">
+                Four
+              </label>
+              <input id="4" type="radio">
+
+              <label
+                aria-label="Disabled"
+                class="fm-option disabled"
+                for="5">
+                Five
+              </label>
+              <input id="5" type="radio">
+
+              <label aria-label="Badge" for="6">
+                Six
+              </label>
+              <input id="6" type="radio">
+
+            </fieldset>
           </div>
         </div>
       </div>
@@ -7309,14 +7356,51 @@
         </div>
         <div class="col-6">
           <div data-controller="dropdown" class="fm-dropdown disabled">
-            <button type="button">
+            <button
+              type="button"
+              data-action="dropdown#toggle"
+              data-dropdown-target="button">
               Dropdown Disabled
             </button>
-            <div class="dropdown-list disabled">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
-            </div>
+            <fieldset data-dropdown-target="collapse">
+
+              <label aria-label="Badge" for="1">
+                One
+              </label>
+              <input id="1" type="radio">
+
+              <label
+                aria-label="Selected"
+                class="selected"
+                for="2">
+                Two
+              </label>
+              <input id="2" type="radio">
+
+              <label aria-label="Badge" for="3">
+                Three
+              </label>
+              <input id="3" type="radio">
+
+              <label aria-label="Badge" for="4">
+                Four
+              </label>
+              <input id="4" type="radio">
+
+              <label
+                aria-label="Disabled"
+                class="fm-option disabled"
+                for="5">
+                Five
+              </label>
+              <input id="5" type="radio">
+
+              <label aria-label="Badge" for="6">
+                Six
+              </label>
+              <input id="6" type="radio">
+
+            </fieldset>
           </div>
         </div>
       </div>
@@ -7327,14 +7411,51 @@
         </div>
         <div class="col-6">
           <div data-controller="dropdown" class="fm-dropdown selected">
-            <button type="button">
+            <button
+              type="button"
+              data-action="dropdown#toggle"
+              data-dropdown-target="button">
               Dropdown Selected
             </button>
-            <div class="dropdown-list ">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
-            </div>
+            <fieldset data-dropdown-target="collapse">
+
+              <label aria-label="Badge" for="1">
+                One
+              </label>
+              <input id="1" type="radio">
+
+              <label
+                aria-label="Selected"
+                class="selected"
+                for="2">
+                Two
+              </label>
+              <input id="2" type="radio">
+
+              <label aria-label="Badge" for="3">
+                Three
+              </label>
+              <input id="3" type="radio">
+
+              <label aria-label="Badge" for="4">
+                Four
+              </label>
+              <input id="4" type="radio">
+
+              <label
+                aria-label="Disabled"
+                class="fm-option disabled"
+                for="5">
+                Five
+              </label>
+              <input id="5" type="radio">
+
+              <label aria-label="Badge" for="6">
+                Six
+              </label>
+              <input id="6" type="radio">
+
+            </fieldset>
           </div>
         </div>
       </div>
@@ -7345,14 +7466,51 @@
         </div>
         <div class="col-6">
           <div data-controller="dropdown" class="fm-dropdown is-valid">
-            <button type="button">
+            <button
+              type="button"
+              data-action="dropdown#toggle"
+              data-dropdown-target="button">
               Dropdown Valid
             </button>
-            <div class="dropdown-list ">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
-            </div>
+            <fieldset data-dropdown-target="collapse">
+
+              <label aria-label="Badge" for="1">
+                One
+              </label>
+              <input id="1" type="radio">
+
+              <label
+                aria-label="Selected"
+                class="selected"
+                for="2">
+                Two
+              </label>
+              <input id="2" type="radio">
+
+              <label aria-label="Badge" for="3">
+                Three
+              </label>
+              <input id="3" type="radio">
+
+              <label aria-label="Badge" for="4">
+                Four
+              </label>
+              <input id="4" type="radio">
+
+              <label
+                aria-label="Disabled"
+                class="fm-option disabled"
+                for="5">
+                Five
+              </label>
+              <input id="5" type="radio">
+
+              <label aria-label="Badge" for="6">
+                Six
+              </label>
+              <input id="6" type="radio">
+
+            </fieldset>
           </div>
         </div>
       </div>
@@ -7363,14 +7521,51 @@
         </div>
         <div class="col-6">
           <div data-controller="dropdown" class="fm-dropdown is-invalid">
-            <button type="button">
+            <button
+              type="button"
+              data-action="dropdown#toggle"
+              data-dropdown-target="button">
               Dropdown Invalid
             </button>
-            <div class="dropdown-list ">
-              <ul>
-                <li class="fm-option"></li>
-              </ul>
-            </div>
+            <fieldset data-dropdown-target="collapse">
+
+              <label aria-label="Badge" for="1">
+                One
+              </label>
+              <input id="1" type="radio">
+
+              <label
+                aria-label="Selected"
+                class="selected"
+                for="2">
+                Two
+              </label>
+              <input id="2" type="radio">
+
+              <label aria-label="Badge" for="3">
+                Three
+              </label>
+              <input id="3" type="radio">
+
+              <label aria-label="Badge" for="4">
+                Four
+              </label>
+              <input id="4" type="radio">
+
+              <label
+                aria-label="Disabled"
+                class="fm-option disabled"
+                for="5">
+                Five
+              </label>
+              <input id="5" type="radio">
+
+              <label aria-label="Badge" for="6">
+                Six
+              </label>
+              <input id="6" type="radio">
+
+            </fieldset>
           </div>
         </div>
       </div>
@@ -10183,6 +10378,280 @@
               
 
               <div
+                id="collapse"
+                class="row jc-between px-4 mt-5"
+                data-ref="5">
+                <div class="col-auto">
+                  <a href="#collapse" class="h4 d-block fw-bold fc-dark-gray">
+                    Collapse
+                  </a>
+                  <code class="lower fw-bold fs-sm fc-green mt-2">responsive</code>
+                </div>
+                <div class="col-auto mt-2">
+                  
+                </div>
+              </div>
+
+              
+
+                <div class="d-block px-4 mt-4 mb-4">
+                  Collapsible list using <a href="https://github.com/panoply/relapse" class="underline">Relapse</a> to provide functionality. The classes exported do not use the default <code>.relapse</code> class name, but instead use <code>.collapse</code>. The styles are inherited from vairous utilities and can be customized.
+                </div>
+
+              
+
+              
+
+                
+
+                
+                  
+                
+
+                <div
+                  class="accordion px-4 lined"
+                  id="collapse-xx"
+                  data-controller="accordion"
+                  data-accordion-multiple-value="true"
+                  data-accordion-persist-value="false">
+
+                  <button type="button" class="accordion-btn fc-gray upper fs-md fw-bold py-3 px-0 initial bt-0">
+
+                    demo
+
+                  </button>
+
+                  <div class="accordion-fold bg-white">
+                    <div class="container-fluid px-0 py-4">
+                      <div class="row mb-4" style="height: 600px;">
+
+  <div class="col-6">
+    <h6 class="mb-3 fw-bold">
+      Simple Relapse
+    </h6>
+
+    <div class="row ai-center mb-2">
+      <div class="col-5">
+
+        <!-- Simple relapse -->
+        <div class="collapse" data-controller="collapse">
+
+          <!-- PANEL 1 -->
+
+          <button class="collapse-btn" type="button">
+            List One
+          </button>
+          <ul class="collapse-list">
+            <li>
+              Link 1
+            </li>
+            <li>
+              Link 2
+            </li>
+            <li
+              data-relapse="submenu"
+              data-relapse-persist="false"
+              data-relapse-multiple="true">
+              <button class="collapse-btn" type="button">
+                Link 3
+              </button>
+              <ul class="collapse-list">
+                <li>
+                  Submenu 1
+                </li>
+                <li>
+                  Submenu 2
+                </li>
+                <li>
+                  Submenu 3
+                </li>
+                <li>
+                  Submenu 4
+                </li>
+                <li>
+                  Submenu 5
+                </li>
+              </ul>
+            </li>
+            <li>
+              Link 4
+            </li>
+            <li>
+              Link 5
+            </li>
+          </ul>
+
+          <!-- PANEL 2 -->
+          <button class="collapse-btn" type="button">
+            List Two
+          </button>
+          <ul class="collapse-list">
+            <li>
+              Link 1
+            </li>
+            <li>
+              Link 2
+            </li>
+            <li>
+              Link 3
+            </li>
+            <li>
+              Link 4
+            </li>
+            <li>
+              Link 5
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+                    </div>
+                  </div>
+                </div>
+
+              
+
+                
+
+                
+                  
+                
+
+                <div
+                  class="accordion px-4 lined"
+                  id="collapse-xx"
+                  data-controller="accordion"
+                  data-accordion-multiple-value="true"
+                  data-accordion-persist-value="false">
+
+                  <button type="button" class="accordion-btn fc-gray upper fs-md fw-bold py-3 px-0 ">
+
+                    html
+
+                  </button>
+
+                  <div class="accordion-fold bg-white">
+                    <div class="container-fluid px-0 py-4">
+                      <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Simple Accordion --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+  <span class="token comment">&lt;!-- PANEL 1 --></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-btn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Opens Fold #<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-fold<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    This is Fold #1
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+  <span class="token comment">&lt;!-- PANEL 2 --></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>..<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-btn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Opens Fold #2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-fold<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    This is Fold #1
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+  <span class="token comment">&lt;!-- PANEL 3 --></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-btn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Opens Fold #3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-fold<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    This is Fold #1
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+
+                    </div>
+                  </div>
+                </div>
+
+              
+
+                
+
+                
+                  
+                
+
+                <div
+                  class="accordion px-4 lined"
+                  id="collapse-xx"
+                  data-controller="accordion"
+                  data-accordion-multiple-value="true"
+                  data-accordion-persist-value="false">
+
+                  <button type="button" class="accordion-btn fc-gray upper fs-md fw-bold py-3 px-0 bb">
+
+                    scss
+
+                  </button>
+
+                  <div class="accordion-fold bg-white">
+                    <div class="container-fluid px-0 py-4">
+                      <h5 class="fw-bold fc-gray d-flex ai-center jc-between py-3">
+
+  SCSS EXAMPLES
+
+  <code class="lower">
+    collapse
+  </code>
+
+</h5>
+
+
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// SPACING CONTROL</span>
+<span class="token comment">//</span>
+<span class="token comment">// This can typically be ignored and not adjusted.</span>
+<span class="token comment">//</span>
+<span class="token property"><span class="token variable">$form-check-input-width</span></span><span class="token punctuation">:</span>                        1rem<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-min-height</span></span><span class="token punctuation">:</span>                         <span class="token variable">$font-size-base</span> <span class="token operator">*</span> <span class="token variable">$line-height-base</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-padding-start</span></span><span class="token punctuation">:</span>                      <span class="token variable">$form-check-input-width</span> <span class="token operator">+</span> .5rem<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-margin-bottom</span></span><span class="token punctuation">:</span>                      .125rem<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-label-color</span></span><span class="token punctuation">:</span>                        <span class="token null keyword">null</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-label-cursor</span></span><span class="token punctuation">:</span>                       pointer<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-label-spacing</span></span><span class="token punctuation">:</span>                      .75rem<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-transition</span></span><span class="token punctuation">:</span>                         <span class="token null keyword">null</span><span class="token punctuation">;</span>
+
+<span class="token property"><span class="token variable">$form-check-input-active-filter</span></span><span class="token punctuation">:</span>                <span class="token variable">$body-bg</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-input-bg</span></span><span class="token punctuation">:</span>                           <span class="token variable">$input-bg</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-input-border</span></span><span class="token punctuation">:</span>                       <span class="token variable">$border-width</span> <span class="token variable">$border-style</span> <span class="token variable">$input-border-color</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-input-border-radius</span></span><span class="token punctuation">:</span>                0<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-radio-border-radius</span></span><span class="token punctuation">:</span>                0<span class="token punctuation">;</span>
+
+<span class="token comment">// FOCUS CONTROL</span>
+<span class="token comment">//</span>
+<span class="token comment">// This will control the focus state of a checkmark</span>
+<span class="token comment">//</span>
+<span class="token property"><span class="token variable">$form-check-input-focus-border</span></span><span class="token punctuation">:</span>                 <span class="token variable">$black</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-input-focus-box-shadow</span></span><span class="token punctuation">:</span>             none<span class="token punctuation">;</span>
+
+<span class="token comment">// SVG ICON CONTROL</span>
+<span class="token comment">//</span>
+<span class="token comment">// This is used for the styling of the cross icon</span>
+<span class="token comment">//</span>
+<span class="token property"><span class="token variable">$form-check-input-checked-color</span></span><span class="token punctuation">:</span>                <span class="token variable">$black</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-input-checked-bg-color</span></span><span class="token punctuation">:</span>             <span class="token variable">$transparent</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-input-checked-border-color</span></span><span class="token punctuation">:</span>         <span class="token variable">$black</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-input-checked-bg-image</span></span><span class="token punctuation">:</span>             <span class="token function">icon-check</span><span class="token punctuation">(</span><span class="token variable">$form-check-input-checked-color</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token property"><span class="token variable">$form-check-input-disabled-opacity</span></span><span class="token punctuation">:</span>             .5<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-label-disabled-opacity</span></span><span class="token punctuation">:</span>             <span class="token variable">$form-check-input-disabled-opacity</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-btn-check-disabled-opacity</span></span><span class="token punctuation">:</span>         <span class="token variable">$btn-disabled-opacity</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$form-check-inline-margin-end</span></span><span class="token punctuation">:</span>                  1rem<span class="token punctuation">;</span></code></pre>
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+              
+            
+
+              
+
+              <div
                 id="accordion"
                 class="row jc-between px-4 mt-5"
                 data-ref="5">
@@ -10238,9 +10707,11 @@
       <div class="col-12">
 
         <!-- Simple relapse -->
-        <div class="accordion"
-          data-relapse-multiple="false"
-          data-relapse-persist="true">
+        <div
+          class="accordion"
+          data-controller="accordion"
+          data-accordion-multiple-value="false"
+          data-accordion-persist-value="true">
 
           <!-- PANEL 1 -->
 
@@ -10288,9 +10759,11 @@
       <div class="col-12">
 
         <!-- Simple relapse -->
-        <div class="accordion"
-          data-relapse-multiple="false"
-          data-relapse-persist="false">
+        <div
+          class="accordion"
+          data-controller="accordion"
+          data-accordion-multiple-value="false"
+          data-accordion-persist-value="true">
 
           <!-- PANEL 1 -->
 
@@ -10339,10 +10812,11 @@
       <div class="col-12">
 
         <!-- Simple relapse -->
-        <div id="initial"
+        <div
           class="accordion"
-          data-relapse-multiple="false"
-          data-relapse-persist="false">
+          data-controller="accordion"
+          data-accordion-multiple-value="false"
+          data-accordion-persist-value="true">
 
           <!-- PANEL 1 -->
 

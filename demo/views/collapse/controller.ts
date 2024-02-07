@@ -5,22 +5,21 @@ import relapse, { Scope, Options } from 'relapse';
 /* CLASS                                        */
 /* -------------------------------------------- */
 
-export class Accordion extends Controller<HTMLElement> {
-
-  /**
-   * Stimulus: Values
-   */
-  static targets = [
-    'viewport'
-  ];
+export class Collapse extends Controller<HTMLElement> {
 
   /**
    * Stimulus: Values
    */
   static values = {
-    multiple: Boolean,
-    persist: Boolean,
-    id: String
+    id: String,
+    multiple: {
+      type: Boolean,
+      default: true
+    },
+    persist: {
+      type: Boolean,
+      default: false
+    }
   };
 
   /**
@@ -50,7 +49,6 @@ export class Accordion extends Controller<HTMLElement> {
   initialize () {
 
     this.options = {
-      schema: 'data-accordion',
       duration: NaN
     };
 
@@ -75,7 +73,7 @@ export class Accordion extends Controller<HTMLElement> {
    */
   connect (): void {
 
-    this.accordion = relapse(this.element, this.options);
+    this.collapse = relapse(this.element, this.options);
 
   }
 
@@ -84,7 +82,7 @@ export class Accordion extends Controller<HTMLElement> {
    */
   disconnect () {
 
-    this.accordion.destroy();
+    this.collapse.destroy();
 
   }
 
@@ -95,7 +93,7 @@ export class Accordion extends Controller<HTMLElement> {
    */
   open ({ target: { dataset: { index } } }) {
 
-    return this.accordion.folds[parseInt(index)].open();
+    return this.collapse.folds[parseInt(index)].open();
 
   }
 
@@ -106,7 +104,7 @@ export class Accordion extends Controller<HTMLElement> {
    */
   close ({ target: { dataset: { index } } }) {
 
-    return this.accordion.folds[parseInt(index)].close();
+    return this.collapse.folds[parseInt(index)].close();
 
   }
 
@@ -117,7 +115,7 @@ export class Accordion extends Controller<HTMLElement> {
   /**
    * Relapse: Instance scope
    */
-  accordion: Scope;
+  collapse: Scope;
   /**
    * Relapse: Options
    */

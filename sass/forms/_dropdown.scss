@@ -28,7 +28,7 @@
     width: 100%;
     text-align: left;
     z-index: 2;
-    padding: $form-select-padding-y 0 $form-select-padding-y  $form-select-padding-x;
+    padding: $form-select-padding-y 0 $form-select-padding-y $form-select-padding-x;
     font-family: $form-select-font-family;
     font-weight: $form-select-font-weight;
     line-height: $form-select-line-height;
@@ -48,7 +48,7 @@
       margin: 0;
       position: absolute;
       left: 0;
-      overflow-y: scroll;
+      overflow-y: auto;
       background-color: $body-bg;
       border-left: $border-width solid $black;
       border-right: $border-width solid $black;
