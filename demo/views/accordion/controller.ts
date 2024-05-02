@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import relapse, { Scope, Options } from 'relapse';
+import relapse, { Options, Relapse } from 'relapse';
 
 /* -------------------------------------------- */
 /* CLASS                                        */
@@ -37,8 +37,6 @@ export class Accordion extends Controller<HTMLElement> {
   get hasClasses () {
     return (
       this.hasDisabledClass ||
-      this.hasFocusedClass ||
-      this.hasInitialClass ||
       this.hasOpenedClass ||
       this.hasExpandedClass
     );
@@ -51,7 +49,6 @@ export class Accordion extends Controller<HTMLElement> {
 
     this.options = {
       schema: 'data-accordion',
-      duration: NaN
     };
 
     if (this.hasMultipleValue) this.options.multiple = this.multipleValue;
@@ -61,8 +58,6 @@ export class Accordion extends Controller<HTMLElement> {
 
       this.options.classes = {};
 
-      if (this.hasFocusedClass) this.options.classes.focused = this.focusedClass;
-      if (this.hasInitialClass) this.options.classes.initial = this.initialClass;
       if (this.hasExpandedClass) this.options.classes.expanded = this.expandedClass;
       if (this.hasDisabledClass) this.options.classes.disabled = this.disabledClass;
       if (this.hasOpenedClass) this.options.classes.opened = this.openedClass;
@@ -117,7 +112,7 @@ export class Accordion extends Controller<HTMLElement> {
   /**
    * Relapse: Instance scope
    */
-  accordion: Scope;
+  accordion: Relapse
   /**
    * Relapse: Options
    */
@@ -161,22 +156,6 @@ export class Accordion extends Controller<HTMLElement> {
     * Stimulus: Whether or not `disabledClass` was passed
     */
   hasDisabledClass: boolean;
-  /**
-    * Stimulus: The `focused` to be applied to relapse
-    */
-  focusedClass: string;
-  /**
-    * Stimulus: Whether or not `focusedClass` was passed
-    */
-  hasFocusedClass: boolean;
-  /**
-    * Stimulus: The `initial` to be applied to relapse
-    */
-  initialClass: string;
-  /**
-    * Stimulus: Whether or not `initialClass` was passed
-    */
-  hasInitialClass: boolean;
   /**
     * Stimulus: The `opened` to be applied to relapse
     */

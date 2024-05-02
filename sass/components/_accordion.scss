@@ -7,30 +7,16 @@
   border: $accordion-border-width solid $accordion-border-color;
   border-top: none;
 
+  details > summary {
+
+    /* Specific reset for Safari WebKit */
+    &::-webkit-details-marker { display: none; }
+
+  }
+
   &.lined {
     border: none;
   }
-
-  &-fold {
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden;
-    opacity: 0;
-    max-height: 0;
-    will-change: visibility, opacity, max-height;
-    @include transition(
-      visibility $accordion-transition-display linear,
-      opacity $accordion-transition-display linear,
-      max-height $accordion-transition-height $accordion-transition-easing
-    );
-
-    &.expanded {
-      max-height: inherit;
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-
 
   &-btn {
     display: inline-block;
@@ -58,18 +44,6 @@
 
       &:last-of-type {
         border-bottom: none;
-      }
-    }
-
-
-    &.initial {
-      color: inherit;
-      background-color: inherit;
-
-      + .accordion-fold {
-        max-height: unset;
-        visibility: visible;
-        opacity: 1;
       }
     }
 

@@ -1,7 +1,6 @@
 ---
 title: BRIXTOL | BOOTSTRAP
 views:
-  - demo
   - html
   - scss
 refs:
@@ -44,7 +43,7 @@ refs:
           <div
             class="accordion lined vh-100 overflow"
             data-controller="accordion"
-            data-accordion-multiple-value="true"
+            data-accordion-multiple-value="false"
             data-accordion-persist-value="false"
             data-relapse="sidebar"
             id="sidebar">
@@ -125,118 +124,138 @@ refs:
         <div class="row gx-0 py-5">
 
           <div class="col-8 px-4">
-            <h5 class="fw-bold mb-3">OVERVIEW</h5>
+            <h5 class="fw-bold mb-3">OVERVIEW
+            </h5>
             <p>
-             This is a stripped down and customized <strong>Bootstrap v5</strong> variation with a refined set of styles and components. This module is used under the hood in our <a href="https://brixtoltextiles.com">webshop</a>. The module is refined for usage within Brixtol Textiles internal and public facing projects. This variation specifically is void of any components and mostly consists of the CSS logics.
+              This is a stripped down and customized
+              <strong>Bootstrap v5
+              </strong>
+              variation with a refined set of styles and components. This module is used under the hood in our
+              <a href="https://brixtoltextiles.com">webshop
+              </a>
+              . The module is refined for usage within Brixtol Textiles internal and public facing projects. This variation specifically is void of any components and mostly consists of the CSS logics.
             </p>
-            <h5 class="fw-bold my-3">REFINED BOOTSTRAP</h5>
+            <h5 class="fw-bold my-3">REFINED BOOTSTRAP
+            </h5>
             <p>
-             This variation uses custom naming conventions for classes in order to keep production bundles small without needing to purge. The constant breaking changes of Bootstrap is problematic and in order to negate complaints this has evolved to become a single point of control which we can depend upon while still being able to extend the base to different requirements.
+              This variation uses custom naming conventions for classes in order to keep production bundles small without needing to purge. The constant breaking changes of Bootstrap is problematic and in order to negate complaints this has evolved to become a single point of control which we can depend upon while still being able to extend the base to different requirements.
             </p>
-            <h5  class="fw-bold my-3">USAGE </h5>
+            <h5 class="fw-bold my-3">USAGE
+            </h5>
             <p>
-              When using this variation you can either either leverage its defaults or create a per-project <code>strap.scss</code> file to overwrite defaults. This flavor of Bootstrap is intended to be bundled along side project specific stylings, so the defaults are completely stripped and largely refactored. The main <code>sass/*</code> directory contains all the overwrites and refactors, the <code>sass/bootstrap/*</code> directory contains the hard-fork of Bootstrap and the <code>_</code> prefixed files in the root of this directory are import facing.
+              When using this variation you can either either leverage its defaults or create a per-project
+              <code>strap.scss
+              </code>
+              file to overwrite defaults. This flavor of Bootstrap is intended to be bundled along side project specific stylings, so the defaults are completely stripped and largely refactored. The main
+              <code>sass/*
+              </code>
+              directory contains all the overwrites and refactors, the
+              <code>sass/bootstrap/*
+              </code>
+              directory contains the hard-fork of Bootstrap and the
+              <code>_
+              </code>
+              prefixed files in the root of this directory are import facing.
             </p>
-            </div>
           </div>
+        </div>
 
-          {% assign ref = 0 %}
+        {% assign ref = 0 %}
 
-          {% for data in refs %}
+        {% for data in refs %}
 
-            {% if data == "layouts" %}
-              {% assign list = layouts.data %}
-            {% elsif data == 'fonts' %}
-              {% assign list = fonts.data %}
-            {% elsif data == 'text' %}
-              {% assign list = text.data %}
-            {% elsif data == 'utilities' %}
-              {% assign list = utilities.data %}
-            {% elsif data == 'forms' %}
-              {% assign list = forms.data %}
-            {% elsif data == 'components' %}
-              {% assign list = components.data %}
-            {% endif %}
+          {% if data == "layouts" %}
+            {% assign list = layouts.data %}
+          {% elsif data == 'fonts' %}
+            {% assign list = fonts.data %}
+          {% elsif data == 'text' %}
+            {% assign list = text.data %}
+          {% elsif data == 'utilities' %}
+            {% assign list = utilities.data %}
+          {% elsif data == 'forms' %}
+            {% assign list = forms.data %}
+          {% elsif data == 'components' %}
+            {% assign list = components.data %}
+          {% endif %}
 
-            {% for item in list %}
+          {% for item in list %}
 
-              {% assign slug = item.title | slug %}
+            {% assign slug = item.title | slug %}
 
-              <div
-                id="{{ slug }}"
-                class="row jc-between px-4 mt-5"
-                data-ref="{{ ref }}">
-                <div class="col-auto">
-                  <a href="#{{ slug }}" class="h4 d-block fw-bold fc-dark-gray">
-                    {{ item.title }}
-                  </a>
-                  <code class="lower fw-bold fs-sm fc-green mt-2">responsive</code>
-                </div>
-                <div class="col-auto mt-2">
-                  {% if item.property.size > 0 %}
-                    <code class="lower fw-bold fs-sm">{{ item.property }}</code>
-                  {% endif %}
-                </div>
+            <div
+              id="{{ slug }}"
+              class="row jc-between px-5 mt-5"
+              data-ref="{{ ref }}">
+              <div class="col-auto">
+                <a href="#{{ slug }}" class="h4 d-block fw-bold fc-dark-gray">
+                  {{ item.title }}
+                </a>
+                <code class="lower fw-bold fs-sm fc-green mt-2">
+                  responsive
+                </code>
+              </div>
+              <div class="col-auto mt-2">
+                {% if item.property.size > 0 %}
+                  <code class="lower fw-bold fs-sm">
+                    {{ item.property }}
+                  </code>
+                {% endif %}
+              </div>
+            </div>
+
+            {% if item.description %}
+
+              <div class="d-block px-5 mt-4 mb-4">
+                {{ item.description }}
               </div>
 
-              {% if item.description %}
+            {% endif %}
 
-                <div class="d-block px-4 mt-4 mb-4">
-                  {{ item.description }}
-                </div>
+            <div class="container-fluid p-5">
+              {% assign demo = slug | append: '/' | append: 'demo' %}
+              {% render demo, item: item %}
 
-              {% endif %}
+              <div
+                class="accordion mt-4"
+                data-controller="accordion"
+                data-accordion-multiple-value="true"
+                data-accordion-persist-value="false">
+                {% for view in views %}
 
-              {% for view in views %}
+                  {% assign template = slug | append: '/' | append: view %}
 
-                {% assign template = slug | append: "/" | append: view %}
-
-                {% if view == 'demo' and item.expanded == true %}
-                  {% assign expanded = 'initial bt-0' %}
-                {% elsif view == 'scss' %}
-                  {% assign expanded = 'bb' %}
-                {% else %}
-                  {% assign expanded = '' %}
-                {% endif %}
-
-                <div
-                  class="accordion px-4 lined"
-                  id="{{ slug }}-xx"
-                  data-controller="accordion"
-                  data-accordion-multiple-value="true"
-                  data-accordion-persist-value="false">
-
-                  <button type="button" class="accordion-btn fc-gray upper fs-md fw-bold py-3 px-0 {{ expanded }}">
-
-                    {{ view }}
-
-                  </button>
-
-                  <div class="accordion-fold bg-white">
-                    <div class="container-fluid px-0 py-4">
-                      {% render template, item: item %}
+                  <details>
+                    <summary class="accordion-btn fc-gray upper fs-md fw-bold py-3 px-4">
+                      {{ view }}
+                    </summary>
+                    <div class="accordion-fold bg-white">
+                      <div class="container-fluid px-4">
+                        {% render template, item: item %}
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </details>
 
-              {% endfor %}
-            {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
 
-            {% assign ref = forloop.index %}
-
+            <div class="row d-block bb"></div>
           {% endfor %}
 
-        </div>
+          {% assign ref = forloop.index %}
+
+        {% endfor %}
+
       </div>
     </div>
+  </div>
 
-    <div id="modal-example" class="modal">
-      <div class="modal-container">
-        <h1>
-          Hello World
-        </h1>
-      </div>
+  <div id="modal-example" class="modal">
+    <div class="modal-container">
+      <h1>
+        Hello World
+      </h1>
     </div>
+  </div>
 
-  </body>
-</html>
+</body></html>

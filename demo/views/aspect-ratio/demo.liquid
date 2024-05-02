@@ -15,11 +15,11 @@
       </div>
       <div class="col-6 mt-2">
         <pre class="mt-0 fs-sm tc">
-        <code class="fs-xs fc-pink">
+        <code class="fs-sm fc-pink">
           $aspect-ratio-bg-svg: url('*');
         </code>
         </pre>
-        <picture class="ratio ratio-3000x2250">
+        <picture class="ratio ratio-3000x2250 bd">
           <img src="">
         </picture>
       </div>
@@ -41,7 +41,7 @@
         </picture>
       </div>
       <div class="col-6 mt-2">
-        <picture class="ratio" style="--ratio: calc(800 / 1240)">
+        <picture class="ratio bd" style="--ratio: calc(800 / 1240)">
           <img src="">
         </picture>
       </div>
@@ -79,6 +79,34 @@
 </picture>
 {% endhighlight %}
 
+  </div>
+
+  <div class="col-6 pl-3">
+    <h6 class="my-2 fw-bold">
+      No Placeholder
+    </h6>
+    Hide the background image placeholder SVG
+    <div class="row ai-center mt-4">
+      <div class="col-auto">
+        <pre class="mt-0 fs-sm py-2 px-4">
+        <code class="fs-sm">
+          .ratio .no-placeholder
+        </code>
+        </pre>
+        <pre class="mt-0 py-2 fs-sm px-4">
+          <code class="fs-sm fc-pink">
+            $aspect-ratio-bg-svg: null
+          </code>
+          </pre>
+      </div>
+      <div class="mt-0 fs-sm col-auto">
+    <!-- esthetic-ignore-next -->
+{% highlight html %}
+<picture class="ratio no-placeholder">
+</picture>
+{% endhighlight %}
+      </div>
+    </div>
   </div>
 
 </div>

@@ -92,12 +92,6 @@
   white-space: normal;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .relapse-fold {
-    -webkit-transition: none;
-    transition: none;
-  }
-}
 
 code[class*='language-'] {
   -moz-hyphens: none;
@@ -142,6 +136,7 @@ pre[class*='language-'] {
   overflow: auto;
   padding: 1.5em 1.2em;
   background: #282a36;
+  font-size: .875rem;
 }
 
 #search {

@@ -1,28 +1,37 @@
 {% highlight html %}
 
 <!-- Simple Accordion -->
-<div class="accordion">
+<div
+  class="accordion"
+  data-controller="accordion"
+  data-accordion-multiple-value="false"
+  data-accordion-persist-value="true">
 
   <!-- PANEL 1 -->
 
-  <button type="button" class="accordion-btn">Opens Fold #</button>
-  <div class="accordion-fold">
-    This is Fold #1
-  </div>
+  <details>
+    <summary class="accordion-btn">
+      Opens Fold # 1
+    </summary>
+    <div>
+      <div class="p-4">
+        This is Fold #1
+      </div>
+    </div>
+  </details>
 
   <!-- PANEL 2 -->
 
-  <a href=".." type="button" class="accordion-btn">Opens Fold #2</a>
-  <div class="accordion-fold">
-    This is Fold #1
-  </div>
-
-  <!-- PANEL 3 -->
-
-  <button type="button" class="accordion-btn">Opens Fold #3</button>
-  <div class="accordion-fold">
-    This is Fold #1
-  </div>
+  <details>
+    <summary class="accordion-btn">
+      Opens Fold # 1
+    </summary>
+    <div>
+      <div class="p-4">
+        This is Fold #1
+      </div>
+    </div>
+  </details>
 
 </div>
 {% endhighlight %}

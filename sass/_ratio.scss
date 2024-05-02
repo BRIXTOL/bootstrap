@@ -11,7 +11,6 @@
   overflow: hidden;
   display: block;
 
-
   &::before {
     content: "";
     display: block;
@@ -24,6 +23,10 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+  }
+
+  &.no-placeholder::before {
+    background-image: none !important;
   }
 
   > * {

@@ -315,7 +315,7 @@ $headings-line-height:             1.4;
 $headings-uppercase:               true;
 $headings-margin-bottom:           0;    // We use spacing utilities for heading margins
 
-$h1-font-size:                    $font-size-base * 2.5;
+$h1-font-size:                    $font-size-base * 2.25;
 $h2-font-size:                    $font-size-base * 2;
 $h3-font-size:                    $font-size-base * 1.75;
 $h4-font-size:                    $font-size-base * 1.5;
@@ -538,9 +538,6 @@ $accordion-border-width:            $border-width;
 $accordion-border-color:            $border-color;
 $accordion-btn-opened:              $gray-700;
 $accordion-padding:                 50px;
-$accordion-transition-height:       250ms;
-$accordion-transition-display:      200ms;
-$accordion-transition-easing:       ease-in-out;
 $accordion-icon-padding-x:          .5rem;
 
 /* -------------------------------------------- */

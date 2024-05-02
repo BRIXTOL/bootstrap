@@ -1,6 +1,6 @@
 {
   "name": "@brixtol/bootstrap",
-  "version": "1.7.2",
+  "version": "1.7.4",
   "private": false,
   "description": "Webshop strap for Brixtol Textiles.",
   "author": {
@@ -30,12 +30,13 @@
     "_variables.scss",
     "_variation.scss",
     "index.scss",
+    "bootstrap.css",
     "sass/**/*.scss"
   ],
   "scripts": {
     "dev": "rm -rf docs && concurrently \"pnpm run 11ty:watch\" \"pnpm run sass:watch\" \"pnpm run sass:wdocs\" \"pnpm run tsup:watch\" ",
     "build": "rm -rf docs && pnpm run 11ty:build && pnpm run sass:bdocs && pnpm run sass:build && postcss docs/bootstrap.css -r --no-map && tsup --minify",
-    "sass:dist": "sass --load-path=node_modules/bootstrap/scss/ index.scss index.css --style=compressed --no-source-map",
+    "sass:dist": "sass --load-path=node_modules/bootstrap/scss/ index.scss boostrap.css --style=compressed --no-source-map",
     "sass:wdocs": "sass demo/style.scss docs/style.css --no-source-map --watch",
     "sass:bdocs": "sass demo/style.scss docs/style.css --no-source-map",
     "sass:build": "sass --load-path=node_modules/bootstrap/scss/ index.scss docs/bootstrap.css --no-source-map",
@@ -106,22 +107,22 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.3.5",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@brixtol/browserslist-config": "workspace:^1.1.0",
-    "@brixtol/eslint-config": "workspace:^1.2.4",
-    "@brixtol/prettier-config": "workspace:^1.2.0",
+    "@brixtol/browserslist-config": "workspace:^",
+    "@brixtol/eslint-config": "workspace:^",
+    "@brixtol/prettier-config": "workspace:^",
     "@brixtol/stylelint-config": "workspace:^",
     "@hotwired/stimulus": "^3.2.2",
-    "@panoply/11ty": "^0.2.0",
-    "autoprefixer": "^10.4.16",
+    "@panoply/11ty": "^0.3.0",
+    "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
-    "cssnano": "^6.0.1",
-    "embla-carousel": "8.0.0-rc14",
-    "postcss": "^8.4.31",
-    "postcss-cli": "^10.1.0",
+    "cssnano": "^7.0.1",
+    "embla-carousel": "8.0.2",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
     "qvp": "^0.3.2",
-    "relapse": "^0.6.0",
-    "sass": "^1.69.5",
+    "relapse": "^0.9.0",
+    "sass": "^1.76.0",
     "stickybits": "^3.7.11",
-    "tsup": "^7.2.0"
+    "tsup": "^8.0.2"
   }
 }
